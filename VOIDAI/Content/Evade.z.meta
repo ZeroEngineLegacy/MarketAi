@@ -1,0 +1,15 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Evade",
+		uint64 ResourceId = 5610de8648c72279,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"SensingAndSteeringBehaviors",
+		],
+	},
+},

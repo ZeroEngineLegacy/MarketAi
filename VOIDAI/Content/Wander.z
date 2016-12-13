@@ -1,0 +1,144 @@
+// Component: Wander
+// Brief: This steering behavior maintains state, the "wander direction" which is
+// calculated by finding a vector from the object to a point on a circle offset from 
+// the object in the direction of its velocity. At each time step a random offset is 
+// added to the wander direction. The modified wander direction is constrained to lie 
+// on the circle. The circle has unit radius and its center is located sqrt(2) units 
+// along the object's forward axis.
+
+class Wander : ZilchComponent
+{
+    // This component requires a rigidBody component
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    // This component requires an Orientation component
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    // Determines if the component is active or not
+    // Vision checks can still be called manually
+    [Property]
+    var Active : Boolean = true;
+    
+    // Determines if wander data is used to move the object or dispatched on the object in events to be used in other components
+    [Property]
+    var QueryOnly : Boolean = false;
+    
+    // Speed at which the object will move in the wander direction
+    [Property]
+    var Speed : Real = 5.0;
+    
+    // Strength of the sub vector that offset the target point on the primary circle
+    // Constraned to the range [0.0,1.0]
+    [Property]
+    var WanderStrength : Real = 0.4;
+    
+    [Property]
+    var OrientSpeed : Real = 5.0;
+    
+    // The radius of the circle which the target point is constrained to
+    [Property]
+    var CircleRadius : Real = 5;
+    
+    // Strength ranging from 0 (no turning) to 1.
+    var Strength : Real
+    {
+        get { return Math.Clamp(this.WanderStrength,0.0,1.0);}
+        set { this.WanderStrength = Math.Clamp(value, 0.0, 1.0);}
+    }
+    
+    
+    // Store for continuos use so that it isn't cacluated each frame
+    var SqrtTwo : Real = Math.Sqrt(2.0);
+    
+    // Stored wander direction on the primary direction
+    var WanderDir : Real2 = local Real2(0.0,0.0);
+    
+    // Components random object
+    var RandomGen : Random = new Random();
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.RandomGen = new Random();
+        var seed = this.Owner.Transform.Translation.X + this.Owner.Transform.Translation.Y + this.Owner.Transform.Translation.Z + this.Space.TimeSpace.RealTimePassed;
+        // Seed the random number generator
+        // Should probably be changed this guarentees unique starting seeds for each object unless they are created at the same position on the same frame
+        this.RandomGen.Seed = seed as Integer;
+        
+        
+        // Generate a random initial direction
+        this.WanderDir = this.RandomGen.Real2(0.0,1.0);
+        // Look in starting direction
+        this.Owner.Orientation.LookAtDirection((this.WanderDir.X * this.Owner.Orientation.LocalForward) + (this.WanderDir.Y * this.Owner.Orientation.LocalRight));
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // If the component is not active, do nothing
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        // Calculate to offset of the origin of the wander primary circle
+        var wanderOrigin = this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.SqrtTwo);
+        
+        // Calculate the vector offset to be added to the wander direction from the last frame
+        var wanderOffsetVec : Real2 = this.RandomGen.Real2(0.0,1.0);
+        wanderOffsetVec = Math.Normalize(wanderOffsetVec);
+        
+        // Adjust the size of the normailzed primary circle
+        var wanderdir = this.WanderDir * this.CircleRadius;
+        //Add the new offset to the current wanderdir
+        wanderdir += wanderOffsetVec * this.Strength;
+        // Normalize to get a direction
+        this.WanderDir = Math.Normalize(wanderdir);
+        Console.WriteLine(this.WanderDir);
+        // Used the generated wander dir to offset from the wander origin
+        var targPos : Real3 = wanderOrigin + this.OrientVector(this.WanderDir);
+        
+        // If the component isn't queryonly
+        if(!this.QueryOnly)
+        {
+            // Orient the object
+            var rot = this.Owner.Orientation.GetLookAtPointRotation(targPos);
+            this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, rot, this.OrientSpeed * event.Dt);
+            
+            if(this.Speed > 0.0)
+            {
+                // Move the Object
+                //Console.WriteLine("Wander");
+                this.Owner.RigidBody.ApplyForce(this.Orientation.WorldForward * this.Speed);
+            }
+        }
+        // If the component is query only send an event with the data instead
+        else
+        {
+            var wanderevent : WanderEvent = new WanderEvent();
+            wanderevent.Direction = Math.Normalize(targPos - this.Owner.Transform.Translation);
+            wanderevent.Rotation = this.Owner.Orientation.GetLookAtPointRotation(targPos);
+            this.Owner.DispatchEvent("WanderEvent", wanderevent);
+        }
+    }
+    
+    
+    //Converts the Real2 wander direction into an oriented Real3
+    function OrientVector(dir : Real2) : Real3
+    {
+        // Orient the forward axis value of the wander direction
+        return (this.Owner.Orientation.LocalForward * dir.X) + (this.Owner.Orientation.LocalRight * dir.Y);
+    }
+}
+
+// The event that is dispatched whenever a new wander direction is defined
+class WanderEvent : ZilchEvent
+{
+    var Direction : Real3 = local Real3();
+    var Rotation : Quaternion = local Quaternion();
+    constructor() : base()
+    {
+    }
+}

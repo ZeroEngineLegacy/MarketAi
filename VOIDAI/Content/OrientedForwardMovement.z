@@ -1,0 +1,37 @@
+//Copyright: © 2016 DigiPen, All Rights Reserved.
+//Author:    Zero Engine Team
+
+// Component: Oriented forward Movement
+// Brief: This component applies a simple force along the forward axis defined by the orientation component
+
+class OrientedForwardMovement : ZilchComponent
+{
+    // this component requires a rigidBody component
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    // Determines if the component is active or not
+    [Property]
+    var Active : Boolean = true;
+    
+    // The force to be applied
+    [Property]
+    var Force : Real = 10.0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // If the component is not active, do nothing
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        // Apply the given force along the Oriented forward axis
+        this.Owner.RigidBody.ApplyForce(this.Owner.Orientation.WorldForward * this.Force);
+    }
+}

@@ -1,0 +1,161 @@
+//Copyright: © 2016 DigiPen, All Rights Reserved.
+//Author:    Arend Danielek
+
+//Class: Patrol
+//Brief: Will cause the object move along its local forward axis until it encounters
+// an edge or a wall. The object will then rotate 180.0 degrees and continue
+// moving along its local forward axis.
+
+class Patrol : ZilchComponent
+{
+    // This component requires the object to have a collider component
+    [Dependency]
+    var Collider : Collider = null;
+    
+    // this componet requires the object to have an Orientation component
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    // this componet requires the object to have an Orientation component
+    [Dependency]
+    var OrientationHelper : OrientationHelper = null;
+    
+    // determines if the component is active
+    [Property]
+    var Active : Boolean = false;
+    
+    // Movement speed while patrolling
+    [Property]
+    var Speed : Real = 5.0;
+    
+    // The rate at which the object will rotate to face the new patrol direction
+    [Property]
+    var RotSpeed : Real = 10.0;
+    
+    // The range in front of the player in which to search for an edge
+    [Property]
+    var EdgeDetectionRange : Real = 0.1;
+    
+    // The range in front of the player in which to search for an edge
+    [Property]
+    var WallDetectionRange : Real = 0.1;
+    
+    // A collision group defining what collsion group objects should be considered ground
+    [Property]
+    var GroundCollisionGroup : CollisionGroup = null;
+    
+    // The cast filter for the edge detection ray cast
+    var CharCastFilter : CastFilter = null;
+    
+    // Number of objects to be checked for ground during raycast
+    [Property]
+    var CastResultLimit : Integer = 1;
+    
+    
+    function Initialize(init : CogInitializer)
+    {
+        // We only ignore ghosts because anything else "could" be considered "ground"
+        this.CharCastFilter = this.Space.PhysicsSpace.CreateDefaultCastFilter();
+        this.CharCastFilter.IgnoreChildren = false;
+        this.CharCastFilter.IgnoreStatic = false;
+        this.CharCastFilter.IgnoreGhost = true;
+        this.CharCastFilter.IgnoreDynamic = false;
+        this.CharCastFilter.IgnoreKinematic = false;
+        
+        // If there is no collision group selected by property use the collision group from the collider
+        if(this.GroundCollisionGroup != null)
+        {
+            this.CharCastFilter.CollisionGroup = this.GroundCollisionGroup;
+        }
+        else
+        {
+            this.CharCastFilter.CollisionGroup = this.Owner.Collider.CollisionGroup;
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // If the component is not active then do nothing
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        
+        // If there is an edge or if the object ha
+        if(this.DetectWall() || this.DetectEdge())
+        {
+            this.Orientation.LookAtDirectionWithUp(-this.Orientation.WorldForward, this.Orientation.WorldUp);
+        }
+        else
+        {
+            // Move along the current patrol direction
+            this.Owner.RigidBody.Velocity = (this.Orientation.WorldForward * this.Speed);
+        }
+    }
+    
+    // Detects and edge within the EdgeDetectionRange along the world forward of the object
+    function DetectEdge() : Boolean
+    {
+        // Cast a filtered ray to look for and edge
+        var scaleOffset = this.OrientationHelper.OrientToWorldAxis(AxisType.Forward, this.Owner.Transform.WorldScale * 0.5);
+        var castOrigin : Real3 = this.Owner.Transform.WorldTranslation + scaleOffset + this.OrientationHelper.OrientToWorldAxis(AxisType.Forward,this.EdgeDetectionRange);
+        //Console.WriteLine("CastOffset: `castOrigin - this.Owner.Transform.WorldTranslation`");
+        var castDir : Real3 = -this.Orientation.WorldUp;
+        var castRay : Ray = Ray();
+        castRay.Start = castOrigin;
+        castRay.Direction = castDir;
+        var results = this.Space.PhysicsSpace.CastRayResultsFiltered(castRay, this.CastResultLimit, this.CharCastFilter);
+        
+        
+        foreach(var result in results)
+        {
+            if(result.ObjectHit != null)
+            {
+                // Compare the positions along the up axis to see if there is a ledge
+                var heightObj = this.OrientationHelper.OrientToLocalAxis(AxisType.Up, result.WorldPosition);
+                //Console.WriteLine("ObjectHeight: `heightObj`");
+                var heightMy = this.OrientationHelper.OrientToLocalAxis(AxisType.Up, this.Owner.Transform.WorldTranslation);
+                //Console.WriteLine("MyHeight: `heightMy`");
+                if(Math.Length(heightMy - heightObj) > this.OrientationHelper.GetAxisValue(AxisType.Up, this.Owner.Transform.WorldScale * 0.5))
+                {
+                    return true;
+                }
+            }
+            else
+            {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    function DetectWall() : Boolean
+    {
+        //Cast a ray forward to find a wall
+        var castRay : Ray = Ray();
+        castRay.Start = this.Owner.Transform.Translation;
+        castRay.Direction = this.Orientation.WorldForward;
+        var results = this.Space.PhysicsSpace.CastRayResultsFiltered(castRay, this.CastResultLimit, this.CharCastFilter);
+        
+        //If there is a wall and it is within range
+        foreach(var result in results)
+        {
+            if(result.ObjectHit != null)
+            {
+                var myScaleOffset = this.OrientationHelper.GetWorldAxisValue(AxisType.Forward, this.Owner.Transform.WorldScale * 0.5);
+                
+                if(result.Distance - Math.Abs(myScaleOffset) < this.WallDetectionRange)
+                {
+                    //Console.WriteLine("Wall found");
+                    return true;
+                }
+            }
+        }
+        
+        return false;
+    }
+}

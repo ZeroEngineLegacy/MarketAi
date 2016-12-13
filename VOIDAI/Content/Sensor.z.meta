@@ -1,0 +1,15 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Sensor",
+		uint64 ResourceId = 5610de8648c0e376,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"SensingAndSteeringBehaviors",
+		],
+	},
+},

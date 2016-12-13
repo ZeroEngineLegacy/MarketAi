@@ -1,0 +1,15 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "Vision2D",
+		uint64 ResourceId = 5610de8648c1336a,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"SensingAndSteeringBehaviors",
+		],
+	},
+},

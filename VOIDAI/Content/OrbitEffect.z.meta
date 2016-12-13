@@ -1,0 +1,15 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "OrbitEffect",
+		uint64 ResourceId = 5610de8648c7a2be,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"SensingAndSteeringBehaviors",
+		],
+	},
+},

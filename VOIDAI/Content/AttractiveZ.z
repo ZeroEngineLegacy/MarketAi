@@ -1,0 +1,21 @@
+//Copyright: © 2016 DigiPen, All Rights Reserved.
+//Author:    Arend Danielek
+
+//Class: Attractive
+//Brief: This component interacts with the AttractorZ component. This component
+// should be attached to object you want an obj AttractorZ to rotate towards.
+
+class AttractiveZ : ZilchComponent
+{
+    //Should this component be active (should AttractorZ components consider this attractive obj)
+    [Property]
+    var Active : Boolean = true;
+    
+    //Weight of this object's attractiveness
+    [Property]
+    var AttractionStrength : Real = 1.0;
+    
+    function Initialize(init : CogInitializer)
+    {
+    }
+}

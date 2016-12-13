@@ -1,0 +1,16 @@
+TextContent = 
+{
+	ZilchScriptBuilder = 
+	{
+		string Name = "SimplePathFollower",
+		uint64 ResourceId = 5610de8648c116a5,
+	},
+	ContentTags = 
+	{
+		Array Tags = 
+		[
+			"SensingAndSteeringBehaviors",
+			"SimplePathFollower",
+		],
+	},
+},

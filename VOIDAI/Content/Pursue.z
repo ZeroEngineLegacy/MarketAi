@@ -1,0 +1,124 @@
+// Component: Pursue
+// Brief: This component will cause the object to pursue a target object by 
+// using the target obect's velocity to attampt to estimate a future position
+class Pursue : ZilchComponent
+{
+    // this component requires a rigidBody component
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    // Seek requires an OrientationHelper component
+    [Dependency]
+    var OrientationHelper : OrientationHelper = null;
+    
+    // Determines if the component is active or not
+    [Property]
+    var Active : Boolean = true;
+    
+    // Constrain the seeking direction to the plane orthoganal to the object's up vector
+    [Property]
+    var ConstrainToOrientationPlane : Boolean = false;
+    
+    // Target object to be pursue towards
+    [Property]
+    var Target : CogPath = null;
+    
+    // Range from the object in which it is valid to pursue the target object
+    // If the range is 0 the target object will always be pursued
+    [Property]
+    var PursueRange : Real = 0.0;
+    
+    // Magnitude of the velocity vector to be used when prediction target motion
+    // If the range is 0.0 Dt will be used to estimate the position of the object in the next frame
+    [Property]
+    var PredictionRange : Real = 0.0;
+    
+    // Magnitude of the linear impulse to be applied each frame for pursuing movement
+    [Property]
+    var Speed : Real = 10.0;
+    
+    // the rate at which the object will rotate to matchit velocity direction in degrees per second
+    [Property]
+    var RotationSpeed : Real = 0.0;
+    
+    [Property]
+    var DebugDraw : Boolean = false;
+    
+    // Used to track if the object is pursuing
+    var Pursuing : Boolean = false;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // If this component is not active do nothing
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        // Get the target object's normalized velocity for the prediction estimation
+        var targVelDir : Real3 = this.Target.Cog.RigidBody.Velocity;
+        
+        // If PredictionRange is 0.0 then use Dt to predict target object motion
+        var predictionMagnitude = this.PredictionRange;
+        if(this.PredictionRange == 0.0)
+        {
+            predictionMagnitude = event.Dt;
+        }
+        else
+        {
+            targVelDir = Math.Normalize(targVelDir);
+        }
+        
+        // Estimate the targ object's predicted future position
+        var targPos : Real3 = this.Target.Cog.Transform.Translation + (targVelDir * predictionMagnitude);
+        
+        // Calculate a vector to the target object's predicted position
+        var targDir : Real3 = targPos - this.Owner.Transform.Translation;
+        
+        // Check if the target object is with in the range to seek it
+        if(Math.LengthSq(targDir) < this.PursueRange * this.PursueRange || this.PursueRange == 0.0)
+        {
+            // Record that the object is pursuing the target object
+            this.Pursuing = true;
+            
+            
+            // Normalize the vector to the target object so it does not affect movement speed
+            targDir = Math.Normalize(targDir);
+            
+            // Constrain the target direction to the orientation plane if needed
+            if(this.ConstrainToOrientationPlane)
+            {
+                targDir = this.OrientationHelper.ConstrainVectorToPlane(OrientedPlanes.ForwardRight, targDir);
+            }
+            
+            // Align the object at the given rotation rate to the direction of its velocity
+            var newRot = this.Owner.Orientation.GetLookAtDirectionRotation(Math.Normalize(this.Owner.RigidBody.Velocity));
+            this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, newRot, Math.ToRadians(this.RotationSpeed) * event.Dt);
+            
+            // Apply a force to move the object towards the target object's position
+            this.Owner.RigidBody.ApplyForce(targDir * this.Speed);
+        }
+        else
+        {
+            // If the target object is out of pursue range record that the targ object is no longer being pursued out
+            this.Pursuing = false;
+        }
+        
+        if(this.DebugDraw)
+        {
+            this.DrawDebug(event.Dt);
+        }
+    }
+    
+    function DrawDebug(dt : Real)
+    {
+        var line1 = new DebugLine();
+        line1.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity).HeadSize(0.5).Float4Color(local Real4(0.0,1.0,0.0,1.0));
+        line1.Draw();
+    }
+}

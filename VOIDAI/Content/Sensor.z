@@ -1,0 +1,338 @@
+enum SensorMode {PrimaryAndSideSensors, SideSensors, RandomPrimarySensor}
+
+class SensorRay
+{
+    constructor()
+    {
+    }
+    
+    var Direction : Real3 = local Real3(0.0, 0.0, 0.0);
+    var Distance : Real = 0.0;
+}
+
+//Contain pertinate object sensed the distances to those objects and the angle changed as a result of sensing those objects
+class SensorEvent : ZilchEvent
+{
+    var AngleChange : Real = 0.0;
+    var SensedObjects : Array[Cog] = new Array[Cog]();
+    var SensedDistances : Array[Real] = new Array[Real]();
+    var SensedContactPoints : Array[Real3] = new Array[Real3]();
+    constructor() : base()
+    {
+    }
+}
+
+//Class: Sensor
+//Brief: Detects objects with range limited raycasts in front of the object Sensor is attached to. 
+//The object is then rotated to change its local forward to avoid facing sensed objects.
+
+class Sensor : ZilchComponent
+{
+    // This component dispatchs SensorEvents
+    sends SensorEvent :SensorEvent;
+    
+    //This Component uses the orientation component
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    //Is the component active
+    [Property]
+    var Active : Boolean = true;
+    //The maximum angle that this component can output
+    [Property]
+    var MaxAngleChange : Real = 5.0;
+    //The strength of this particular movement component
+    [Property]
+    var Strength : Real = 0.2;
+    //Do we query the component (and not rotate our object?)
+    [Property]
+    var QueryOnly : Boolean = false;
+    //Do we draw the debug information?
+    [Property]
+    var EnableDebugDraw : Boolean = false;
+    //do we want to send events containing sensor data to this object
+    [Property]
+    var SensorEventTarget : CogPath = null;
+    
+    var Random : Random = new Random();
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    
+    function OnLogicUpdate(updateEvent : UpdateEvent)
+    {
+        //Apply the rotation to our object as long as we're not in "query only" mode
+        if(this.QueryOnly == true)
+        {
+            return;
+        }
+        
+        //Get the up vector
+        var up = this.Owner.Orientation.WorldUp;
+        
+        //Query the component for the change in angle
+        var angleChange = this.ComputeAngleChangeRadians();
+        
+        //If the angle change is non-zero
+        if(angleChange != 0.0)
+        {
+            //Get the rotation from the up vector and angle changed
+            var rotation = Math.ToQuaternion(up, angleChange);
+            
+            //Concatenate the rotations
+            rotation = Math.Transform(rotation, this.Owner.Transform.Rotation);
+            this.Owner.Transform.Rotation = rotation;
+        }
+    }
+    
+    // Apply the strength and maximum to a given angle
+    function ApplyStrengthAndMax(angle : Real) : Real
+    {
+        //Scale the angle by strength, but then dumb it down
+        var maxAngleRad = Math.ToRadians(this.MaxAngleChange);
+        return Math.Min(angle * this.Strength, maxAngleRad);
+    }
+    
+    // Determine the angle in radians using two vectors (generally the forward vector and the new vector)
+    // This function will also apply the strength and max angle cap
+    function GetAngle(up : Real3, forward : Real3, newVector : Real3) : Real
+    {
+        //Get the change in angles
+        var angleChange = this.Owner.Orientation.ComputeSignedAngle(up, forward, newVector);
+        
+        //Return the angle change
+        return this.ApplyStrengthAndMax(angleChange);
+    }
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //What kind of mode are we in with the sensors
+    [Property]
+    var SensorMode : Integer = SensorMode.PrimaryAndSideSensors;
+    //The angle of the side sensors
+    [Property]
+    var SideSensorAngle : Real = 45.0;
+    //The max distance of the side sensors
+    [Property]
+    var SideSensorDistance : Real = 2.0;
+    //The random angle that the primary sensor is allowed to move in
+    [Property]
+    var PrimarySensorMaxAngle : Real = 30.0;
+    //The max distance of the primary sensor
+    [Property]
+    var PrimarySensorDistance : Real = 6.0;
+    //The offset in local space of the ray casting
+    [Property]
+    var LocalOffset : Real3 = local Real3(0.0, 0.0, 0.0);
+    
+    //Which side do we prefer in cases of hitting corners
+    var CornerPreferredAngle : Real = 0.0;
+    //Store the last angle output
+    var LastAngleChange : Real = 0.0;
+    
+    function ComputeAngleChangeRadians() : Real
+    {
+        //The angle we will output
+        var angle = 0.0;
+        
+        //When we get stuck, we use a preferred angle (these are some constants)
+        var prefRandRange = 0.05;
+        var prefLastAngleScale = 0.5;
+        var prefMaxAngleScale = 1.5;
+        
+        //Wander the corner preffered angle
+        this.CornerPreferredAngle += this.Random.Range(-prefRandRange, prefRandRange);
+        this.CornerPreferredAngle += this.LastAngleChange * prefLastAngleScale;
+        var maxAngleChange = Math.ToRadians(this.MaxAngleChange);
+        this.CornerPreferredAngle = Math.Clamp(this.CornerPreferredAngle, -maxAngleChange * prefMaxAngleScale, maxAngleChange * prefMaxAngleScale);
+        
+        //Every update, we add to a list of sensors
+        var maxSensors : Integer = 3;
+        var sensorArray : Array[SensorRay] = new Array[SensorRay]();
+        
+        //Get the position of the object
+        var position = this.Owner.Transform.TransformPoint(this.LocalOffset);
+        
+        //Get the forward and up vector (could check for the space if we wanted later)
+        var up = this.Owner.Orientation.WorldUp;
+        var forward = this.Owner.Orientation.WorldForward;
+        
+        //Create the side sensors...
+        if(this.SensorMode == SensorMode.PrimaryAndSideSensors || this.SensorMode == SensorMode.SideSensors)
+        {
+            //Create a rotation for the left and right side sensors
+            var leftRotation = Math.ToQuaternion(up, -Math.ToRadians(this.SideSensorAngle / 2.0));
+            var rightRotation = Math.ToQuaternion(up, Math.ToRadians(this.SideSensorAngle / 2.0));
+            
+            //Set the direction and distance of the left sensor
+            var leftSensor = new SensorRay();
+            leftSensor.Direction = Math.Transform(forward, leftRotation);
+            leftSensor.Distance = this.SideSensorDistance;
+            sensorArray.Add(leftSensor);
+            
+            //Set the direction and distance of the right sensor
+            var rightSensor = new SensorRay();
+            rightSensor.Direction = Math.Transform(forward, rightRotation);
+            rightSensor.Distance = this.SideSensorDistance;
+            sensorArray.Add(rightSensor);
+        }
+        
+        //Create the primary sensor...
+        if(this.SensorMode == SensorMode.PrimaryAndSideSensors)
+        {
+            //Setup the primary sensor's start, direction, and distance
+            var primarySensor = new SensorRay();
+            primarySensor.Direction = forward;
+            primarySensor.Distance = this.PrimarySensorDistance;
+            sensorArray.Add(primarySensor);
+        }
+        else if(this.SensorMode == SensorMode.RandomPrimarySensor)
+        {
+            var primarySensor = new SensorRay();
+            //Get the primary angle from a random function
+            var primaryAngle = this.Random.Range(-this.PrimarySensorMaxAngle / 2.0, this.PrimarySensorMaxAngle / 2.0);
+            
+            //Create a rotation for the primary sensor
+            var primaryRotation = Math.ToQuaternion(up, Math.ToRadians(primaryAngle));
+            
+            //Setup the primary sensor's start, direction, and distance
+            primarySensor.Direction = Math.Transform(forward, primaryRotation);
+            primarySensor.Distance = this.PrimarySensorDistance;
+            sensorArray.Add(primarySensor);
+        }
+        
+        //If debug draw is enabled...
+        if(this.EnableDebugDraw)
+        {
+            //Loop through all the sensors
+            foreach(var sensor in sensorArray)
+            {
+                // Draw the primary sensor...
+                var line = new DebugLine();
+                line.Start(position).End(position + sensor.Direction * sensor.Distance).HeadSize(0.3).Float4Color(local Real4(0.0, 0.0, 1.0, 1.0));
+                line.Draw();
+            }
+        }
+        
+        //Make a sensorEvent so we can store the cast results and dispatch if needed
+        var sensorEvent : SensorEvent = new SensorEvent();
+        
+        //If we have a physics space, do the ray casts
+        var physics = this.Space.PhysicsSpace;
+        if(physics != null)
+        {
+            //Store the accumulated vector
+            var accumulated = local Real3(0.0, 0.0, 0.0);
+            
+            //How many times did we hit?
+            var hitCount = 0;
+            
+            //Loop through all the sensors
+            foreach(var sensor in sensorArray)
+            {
+                //Do the ray cast
+                var castResultsMax = 3;
+                
+                var ray = local Ray();
+                ray.Start = position;
+                ray.Direction = sensor.Direction;
+                
+                var results = physics.CastRayResults(ray, castResultsMax);
+                
+                //Loop through all the results
+                foreach(var result in results)
+                {
+                    //Get the hit distance
+                    var distance = result.Distance;
+                    
+                    //As long as the object hit wasn't us and it's within the maximum distance...
+                    if(result.ObjectHit != this.Owner && distance < sensor.Distance)
+                    {
+                        //Increment the hit count
+                        ++hitCount;
+                        
+                        //Store the hit object and the distance to it in the sensorEvent
+                        sensorEvent.SensedObjects.Add(result.ObjectHit);
+                        sensorEvent.SensedDistances.Add(distance);
+                        sensorEvent.SensedContactPoints.Add(result.WorldPosition);
+                        
+                        //If debug draw is on, draw the intersection point and the normal
+                        if(this.EnableDebugDraw)
+                        {
+                            var sphere = new DebugSphere();
+                            sphere.Position(result.WorldPosition).Radius(0.5).Float4Color(local Real4(0.0, 1.0, 0.0, 1.0));
+                            sphere.Draw();
+                            
+                            var line = new DebugLine();
+                            line.Start(result.WorldPosition).End(result.WorldPosition + result.Normal).HeadSize(0.2).Float4Color(local Real4(1.0, 0.0, 0.0, 1.0));
+                            line.Draw();
+                        }
+                        
+                        //Compute the intensity (if the hit is at the end of the sensor, it has an intensity
+                        //of 'zero', if it's right next to the ray start, it has an intensity of 'one'
+                        var intensity = 1.0 - (distance / sensor.Distance);
+                        
+                        //Run the sensor rotation algorithm
+                        accumulated += intensity * result.Normal;
+                        break;
+                    }
+                }
+            }
+            
+            //As long as we didn't hit with all rays (except in the case that we only have 1 ray)
+            if(hitCount < sensorArray.Count && sensorArray.Count > 1)
+            {
+                //Now we have the accumulated direction vector that should affect our motion
+                //We need to project the accumulated vector onto the plane made by the up vector (we don't want motion not on the up plane)
+                var right = Math.Cross(up, forward);
+                right = Math.Normalize(right);
+                var accumulatedProjected = accumulated - Math.Project(accumulated, up);
+                
+                //Add in the original forward vector, then normalize the whole thing
+                accumulated /= sensorArray.Count as Real;
+                accumulated += forward;
+                accumulated = Math.Normalize(accumulated);
+                
+                //If debug draw is enabled draw the primary sensor
+                if(this.EnableDebugDraw && this.SensorMode != SensorMode.SideSensors)
+                {
+                    var line = new DebugLine();
+                    line.Start(position).End(position + accumulated * this.PrimarySensorDistance).HeadSize(0.2).Float4Color(local Real4(1.0, 0.0, 0.0, 1.0));
+                    line.Draw();
+                }
+                
+                //Return the angle difference (with strength and max angle applied)
+                angle = this.GetAngle(up, forward, accumulated);
+            }
+            else
+            {
+                //Return the angle change
+                angle = this.ApplyStrengthAndMax((this.CornerPreferredAngle + this.LastAngleChange) / 2.0);
+            }
+        }
+        
+        //Store the last angle change
+        this.LastAngleChange = angle;
+        
+        //Send out the sendor event so other components can use the sensor data
+        if(sensorEvent.SensedObjects.Count > 0)
+        {
+            sensorEvent.AngleChange = angle;
+            
+            // If there is no target defined dispatch the event on this.Owner
+            if(this.SensorEventTarget.Cog != null)
+            {
+                this.SensorEventTarget.Cog.DispatchEvent("SensorEvent", sensorEvent);
+            }
+            else
+            {
+                this.Owner.DispatchEvent("SensorEvent", sensorEvent);
+            }
+        }
+        
+        //Return the angle change
+        return angle;
+    }
+}

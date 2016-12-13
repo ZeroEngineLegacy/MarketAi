@@ -1,0 +1,240 @@
+//Copyright: © 2016 DigiPen, All Rights Reserved.
+//Author:    Arend Danielek
+
+//Class AttractorZ
+//Brief: Zilch version of the Attractor component. Will track nearby objects that have a
+// attractive component and rotate to face them.
+
+class AttractorZ : ZilchComponent
+{
+    //This component requires an Orientation component
+    [Dependency]
+    var Orientation : Orientation;
+    
+    //This component requires an OrientationHelper component
+    [Dependency]
+    var OrientationHelper : OrientationHelper;
+    
+    //This component requires a Vision2D component
+    [Dependency]
+    var Vision2D : Vision2D;
+    
+    [Dependency]
+    var Collider : Collider;
+    
+    //Should the component be active
+    [Property]
+    var Active : Boolean = true;
+    
+    //The max change in rotation of the object per frame
+    [Property]
+    var MaxAnglechange : Real = 5.0;
+    
+    //The strength of the rotation towards any given attractive object
+    [Property]
+    var Strength : Real = 0.2;
+    
+    //The radius attractive objects must be in to be considered
+    [Property]
+    var CheckRadius : Real = 5;
+    
+    //The max number of attractive objects that can be considered
+    [Property]
+    var MaxAttractorObjects : Integer = 10;
+    
+    //The max number of objects to check to see if they are attractive
+    [Property]
+    var MaxCheckObjects : Integer = 50;
+    
+    //The delay between updating the attractive object list
+    [Property]
+    var TimeBetweenChecks : Real = 0.016;
+    
+    //Collision group for attractive obects
+    [Property]
+    var AttractiveCollisionGroup : CollisionGroup = null;
+    
+    //Determines if attraction rotation should be limited to rotations around the up axis defined by the object's orientation component
+    [Property]
+    var AttractOnOrientationPlane : Boolean = false;
+    
+    //Determines if attractive object must be visible by the Vision2D component
+    [Property]
+    var AttractiveMustBeVisible : Boolean = false;
+    
+    //Should static objects be ignored when looking for attractive objects
+    [Property]
+    var IgnoreStatic : Boolean = false;
+    
+    //Should dynamic objects be ignored when looking for attractive objects
+    [Property]
+    var IgnoreDynamic : Boolean = false;
+    
+    //Should kinematic objects be ignored when looking for attractive objects
+    [Property]
+    var IgnoreKinematic : Boolean = false;
+    
+    //Should ghost objects be ignored when looking for attractive objects
+    [Property]
+    var IgnoreGhost : Boolean = false;
+    
+    //Should child objects be ignored when looking for attractive objects
+    [Property]
+    var IgnoreChildren : Boolean = false;
+    
+    //Should the component just record attractive object and calculation but not actually rotate the object
+    [Property]
+    var QueryOnly : Boolean = false;
+    
+    //Should the component debug draw
+    [Property]
+    var DebugDraw : Boolean = false;
+    
+    //List of attractive objects
+    var Attractors : Array[Cog] = null;
+    
+    function Initialize(init : CogInitializer)
+    {
+        this.Attractors = new Array[Cog]();
+        
+        //If no collision group is defined use the collision group from the object's collider
+        if(this.AttractiveCollisionGroup == null)
+        {
+            this.AttractiveCollisionGroup = this.Owner.Collider.CollisionGroup;
+        }
+        
+        if(this.Active)
+        {
+            this.ScheduleAttractorCollection();
+        }
+        
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        if(!this.QueryOnly)
+        {
+            if(!this.Owner.Actions.Active)
+            {
+                this.ScheduleAttractorCollection();
+            }
+            
+            this.Attract();
+        }
+    }
+    
+    function Attract() : Quaternion
+    {
+        var weightedTargDir = Real3();
+        foreach(var obj in this.Attractors)
+        {
+            //Get the vector to the attractive object
+            var objDir = obj.Transform.Translation - this.Owner.Transform.Translation;
+            
+            //Constrain the obj vector to the forward/right plane if needed
+            if(this.AttractOnOrientationPlane)
+            {
+                objDir = this.OrientationHelper.ConstrainVectorToPlane(OrientedPlanes.ForwardRight, objDir);
+            }
+            // Will always be less than this.CheckRadius
+            var dist = Math.Length(objDir);
+            // Invert the dist wieght so closer objects are weighted more heavily
+            var distWeight = 1.0 / (dist / this.CheckRadius);
+            // Multiply in the object's individual weight
+            var weight = distWeight * obj.AttractiveZ.AttractionStrength;
+            // Weight the normalized direction and add it to the average direction
+            weightedTargDir += Math.Normalize(objDir) * weight;
+        }
+        
+        // Calculate the accumalated directions into and average
+        weightedTargDir = Math.Normalize(weightedTargDir);
+        
+        //Get the rotation to look at the weighted attraction direction
+        var targRot = this.Orientation.GetLookAtDirectionRotation(weightedTargDir);
+        //Clamp the rotation rate
+        var angleChange = Math.Clamp(Math.ToRadians(this.Strength), 0.0, Math.ToRadians(this.MaxAnglechange));
+        //Get the object's new rotation
+        var newRot = Math.Slerp(this.Owner.Transform.Rotation, targRot, angleChange);
+        
+        if(!this.QueryOnly)
+        {
+            this.Owner.Transform.Rotation = newRot;
+        }
+        
+        return newRot;
+    }
+    
+    function ScheduleAttractorCollection()
+    {
+        this.Owner.Actions.Cancel();
+        
+        if(!this.Active)
+        {
+            return;
+        }
+        
+        //Schedule attractor collection
+        var seq = Actions.Sequence(this.Owner.Actions);
+        Actions.Call(seq, this.CollectAttractors);
+        //Set up a delay before the next collection
+        Actions.Delay(seq, this.TimeBetweenChecks);
+        //Loop the collection action sequence
+        Actions.Call(seq, this.ScheduleAttractorCollection);
+    }
+    
+    function CollectAttractors()
+    {
+        this.Attractors.Clear();
+        
+        //Set up the cast filter for attractive object collection using property data
+        var checkFilter : CastFilter = this.Space.PhysicsSpace.CreateDefaultCastFilter();
+        checkFilter.CollisionGroup = this.AttractiveCollisionGroup;
+        checkFilter.IgnoreChildren = this.IgnoreChildren;
+        checkFilter.IgnoreGhost = this.IgnoreGhost;
+        checkFilter.IgnoreKinematic = this.IgnoreKinematic;
+        checkFilter.IgnoreDynamic = this.IgnoreDynamic;
+        checkFilter.IgnoreStatic = this.IgnoreStatic;
+        
+        //Cast to get filter possible attractive objects
+        var results : CastResultsRange = this.Space.PhysicsSpace.CastSphereResults(this.Owner.Transform.Translation, this.CheckRadius, this.MaxCheckObjects, checkFilter);
+        
+        foreach(var result in results)
+        {
+            //if the object is not attractive continue
+            if(result.ObjectHit.AttractiveZ == null)
+            {
+                continue;
+            }
+            else if(!result.ObjectHit.AttractiveZ.Active)
+            {
+                continue;
+            }
+            
+            //If vision of object required
+            if(this.AttractiveMustBeVisible)
+            {
+                //and object is not visible, continue
+                if(!this.Vision2D.CheckInVision(result.ObjectHit))
+                {
+                    continue;
+                }
+            }
+            
+            //The attractor is valid so add it to the list
+            this.Attractors.Add(result.ObjectHit);
+            
+            //If the attractor list is full stop searching
+            if(this.Attractors.Count >= this.MaxAttractorObjects)
+            {
+                return;
+            }
+        }
+    }
+    
+}
