@@ -1,8 +1,11 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Zero Engine Team
-
-// Component: Oriented forward Movement
-// Brief: This component applies a simple force along the forward axis defined by the orientation component
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: OrientedForwardMovement                                                                           */
+/* Brief: This component applies a simple force along the forward axis defined by the orientation component */
+/************************************************************************************************************/
 
 class OrientedForwardMovement : ZilchComponent
 {

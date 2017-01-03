@@ -1,12 +1,19 @@
-// Component: Vision2D
-// Brief: This component uses a spherical cast, dot product test, and a raycast test to check
-// for objects within a specified viewing angle oriented to the object's world forward.
-// the plane the vision check is performed on is based of the orientation component.
-// This component can be configured to dispatch an event for each object detected. It can
-// also be configured to have the vision check called manually as opposed to the default,
-// OnLogicUpdate. The user also has the ability to defines properties of the types of objects
-// they wish to detect using rigidbody flags and a collision filter to configure a cast filter.
-// The vision check can be visualized by turning on debugdraw.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: ViewportConfiguration                                                                             */
+/* Brief: Creates, and configures viewport(s) spatial configuration on the screen based of player count.    */
+/* Brief: This component uses a spherical cast, dot product test, and a raycast test to check               */
+/* for objects within a specified viewing angle oriented to the object's world forward.                     */
+/* the plane the vision check is performed on is based of the orientation component.                        */
+/* This component can be configured to dispatch an event for each object detected. It can                   */
+/* also be configured to have the vision check called manually as opposed to the default,                   */
+/* OnLogicUpdate. The user also has the ability to defines properties of the types of objects               */
+/* they wish to detect using rigidbody flags and a collision filter to configure a cast filter.             */
+/* The vision check can be visualized by turning on debugdraw.                                              */
+/************************************************************************************************************/
 
 class Vision2D : ZilchComponent
 {
@@ -80,7 +87,7 @@ class Vision2D : ZilchComponent
     function Initialize(init : CogInitializer)
     {
         // Allocate the array to store sighted objects
-        this.DetectedObjs  = new Array[Cog]();
+        this.DetectedObjs  = Array[Cog]();
         
         // Initialize the dot limit for later
         this.ConeAngleDotLimit = this.CalcAngleDot(this.ConeAngle/2.0);
@@ -156,17 +163,17 @@ class Vision2D : ZilchComponent
             // Dispatch a notifacation event for each obj
             foreach(var obj in this.DetectedObjs)
             {
-                var visionEvent : VisionEvent = new VisionEvent();
+                var visionEvent : VisionEvent = VisionEvent();
                 visionEvent.Object = obj;
                 
                 // Does the user want the hierarchy to be notified
                 if(this.DispatchUpHierarchy)
                 {
-                    this.Owner.DispatchUp("VisionEvent", visionEvent);
+                    this.Owner.DispatchUp(Events.VisionEvent, visionEvent);
                 }
                 else
                 {
-                    this.Owner.DispatchEvent("VisionEvent", visionEvent);
+                    this.Owner.DispatchEvent(Events.VisionEvent, visionEvent);
                 }
             }
         }
@@ -221,43 +228,54 @@ class Vision2D : ZilchComponent
     function DrawDebug()
     {
         // Draw the sphere that indicates the vision range
-        var sphere = new DebugSphere();
-        sphere.Position(this.Owner.Transform.Translation).Radius(this.Range).Float4Color(local Real4(1.0,1.0,1.0,0.1));
-        sphere.Draw();
+        var sphere = DebugSphere();
+        sphere.Position = this.Owner.Transform.Translation;
+        sphere.Radius = this.Range;
+        sphere.Color = Real4(1.0,1.0,1.0,0.1);
+        DebugDraw.Add(sphere);
         
         // Draw the line that indicates the left edge of the viewing cone
         var leftAngle = this.Owner.Orientation.AbsoluteAngle + (this.ConeAngle/2.0);
         var leftDir = (this.Owner.Orientation.LocalForward * Math.Cos(leftAngle)) - (this.Owner.Orientation.LocalRight * Math.Sin(leftAngle));
-        var line1 = new DebugLine();
-        line1.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + (leftDir * this.Range)).Float4Color(local Real4(1.0,0.0,0.0,1.0));
-        line1.Draw();
+        var line1 = DebugLine();
+        line1.Start = this.Owner.Transform.Translation;
+        line1.End = this.Owner.Transform.Translation + (leftDir * this.Range);
+        line1.Color = Real4(1.0,0.0,0.0,1.0);
+        DebugDraw.Add(line1);
         
         // Draw the line that indicates the right edge of the viewing cone
         var rightAngle = this.Owner.Orientation.AbsoluteAngle - (this.ConeAngle/2.0);
-        Console.WriteLine("LocalRight: `this.Owner.Orientation.LocalRight`");
         var rightDir = (this.Owner.Orientation.LocalForward * Math.Cos(rightAngle)) - (this.Owner.Orientation.LocalRight * Math.Sin(rightAngle));
-        var line2 = new DebugLine();
-        line2.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + (rightDir * this.Range)).Float4Color(local Real4(1.0,0.0,0.0,1.0));
-        line2.Draw();
+        var line2 = DebugLine();
+        line2.Start = this.Owner.Transform.Translation;
+        line2.End = this.Owner.Transform.Translation + (rightDir * this.Range);
+        line2.Color = Real4(1.0,0.0,0.0,1.0);
+        DebugDraw.Add(line2);
         
         // Draw the line that indicates the world forward
-        var line3 = new DebugLine();
-        line3.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.Range * 0.5)).HeadSize(0.5).Float4Color(local Real4(0.0,0.0,1.0,1.0));
-        line3.Draw();
+        var line3 = DebugLine();
+        line3.Start = this.Owner.Transform.Translation;
+        line3.End = this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.Range * 0.5);
+        line3.HeadSize = 0.5;
+        line3.Color = Real4(0.0,0.0,1.0,1.0);
+        DebugDraw.Add(line3);
         
         // Draw arrows to the detected objects within the viewing cone
         foreach(var obj in this.DetectedObjs)
         {
-            var arrow = new DebugLine();
-            arrow.Start(this.Owner.Transform.Translation).End(obj.Transform.Translation).HeadSize(0.5).Float4Color(local Real4(0.0,1.0,0.0,1.0));
-            arrow.Draw();
+            var arrow = DebugLine();
+            arrow.Start = this.Owner.Transform.Translation;
+            arrow.End = obj.Transform.Translation;
+            arrow.HeadSize = 0.5;
+            arrow.Color = Real4(0.0,1.0,0.0,1.0);
+            DebugDraw.Add(arrow);
         }
     }
     
     //Calculates the dot product between Real3(1.0,0.0,0.0) and the unit vector of the given angle
     function CalcAngleDot(angle : Real) : Real
     {
-        var vec : Real3 = local Real3(Math.Cos(angle), Math.Sin(angle),0.0);
+        var vec : Real3 = Real3(Math.Cos(angle), Math.Sin(angle),0.0);
         return Math.Dot(Real3(1.0,0.0,0.0), vec);
     }
 }
@@ -265,8 +283,6 @@ class Vision2D : ZilchComponent
 /// The event used to notify the object of a detected object
 class VisionEvent : ZilchEvent
 {
-    var Object : Cog = null;
-    constructor() : base()
-    {
-    }
+    sends VisionEvent : VisionEvent;
+    var Object : Cog;
 }

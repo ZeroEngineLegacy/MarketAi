@@ -1,8 +1,11 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-//Class: OrbitEffect
-//Brief: Will apply single body orbit physics around the target object using forces
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: OrbitEffect                                                                                       */
+/* Brief: Will apply single body orbit physics around the target object using forces                        */
+/************************************************************************************************************/
 
 class OrbitEffect : ZilchComponent
 {
@@ -28,7 +31,7 @@ class OrbitEffect : ZilchComponent
     
     // Should the object debug draw
     [Property]
-    var DebugDraw : Boolean = false;
+    var DebugDrawEnabled : Boolean = false;
     
     function Initialize(init : CogInitializer)
     {
@@ -62,7 +65,7 @@ class OrbitEffect : ZilchComponent
         this.Owner.RigidBody.ApplyForce(Math.Normalize(radVector) * gForce);
         
         // Should the component debug draw?
-        if(this.DebugDraw)
+        if(this.DebugDrawEnabled)
         {
             this.DrawDebug();
         }
@@ -73,18 +76,26 @@ class OrbitEffect : ZilchComponent
     function DrawDebug()
     {
         var line1 = new DebugLine();
-        line1.Start(this.Owner.Transform.Translation).End(this.OrbitTarget.Cog.Transform.Translation).HeadSize(0.5).Float4Color(local Real4(1.0,0.0,0.0,1.0));
-        line1.Draw();
+        line1.Start = this.Owner.Transform.Translation;
+        line1.End = this.OrbitTarget.Cog.Transform.Translation;
+        line1.HeadSize = 0.5;
+        line1.Color = Real4(1.0,0.0,0.0,1.0);
+        DebugDraw.Add(line1);
         
         
         var line2 = new DebugLine();
-        line2.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity).HeadSize(0.5).Float4Color(local Real4(0.0,1.0,0.0,1.0));
-        line2.Draw();
+        line2.Start = this.Owner.Transform.Translation;
+        line2.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+        line2.HeadSize = 0.5;
+        line2.Color = Real4(0.0,1.0,0.0,1.0);
+        DebugDraw.Add(line2);
         
         
         var sphere = new DebugSphere();
-        sphere.Position(this.OrbitTarget.Cog.Transform.Translation).Radius(Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation)).Float4Color(local Real4(1.0,1.0,1.0,0.1));
-        sphere.Draw();
+        sphere.Position = this.OrbitTarget.Cog.Transform.Translation;
+        sphere.Radius = Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation);
+        sphere.Color = Real4(1.0,1.0,1.0,0.1);
+        DebugDraw.Add(sphere);
         
         Console.WriteLine("Radius: `Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation)`");
         Console.WriteLine("Velocity: `this.Owner.RigidBody.Velocity`");

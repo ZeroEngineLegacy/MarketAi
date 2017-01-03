@@ -1,9 +1,12 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-//Class AttractorZ
-//Brief: Zilch version of the Attractor component. Will track nearby objects that have a
-// attractive component and rotate to face them.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: AttractorZ                                                                                        */
+/* Brief: Zilch version of the Attractor component. Will track nearby objects that have a                   */
+/* attractive component and rotate to face them.                                                            */
+/************************************************************************************************************/
 
 class AttractorZ : ZilchComponent
 {
@@ -52,7 +55,7 @@ class AttractorZ : ZilchComponent
     
     //Collision group for attractive obects
     [Property]
-    var AttractiveCollisionGroup : CollisionGroup = null;
+    var AttractiveCollisionGroup : CollisionGroup;
     
     //Determines if attraction rotation should be limited to rotations around the up axis defined by the object's orientation component
     [Property]
@@ -88,15 +91,13 @@ class AttractorZ : ZilchComponent
     
     //Should the component debug draw
     [Property]
-    var DebugDraw : Boolean = false;
+    var DebugDrawEnabled : Boolean = false;
     
     //List of attractive objects
-    var Attractors : Array[Cog] = null;
+    var Attractors : Array[Cog] = Array[Cog]();
     
     function Initialize(init : CogInitializer)
     {
-        this.Attractors = new Array[Cog]();
-        
         //If no collision group is defined use the collision group from the object's collider
         if(this.AttractiveCollisionGroup == null)
         {

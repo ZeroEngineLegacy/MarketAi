@@ -1,18 +1,21 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-//Class: InterpolatedOrbit
-//Brief: Moves the obejct by interpolation of translation in an circle around another object
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: InterpolatedOrbit                                                                                 */
+/* Brief: Moves the obejct by interpolation of translation in an circle around another object               */
+/************************************************************************************************************/
 
 class InterpolatedOrbit : ZilchComponent
 {
     //This component requires the Orientation component
     [Dependency]
-    var Orientation : Orientation = null;
+    var Orientation : Orientation;
     
     //This component requires the OrientationHelper component
     [Dependency]
-    var OrientationHelper : OrientationHelper = null;
+    var OrientationHelper : OrientationHelper;
     
     //Radius of the orbit
     [Property]
@@ -20,29 +23,26 @@ class InterpolatedOrbit : ZilchComponent
     
     //Object to orbit
     [Property]
-    var OrbitTarget : CogPath = null;
+    var OrbitTarget : CogPath;
     
     //Angles per second by which the object should rotate around the target object
     [Property]
-    var AngleChange : Real = 0;
+    var AngleChange : Real;
     
     //Current orbit angle
-    var CurrentAngle : Real = 0;
+    var CurrentAngle : Real;
     
     function Initialize(init : CogInitializer)
     {
         // If no radius was given used the intial seperation of the objects for the radius
         if(this.Radius == 0.0)
-        {
             this.Radius = Math.Length(this.Owner.Transform.Translation - this.OrbitTarget.Cog.Transform.Translation);
-        }
         
-        // Use the current normailzed offset as the initial offset of the orbit
+        // Use the current normalized offset as the initial offset of the orbit
         var startDir : Real3 = Math.Normalize(this.Owner.Transform.Translation - this.OrbitTarget.Cog.Transform.Translation);
         this.CurrentAngle = this.OrientationHelper.AxisVectorToAngle(AxisType.Forward, startDir);
         
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-        
     }
     
     function OnLogicUpdate(event : UpdateEvent)

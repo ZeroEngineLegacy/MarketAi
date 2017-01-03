@@ -1,8 +1,13 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Seek                                                                                              */
+/* Brief: Will cause the object to "seek" the target object by moving towards the target object's           */
+/* current position                                                                                         */
+/************************************************************************************************************/
 
-// Component: Seek
-// Brief: Will cause the object to "seek" the target object by moving towards the target object's current position
 class Seek : ZilchComponent
 {
     // This component requires a rigidBody component
@@ -39,7 +44,7 @@ class Seek : ZilchComponent
     var RotationSpeed : Real = 0.0;
     
     [Property]
-    var DebugDraw : Boolean = false;
+    var DebugDrawEnabled: Boolean = false;
     
     // Used to track if the object is seeking
     var Seeking : Boolean = false;
@@ -88,7 +93,7 @@ class Seek : ZilchComponent
             this.Seeking = false;
         }
         
-        if(this.DebugDraw)
+        if(this.DebugDrawEnabled)
         {
             this.DrawDebug(event.Dt);
         }
@@ -96,8 +101,10 @@ class Seek : ZilchComponent
     
     function DrawDebug(dt : Real)
     {
-        var line1 = new DebugLine();
-        line1.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity).HeadSize(0.5).Float4Color(local Real4(0.0,1.0,0.0,1.0));
-        line1.Draw();
+        var line = new DebugLine();
+        line.Start = this.Owner.Transform.Translation;
+        line.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+        line.HeadSize = 0.5; 
+        line.Color = Real4(0.0,1.0,0.0,1.0);
     }
 }

@@ -1,36 +1,15 @@
-enum SensorMode {PrimaryAndSideSensors, SideSensors, RandomPrimarySensor}
-
-class SensorRay
-{
-    constructor()
-    {
-    }
-    
-    var Direction : Real3 = local Real3(0.0, 0.0, 0.0);
-    var Distance : Real = 0.0;
-}
-
-//Contain pertinate object sensed the distances to those objects and the angle changed as a result of sensing those objects
-class SensorEvent : ZilchEvent
-{
-    var AngleChange : Real = 0.0;
-    var SensedObjects : Array[Cog] = new Array[Cog]();
-    var SensedDistances : Array[Real] = new Array[Real]();
-    var SensedContactPoints : Array[Real3] = new Array[Real3]();
-    constructor() : base()
-    {
-    }
-}
-
-//Class: Sensor
-//Brief: Detects objects with range limited raycasts in front of the object Sensor is attached to. 
-//The object is then rotated to change its local forward to avoid facing sensed objects.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Sensor                                                                                            */
+/* Brief: Detects objects with range limited raycasts in front of the object Sensor is attached to.         */
+/* The object is then rotated to change its local forward to avoid facing sensed objects.                   */
+/************************************************************************************************************/
 
 class Sensor : ZilchComponent
 {
-    // This component dispatchs SensorEvents
-    sends SensorEvent :SensorEvent;
-    
     //This Component uses the orientation component
     [Dependency]
     var Orientation : Orientation = null;
@@ -54,7 +33,7 @@ class Sensor : ZilchComponent
     [Property]
     var SensorEventTarget : CogPath = null;
     
-    var Random : Random = new Random();
+    var Random : Random = Random();
     
     function Initialize(init : CogInitializer)
     {
@@ -64,10 +43,8 @@ class Sensor : ZilchComponent
     function OnLogicUpdate(updateEvent : UpdateEvent)
     {
         //Apply the rotation to our object as long as we're not in "query only" mode
-        if(this.QueryOnly == true)
-        {
+        if(this.QueryOnly)
             return;
-        }
         
         //Get the up vector
         var up = this.Owner.Orientation.WorldUp;
@@ -125,7 +102,7 @@ class Sensor : ZilchComponent
     var PrimarySensorDistance : Real = 6.0;
     //The offset in local space of the ray casting
     [Property]
-    var LocalOffset : Real3 = local Real3(0.0, 0.0, 0.0);
+    var LocalOffset : Real3 = Real3(0.0, 0.0, 0.0);
     
     //Which side do we prefer in cases of hitting corners
     var CornerPreferredAngle : Real = 0.0;
@@ -211,8 +188,11 @@ class Sensor : ZilchComponent
             {
                 // Draw the primary sensor...
                 var line = new DebugLine();
-                line.Start(position).End(position + sensor.Direction * sensor.Distance).HeadSize(0.3).Float4Color(local Real4(0.0, 0.0, 1.0, 1.0));
-                line.Draw();
+                line.Start = position;
+                line.End = position + sensor.Direction * sensor.Distance;
+                line.HeadSize = 0.3;
+                line.Color = Real4(0.0, 0.0, 1.0, 1.0);
+                DebugDraw.Add(line);
             }
         }
         
@@ -262,12 +242,17 @@ class Sensor : ZilchComponent
                         if(this.EnableDebugDraw)
                         {
                             var sphere = new DebugSphere();
-                            sphere.Position(result.WorldPosition).Radius(0.5).Float4Color(local Real4(0.0, 1.0, 0.0, 1.0));
-                            sphere.Draw();
+                            sphere.Position = result.WorldPosition;
+                            sphere.Radius = 0.5;
+                            sphere.Color = Real4(0.0, 1.0, 0.0, 1.0);
+                            DebugDraw.Add(sphere);
                             
                             var line = new DebugLine();
-                            line.Start(result.WorldPosition).End(result.WorldPosition + result.Normal).HeadSize(0.2).Float4Color(local Real4(1.0, 0.0, 0.0, 1.0));
-                            line.Draw();
+                            line.Start = result.WorldPosition;
+                            line.End = result.WorldPosition + result.Normal;
+                            line.HeadSize = 0.2;
+                            line.Color = Real4(1.0, 0.0, 0.0, 1.0);
+                            DebugDraw.Add(line);
                         }
                         
                         //Compute the intensity (if the hit is at the end of the sensor, it has an intensity
@@ -299,8 +284,11 @@ class Sensor : ZilchComponent
                 if(this.EnableDebugDraw && this.SensorMode != SensorMode.SideSensors)
                 {
                     var line = new DebugLine();
-                    line.Start(position).End(position + accumulated * this.PrimarySensorDistance).HeadSize(0.2).Float4Color(local Real4(1.0, 0.0, 0.0, 1.0));
-                    line.Draw();
+                    line.Start = position;
+                    line.End = position + accumulated * this.PrimarySensorDistance;
+                    line.HeadSize = 0.2;
+                    line.Color = Real4(1.0, 0.0, 0.0, 1.0);
+                    DebugDraw.Add(line);
                 }
                 
                 //Return the angle difference (with strength and max angle applied)
@@ -335,4 +323,22 @@ class Sensor : ZilchComponent
         //Return the angle change
         return angle;
     }
+}
+
+enum SensorMode {PrimaryAndSideSensors, SideSensors, RandomPrimarySensor}
+
+class SensorRay
+{
+    var Direction : Real3 = Real3(0.0, 0.0, 0.0);
+    var Distance : Real = 0.0;
+}
+
+//Contain pertinate object sensed the distances to those objects and the angle changed as a result of sensing those objects
+class SensorEvent : ZilchEvent
+{
+    sends SensorEvent : SensorEvent;
+    var AngleChange : Real = 0.0;
+    var SensedObjects : Array[Cog] = new Array[Cog]();
+    var SensedDistances : Array[Real] = new Array[Real]();
+    var SensedContactPoints : Array[Real3] = new Array[Real3]();
 }

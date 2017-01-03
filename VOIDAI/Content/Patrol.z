@@ -1,10 +1,13 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-//Class: Patrol
-//Brief: Will cause the object move along its local forward axis until it encounters
-// an edge or a wall. The object will then rotate 180.0 degrees and continue
-// moving along its local forward axis.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Patrol                                                                                            */
+/* Brief: Will cause the object move along its local forward axis until it encounters                       */
+/* an edge or a wall. The object will then rotate 180.0 degrees and continue                                */
+/* moving along its local forward axis.                                                                     */
+/************************************************************************************************************/
 
 class Patrol : ZilchComponent
 {

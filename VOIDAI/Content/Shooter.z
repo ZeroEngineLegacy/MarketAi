@@ -1,8 +1,12 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: ViewportConfiguration                                                                             */
+/* Brief: Will make the object fire instances of the given bullet archetype at a given target object.       */
+/************************************************************************************************************/
 
-// Component: Shooter
-// Brief: Will make the object fire instances of the given bullet archetype at a given target object
 class Shooter : ZilchComponent
 {
     [Dependency]

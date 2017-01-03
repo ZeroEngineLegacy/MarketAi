@@ -1,9 +1,12 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-//Class: Attractive
-//Brief: This component interacts with the AttractorZ component. This component
-// should be attached to object you want an obj AttractorZ to rotate towards.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: AttractiveZ                                                                                       */
+/* Brief: This component interacts with the AttractorZ component. This component should be attached to      */
+/* object you want an obj AttractorZ to rotate towards.                                                     */
+/************************************************************************************************************/
 
 class AttractiveZ : ZilchComponent
 {

@@ -1,8 +1,12 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Flee                                                                                              */
+/* Brief: Will cause the object to "flee" the target object.                                                */
+/************************************************************************************************************/
 
-// Component: Flee
-// Brief: Will cause the object to "flee" the target object.
 class Flee : ZilchComponent
 {
     // this component requires a rigidBody component
@@ -39,7 +43,7 @@ class Flee : ZilchComponent
     var RotationSpeed : Real = 0.0;
     
     [Property]
-    var DebugDraw : Boolean = false;
+    var DebugDrawEnabled : Boolean = false;
     
     // Used to track if the object is fleeing
     var Fleeing : Boolean = false;
@@ -89,7 +93,7 @@ class Flee : ZilchComponent
             this.Fleeing = false;
         }
         
-        if(this.DebugDraw)
+        if(this.DebugDrawEnabled)
         {
             this.DrawDebug(event.Dt);
         }
@@ -97,8 +101,11 @@ class Flee : ZilchComponent
     
     function DrawDebug(dt : Real)
     {
-        var line1 = new DebugLine();
-        line1.Start(this.Owner.Transform.Translation).End(this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity).HeadSize(0.5).Float4Color(local Real4(0.0,1.0,0.0,1.0));
-        line1.Draw();
+        var line1 = DebugLine();
+        line1.Start = this.Owner.Transform.Translation;
+        line1.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+        line1.HeadSize = 0.5;
+        line1.Color = Real4(0.0,1.0,0.0,1.0);
+        DebugDraw.Add(line1);
     }
 }

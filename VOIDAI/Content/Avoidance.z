@@ -1,16 +1,19 @@
-//Copyright: © 2016 DigiPen, All Rights Reserved.
-//Author:    Arend Danielek
-
-// Component: Avoidance
-// Brief: The vehicle will try to prevent collisions with obstacle, while keeping
-// close to its "speed limit." This steering behavior anticipates the vehicle's 
-// future path using a sphere volume cast. The length of the cast is a constant time 
-// multiplied by the current velocity of the vehicle. Any obstacle that intersects 
-// this cast is a potential collision threat. The nearest such threat is chosen for 
-// avoidance. To avoid an obstacle, a lateral steering force is applied opposite to 
-// the obstacle's center. In addition, a braking (deceleration) force is applied. 
-// (These forces vary with urgency, the distance from the tip of the white box to the
-// point of potential collision. Steering varies linearly, braking varies quadratically.)
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Avoidance                                                                                        */
+/* Brief: The vehicle will try to prevent collisions with obstacle, while keeping                           */
+/* close to its "speed limit." This steering behavior anticipates the vehicle's                             */
+/* future path using a sphere volume cast. The length of the cast is a constant time                        */
+/* multiplied by the current velocity of the vehicle. Any obstacle that intersects                          */
+/* this cast is a potential collision threat. The nearest such threat is chosen for                         */
+/* avoidance. To avoid an obstacle, a lateral steering force is applied opposite to                         */
+/* the obstacle's center. In addition, a braking (deceleration) force is applied.                           */
+/* (These forces vary with urgency, the distance from the tip of the white box to the                       */
+/* point of potential collision. Steering varies linearly, braking varies quadratically.)                   */
+/************************************************************************************************************/
 
 
 class Avoidance : ZilchComponent
@@ -52,7 +55,7 @@ class Avoidance : ZilchComponent
     
     function Initialize(init : CogInitializer)
     {
-        Zero.Connect(this.Owner, "SensorEvent", this.OnSensorEvent);
+        Zero.Connect(this.Owner, Events.SensorEvent, this.OnSensorEvent);
     }
     
     // Responds to the sensor object detecting obstacles in the object's estimated projected path
