@@ -53,9 +53,9 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [-0.764609754, 11.4175386, 48.6729431],
+			Vec3 Translation = [-30.1731434, 2.26045561, 58.4456482],
 			Vec3 Scale = [1, 1, 1],
-			Quat Rotation = [-0.11493355, -0.00780180376, -0.000902700587, 0.993342102],
+			Quat Rotation = [-0.0260713287, -0.557470024, -0.0175192114, 0.829602599],
 		},
 		Camera = 
 		{
@@ -118,9 +118,9 @@ Level =
 		{
 			ControlMode ControlMode = Orbit,
 			float LookDistance = 50,
-			float VerticalAngle = 0.230383366,
-			float HorizontalAngle = 0.015707843,
-			Vec3 LookTarget = [0, 0, 0],
+			float VerticalAngle = 0.0628318936,
+			float HorizontalAngle = 1.18333352,
+			Vec3 LookTarget = [16.0290432, -0.879072189, 39.5909004],
 			float MoveSensitivity = 1,
 		},
 	},
@@ -136,7 +136,7 @@ Level =
 		},
 		Transform = 
 		{
-			Vec3 Translation = [0, 0, 50],
+			Vec3 Translation = [0, 2.44467115, 33.7706413],
 			Vec3 Scale = [1, 1, 1],
 			Quat Rotation = [0, 0, 0, 1],
 		},
@@ -194,12 +194,124 @@ Level =
 		},
 		DefaultRenderer = 
 		{
-			Vec4 ClearColor = [0, 0, 0, 1],
-			bool DrawDebug = false,
+			Vec4 ClearColor = [0.139999986, 0.139999986, 0.139999986, 1],
+			bool DrawDebug = true,
 		},
 		SoundListener = 
 		{
 			bool Active = true,
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 4,
+		},
+		Named = 
+		{
+			string Name = "PathObj",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, 0, 0],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		LevelPath = 
+		{
+			Array ControlPoints = 
+			[
+[0, 1, 0],
+[8.08487606, 5.04684782, 0],
+[0, 12.8358088, 0],
+[-12.0737085, 4, 0],
+			],
+			bool Closed = true,
+			PathType PathType = CatmulRom,
+			float Error = 0.0500000007,
+			bool DebugDraw = true,
+			bool ProxyObjects = true,
+		},
+		Hierarchy = 
+		{
+		},
+	},
+	Cog = 
+	{
+		LinkId = 
+		{
+			uint Id = 5,
+		},
+		Named = 
+		{
+			string Name = "Cube",
+		},
+		Transform = 
+		{
+			Vec3 Translation = [0, 1, 0],
+			Vec3 Scale = [1, 1, 1],
+			Quat Rotation = [0, 0, 0, 1],
+		},
+		Model = 
+		{
+			bool Visible = true,
+			bool ViewCulling = true,
+			bool VisibilityEvents = true,
+			string Material = "4de020863e85bb61:DefaultMaterial",
+			string Mesh = "4de0354322b345ae:Cube",
+		},
+		RigidBody = 
+		{
+			Vec3 Velocity = [0, 0, 0],
+			Vec3 AngularVelocity = [0, 0, 0],
+			Enum DynamicState = Dynamic,
+			bool AllowSleep = true,
+			bool Asleep = false,
+			bool RotationLocked = false,
+			Enum Mode2D = InheritFromSpace,
+		},
+		BoxCollider = 
+		{
+			bool Ghost = false,
+			bool SendsEvents = true,
+			string Material = "4de020863e872da8:DefaultPhysicsMaterial",
+			string CollisionGroup = "4e740859314e5515:DefaultGroup",
+			Vec3 Offset = [0, 0, 0],
+			Vec3 HalfSize = [0.5, 0.5, 0.5],
+		},
+		Orientation = 
+		{
+			Vec3 GlobalUp = [0, 1, 0],
+			Vec3 UpVector = [0, 1, 0],
+			Vec3 ForwardVector = [0, 0, 1],
+			OrientationBases DefaultBases = ForwardZUpY,
+		},
+		SimplePathFollower = 
+		{
+			bool Active = true,
+			string PathResource = "",
+			CogPath LevelPathCogPath = 
+			{
+				string Path = ":/PathObj",
+				bool ErrorOnResolveToNull = false,
+				bool ErrorOnPathCantCompute = false,
+				bool ErrorOnDirectLinkFail = false,
+				bool UpdateCogOnPathChange = true,
+				bool UpdatePathOnCogChange = true,
+				bool UpdateCogOnInitialize = true,
+				bool ResolvedNullErrorOccurred = false,
+				uint ResolvedCog = 4,
+				CogPathPreference PathPreference0 = CogRelative,
+				CogPathPreference PathPreference1 = SpaceRelative,
+				CogPathPreference PathPreference2 = Absolute,
+			},
+			float Speed = 5,
+			Vec3 LocalFollowPoint = [0, 0, 0],
+			Enum LoopMode = Continue,
+			bool LocalFollow = false,
+			float CurrentDistance = 0,
+			float Direction = 1,
 		},
 	},
 },

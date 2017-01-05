@@ -9,6 +9,12 @@
 
 class SimplePathFollower : ZilchComponent
 {
+    [Dependency]
+    var Transform : Transform;
+    
+    [Dependency]
+    var Orientation : Orientation;
+    
     // Should we follow the path at all?
     [Property]
     var Active : Boolean = true;
@@ -16,12 +22,25 @@ class SimplePathFollower : ZilchComponent
     // The path resource to follow. This will be overriden by
     // the LevelPath property below if it exists.
     [Property]
-    var Path : Path = Path.Find("DefaultPath");
+    var PathResource : Path = null;
     
     // The level path object to follow. If this object exists we will grab its path
     // resource and follow that instead of the Path specified above.
     [Property]
-    var LevelPath : CogPath = null;
+    var LevelPathCogPath : CogPath;
+    var LevelPathObj : Cog { get { return this.LevelPathCogPath.Cog; } }
+    var LevelPath : LevelPath { get { return this.LevelPathObj.LevelPath; } }
+    
+    var Path : Path
+    {
+        get
+        {
+            if(this.LevelPathObj != null)
+                return this.LevelPath.Path;
+            else
+                return this.PathResource;
+        }
+    }
     
     // How fast will we move along the path. Currently we only move with a constant velocity.
     [Property]
@@ -62,13 +81,11 @@ class SimplePathFollower : ZilchComponent
     {
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         
-        this.FindPath();
-        
         // Grab the first point from the path along with its tangent direction
         var firstPoint = this.Path.SampleDistance(0.0);
         var startTangent = firstPoint.WorldTangent;
         // Also get our starting forward
-        var startDir = this.Owner.Orientation.WorldForward;
+        var startDir = this.Orientation.WorldForward;
         
         // To properly follow a path in local mode, we have to rotate the path
         // into our local frame. To do this we need to calculate the rotation
@@ -92,29 +109,13 @@ class SimplePathFollower : ZilchComponent
         this.PrevPoint = firstPoint.WorldPoint;
     }
     
-    function FindPath()
+    function OnLogicUpdate(event : UpdateEvent)
     {
-        // If our level path object exists and has a level
-        // path component then grab the path from it.
-        if(this.LevelPath.Cog != null)
-        {
-            var levelPath = this.LevelPath.Cog.LevelPath;
-            if(levelPath != null)
-            {
-                this.Path = levelPath.Path;
-            }
-        }
-    }
-    
-    function OnLogicUpdate(updateEvent : UpdateEvent)
-    {
-        if(this.Active == false)
-        {
+        if(!this.Active)
             return;
-        }
         
         // Update how far along the path we are
-        this.UpdateDistance(updateEvent.Dt);
+        this.UpdateDistance(event.Dt);
         
         var sampleData = this.Path.SampleDistance(this.CurrentDistance);
         
@@ -150,7 +151,7 @@ class SimplePathFollower : ZilchComponent
     function UpdateOrientation(forward : Real3)
     {
         var currForward = Math.Slerp(this.OldForward, forward, 0.1);
-        this.Owner.Orientation.LookAtDirectionWithUp(currForward, Real3(0.0, 0.0, 1.0));
+        this.Orientation.LookAtDirectionWithUp(currForward, Real3(0.0, 0.0, 1.0));
         this.OldForward = currForward;
     }
     
@@ -180,13 +181,9 @@ class SimplePathFollower : ZilchComponent
         // If we stop when we reach the end then just clamp our
         // distance to the max distance of the path
         else if(this.LoopMode == SimpleLoopMode.Stop)
-        {
             this.CurrentDistance = Math.Clamp(this.CurrentDistance, 0.0, totalDistance);
-        }
         else if(this.LoopMode == SimpleLoopMode.Continue)
-        {
             this.CurrentDistance = Math.FMod(this.CurrentDistance, totalDistance);
-        }
     }
 }
 
