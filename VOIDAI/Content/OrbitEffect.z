@@ -38,16 +38,16 @@ class OrbitEffect : ZilchComponent
         // Get the difference vector between the object and the orbit target
         var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
         // Get the tangent vector
-        var tangentDir = Math.Cross(Math.Normalize(radVector), this.Owner.Orientation.WorldUp);
+        var tangentDir = Math.Cross(Math.Normalize(radVector), this.Orientation.WorldUp);
         
         // Determine if the object should move clockwise or not
         if(this.Clockwise)
         {
-            tangentDir = Math.Cross(-Math.Normalize(radVector), this.Owner.Orientation.WorldUp);
+            tangentDir = Math.Cross(-Math.Normalize(radVector), this.Orientation.WorldUp);
         }
         
         // Apply the initial tangent velocity
-        this.Owner.RigidBody.Velocity = tangentDir * this.TangentVelocity;
+        this.RigidBody.Velocity = tangentDir * this.TangentVelocity;
         
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     }
@@ -57,12 +57,12 @@ class OrbitEffect : ZilchComponent
         // Get the difference vector between the object and the orbit target
         var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
         // Get the current magnitude of the velocity
-        var speed = Math.Length(this.Owner.RigidBody.Velocity);
+        var speed = Math.Length(this.RigidBody.Velocity);
         // Calculate the current gravitational force to offset the tangental velocity
-        var gForce : Real = (this.Owner.RigidBody.Mass * (speed * speed) ) / Math.Length(radVector);
+        var gForce : Real = (this.RigidBody.Mass * (speed * speed) ) / Math.Length(radVector);
         
         // Apply the gravitational force to keep the object in orbit
-        this.Owner.RigidBody.ApplyForce(Math.Normalize(radVector) * gForce);
+        this.RigidBody.ApplyForce(Math.Normalize(radVector) * gForce);
         
         // Should the component debug draw?
         if(this.DebugDrawEnabled)

@@ -8,6 +8,9 @@
 
 class Wander : ZilchComponent
 {
+    [Dependency]
+    var Transform : Transform;
+    
     // This component requires a rigidBody component
     [Dependency]
     var RigidBody : RigidBody = null;
@@ -61,16 +64,16 @@ class Wander : ZilchComponent
     function Initialize(init : CogInitializer)
     {
         this.RandomGen = new Random();
-        var seed = this.Owner.Transform.Translation.X + this.Owner.Transform.Translation.Y + this.Owner.Transform.Translation.Z + this.Space.TimeSpace.RealTimePassed;
+        var seed = this.Transform.Translation.X + this.Transform.Translation.Y + this.Transform.Translation.Z + this.Space.TimeSpace.RealTimePassed;
         // Seed the random number generator
         // Should probably be changed this guarentees unique starting seeds for each object unless they are created at the same position on the same frame
         this.RandomGen.Seed = seed as Integer;
         
         
         // Generate a random initial direction
-        this.WanderDir = this.RandomGen.Real2(0.0,1.0);
+        this.WanderDir = this.RandomGen.Real2(1.0,1.0);
         // Look in starting direction
-        this.Owner.Orientation.LookAtDirection((this.WanderDir.X * this.Owner.Orientation.LocalForward) + (this.WanderDir.Y * this.Owner.Orientation.LocalRight));
+        this.Orientation.LookAtDirectionWithUp((this.WanderDir.X * this.Orientation.WorldForward) + (this.WanderDir.Y * this.Orientation.WorldRight), this.Orientation.WorldUp);
         
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
     }
@@ -84,7 +87,7 @@ class Wander : ZilchComponent
         }
         
         // Calculate to offset of the origin of the wander primary circle
-        var wanderOrigin = this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.SqrtTwo);
+        var wanderOrigin = this.Transform.Translation + (this.Orientation.WorldForward * this.SqrtTwo);
         
         // Calculate the vector offset to be added to the wander direction from the last frame
         var wanderOffsetVec : Real2 = this.RandomGen.Real2(0.0,1.0);
@@ -96,7 +99,7 @@ class Wander : ZilchComponent
         wanderdir += wanderOffsetVec * this.Strength;
         // Normalize to get a direction
         this.WanderDir = Math.Normalize(wanderdir);
-        Console.WriteLine(this.WanderDir);
+        
         // Used the generated wander dir to offset from the wander origin
         var targPos : Real3 = wanderOrigin + this.OrientVector(this.WanderDir);
         
@@ -104,13 +107,12 @@ class Wander : ZilchComponent
         if(!this.QueryOnly)
         {
             // Orient the object
-            var rot = this.Owner.Orientation.GetLookAtPointRotation(targPos);
+            var rot = this.Owner.Orientation.GetLookAtPointWithUpRotation(targPos, this.Orientation.WorldUp);
             this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, rot, this.OrientSpeed * event.Dt);
             
             if(this.Speed > 0.0)
             {
                 // Move the Object
-                //Console.WriteLine("Wander");
                 this.Owner.RigidBody.ApplyForce(this.Orientation.WorldForward * this.Speed);
             }
         }
@@ -125,7 +127,7 @@ class Wander : ZilchComponent
     }
     
     
-    //Converts the Real2 wander direction into an oriented Real3
+    //Converts the Real2 wander direction into an oriented Real3 on the ForwardRight plane
     function OrientVector(dir : Real2) : Real3
     {
         // Orient the forward axis value of the wander direction

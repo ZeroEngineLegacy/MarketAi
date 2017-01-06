@@ -10,6 +10,9 @@
 
 class Sensor : ZilchComponent
 {
+    [Dependency]
+    var Transform : Transform;
+    
     //This Component uses the orientation component
     [Dependency]
     var Orientation : Orientation = null;
@@ -20,6 +23,8 @@ class Sensor : ZilchComponent
     //The maximum angle that this component can output
     [Property]
     var MaxAngleChange : Real = 5.0;
+    var MaxAngleChangeRad : Real { get { return Math.ToRadians(this.MaxAngleChange); } }
+    
     //The strength of this particular movement component
     [Property]
     var Strength : Real = 0.2;
@@ -87,16 +92,19 @@ class Sensor : ZilchComponent
     
     //What kind of mode are we in with the sensors
     [Property]
-    var SensorMode : Integer = SensorMode.PrimaryAndSideSensors;
+    var SensorMode : SensorMode = SensorMode.PrimaryAndSideSensors;
     //The angle of the side sensors
     [Property]
     var SideSensorAngle : Real = 45.0;
+    var SideSensorAngleRad : Real { get { return Math.ToRadians(this.SideSensorAngle); } }
+    
     //The max distance of the side sensors
     [Property]
     var SideSensorDistance : Real = 2.0;
     //The random angle that the primary sensor is allowed to move in
     [Property]
     var PrimarySensorMaxAngle : Real = 30.0;
+    var PrimarySensorMaxAngleRad : Real { get { return Math.ToRadians(this.PrimarySensorMaxAngle); } }
     //The max distance of the primary sensor
     [Property]
     var PrimarySensorDistance : Real = 6.0;
@@ -122,36 +130,27 @@ class Sensor : ZilchComponent
         //Wander the corner preffered angle
         this.CornerPreferredAngle += this.Random.Range(-prefRandRange, prefRandRange);
         this.CornerPreferredAngle += this.LastAngleChange * prefLastAngleScale;
-        var maxAngleChange = Math.ToRadians(this.MaxAngleChange);
-        this.CornerPreferredAngle = Math.Clamp(this.CornerPreferredAngle, -maxAngleChange * prefMaxAngleScale, maxAngleChange * prefMaxAngleScale);
+        this.CornerPreferredAngle = Math.Clamp(this.CornerPreferredAngle, -this.MaxAngleChangeRad * prefMaxAngleScale, this.MaxAngleChangeRad * prefMaxAngleScale);
         
         //Every update, we add to a list of sensors
         var maxSensors : Integer = 3;
         var sensorArray : Array[SensorRay] = new Array[SensorRay]();
         
         //Get the position of the object
-        var position = this.Owner.Transform.TransformPoint(this.LocalOffset);
-        
-        //Get the forward and up vector (could check for the space if we wanted later)
-        var up = this.Owner.Orientation.WorldUp;
-        var forward = this.Owner.Orientation.WorldForward;
+        var position = this.Transform.TransformPoint(this.LocalOffset);
         
         //Create the side sensors...
         if(this.SensorMode == SensorMode.PrimaryAndSideSensors || this.SensorMode == SensorMode.SideSensors)
         {
-            //Create a rotation for the left and right side sensors
-            var leftRotation = Math.ToQuaternion(up, -Math.ToRadians(this.SideSensorAngle / 2.0));
-            var rightRotation = Math.ToQuaternion(up, Math.ToRadians(this.SideSensorAngle / 2.0));
-            
             //Set the direction and distance of the left sensor
             var leftSensor = new SensorRay();
-            leftSensor.Direction = Math.Transform(forward, leftRotation);
+            leftSensor.Direction = Math.RotateVector(this.Orientation.WorldForward, this.Orientation.WorldUp, this.SideSensorAngleRad/2.0);
             leftSensor.Distance = this.SideSensorDistance;
             sensorArray.Add(leftSensor);
             
             //Set the direction and distance of the right sensor
             var rightSensor = new SensorRay();
-            rightSensor.Direction = Math.Transform(forward, rightRotation);
+            rightSensor.Direction = Math.RotateVector(this.Orientation.WorldForward, this.Orientation.WorldUp, -this.SideSensorAngleRad/2.0);
             rightSensor.Distance = this.SideSensorDistance;
             sensorArray.Add(rightSensor);
         }
@@ -161,7 +160,7 @@ class Sensor : ZilchComponent
         {
             //Setup the primary sensor's start, direction, and distance
             var primarySensor = new SensorRay();
-            primarySensor.Direction = forward;
+            primarySensor.Direction = this.Orientation.WorldForward;
             primarySensor.Distance = this.PrimarySensorDistance;
             sensorArray.Add(primarySensor);
         }
@@ -169,13 +168,13 @@ class Sensor : ZilchComponent
         {
             var primarySensor = new SensorRay();
             //Get the primary angle from a random function
-            var primaryAngle = this.Random.Range(-this.PrimarySensorMaxAngle / 2.0, this.PrimarySensorMaxAngle / 2.0);
+            var primaryAngle = this.Random.Range(-this.PrimarySensorMaxAngleRad / 2.0, this.PrimarySensorMaxAngleRad / 2.0);
             
             //Create a rotation for the primary sensor
-            var primaryRotation = Math.ToQuaternion(up, Math.ToRadians(primaryAngle));
+            var primaryRotation = Math.ToQuaternion(this.Orientation.WorldUp, primaryAngle);
             
             //Setup the primary sensor's start, direction, and distance
-            primarySensor.Direction = Math.Transform(forward, primaryRotation);
+            primarySensor.Direction = Math.Transform(this.Orientation.WorldForward, primaryRotation);
             primarySensor.Distance = this.PrimarySensorDistance;
             sensorArray.Add(primarySensor);
         }
@@ -271,13 +270,13 @@ class Sensor : ZilchComponent
             {
                 //Now we have the accumulated direction vector that should affect our motion
                 //We need to project the accumulated vector onto the plane made by the up vector (we don't want motion not on the up plane)
-                var right = Math.Cross(up, forward);
+                var right = Math.Cross(this.Orientation.WorldUp, this.Orientation.WorldForward);
                 right = Math.Normalize(right);
-                var accumulatedProjected = accumulated - Math.Project(accumulated, up);
+                var accumulatedProjected = accumulated - Math.Project(accumulated, this.Orientation.WorldUp);
                 
                 //Add in the original forward vector, then normalize the whole thing
                 accumulated /= sensorArray.Count as Real;
-                accumulated += forward;
+                accumulated += this.Orientation.WorldForward;
                 accumulated = Math.Normalize(accumulated);
                 
                 //If debug draw is enabled draw the primary sensor
@@ -292,7 +291,7 @@ class Sensor : ZilchComponent
                 }
                 
                 //Return the angle difference (with strength and max angle applied)
-                angle = this.GetAngle(up, forward, accumulated);
+                angle = this.GetAngle(this.Orientation.WorldUp, this.Orientation.WorldForward, accumulated);
             }
             else
             {
