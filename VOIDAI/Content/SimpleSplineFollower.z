@@ -1,13 +1,13 @@
 /************************************************************************************************************/
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
-/* Last Update: 1/3/2016                                                                                    */
+/* Last Update: 1/11/2017                                                                                   */
 /* Author: Zero Engine Team                                                                                 */
-/* Last updated by: Arend Danielek                                                                          */
-/* Class: SimplePathFollower                                                                                */
-/* Brief: Causes the object to interpolate it's position along the Path spline.                             */
+/* Last updated by: Joshua Davis                                                                            */
+/* Class: SimpleSplineFollower                                                                              */
+/* Brief: Causes the object to interpolate it's position along the spline.                                  */
 /************************************************************************************************************/
 
-class SimplePathFollower : ZilchComponent
+class SimpleSplineFollower : ZilchComponent
 {
     [Dependency]
     var Transform : Transform;
@@ -19,28 +19,12 @@ class SimplePathFollower : ZilchComponent
     [Property]
     var Active : Boolean = true;
     
-    // The path resource to follow. This will be overriden by
-    // the LevelPath property below if it exists.
-    [Property]
-    var PathResource : Path = null;
-    
     // The level path object to follow. If this object exists we will grab its path
     // resource and follow that instead of the Path specified above.
     [Property]
-    var LevelPathCogPath : CogPath;
-    var LevelPathObj : Cog { get { return this.LevelPathCogPath.Cog; } }
-    var LevelPath : LevelPath { get { return this.LevelPathObj.LevelPath; } }
-    
-    var Path : Path
-    {
-        get
-        {
-            if(this.LevelPathObj != null)
-                return this.LevelPath.Path;
-            else
-                return this.PathResource;
-        }
-    }
+    var SimpleHiearchySplineCogPath : CogPath;
+    var SimpleHiearchySplineObj : Cog { get { return this.SimpleHiearchySplineCogPath.Cog; } }
+    var SimpleHierarchySpline : SimpleHierarchySpline { get { return this.SimpleHiearchySplineObj.SimpleHierarchySpline; } }
     
     // How fast will we move along the path. Currently we only move with a constant velocity.
     [Property]
@@ -82,7 +66,7 @@ class SimplePathFollower : ZilchComponent
         Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
         
         // Grab the first point from the path along with its tangent direction
-        var firstPoint = this.Path.SampleDistance(0.0);
+        var firstPoint = this.SimpleHierarchySpline.SampleDistance(0.0);
         var startTangent = firstPoint.WorldTangent;
         // Also get our starting forward
         var startDir = this.Orientation.WorldForward;
@@ -117,7 +101,7 @@ class SimplePathFollower : ZilchComponent
         // Update how far along the path we are
         this.UpdateDistance(event.Dt);
         
-        var sampleData = this.Path.SampleDistance(this.CurrentDistance);
+        var sampleData = this.SimpleHierarchySpline.SampleDistance(this.CurrentDistance);
         
         var worldFollowOffset = this.Owner.Transform.TransformNormal(this.LocalFollowPoint);
         
@@ -159,7 +143,7 @@ class SimplePathFollower : ZilchComponent
     {
         this.CurrentDistance += dt * this.Speed * this.Direction;
         
-        var totalDistance = this.Path.TotalDistance;
+        var totalDistance = this.SimpleHierarchySpline.TotalDistance;
         
         // If we reverse when we reach the end of the path
         if(this.LoopMode == SimpleLoopMode.Reverse)
