@@ -50,7 +50,7 @@ class InterpolatedOrbit : ZilchComponent
         //Interpolate the current angle by the orbit speed
         this.CurrentAngle += Math.ToRadians(this.AngleChange) * event.Dt;
         //Get the new offset vector
-        var objectVec : Real3 = this.OrientationHelper.AxisAngleToVector(AxisType.Forward, this.CurrentAngle);
+        var objectVec : Real3 = this.OrientationHelper.AxisAngleToVector(AxisType.Up, this.CurrentAngle);
         //Set the object's new orbit position
         this.Owner.Transform.Translation = this.OrbitTarget.Cog.Transform.Translation +  (objectVec * this.Radius);
     }

@@ -14,17 +14,16 @@ class Seek : ZilchComponent
     [Dependency]
     var RigidBody : RigidBody = null;
     
-    // Seek requires an OrientationHelper component
+    // Seek requires an Orientation & OrientationHelper component
+    [Dependency]
+    var Orientation : Orientation = null;
+    
     [Dependency]
     var OrientationHelper : OrientationHelper = null;
     
     // Determines if the component is active or not
     [Property]
     var Active : Boolean = true;
-    
-    // Constrain the seeking direction to the plane orthoganal to the object's up vector
-    [Property]
-    var ConstrainToOrientationPlane : Boolean = false;
     
     // Target object to be seek towards
     [Property]
@@ -33,7 +32,21 @@ class Seek : ZilchComponent
     // Range from the object in which it is valid to seek the target object
     // If the range is 0 the target object will always be seeked
     [Property]
-    var SeekRange : Real = 0.0;
+    var SeekRange : Real
+    {
+        get { return this.SeekRangeDistance; }
+        set
+        {
+            if (Math.ApproximatelyEqual(value, 0.0, 0.001))
+                this.NoSeekRange = true;
+            
+            this.SeekRangeDistance = value;
+        }
+    }
+    
+    // Distance from the goal we're trying to seek to
+    [Property]
+    var GoalDistance : Real = 0.0;
     
     // Magnitude of the linear impulse to be applied each frame for seeking movement
     [Property]
@@ -41,10 +54,13 @@ class Seek : ZilchComponent
     
     // the rate at which the object will rotate to matchit velocity direction in degrees per second
     [Property]
-    var RotationSpeed : Real = 0.0;
+    var RotationSpeed : Real = 360.0;
     
     [Property]
-    var DebugDrawEnabled: Boolean = false;
+    var DebugDrawEnabled : Boolean = false;
+    
+    var SeekRangeDistance : Real = 0.0;
+    var NoSeekRange : Boolean = true;
     
     // Used to track if the object is seeking
     var Seeking : Boolean = false;
@@ -57,43 +73,47 @@ class Seek : ZilchComponent
     function OnLogicUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if(!this.Active)
+        if (!this.Active)
         {
             return;
         }
         
         // Calculate a vector to the target object
         var targDir = this.Target.Cog.Transform.Translation - this.Owner.Transform.Translation;
+        var targDis = Math.Length(targDir);
+        
+        // Normalize the vector to the target object so it does not affect movement speed
+        targDir /= targDis;
         
         // Check if the target object is with in the range to seek it
-        if(Math.LengthSq(targDir) < this.SeekRange * this.SeekRange || this.SeekRange == 0.0)
+        if ((this.NoSeekRange || targDis < this.SeekRange) && targDis > this.GoalDistance)
         {
             // Record that the object is seeking the target object
             this.Seeking = true;
             
-            // Normalize the vector to the target object so it does not affect movement speed
-            targDir = Math.Normalize(targDir);
-            
-            // Constrain the target direction to the orientation plane if needed
-            if(this.ConstrainToOrientationPlane)
-            {
-                targDir = this.OrientationHelper.ConstrainVectorToPlane(OrientedPlanes.ForwardRight, targDir);
-            }
-            
-            // Align the object at the given rotation rate to the direction of its velocity
-            var newRot = this.Owner.Orientation.GetLookAtDirectionRotation(Math.Normalize(this.Owner.RigidBody.Velocity));
-            this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, newRot, Math.ToRadians(this.RotationSpeed) * event.Dt);
-            
             // Apply a linear impulse to move the object towards the target object's position
-            this.Owner.RigidBody.ApplyForce(targDir * this.Speed);
+            this.RigidBody.Velocity = targDir * this.Speed;
         }
         else
         {
             // If the target object is out of seek range record that the targ object is no longer being seeked out
             this.Seeking = false;
+            
+            // Bring the object to a smooth stop, based on it's linear distance from the target
+            var ratio = targDis / this.GoalDistance;
+            
+            this.RigidBody.Velocity = targDir * this.Speed * ratio;
         }
         
-        if(this.DebugDrawEnabled)
+        // Align the object at the given rotation rate to the direction of its velocity
+        var newRot = this.Orientation.GetLookAtDirectionRotation(Math.Normalize(this.Owner.RigidBody.Velocity));
+        
+        this.Owner.Transform.Rotation = Math.Slerp(
+            this.Owner.Transform.Rotation, newRot, 
+            Math.ToRadians(this.RotationSpeed) * event.Dt
+        );
+        
+        if (this.DebugDrawEnabled)
         {
             this.DrawDebug(event.Dt);
         }
@@ -106,5 +126,6 @@ class Seek : ZilchComponent
         line.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
         line.HeadSize = 0.5; 
         line.Color = Real4(0.0,1.0,0.0,1.0);
+        DebugDraw.Add(line);
     }
 }
