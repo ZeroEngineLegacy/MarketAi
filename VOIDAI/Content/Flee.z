@@ -9,6 +9,9 @@
 
 class Flee : ZilchComponent
 {
+    [Dependency]
+    var SteeringAccumulator : SteeringAccumulator = null;
+    
     // this component requires a rigidBody component
     [Dependency]
     var RigidBody : RigidBody = null;
@@ -50,13 +53,13 @@ class Flee : ZilchComponent
     
     function Initialize(init : CogInitializer)
     {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.SteeringAccumulator.Owner, Events.LogicUpdate, this.OnLogicUpdate);
     }
     
     function OnLogicUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if(!this.Active)
+        if (!this.Active || !this.SteeringAccumulator.Active)
         {
             return;
         }
@@ -65,7 +68,7 @@ class Flee : ZilchComponent
         var targDir = this.Owner.Transform.Translation - this.Target.Cog.Transform.Translation;
         
         // Check if the target object is with in the range to flee it
-        if(Math.LengthSq(targDir) < this.FleeRange * this.FleeRange || this.FleeRange == 0.0)
+        if (Math.LengthSq(targDir) < this.FleeRange * this.FleeRange || this.FleeRange == 0.0)
         {
             // Record that the object is fleeing the target object
             this.Fleeing = true;
@@ -74,7 +77,7 @@ class Flee : ZilchComponent
             targDir = Math.Normalize(targDir);
             
             // Constrain the target direction to the orientation plane if needed
-            if(this.ConstrainToOrientationPlane)
+            if (this.ConstrainToOrientationPlane)
             {
                 targDir = this.OrientationHelper.ConstrainVectorToPlane(OrientedPlanes.ForwardRight, targDir);
             }
@@ -93,7 +96,7 @@ class Flee : ZilchComponent
             this.Fleeing = false;
         }
         
-        if(this.DebugDrawEnabled)
+        if (this.DebugDrawEnabled)
         {
             this.DrawDebug(event.Dt);
         }

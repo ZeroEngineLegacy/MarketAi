@@ -10,6 +10,9 @@
 
 class Pursue : ZilchComponent
 {
+    [Dependency]
+    var SteeringAccumulator : SteeringAccumulator = null;
+    
     // this component requires a rigidBody component
     [Dependency]
     var RigidBody : RigidBody = null;
@@ -72,13 +75,13 @@ class Pursue : ZilchComponent
     
     function Initialize(init : CogInitializer)
     {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.SteeringAccumulator.Owner, Events.LogicUpdate, this.OnLogicUpdate);
     }
     
     function OnLogicUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if(!this.Active)
+        if (!this.Active || !this.SteeringAccumulator.Active)
         {
             return;
         }
@@ -88,7 +91,7 @@ class Pursue : ZilchComponent
         
         // If PredictionRange is 0.0 then use Dt to predict target object motion
         var predictionMagnitude = this.PredictionRange;
-        if(this.PredictionRange == 0.0)
+        if (this.PredictionRange == 0.0)
         {
             predictionMagnitude = event.Dt;
         }
@@ -108,13 +111,13 @@ class Pursue : ZilchComponent
         targDir /= targDis;
         
         // Check if the target object is with in the range to seek it
-        if((this.NoPursueRange || targDis < this.PursueRange) && targDis > this.GoalDistance)
+        if ((this.NoPursueRange || targDis < this.PursueRange) && targDis > this.GoalDistance)
         {
             // Record that the object is pursuing the target object
             this.Pursuing = true;
             
             // Apply a force to move the object towards the target object's position
-            this.RigidBody.Velocity = targDir * this.Speed;
+            this.RigidBody.ApplyLinearImpulse(targDir * this.Speed);
         }
         else
         {
@@ -124,7 +127,7 @@ class Pursue : ZilchComponent
             // Bring the object to a smooth stop, based on it's linear distance from the target
             var ratio = targDis / this.GoalDistance;
             
-            this.RigidBody.Velocity = targDir * this.Speed * ratio;
+            this.RigidBody.ApplyLinearImpulse(targDir * this.Speed * ratio);
         }
         
         // Align the object at the given rotation rate to the direction of its velocity
@@ -135,7 +138,7 @@ class Pursue : ZilchComponent
             Math.ToRadians(this.RotationSpeed) * event.Dt
         );
         
-        if(this.DebugDrawEnabled)
+        if (this.DebugDrawEnabled)
         {
             this.DrawDebug(event.Dt);
         }

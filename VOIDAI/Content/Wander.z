@@ -1,10 +1,15 @@
-// Component: Wander
-// Brief: This steering behavior maintains state, the "wander direction" which is
-// calculated by finding a vector from the object to a point on a circle offset from 
-// the object in the direction of its velocity. At each time step a random offset is 
-// added to the wander direction. The modified wander direction is constrained to lie 
-// on the circle. The circle has unit radius and its center is located sqrt(2) units 
-// along the object's forward axis.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Arend Danielek                                                                          */
+/* Class: Wander                                                                                            */
+/* Brief: This steering behavior maintains state, the "wandering direction" which is calculated by finding  */
+/*        a vector from the object to a point on a circle offset from the object in the direction of its    */
+/*        velocity. At each time step a random offset is added to the winder direction. The modified wander */
+/*        direction is constrained to lie on a circle. The circle has unit radius and its center is located */
+/*        sqrt(2) units along the object's forward axis.                                                    */
+/************************************************************************************************************/
 
 class Wander : ZilchComponent
 {
@@ -113,7 +118,7 @@ class Wander : ZilchComponent
             if(this.Speed > 0.0)
             {
                 // Move the Object
-                this.Owner.RigidBody.ApplyForce(this.Orientation.WorldForward * this.Speed);
+                this.RigidBody.ApplyLinearImpulse(this.Orientation.WorldForward * this.Speed);
             }
         }
         // If the component is query only send an event with the data instead

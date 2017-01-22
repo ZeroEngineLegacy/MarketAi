@@ -1,0 +1,32 @@
+class OrientTowardsVelocity : ZilchComponent
+{
+    [Dependency]
+    var Transform : Transform = null;
+    
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    // (degrees per second) The rate at which the object will rotate to match the velocity direction
+    [Property]
+    var RotationSpeed : Real = 360.0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        var rot = this.Orientation.GetLookAtDirectionRotation(
+            Math.Normalize(this.RigidBody.Velocity)
+        );
+        
+        this.Transform.Rotation = Math.Slerp(
+            this.Transform.Rotation, rot,
+            Math.ToRadians(this.RotationSpeed) * event.Dt
+        );
+    }
+}

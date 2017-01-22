@@ -10,6 +10,9 @@
 
 class Seek : ZilchComponent
 {
+    [Dependency]
+    var SteeringAccumulator : SteeringAccumulator = null;
+    
     // This component requires a rigidBody component
     [Dependency]
     var RigidBody : RigidBody = null;
@@ -67,13 +70,13 @@ class Seek : ZilchComponent
     
     function Initialize(init : CogInitializer)
     {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        Zero.Connect(this.SteeringAccumulator.Owner, Events.LogicUpdate, this.OnLogicUpdate);
     }
     
     function OnLogicUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if (!this.Active)
+        if (!this.Active || !this.SteeringAccumulator.Active)
         {
             return;
         }
@@ -92,7 +95,7 @@ class Seek : ZilchComponent
             this.Seeking = true;
             
             // Apply a linear impulse to move the object towards the target object's position
-            this.RigidBody.Velocity = targDir * this.Speed;
+            this.RigidBody.ApplyLinearImpulse(targDir * this.Speed);
         }
         else
         {
@@ -102,7 +105,7 @@ class Seek : ZilchComponent
             // Bring the object to a smooth stop, based on it's linear distance from the target
             var ratio = targDis / this.GoalDistance;
             
-            this.RigidBody.Velocity = targDir * this.Speed * ratio;
+            this.RigidBody.ApplyLinearImpulse(targDir * this.Speed * ratio);
         }
         
         // Align the object at the given rotation rate to the direction of its velocity

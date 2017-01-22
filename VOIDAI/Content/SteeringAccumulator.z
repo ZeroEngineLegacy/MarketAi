@@ -1,0 +1,45 @@
+// Allow for multiple steering components, that give us different weighted linear impulses
+// We accumulate those, and normalize them to a speed at the end of each update
+
+class SteeringAccumulator : ZilchComponent
+{
+    // All SteeringComponents listen to this update
+    sends UpdateEvent : UpdateEvent;
+    
+    // this component requires a rigidBody component
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    // Determines if the component is active
+    [Property]
+    var Active : Boolean = true;
+    
+    // The speed at which we move (length of impulse vector)
+    [Property]
+    var Speed : Real = 1.0;
+    
+    var ImpulseAccumulator : Real3 = Real3.Zero;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        // Reset the accumulator
+        this.ImpulseAccumulator = Real3.Zero;
+        
+        // Call the update on the steering
+        this.Owner.DispatchEvent(Events.LogicUpdate, event);
+        
+        // Normalize the accumulator
+        this.ImpulseAccumulator = Math.Normalize(this.ImpulseAccumulator);
+        
+        // Multiply it by the speed
+        this.ImpulseAccumulator *= this.Speed;
+        
+        // Apply the impulse
+        this.RigidBody.ApplyLinearImpulse(this.ImpulseAccumulator);
+    }
+}

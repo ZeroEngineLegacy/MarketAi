@@ -36,7 +36,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{44.7702942, 22.2317677, -1.17232287}
+			var Translation = Vec3{54.682579, 27.1539516, -1.43187881}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.159341037, 0.697376251, 0.16356802, 0.67935437}
 		}
@@ -95,7 +95,7 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50.0000496
+			var LookDistance = 61.0702171
 			var VerticalAngle = 0.460766643
 			var HorizontalAngle = 4.68620968
 			var LookTarget = Vec3{0, 0, 0}
@@ -171,11 +171,11 @@ Level
 	}
 	Cog 
 	{
-		var Name = "SeekObj"
+		var Name = "PursueObj"
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{0, 0, 0}
+			var Translation = Vec3{9.26237297, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -216,6 +216,19 @@ Level
 		OrientationHelper 
 		{
 		}
+		SteeringProperties 
+		{
+			var Active = true
+		}
+		Wander 
+		{
+			var Active = true
+			var QueryOnly = false
+			var Speed = 5
+			var WanderStrength = 0.800000012
+			var OrientSpeed = 45
+			var CircleRadius = 5
+		}
 		Seek 
 		{
 			var Active = true
@@ -235,10 +248,10 @@ Level
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var SeekRange = 0
-			var GoalDistance = 2.5
+			var GoalDistance = 0
 			var Speed = 10
 			var RotationSpeed = 360
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 	}
 	Cog 

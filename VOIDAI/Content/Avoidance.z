@@ -15,7 +15,6 @@
 /* point of potential collision. Steering varies linearly, braking varies quadratically.)                   */
 /************************************************************************************************************/
 
-
 class Avoidance : ZilchComponent
 {
     // This component reuires a SBPSensor component be attached to the object
