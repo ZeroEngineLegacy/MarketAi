@@ -1,22 +1,46 @@
-// Allow for multiple steering components, that give us different weighted linear impulses
-// We accumulate those, and normalize them to a speed at the end of each update
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: SteeringAccumulator                                                                               */
+/* Brief: SteeringAccumulator handles updating all SteeringComponents, and accumulating their vectors for   */
+/*        a final output.                                                                                   */
+/************************************************************************************************************/
 
 class SteeringAccumulator : ZilchComponent
 {
     // All SteeringComponents listen to this update
     sends UpdateEvent : UpdateEvent;
     
+    [Dependency]
+    var Transform : Transform = null;
+    
     // this component requires a rigidBody component
     [Dependency]
     var RigidBody : RigidBody = null;
+    
+    [Dependency]
+    var OrientationHelper : OrientationHelper = null;
     
     // Determines if the component is active
     [Property]
     var Active : Boolean = true;
     
-    // The speed at which we move (length of impulse vector)
+    // The minimum accumulated impulse vector length
     [Property]
-    var Speed : Real = 1.0;
+    var MinImpulse : Real = 0.0;
+    
+    // The maximum accumulated impulse vector length
+    [Property]
+    var MaxImpulse : Real = 1.0;
+    
+    // The maximum velocity of the object
+    [Property]
+    var MaxVelocity : Real = 1.0;
+    
+    [Property]
+    var DebugDrawEnabled : Boolean = true;
     
     var ImpulseAccumulator : Real3 = Real3.Zero;
     
@@ -33,13 +57,69 @@ class SteeringAccumulator : ZilchComponent
         // Call the update on the steering
         this.Owner.DispatchEvent(Events.LogicUpdate, event);
         
-        // Normalize the accumulator
-        this.ImpulseAccumulator = Math.Normalize(this.ImpulseAccumulator);
+        if (this.ImpulseAccumulator == Real3.Zero)
+        {
+            return;
+        }
         
-        // Multiply it by the speed
-        this.ImpulseAccumulator *= this.Speed;
+        // Enforce the maximum impulse
+        var impulseLength = Math.LengthSq(this.ImpulseAccumulator);
+        
+        if (impulseLength > this.MaxImpulse * this.MaxImpulse)
+        {
+            // Normalize and scale
+            this.ImpulseAccumulator /= Math.Sqrt(impulseLength);
+            this.ImpulseAccumulator *= this.MaxImpulse;
+        }
+        else if (impulseLength < this.MinImpulse * this.MinImpulse)
+        {
+            // Normalize and scale
+            this.ImpulseAccumulator /= Math.Sqrt(impulseLength);
+            this.ImpulseAccumulator *= this.MinImpulse;
+        }
         
         // Apply the impulse
         this.RigidBody.ApplyLinearImpulse(this.ImpulseAccumulator);
+        
+        // Enforce the maximum velocity
+        var velocityLength = Math.LengthSq(this.RigidBody.Velocity);
+        
+        if (velocityLength > this.MaxVelocity * this.MaxVelocity)
+        {
+            // Normalize and scale
+            this.RigidBody.Velocity /= Math.Sqrt(velocityLength);
+            this.RigidBody.Velocity *= this.MaxVelocity;
+        }
+        
+        this.DebugDrawVector(this.ImpulseAccumulator, Real4(0, 1, 0, 1));
+        this.DebugDrawVector(this.RigidBody.Velocity, Real4(0, 0, 1, 1));
+    }
+    
+    // This function is used by the SteeringComponents to add their impulse
+    function AddImpulse(impulse : Real3, weight : Real)
+    {
+        impulse = Math.Normalize(impulse);
+        impulse *= weight;
+        
+        this.ImpulseAccumulator += impulse;
+        
+        this.DebugDrawVector(impulse, Real4(1, 0, 0, 1));
+    }
+    
+    function DebugDrawVector(vector : Real3, color : Real4)
+    {
+        if (!this.DebugDrawEnabled)
+        {
+            return;
+        }
+        
+        var line = new DebugLine();
+        
+        line.Start = this.Transform.Translation;
+        line.End = line.Start + vector;
+        line.HeadSize = 0.5;
+        line.Color = color;
+        
+        DebugDraw.Add(line);
     }
 }

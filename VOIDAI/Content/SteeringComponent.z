@@ -1,0 +1,56 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: SteeringComponent                                                                                 */
+/* Brief: This is the base class for all AI steering behaviours (seek, wander, pursue, patrol, etc)         */
+/************************************************************************************************************/
+
+class SteeringComponent : ZilchComponent
+{
+    [Dependency]
+    var SteeringAccumulator : SteeringAccumulator = null;
+    
+    [Property]
+    var Weight : Real = 1.0;
+    
+    [Property]
+    var Active : Boolean = true;
+    
+    [Virtual]
+    function SteeringInitialize(init : CogInitializer)
+    {
+        // Implementation of initialization logic for steering
+    }
+    
+    [Virtual]
+    function SteeringUpdate(event : UpdateEvent)
+    {
+        // Implementation logic for steering
+        
+        // Give resulting impulse to this function
+        this.AddImpulse(Real3.Zero);
+    }
+    
+    function Initialize(init : CogInitializer)
+    {
+        // Connect to the SteeringAccumulator's update (allows for multiple behaviours)
+        Zero.Connect(this.SteeringAccumulator.Owner, Events.LogicUpdate, this.OnLogicUpdate);
+        
+        this.SteeringInitialize(init);
+    }
+    
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if (this.Active)
+        {
+            this.SteeringUpdate(event);
+        }
+    }
+    
+    function AddImpulse(impulse : Real3)
+    {
+        this.SteeringAccumulator.AddImpulse(impulse, this.Weight);
+    }
+}

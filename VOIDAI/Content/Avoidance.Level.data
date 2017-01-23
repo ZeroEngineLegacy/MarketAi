@@ -5,21 +5,12 @@ Level
 	{
 		var Name = "LevelSettings"
 		var LinkId = 1
-		DragEffect 
-		{
-			var Active = true
-			var WakeUpOnChange = false
-			var LinearDamping = 0.200000003
-			var AngularDamping = 0.100000001
-			var LinearDrag = 0
-			var AngularDrag = 0.100000001
-		}
 		GridDraw 
 		{
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = GridAxis.ZAxis
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -36,9 +27,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{1.50902212, 6.24779701, -20.5480614}
+			var Translation = Vec3{-6.64479208, 10.1393747, 48.5081406}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.00620583491, 0.984894216, 0.169235602, 0.0361159444}
+			var Rotation = Quat{-0.101688527, -0.0676611066, -0.00693243183, 0.992488444}
 		}
 		CameraViewport 
 		{
@@ -95,10 +86,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 21.8570843
-			var VerticalAngle = 0.340338886
-			var HorizontalAngle = 9.49808502
-			var LookTarget = Vec3{0, -1.04824066, 0}
+			var LookDistance = 50
+			var VerticalAngle = 0.20420374
+			var HorizontalAngle = 0.136135742
+			var LookTarget = Vec3{0, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -108,9 +99,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 20.021143, 30.8427811}
+			var Translation = Vec3{0, 0, 50}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.27572307, 0, 0, 0.961237133}
+			var Rotation = Quat{0, 0, 0, 1}
 		}
 		CameraViewport 
 		{
@@ -171,11 +162,11 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Seeker"
+		var Name = "Cube"
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{9.26237297, 0, 0}
+			var Translation = Vec3{0, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -209,26 +200,23 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
-			var DefaultBases = OrientationBases.Custom
+			var UpVector = Vec3{0, 0, 1}
+			var ForwardVector = Vec3{0, 1, 0}
+			var DefaultBases = OrientationBases.ForwardYUpZ
 		}
 		OrientationHelper 
 		{
 		}
-		SteeringAccumulator 
+		Sensor 
 		{
 			var Active = true
-			var MinImpulse = 2
-			var MaxImpulse = 3.5
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Seek 
-		{
-			var Target = CogPath
+			var MaxAngleChange = 5
+			var Strength = 0.200000003
+			var QueryOnly = false
+			var EnableDebugDraw = true
+			var SensorEventTarget = CogPath
 			{
-				var Path = ":/Target"
+				var Path = ""
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -236,91 +224,37 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 4294967293
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var SeekRange = 0
-			var GoalDistance = 0
-			var Weight = 1
-			var Active = true
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SideSensorAngle = 45
+			var SideSensorDistance = 2
+			var PrimarySensorMaxAngle = 30
+			var PrimarySensorDistance = 6
+			var LocalOffset = Vec3{0, 0, 0}
 		}
-		OrientTowardsVelocity 
+		Avoidance 
 		{
-			var RotationSpeed = 360
+			var Active = true
+			var DecelerationForce = 5
+			var SteeringForce = 2.5
+			var DistanceScalarWeight = 1
+			var ScalarFalloffDistance = 10
+			var BaseScalarDistance = 3
+			var ScalarCurveModeQuad = false
 		}
 	}
 	Cog 
 	{
-		var Name = "Target"
+		var Name = "Cube"
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{-6.94537163, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b3572e:Cylinder"
-		}
-		CylinderCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var Radius = 0.5
-			var Height = 1
-			var Direction = AxisDirection.Y
-		}
-		TargetSpawner 
-		{
-		}
-	}
-	Cog 
-	{
-		var Name = "Renderer"
-		var LinkId = 3
-		DeferredRenderer 
-		{
-			var DrawDebug = true
-			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
-			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var DrawSkybox = true
-			var DirectLighting = true
-			var IndirectLighting = true
-			var IndirectIntensity = 1
-			var ToneMap = true
-		}
-	}
-	Cog 
-	{
-		var Name = "Orbit"
-		var LinkId = 7
-		Transform 
-		{
-			var Translation = Vec3{0, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-	}
-	Cog 
-	{
-		var Name = "Floor"
-		var LinkId = 8
-		Transform 
-		{
-			var Translation = Vec3{0, -1.04824448, 0}
-			var Scale = Vec3{100, 1, 100}
+			var Translation = Vec3{0, 10, 0}
+			var Scale = Vec3{25, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
 		Model 
@@ -339,6 +273,108 @@ Level
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Vec3{0, 0, 0}
 			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Vec3{0, -10, 0}
+			var Scale = Vec3{25, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 8
+		Transform 
+		{
+			var Translation = Vec3{-10, 0, 0}
+			var Scale = Vec3{1, 20, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 9
+		Transform 
+		{
+			var Translation = Vec3{10, 0, 0}
+			var Scale = Vec3{1, 20, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Renderer"
+		var LinkId = 3
+		DeferredRenderer 
+		{
+			var DrawDebug = true
+			var GeometryDebug = GeometryValue.None
+			var ShowDiffuse = true
+			var ShowSpecular = true
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var DrawSkybox = true
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
 		}
 	}
 }

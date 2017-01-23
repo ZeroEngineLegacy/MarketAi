@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SteeringComponent"
+		var ResourceId = 0x58dae76a31901db0
+	}
+}
