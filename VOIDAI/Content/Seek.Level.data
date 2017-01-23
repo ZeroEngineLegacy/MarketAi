@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{1.50902212, 6.24779701, -20.5480614}
+			var Translation = Vec3{-0.171354055, 150.741867, 147.781113}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.00620583491, 0.984894216, 0.169235602, 0.0361159444}
+			var Rotation = Quat{-0.401913047, -0.0119836964, -0.00526044518, 0.915584326}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 21.8570843
-			var VerticalAngle = 0.340338886
-			var HorizontalAngle = 9.49808502
-			var LookTarget = Vec3{0, -1.04824066, 0}
+			var LookDistance = 166.435577
+			var VerticalAngle = 0.827285409
+			var HorizontalAngle = 12.5925465
+			var LookTarget = Vec3{2.77718377, 28.2292004, 35.1633797}
 			var MoveSensitivity = 1
 		}
 	}
@@ -108,7 +108,7 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 20.021143, 30.8427811}
+			var Translation = Vec3{0, 29.0974293, 47.9646912}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.27572307, 0, 0, 0.961237133}
 		}
@@ -210,8 +210,8 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
-			var DefaultBases = OrientationBases.Custom
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		OrientationHelper 
 		{
@@ -322,6 +322,118 @@ Level
 			var Translation = Vec3{0, -1.04824448, 0}
 			var Scale = Vec3{100, 1, 100}
 			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 9
+		Transform 
+		{
+			var Translation = Vec3{0, 10, 50}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 10
+		Transform 
+		{
+			var Translation = Vec3{0, 10, -50}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 11
+		Transform 
+		{
+			var Translation = Vec3{50, 10, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Vec3{-50, 10, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
 		}
 		Model 
 		{

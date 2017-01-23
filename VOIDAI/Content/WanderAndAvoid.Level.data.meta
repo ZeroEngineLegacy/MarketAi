@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Pursue"
-		var ResourceId = 0x5876fc18ea50ff65
+		var Name = "WanderAndAvoid"
+		var ResourceId = 0x5876f1a7634c95dd
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true

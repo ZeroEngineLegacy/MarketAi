@@ -29,12 +29,17 @@ class OrientTowardsVelocity : ZilchComponent
 
     function OnLogicUpdate(event : UpdateEvent)
     {
-        var rot = this.Orientation.GetLookAtDirectionRotation(
+        if (this.RigidBody.Velocity == Real3.Zero)
+        {
+            return;
+        }
+        
+        var orientation = this.Orientation.GetLookAtDirectionRotation(
             Math.Normalize(this.RigidBody.Velocity)
         );
         
-        this.Transform.Rotation = Math.Slerp(
-            this.Transform.Rotation, rot,
+        this.Transform.Rotation = Math.RotateTowards(
+            this.Transform.Rotation, orientation,
             Math.ToRadians(this.RotationSpeed) * event.Dt
         );
     }

@@ -2,13 +2,12 @@
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
 /* Last Update: 1/3/2016                                                                                    */
 /* Author: Zero Engine Team                                                                                 */
-/* Last updated by: Arend Danielek                                                                          */
+/* Last updated by: Jordan Ellis                                                                            */
 /* Class: Wander                                                                                            */
-/* Brief: This steering behavior maintains state, the "wandering direction" which is calculated by finding  */
-/*        a vector from the object to a point on a circle offset from the object in the direction of its    */
-/*        velocity. At each time step a random offset is added to the winder direction. The modified wander */
-/*        direction is constrained to lie on a circle. The circle has unit radius and its center is located */
-/*        sqrt(2) units along the object's forward axis.                                                    */
+/* Brief: This steering behavior maintains the "wandering direction" which is calculated by finding a       */
+/*        vector from the object to a point on a circle offset from the object in the direction of its      */
+/*        velocity. At each time step a random offset is added to the wander direction. The modified wander */
+/*        direction is constrained to lie on a circle.                                                      */
 /************************************************************************************************************/
 
 class Wander : SteeringComponent
@@ -19,50 +18,27 @@ class Wander : SteeringComponent
     [Dependency]
     var Orientation : Orientation = null;
     
-    // Determines if wander data is used to move the object or dispatched on the object in events to be used in other components
-    [Property]
-    var QueryOnly : Boolean = false;
-    
-    // Strength of the sub vector that offset the target point on the primary circle
-    // Constraned to the range [0.0,1.0]
-    [Property]
-    var WanderStrength : Real = 0.4;
-    
     // The radius of the circle which the target point is constrained to
     [Property]
     var CircleRadius : Real = 5;
     
-    // Strength ranging from 0 (no turning) to 1.
-    var Strength : Real
-    {
-        get { return Math.Clamp(this.WanderStrength,0.0,1.0);}
-        set { this.WanderStrength = Math.Clamp(value, 0.0, 1.0);}
-    }
+    var Direction : Real2;
     
-    
-    // Store for continuos use so that it isn't cacluated each frame
-    var SqrtTwo : Real = Math.Sqrt(2.0);
-    
-    // Stored wander direction on the primary direction
-    var WanderDir : Real2 = local Real2(0.0,0.0);
-    
-    // Components random object
-    var RandomGen : Random = new Random();
+    var RandomGenerator : Random = new Random();
     
     [Override]  
     function SteeringInitialize(init : CogInitializer)
     {
-        this.RandomGen = new Random();
-        var seed = this.Transform.Translation.X + this.Transform.Translation.Y + this.Transform.Translation.Z + this.Space.TimeSpace.RealTimePassed;
-        // Seed the random number generator
-        // Should probably be changed this guarentees unique starting seeds for each object unless they are created at the same position on the same frame
-        this.RandomGen.Seed = seed as Integer;
+        var seed = this.Transform.Translation.X +
+                   this.Transform.Translation.Y +
+                   this.Transform.Translation.Z +
+                   this.Space.TimeSpace.RealTimePassed;
         
+        // Seed the random number generator
+        this.RandomGenerator.Seed = seed as Integer;
         
         // Generate a random initial direction
-        this.WanderDir = this.RandomGen.Real2(1.0,1.0);
-        
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.Direction = this.RandomGenerator.Real2(1.0,1.0);
     }
 
     [Override]
@@ -74,54 +50,25 @@ class Wander : SteeringComponent
             return;
         }
         
-        // Calculate to offset of the origin of the wander primary circle
-        var wanderOrigin = this.Transform.Translation + (this.Orientation.WorldForward * this.SqrtTwo);
-        
         // Calculate the vector offset to be added to the wander direction from the last frame
-        var wanderOffsetVec : Real2 = this.RandomGen.Real2(0.0,1.0);
-        wanderOffsetVec = Math.Normalize(wanderOffsetVec);
+        var offset = this.RandomGenerator.Real2(0.0,1.0);
         
-        // Adjust the size of the normailzed primary circle
-        var wanderdir = this.WanderDir * this.CircleRadius;
-        //Add the new offset to the current wanderdir
-        wanderdir += wanderOffsetVec * this.Strength;
+        offset = Math.Normalize(offset);
+        
+        var wanderDir = offset + this.Direction * this.CircleRadius;
+        
         // Normalize to get a direction
-        this.WanderDir = Math.Normalize(wanderdir);
+        this.Direction = Math.Normalize(wanderDir);
         
-        // Used the generated wander dir to offset from the wander origin
-        var targPos : Real3 = wanderOrigin + this.OrientVector(this.WanderDir);
-        
-        // If the component isn't queryonly
-        if(!this.QueryOnly)
-        {
-            // Move the Object
-            this.AddImpulse(this.Orientation.WorldForward);
-        }
-        // If the component is query only send an event with the data instead
-        else
-        {
-            var wanderevent : WanderEvent = new WanderEvent();
-            wanderevent.Direction = Math.Normalize(targPos - this.Owner.Transform.Translation);
-            wanderevent.Rotation = this.Owner.Orientation.GetLookAtPointRotation(targPos);
-            this.Owner.DispatchEvent("WanderEvent", wanderevent);
-        }
+        // Move the Object
+        this.AddImpulse(this.OrientVector(this.Direction));
     }
-    
     
     //Converts the Real2 wander direction into an oriented Real3 on the ForwardRight plane
     function OrientVector(dir : Real2) : Real3
     {
         // Orient the forward axis value of the wander direction
-        return (this.Owner.Orientation.LocalForward * dir.X) + (this.Owner.Orientation.LocalRight * dir.Y);
-    }
-}
-
-// The event that is dispatched whenever a new wander direction is defined
-class WanderEvent : ZilchEvent
-{
-    var Direction : Real3 = local Real3();
-    var Rotation : Quaternion = local Quaternion();
-    constructor() : base()
-    {
+        return (this.Owner.Orientation.LocalForward * -dir.Y) +
+               (this.Owner.Orientation.LocalRight * dir.X);
     }
 }

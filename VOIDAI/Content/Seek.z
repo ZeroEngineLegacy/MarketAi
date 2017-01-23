@@ -20,27 +20,16 @@ class Seek : SteeringComponent
     // Range from the object in which it is valid to seek the target object
     // If the range is 0 the target object will always be seeked
     [Property]
-    var SeekRange : Real
-    {
-        get { return this.SeekRangeDistance; }
-        set
-        {
-            if (Math.ApproximatelyEqual(value, 0.0, 0.001))
-                this.NoSeekRange = true;
-            
-            this.SeekRangeDistance = value;
-        }
-    }
+    var SeekRange : Real = 0.0;
     
     // Distance from the goal we're trying to seek to
     [Property]
     var GoalDistance : Real = 0.0;
     
-    var SeekRangeDistance : Real = 0.0;
-    var NoSeekRange : Boolean = true;
-    
-    // Used to track if the object is seeking
-    var Seeking : Boolean = false;
+    var NoSeekRange : Boolean
+    {
+      get { return Math.ApproximatelyEqual(this.SeekRange, 0.0, 0.001); }
+    }
     
     [Override]
     function SteeringUpdate(event : UpdateEvent)
@@ -58,20 +47,19 @@ class Seek : SteeringComponent
         // Normalize the vector to the target object so it does not affect movement speed
         targDir /= targDis;
         
-        // Check if the target object is with in the range to seek it
-        if ((this.NoSeekRange || targDis < this.SeekRange) && targDis > this.GoalDistance)
+        if (!this.NoSeekRange && targDis > this.SeekRange)
         {
-            // Record that the object is seeking the target object
-            this.Seeking = true;
-            
+            return;
+        }
+        
+        // Check if the target object is with in the range to seek it
+        if (this.NoSeekRange || targDis > this.GoalDistance)
+        {
             // Apply a linear impulse to move the object towards the target object's position
             this.AddImpulse(targDir);
         }
         else
         {
-            // If the target object is out of seek range record that the targ object is no longer being seeked out
-            this.Seeking = false;
-            
             // Bring the object to a smooth stop, based on it's linear distance from the target
             var ratio = targDis / this.GoalDistance;
             
