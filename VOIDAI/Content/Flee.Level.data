@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-1.01045966, 153.034332, 64.3218307}
+			var Translation = Vec3{-194.326065, 151.032333, 20.6878033}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.55337435, -0.00654180627, -0.00434637722, 0.832895696}
+			var Rotation = Quat{-0.246811911, -0.629493773, -0.221062437, 0.702817917}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 166.005508
-			var VerticalAngle = 1.17286098
-			var HorizontalAngle = 6.29889345
-			var LookTarget = Vec3{0, 0, 0}
+			var LookDistance = 241.558014
+			var VerticalAngle = 0.675442219
+			var HorizontalAngle = 20.3103924
+			var LookTarget = Vec3{-6.94537163, 1.78813934e-07, 1.1920929e-07}
 			var MoveSensitivity = 1
 		}
 	}
@@ -108,9 +108,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 33.4479294, 37.9911537}
+			var Translation = Vec3{0, 29.0974293, 47.9646912}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.307780981, 0, 0, 0.951457262}
+			var Rotation = Quat{-0.27572307, 0, 0, 0.961237133}
 		}
 		CameraViewport 
 		{
@@ -171,11 +171,11 @@ Level
 	}
 	Cog 
 	{
-		var Name = "FleeObj"
+		var Name = "Pursuer"
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{0, 0, 0}
+			var Translation = Vec3{9.26237297, 0, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -216,13 +216,23 @@ Level
 		OrientationHelper 
 		{
 		}
-		Flee 
+		OrientTowardsVelocity 
+		{
+			var RotationSpeed = 360
+		}
+		SteeringAccumulator 
 		{
 			var Active = true
-			var ConstrainToOrientationPlane = false
+			var MinImpulse = 2
+			var MaxImpulse = 3.5
+			var MaxVelocity = 5
+			var DebugDrawEnabled = true
+		}
+		Pursue 
+		{
 			var Target = CogPath
 			{
-				var Path = ":/PursueObj"
+				var Path = ":/FleeAndWander"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -235,19 +245,20 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var FleeRange = 0
-			var Speed = 10
-			var RotationSpeed = 0
-			var DebugDrawEnabled = true
+			var PursueRange = 0
+			var PredictionRange = 2
+			var GoalDistance = 0
+			var Weight = 1
+			var Active = true
 		}
 	}
 	Cog 
 	{
-		var Name = "PursueObj"
+		var Name = "FleeAndWander"
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{-6.94537163, 0, -3.45273018}
+			var Translation = Vec3{-6.94537163, 0, 3.06077218}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -257,7 +268,18 @@ Level
 			var ViewCulling = true
 			var VisibilityEvents = true
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
+			var Mesh = "4de0354322b3572e:Cylinder"
+		}
+		CylinderCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radius = 0.5
+			var Height = 1
+			var Direction = AxisDirection.Y
 		}
 		RigidBody 
 		{
@@ -269,15 +291,6 @@ Level
 			var RotationLocked = false
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
@@ -288,12 +301,23 @@ Level
 		OrientationHelper 
 		{
 		}
-		Pursue 
+		OrientTowardsVelocity 
+		{
+			var RotationSpeed = 360
+		}
+		SteeringAccumulator 
 		{
 			var Active = true
+			var MinImpulse = 2
+			var MaxImpulse = 3.5
+			var MaxVelocity = 6
+			var DebugDrawEnabled = true
+		}
+		Flee 
+		{
 			var Target = CogPath
 			{
-				var Path = ":/FleeObj"
+				var Path = ":/Pursuer"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -306,12 +330,15 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var PursueRange = 0
-			var PredictionRange = 2
-			var GoalDistance = 3
-			var Speed = 10
-			var RotationSpeed = 0
-			var DebugDrawEnabled = true
+			var FleeRange = 3
+			var Weight = 2
+			var Active = true
+		}
+		Wander 
+		{
+			var CircleRadius = 5
+			var Weight = 1
+			var Active = true
 		}
 	}
 	Cog 
@@ -330,6 +357,157 @@ Level
 			var IndirectLighting = true
 			var IndirectIntensity = 1
 			var ToneMap = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Orbit"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Vec3{0, 0, 0}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+	}
+	Cog 
+	{
+		var Name = "Floor"
+		var LinkId = 8
+		Transform 
+		{
+			var Translation = Vec3{0, -1.04824448, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 9
+		Transform 
+		{
+			var Translation = Vec3{0, 10, 50}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 10
+		Transform 
+		{
+			var Translation = Vec3{0, 10, -50}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 11
+		Transform 
+		{
+			var Translation = Vec3{50, 10, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Vec3{-50, 10, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
 		}
 	}
 }

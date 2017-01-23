@@ -7,26 +7,10 @@
 /* Brief: Will cause the object to "flee" the target object.                                                */
 /************************************************************************************************************/
 
-class Flee : ZilchComponent
+class Flee : SteeringComponent
 {
     [Dependency]
-    var SteeringAccumulator : SteeringAccumulator = null;
-    
-    // this component requires a rigidBody component
-    [Dependency]
-    var RigidBody : RigidBody = null;
-    
-    // Seek requires an OrientationHelper component
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
-    // Determines if the component is active
-    [Property]
-    var Active : Boolean = true;
-    
-    // Constrain the seeking direction to the plane orthoganal to the object's up vector
-    [Property]
-    var ConstrainToOrientationPlane : Boolean = false;
+    var Transform : Transform = null;
     
     // Target object to be flee towards
     [Property]
@@ -37,26 +21,13 @@ class Flee : ZilchComponent
     [Property]
     var FleeRange : Real = 0.0;
     
-    // Magnitude of the linear impulse to be applied each frame for fleeing movement
-    [Property]
-    var Speed : Real = 10.0;
-    
-    // the rate at which the object will rotate to matchit velocity direction in degrees per second
-    [Property]
-    var RotationSpeed : Real = 0.0;
-    
-    [Property]
-    var DebugDrawEnabled : Boolean = false;
-    
-    // Used to track if the object is fleeing
-    var Fleeing : Boolean = false;
-    
-    function Initialize(init : CogInitializer)
+    var NoFleeRange : Boolean
     {
-        Zero.Connect(this.SteeringAccumulator.Owner, Events.LogicUpdate, this.OnLogicUpdate);
+        get { return Math.ApproximatelyEqual(this.FleeRange, 0.0, 0.001); }
     }
     
-    function OnLogicUpdate(event : UpdateEvent)
+    [Override]
+    function SteeringUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
         if (!this.Active || !this.SteeringAccumulator.Active)
@@ -65,50 +36,16 @@ class Flee : ZilchComponent
         }
         
         // Calculate a vector to the target object
-        var targDir = this.Owner.Transform.Translation - this.Target.Cog.Transform.Translation;
+        var targDir = this.Target.Cog.Transform.Translation - this.Transform.Translation;
+        var targDis = Math.Length(targDir);
         
-        // Check if the target object is with in the range to flee it
-        if (Math.LengthSq(targDir) < this.FleeRange * this.FleeRange || this.FleeRange == 0.0)
-        {
-            // Record that the object is fleeing the target object
-            this.Fleeing = true;
-            
-            // Normalize the vector to the target object so it does not affect movement speed
-            targDir = Math.Normalize(targDir);
-            
-            // Constrain the target direction to the orientation plane if needed
-            if (this.ConstrainToOrientationPlane)
-            {
-                targDir = this.OrientationHelper.ConstrainVectorToPlane(OrientedPlanes.ForwardRight, targDir);
-            }
-            
-            // Align the object at the given rotation rate to the direction of its velocity
-            var newRot = this.Owner.Orientation.GetLookAtDirectionRotation(Math.Normalize(this.Owner.RigidBody.Velocity));
-            this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, newRot, Math.ToRadians(this.RotationSpeed) * event.Dt);
-            
-            
-            // Apply a force to move the object towards the target object's position
-            this.Owner.RigidBody.ApplyForce(targDir * this.Speed);
-        }
-        else
-        {
-            // If the target object is out of flee range record that the targ object is no longer being fled
-            this.Fleeing = false;
-        }
+        // Normalize the vector to the target object so it does not affect movement speed
+        targDir /= targDis;
         
-        if (this.DebugDrawEnabled)
+        if (this.NoFleeRange || targDis < this.FleeRange)
         {
-            this.DrawDebug(event.Dt);
+            // Apply a linear impulse to move the object towards the target object's position
+            this.AddImpulse(-targDir);
         }
-    }
-    
-    function DrawDebug(dt : Real)
-    {
-        var line1 = DebugLine();
-        line1.Start = this.Owner.Transform.Translation;
-        line1.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
-        line1.HeadSize = 0.5;
-        line1.Color = Real4(0.0,1.0,0.0,1.0);
-        DebugDraw.Add(line1);
     }
 }
