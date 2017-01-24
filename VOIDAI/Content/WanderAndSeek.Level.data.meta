@@ -3,7 +3,7 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "SeekAndWander"
+		var Name = "WanderAndSeek"
 		var ResourceId = 0x58760dd7657435ad
 		var LoaderType = "Level"
 		var Version = 0
