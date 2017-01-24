@@ -20,9 +20,6 @@ class SteeringAccumulator : ZilchComponent
     [Dependency]
     var RigidBody : RigidBody = null;
     
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
     // Determines if the component is active
     [Property]
     var Active : Boolean = true;

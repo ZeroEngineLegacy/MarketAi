@@ -1,4 +1,4 @@
-class TargetSpawner : ZilchComponent
+class DebugTargetSpawner : ZilchComponent
 {
     [Dependency]
     var Transform : Transform = null;

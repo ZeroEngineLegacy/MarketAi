@@ -16,9 +16,6 @@ class Evade : SteeringComponent
     [Dependency]
     var Orientation : Orientation = null;
     
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
     // Target object to be evading from
     [Property]
     var Target : CogPath = null;

@@ -6,6 +6,7 @@
 /* Class: SimpleHierarchySpline                                                                             */
 /* Brief: Creates a simple spline from children cogs in a hierarchy.                                        */
 /************************************************************************************************************/
+
 [RunInEditor]
 // A spline that builds its control points from all child cogs that have Transforms.
 class SimpleHierarchySpline : ZilchComponent

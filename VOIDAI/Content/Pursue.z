@@ -17,9 +17,6 @@ class Pursue : SteeringComponent
     [Dependency]
     var Orientation : Orientation = null;
     
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
     // Target object to be pursue towards
     [Property]
     var Target : CogPath = null;
