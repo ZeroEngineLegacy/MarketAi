@@ -23,7 +23,7 @@ Level
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
-			var DrawInGame = true
+			var DrawInGame = false
 			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
 			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
 			var HilightInterval = 10
@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{6.88790035, 31.3972054, 26.731863}
+			var Translation = Vec3{-10.3371239, 77.3728943, -16.0710163}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.368113637, 0.00732507091, 0.00290015549, 0.929747462}
+			var Rotation = Quat{0.29414767, 0.70563364, 0.466164649, -0.445251554}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 37.1368675
-			var VerticalAngle = 0.753983319
-			var HorizontalAngle = 31.4001694
-			var LookTarget = Vec3{6.46134663, 5.97524023, -0.336361289}
+			var LookDistance = 74.7844162
+			var VerticalAngle = 1.1676271
+			var HorizontalAngle = 33.4317207
+			var LookTarget = Vec3{16.1460209, 8.58452988, -3.44118953}
 			var MoveSensitivity = 1
 		}
 	}
@@ -171,291 +171,6 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Wanderer"
-		var LinkId = 5
-		Transform 
-		{
-			var Translation = Vec3{9.26237297, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var Weight = 4
-			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
-			var SideSensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
-			var LocalOffset = Vec3{0, 0, 0.5}
-		}
-	}
-	Cog 
-	{
-		var Name = "Wanderer"
-		var LinkId = 6
-		Transform 
-		{
-			var Translation = Vec3{-12.5280628, 0, -14.6728821}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var Weight = 4
-			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
-			var SideSensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
-			var LocalOffset = Vec3{0, 0, 0.5}
-		}
-	}
-	Cog 
-	{
-		var Name = "Wanderer"
-		var LinkId = 7
-		Transform 
-		{
-			var Translation = Vec3{15.9719448, 0, -25.1037903}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var Weight = 4
-			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
-			var SideSensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
-			var LocalOffset = Vec3{0, 0, 0.5}
-		}
-	}
-	Cog 
-	{
 		var Name = "Renderer"
 		var LinkId = 3
 		DeferredRenderer 
@@ -475,7 +190,7 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 8
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Vec3{0, -1.04824448, 0}
@@ -503,7 +218,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 9
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Vec3{50, 10, 0}
@@ -531,7 +246,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 10
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Vec3{-50, 10, 0}
@@ -559,7 +274,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 11
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Vec3{0, 10, 50}
@@ -587,7 +302,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 12
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Vec3{0, 10, -50}
@@ -615,10 +330,94 @@ Level
 	Cog 
 	{
 		var Name = "Obstacle"
-		var LinkId = 13
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Vec3{1.91012383, 1.10051143, 0.294325948}
+			var Scale = Vec3{3.17703557, 2.85108232, 5.14783382}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Obstacle"
+		var LinkId = 11
+		Transform 
+		{
+			var Translation = Vec3{1.91012383, 1.10051143, 18.6761608}
+			var Scale = Vec3{3.17703557, 2.85108232, 5.14783382}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Obstacle"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Vec3{14.6920033, 1.10051143, 10.9059372}
+			var Scale = Vec3{3.17703557, 2.85108232, 5.14783382}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Obstacle"
+		var LinkId = 13
+		Transform 
+		{
+			var Translation = Vec3{-19.0782871, 1.10051143, 34.7060776}
 			var Scale = Vec3{3.17703557, 2.85108232, 5.14783382}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -898,9 +697,9 @@ Level
 		var LinkId = 23
 		Transform 
 		{
-			var Translation = Vec3{-18.949131, 0, 18.7916679}
+			var Translation = Vec3{16.3118439, 0, -4.73663044}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Rotation = Quat{0, 0.985097051, 0, 0.171999469}
 		}
 		Model 
 		{
@@ -917,7 +716,7 @@ Level
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
-			var RotationLocked = false
+			var RotationLocked = true
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		BoxCollider 
@@ -939,10 +738,14 @@ Level
 		OrientationHelper 
 		{
 		}
+		OrientTowardsVelocity 
+		{
+			var RotationSpeed = 180
+		}
 		SteeringAccumulator 
 		{
 			var Active = true
-			var MinImpulse = 0
+			var MinImpulse = 2
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var DebugDrawEnabled = true
@@ -950,19 +753,12 @@ Level
 		Wander 
 		{
 			var CircleRadius = 8
-			var Weight = 4
+			var Weight = 1
 			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
 		}
 		Sensor 
 		{
 			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
 			var EnableDebugDraw = true
 			var SensorEventTarget = CogPath
 			{
@@ -980,201 +776,20 @@ Level
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
+			var SideSensorAngle = 100
 			var SideSensorDistance = 5
+			var PrimarySensorDistance = 5
 			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
 			var LocalOffset = Vec3{0, 0, 0.5}
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
 		}
-	}
-	Cog 
-	{
-		var Name = "Wanderer"
-		var LinkId = 24
-		Transform 
+		Avoidance 
 		{
-			var Translation = Vec3{2.84130383, 0, 33.46455}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		SteeringAccumulator 
-		{
+			var ConeAngle = 60
+			var ConeDistance = 10
+			var Weight = 3
 			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var Weight = 4
-			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 24
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
-			var SideSensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
-			var LocalOffset = Vec3{0, 0, 0.5}
-		}
-	}
-	Cog 
-	{
-		var Name = "Wanderer"
-		var LinkId = 25
-		Transform 
-		{
-			var Translation = Vec3{9.55087566, 0, 8.36075974}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var Weight = 4
-			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var MaxAngleChange = 30
-			var Strength = 0.5
-			var QueryOnly = false
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 25
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 45
-			var SideSensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var PrimarySensorDistance = 6
-			var LocalOffset = Vec3{0, 0, 0.5}
 		}
 	}
 }

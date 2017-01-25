@@ -40,7 +40,7 @@ class OrientTowardsVelocity : ZilchComponent
         
         this.Transform.Rotation = Math.RotateTowards(
             this.Transform.Rotation, orientation,
-            Math.ToRadians(this.RotationSpeed) * event.Dt
+            Math.ToRadians(this.RotationSpeed)
         );
     }
 }

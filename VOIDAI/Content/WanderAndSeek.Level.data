@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-30.3528233, 94.9561615, 83.0551453}
+			var Translation = Vec3{-44.4675751, 35.2860756, 15.9983654}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.380312502, -0.203227863, -0.0860557184, 0.898139894}
+			var Rotation = Quat{-0.258553237, -0.529993951, -0.173740432, 0.788714707}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 132.227814
-			var VerticalAngle = 0.801104963
-			var HorizontalAngle = 13.0114288
-			var LookTarget = Vec3{9.26237297, 0, 0}
+			var LookDistance = 65.6624298
+			var VerticalAngle = 0.633553326
+			var HorizontalAngle = 13.7497034
+			var LookTarget = Vec3{4.52880287, -3.58688855, -3.9967103}
 			var MoveSensitivity = 1
 		}
 	}
@@ -286,7 +286,7 @@ Level
 			var Height = 1
 			var Direction = AxisDirection.Y
 		}
-		TargetSpawner 
+		DebugTargetSpawner 
 		{
 		}
 	}

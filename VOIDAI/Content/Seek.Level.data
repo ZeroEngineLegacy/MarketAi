@@ -280,7 +280,7 @@ Level
 			var Height = 1
 			var Direction = AxisDirection.Y
 		}
-		TargetSpawner 
+		DebugTargetSpawner 
 		{
 		}
 	}

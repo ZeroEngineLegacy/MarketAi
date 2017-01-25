@@ -27,9 +27,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{1.98495436, -4.29264641, 27.0299625}
+			var Translation = Vec3{-0.324755937, 2.87608719, 62.0536613}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0.0784062743, 0.0365307145, -0.00287502538, 0.996247828}
+			var Rotation = Quat{-0.0235598162, -0.00261730677, -6.16805992e-05, 0.999719024}
 		}
 		CameraViewport 
 		{
@@ -86,10 +86,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 27.4405861
-			var VerticalAngle = -0.157079369
-			var HorizontalAngle = -0.0733037591
-			var LookTarget = Vec3{0, 0, 0}
+			var LookDistance = 61.0701294
+			var VerticalAngle = 0.0471241474
+			var HorizontalAngle = 0.00523607247
+			var LookTarget = Vec3{-0.00534476293, -0.000725775957, 1.05216575}
 			var MoveSensitivity = 1
 		}
 	}
@@ -210,9 +210,6 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var MaxAngleChange = 5
-			var Strength = 0.200000003
-			var QueryOnly = false
 			var EnableDebugDraw = true
 			var SensorEventTarget = CogPath
 			{
@@ -232,19 +229,26 @@ Level
 			var SensorMode = SensorMode.PrimaryAndSideSensors
 			var SideSensorAngle = 45
 			var SideSensorDistance = 2
-			var PrimarySensorMaxAngle = 30
 			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MinImpulse = 0
+			var MaxImpulse = 1
+			var MaxVelocity = 1
+			var DebugDrawEnabled = true
 		}
 		Avoidance 
 		{
+			var ConeAngle = 45
+			var ConeDistance = 5
+			var Weight = 1
 			var Active = true
-			var DecelerationForce = 5
-			var SteeringForce = 2.5
-			var DistanceScalarWeight = 1
-			var ScalarFalloffDistance = 10
-			var BaseScalarDistance = 3
-			var ScalarCurveModeQuad = false
 		}
 	}
 	Cog 

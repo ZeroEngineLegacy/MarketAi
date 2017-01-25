@@ -4,106 +4,98 @@
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Arend Danielek                                                                          */
 /* Class: Avoidance                                                                                        */
-/* Brief: The vehicle will try to prevent collisions with obstacle, while keeping                           */
-/* close to its "speed limit." This steering behavior anticipates the vehicle's                             */
-/* future path using a sphere volume cast. The length of the cast is a constant time                        */
-/* multiplied by the current velocity of the vehicle. Any obstacle that intersects                          */
-/* this cast is a potential collision threat. The nearest such threat is chosen for                         */
-/* avoidance. To avoid an obstacle, a lateral steering force is applied opposite to                         */
-/* the obstacle's center. In addition, a braking (deceleration) force is applied.                           */
-/* (These forces vary with urgency, the distance from the tip of the white box to the                       */
-/* point of potential collision. Steering varies linearly, braking varies quadratically.)                   */
+/* Brief: TODODODODODODODOD                   */
 /************************************************************************************************************/
 
-class Avoidance : ZilchComponent
+class Avoidance : SteeringComponent
 {
-    // This component reuires a SBPSensor component be attached to the object
+    [Dependency]
+    var Transform : Transform = null;
+    
+    // This component reuires a Sensor
     [Dependency]
     var Sensor : Sensor = null;
     
-    // Is this component active?
-    [Property]
-    var Active : Boolean = true;
+    [Dependency]
+    var Orientation : Orientation = null;
     
-    // The initial non scaled magnitude of the force used to decelrate the obj to prevent 
-    // collision as it the object is turning
+    // This angle + forward vector define the cone we use in our contact point processing
     [Property]
-    var DecelerationForce : Real = 5.0;
+    var ConeAngle : Real
+    {
+        get { return this.ConeAngleVal; }
+        set { this.ConeAngleVal = Math.Clamp(value, 0.0, 180.0); }
+    }
     
-    // Force applied perpendicularly to sensed object positions to encourage steering away from obstacles
     [Property]
-    var SteeringForce : Real = 2.5;
+    var ConeDistance : Real = 5.0;
     
-    // Weight applied to the inverse quadratic scalar applied to the deceleration force 
-    // that is calculated from the distance to the object
+    /*[Property]
+    var FalloffDistance : Real = 10.0;
+    
     [Property]
-    var DistanceScalarWeight : Real = 1.0;
+    var FalloffCurve : SampleCurve = SampleCurve.DefaultCurve;*/
     
-    // Max distance for which the distance scalar will be applied
-    [Property]
-    var ScalarFalloffDistance : Real = 10.0;
+    var ConeAngleVal : Real = 45.0;
     
-    // Distance from objects where the based scalar will be applied. If farther or closer 
-    // the scalar will vary based on the scalar curve mode selected
-    [Property]
-    var BaseScalarDistance : Real = 3.0;
+    var ConeAngleRad : Real
+    {
+        get { return Math.ToRadians(this.ConeAngle); }
+    }
     
-    // The curve type on which the scalar is changed based on distance from the object (Quadratic or linear)
-    [Property]
-    var ScalarCurveModeQuad : Boolean = false;
+    // The impulse we apply to the steering when we update
+    var Impulse : Real3;
     
-    function Initialize(init : CogInitializer)
+    [Override]
+    function SteeringInitialize(init : CogInitializer)
     {
         Zero.Connect(this.Owner, Events.SensorEvent, this.OnSensorEvent);
+    }
+    
+    [Override]
+    function SteeringUpdate(event : UpdateEvent)
+    {
+        this.Impulse = Math.Normalize(this.Impulse);
+        
+        this.AddImpulse(this.Impulse);
+        
+        this.Impulse = Real3.Zero;
     }
     
     // Responds to the sensor object detecting obstacles in the object's estimated projected path
     function OnSensorEvent(event : SensorEvent)
     {
-        // Current index of the loop
-        var index : Integer = 0;
-        foreach(var obj in event.SensedObjects)
+        for (var i = 0; i < event.Objects.Count; ++i)
         {
-            // Distance to the current object
-            var distance : Real = event.SensedDistances.Get(index);
-            var pos : Real3 = event.SensedContactPoints.Get(index);
+            var dist = event.Distances[i];
+            var pos = event.ContactPoints[i];
+            var norm = event.ContactNormals[i];
+            var dir = Math.Normalize(pos - this.Transform.Translation);
+            var angle = Math.AngleBetween(this.Orientation.WorldForward, dir);
             
-            
-            // If the object is farther away than the falloff distance do not decelerate
-            if(distance > this.ScalarFalloffDistance)
+            // Ignore all contacts outside of our cone
+            if (Math.Abs(angle) > this.ConeAngleRad || dist > this.ConeDistance)
             {
                 continue;
             }
             
-            // Using the base distance allows change the distance at which the 
-            var distScalar : Real = this.BaseScalarDistance;
+            // Get the angle between the -normal and the forward
+            var normAngle = Math.AngleBetween(this.Orientation.WorldForward, -norm);
             
-            // If the scalar mode is quadratic then the base scalar distance must me squared as
-            // well to keep the acceleration's inversion point at the same distance
-            if(this.ScalarCurveModeQuad)
+            if (normAngle > 0)
             {
-                distScalar *= this.BaseScalarDistance;
-                distScalar /=  distance * distance;
+                angle = this.ConeAngleRad - normAngle;
             }
             else
             {
-                distScalar /= distance;
+                angle = -this.ConeAngleRad - normAngle;
             }
             
-            // Weight the distance scalar (usually close to 1.0) to determine how much distance 
-            // should affect the decceleration force
-            distScalar *= this.DistanceScalarWeight;
+            // Rotate the forward vector, about the up vector, by the given angle
+            dir = Math.RotateVector(this.Orientation.WorldForward, this.Orientation.WorldUp, angle);
             
-            // Determine the direction of the reversal force
-            var dir = Math.Normalize(this.Owner.Transform.Translation - pos);
-            
-            // Apply the deceleration force to the object
-            var force : Real3 = dir * this.DecelerationForce * distScalar;
-            this.Owner.RigidBody.ApplyForce(force);
-            
-            // Increment the index
-            index += 1;
+            // Accumulate the results
+            this.Impulse += dir;
         }
-        
     }
 }

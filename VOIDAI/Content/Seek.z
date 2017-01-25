@@ -35,7 +35,7 @@ class Seek : SteeringComponent
     function SteeringUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if (!this.Active || !this.SteeringAccumulator.Active)
+        if (!this.Active || !this.SteeringAccumulator.Active || this.Target.Cog == null)
         {
             return;
         }
