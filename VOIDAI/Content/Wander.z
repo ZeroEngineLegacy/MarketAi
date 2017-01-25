@@ -16,15 +16,30 @@ class Wander : SteeringComponent
     var Transform : Transform = null;
     
     [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    [Dependency]
     var Orientation : Orientation = null;
     
     // The radius of the circle which the target point is constrained to
     [Property]
     var CircleRadius : Real = 5;
     
-    var Direction : Real2;
+    // The maximum angle of displacement on the circle
+    [Property]
+    var WanderAngle : Real = 45.0;
+    
+    [Property]
+    var SparseUpdate : Boolean = true;
+    
+    [Property]
+    var SparseUpdateMaxTimeout : Integer = 5;
+    
+    var UpdateTimeout : Integer = 0;
     
     var RandomGenerator : Random = new Random();
+    
+    var Result : Real3 = Real3.Zero;
     
     [Override]
     function SteeringInitialize(init : CogInitializer)
@@ -36,9 +51,6 @@ class Wander : SteeringComponent
         
         // Seed the random number generator
         this.RandomGenerator.Seed = seed as Integer;
-        
-        // Generate a random initial direction
-        this.Direction = this.RandomGenerator.Real2(1.0,1.0);
     }
 
     [Override]
@@ -50,25 +62,51 @@ class Wander : SteeringComponent
             return;
         }
         
-        // Calculate the vector offset to be added to the wander direction from the last frame
-        var offset = this.RandomGenerator.Real2(0.0,1.0);
+        if (this.UpdateTimeout > 0)
+        {
+            --this.UpdateTimeout;
+            this.AddImpulse(this.Result);
+            return;
+        }
         
-        offset = Math.Normalize(offset);
+        // Get the rigidbody's current velocity
+        var velocity = this.RigidBody.Velocity;
         
-        var wanderDir = offset + this.Direction * this.CircleRadius;
+        if (velocity == Real3.Zero)
+        {
+            velocity = this.Orientation.WorldForward;
+        }
         
-        // Normalize to get a direction
-        this.Direction = Math.Normalize(wanderDir);
+        // Normalize, and rotate that vector by a random angle
+        var angle = this.RandomGenerator.Range(-this.WanderAngle, this.WanderAngle);
         
-        // Move the Object
-        this.AddImpulse(this.OrientVector(this.Direction));
-    }
-    
-    //Converts the Real2 wander direction into an oriented Real3 on the ForwardRight plane
-    function OrientVector(dir : Real2) : Real3
-    {
-        // Orient the forward axis value of the wander direction
-        return (this.Owner.Orientation.LocalForward * -dir.Y) +
-               (this.Owner.Orientation.LocalRight * dir.X);
+        // Get the axis we're going to rotate around
+        var axis = Real3.Zero;
+        
+        if (velocity == this.Orientation.WorldRight)
+        {
+            axis = Math.Cross(velocity, this.Orientation.WorldForward);
+        }
+        else
+        {
+            axis = Math.Cross(this.Orientation.WorldRight, velocity);
+        }
+        
+        var displacement = Math.Normalize(velocity) * this.CircleRadius;
+        
+        displacement = Math.RotateVector(displacement, axis, Math.ToRadians(angle));
+        
+        // Add the velocity, and the rotated vector
+        this.Result = Math.Normalize(velocity + displacement);
+        
+        // Add the normalized addition of those two vectors
+        this.AddImpulse(this.Result);
+        
+        if (this.SparseUpdate)
+        {
+            this.UpdateTimeout += this.RandomGenerator.RangeInclusiveMax(
+                0, this.SparseUpdateMaxTimeout
+            );
+        }
     }
 }

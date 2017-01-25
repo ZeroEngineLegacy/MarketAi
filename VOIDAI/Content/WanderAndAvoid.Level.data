@@ -753,6 +753,9 @@ Level
 		Wander 
 		{
 			var CircleRadius = 8
+			var WanderAngle = 45
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 30
 			var Weight = 1
 			var Active = true
 		}
