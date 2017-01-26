@@ -241,14 +241,17 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var SeekRange = 5
+			var SeekRange = 10
 			var GoalDistance = 2
-			var Weight = 2
+			var Weight = 5
 			var Active = true
 		}
 		Wander 
 		{
 			var CircleRadius = 5
+			var WanderAngle = 45
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
 			var Weight = 1
 			var Active = true
 		}

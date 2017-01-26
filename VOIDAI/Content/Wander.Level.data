@@ -216,24 +216,26 @@ Level
 		OrientationHelper 
 		{
 		}
+		OrientTowardsVelocity 
+		{
+			var RotationSpeed = 360
+		}
 		SteeringAccumulator 
 		{
 			var Active = true
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
+			var MinImpulse = 3
+			var MaxImpulse = 8
+			var MaxVelocity = 8
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
 			var CircleRadius = 3
 			var WanderAngle = 20
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
 			var Weight = 4
 			var Active = true
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
 		}
 	}
 	Cog 

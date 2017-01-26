@@ -269,7 +269,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorMode = SensorMode.RandomPrimarySensor
 			var SideSensorAngle = 100
 			var SideSensorDistance = 4
 			var PrimarySensorDistance = 4

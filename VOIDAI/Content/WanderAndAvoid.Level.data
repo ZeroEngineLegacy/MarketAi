@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-10.3371239, 77.3728943, -16.0710163}
+			var Translation = Vec3{23.4572964, 4.39074612, -0.979465485}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0.29414767, 0.70563364, 0.466164649, -0.445251554}
+			var Rotation = Quat{-0.19284986, 0.436501205, 0.0963709503, 0.873492122}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 74.7844162
-			var VerticalAngle = 1.1676271
-			var HorizontalAngle = 33.4317207
-			var LookTarget = Vec3{16.1460209, 8.58452988, -3.44118953}
+			var LookDistance = 9.15785122
+			var VerticalAngle = 0.434589058
+			var HorizontalAngle = 30.4890804
+			var LookTarget = Vec3{16.8142815, 0.534945726, -5.96638918}
 			var MoveSensitivity = 1
 		}
 	}
@@ -756,16 +756,14 @@ Level
 			var WanderAngle = 45
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 30
-			var Weight = 1
+			var Weight = 2
 			var Active = true
 		}
-		Sensor 
+		Avoidance 
 		{
-			var Active = true
-			var EnableDebugDraw = true
-			var SensorEventTarget = CogPath
+			var QueryCollider = CogPath
 			{
-				var Path = "."
+				var Path = "./QueryShape"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -773,26 +771,37 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 23
+				var ResolvedCog = 24
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SideSensorAngle = 100
-			var SideSensorDistance = 5
-			var PrimarySensorDistance = 5
-			var PrimarySensorMaxAngle = 30
-			var LocalOffset = Vec3{0, 0, 0.5}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
-		}
-		Avoidance 
-		{
-			var ConeAngle = 60
-			var ConeDistance = 10
+			var DebugDrawContacts = true
 			var Weight = 3
 			var Active = true
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "QueryShape"
+				var LinkId = 24
+				Transform 
+				{
+					var Translation = Vec3{0, 0, 0}
+					var Scale = Vec3{1, 1, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				BoxCollider 
+				{
+					var Ghost = true
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Vec3{0, 0, 2.5}
+					var HalfSize = Vec3{0.550000012, 0.5, 2}
+				}
+			}
 		}
 	}
 }

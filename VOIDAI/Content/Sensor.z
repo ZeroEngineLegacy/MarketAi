@@ -4,20 +4,9 @@
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Arend Danielek                                                                          */
 /* Class: Sensor                                                                                            */
-/* Brief: Detects objects with range limited raycasts in front of the object Sensor is attached to.         */
+/* Brief: Detects contacts with raycasts starting at this object's position. The contacts are sorted by     */
+/*        which object they belong to.                                                                      */
 /************************************************************************************************************/
-
-// Contain pertinate object sensed the distances to those objects
-// and the angle changed as a result of sensing those objects
-class SensorEvent : ZilchEvent
-{
-    sends SensorEvent : SensorEvent;
-    
-    var Objects : Array[Cog] = new Array[Cog]();
-    var Distances : Array[Real] = new Array[Real]();
-    var ContactPoints : Array[Real3] = new Array[Real3]();
-    var ContactNormals : Array[Real3] = new Array[Real3]();
-}
 
 enum SensorMode
 {
@@ -30,6 +19,22 @@ class SensorRay
 {
     var Direction : Real3 = Real3(0.0, 0.0, 0.0);
     var Distance : Real = 0.0;
+}
+
+class SensorResult
+{
+    // The object, and it's contacts sensed
+    var Object : Cog;
+    var Contacts : Array[Real3] = new Array[Real3]();
+    var Normals : Array[Real3] = new Array[Real3]();
+}
+
+// Listen to this event to hear of this Sensor's results
+class SensorEvent : ZilchEvent
+{
+    sends SensorEvent : SensorEvent;
+    
+    var Results : Array[SensorResult] = new Array[SensorResult]();
 }
 
 class Sensor : ZilchComponent
@@ -223,32 +228,50 @@ class Sensor : ZilchComponent
             ray.Start = position;
             ray.Direction = sensor.Direction;
             
-            var results = physics.CastRayResults(ray, castResultsMax);
+            var castResults = physics.CastRayResults(ray, castResultsMax);
             
             // Loop through all the results
-            foreach (var result in results)
+            foreach (var castResult in castResults)
             {
                 // Get the hit distance
-                var distance = result.Distance;
+                var distance = castResult.Distance;
                 
                 // As long as the object hit wasn't us and it's within the maximum distance...
-                if (result.ObjectHit != this.Owner && distance < sensor.Distance)
+                if (castResult.ObjectHit != this.Owner && distance < sensor.Distance)
                 {
-                    // Store the hit object and the distance to it in the sensorEvent
-                    event.Objects.Add(result.ObjectHit);
-                    event.Distances.Add(distance);
-                    event.ContactPoints.Add(result.WorldPosition);
-                    event.ContactNormals.Add(result.Normal);
+                    // Look for the hit object in our results
+                    var result : SensorResult = null;
+                    
+                    foreach (var eventResult in event.Results)
+                    {
+                        if (castResult.ObjectHit == eventResult.Object)
+                        {
+                            result = eventResult;
+                        }
+                    }
+                    
+                    // If we can't find one for this object
+                    if (result == null)
+                    {
+                        // create it
+                        result = new SensorResult();
+                        
+                        event.Results.Add(result);
+                    }
+                    
+                    result.Object = castResult.ObjectHit;
+                    result.Contacts.Add(castResult.WorldPosition);
+                    result.Normals.Add(castResult.Normal);
                     
                     // If debug draw is on, draw the intersection point and the normal
                     if (this.EnableDebugDraw)
                     {
                         this.DebugDrawSphere(
-                            0.5, result.WorldPosition, Real4(0.0, 1.0, 0.0, 1.0)
+                            0.5, castResult.WorldPosition, Real4(0.0, 1.0, 0.0, 1.0)
                         );
                         
                         this.DebugDrawLine(
-                            result.WorldPosition, result.WorldPosition + result.Normal, 
+                            castResult.WorldPosition, castResult.WorldPosition + castResult.Normal, 
                             0.2, Real4(1.0, 0.0, 0.0, 1.0)
                         );
                     }
@@ -262,7 +285,7 @@ class Sensor : ZilchComponent
     function DispatchEvent(event : SensorEvent)
     {
         // Send out the sendor event so other components can use the sensor data
-        if (event.Objects.Count <= 0)
+        if (event.Results.Count <= 0)
         {
             return;
         }

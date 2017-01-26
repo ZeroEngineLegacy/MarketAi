@@ -2,9 +2,9 @@
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
 /* Last Update: 1/3/2016                                                                                    */
 /* Author: Zero Engine Team                                                                                 */
-/* Last updated by: Arend Danielek                                                                          */
-/* Class: Avoidance                                                                                        */
-/* Brief: TODODODODODODODOD                   */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: Avoidance                                                                                         */
+/* Brief: TODODODODODODODOD                                                                                 */
 /************************************************************************************************************/
 
 class Avoidance : SteeringComponent
@@ -12,38 +12,31 @@ class Avoidance : SteeringComponent
     [Dependency]
     var Transform : Transform = null;
     
-    // This component reuires a Sensor
-    [Dependency]
-    var Sensor : Sensor = null;
-    
     [Dependency]
     var Orientation : Orientation = null;
     
-    // This angle + forward vector define the cone we use in our contact point processing
     [Property]
-    var ConeAngle : Real
-    {
-        get { return this.ConeAngleVal; }
-        set { this.ConeAngleVal = Math.Clamp(value, 0.0, 180.0); }
-    }
+    var QueryCollider : CogPath;
     
     [Property]
-    var ConeDistance : Real = 5.0;
+    var DebugDrawContacts : Boolean = true;
     
     // The impulse we apply to the steering when we update
     var Impulse : Real3 = Real3.Zero;
     
-    var ConeAngleVal : Real = 45.0;
-    
-    var ConeAngleRad : Real
-    {
-        get { return Math.ToRadians(this.ConeAngle); }
-    }
-    
     [Override]
     function SteeringInitialize(init : CogInitializer)
     {
-        Zero.Connect(this.Owner, Events.SensorEvent, this.OnSensorEvent);
+        var cog = this.QueryCollider.Cog;
+        
+        if (cog != null)
+        {
+            Console.WriteLine("HERE");
+            
+            Zero.Connect(
+                cog, Events.CollisionPersisted, this.OnCollisionPersisted
+            );
+        }
     }
     
     [Override]
@@ -56,44 +49,32 @@ class Avoidance : SteeringComponent
         this.Impulse = Real3.Zero;
     }
     
-    // Responds to the sensor object detecting obstacles in the object's estimated projected path
-    function OnSensorEvent(event : SensorEvent)
+    function OnCollisionPersisted(event : CollisionEvent)
     {
-        for (var i = 0; i < event.Objects.Count; ++i)
+        if (event.OtherObject.Collider.Ghost)
         {
-            var dist = event.Distances[i];
-            var pos = event.ContactPoints[i];
-            var norm = event.ContactNormals[i];
-            var dir = Math.Normalize(pos - this.Transform.Translation);
-            var angle = Math.AngleBetween(this.Orientation.WorldForward, dir);
-            
-            // Ignore all contacts outside of our cone
-            if (Math.Abs(angle) > this.ConeAngleRad || dist > this.ConeDistance)
-            {
-                continue;
-            }
-            
-            // Get the angle between the -normal and the forward
-            var normAngle = Math.SignedAngle(
-                this.Orientation.WorldForward, -norm, this.Orientation.WorldUp
-            );
-            
-            if (normAngle > 0)
-            {
-                Console.WriteLine("HERE");
-                angle = this.ConeAngleRad - normAngle;
-            }
-            else
-            {
-                Console.WriteLine("NO HERE");
-                angle = -this.ConeAngleRad - normAngle;
-            }
-            
-            // Rotate the forward vector, about the up vector, by the given angle
-            dir = Math.RotateVector(this.Orientation.WorldForward, this.Orientation.WorldUp, angle);
-            
-            // Accumulate the results
-            this.Impulse += dir;
+            return;
         }
+        
+        foreach (var contact in event.ContactPoints)
+        {
+            contact.WorldPoint;
+            
+            if (this.DebugDrawContacts)
+            {
+                this.DebugDrawContact(contact);
+            }
+        }
+    }
+    
+    function DebugDrawContact(contact : ContactPoint)
+    {
+        var sphere = new DebugSphere();
+        
+        sphere.Position = contact.WorldPoint;
+        sphere.Radius = 0.25;
+        sphere.Color = Real4(1, 1, 0, 1);
+        
+        DebugDraw.Add(sphere);
     }
 }

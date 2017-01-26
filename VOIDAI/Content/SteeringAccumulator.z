@@ -39,7 +39,9 @@ class SteeringAccumulator : ZilchComponent
     [Property]
     var DebugDrawEnabled : Boolean = true;
     
+    // Accumulate all impulses and their weights
     var ImpulseAccumulator : Real3 = Real3.Zero;
+    var WeightAccumulator : Real = 0.0;
     
     function Initialize(init : CogInitializer)
     {
@@ -58,6 +60,9 @@ class SteeringAccumulator : ZilchComponent
         {
             return;
         }
+        
+        // Average out impulses by the weights
+        this.ImpulseAccumulator /= this.WeightAccumulator;
         
         // Enforce the maximum impulse
         var impulseLength = Math.LengthSq(this.ImpulseAccumulator);
@@ -95,10 +100,8 @@ class SteeringAccumulator : ZilchComponent
     // This function is used by the SteeringComponents to add their impulse
     function AddImpulse(impulse : Real3, weight : Real)
     {
-        impulse = Math.Normalize(impulse);
-        impulse *= weight;
-        
-        this.ImpulseAccumulator += impulse;
+        this.ImpulseAccumulator += impulse * weight;
+        this.WeightAccumulator += weight;
         
         this.DebugDrawVector(impulse, Real4(1, 0, 0, 1));
     }
