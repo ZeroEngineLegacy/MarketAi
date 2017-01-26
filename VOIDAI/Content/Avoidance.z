@@ -30,11 +30,8 @@ class Avoidance : SteeringComponent
     [Property]
     var ConeDistance : Real = 5.0;
     
-    /*[Property]
-    var FalloffDistance : Real = 10.0;
-    
-    [Property]
-    var FalloffCurve : SampleCurve = SampleCurve.DefaultCurve;*/
+    // The impulse we apply to the steering when we update
+    var Impulse : Real3 = Real3.Zero;
     
     var ConeAngleVal : Real = 45.0;
     
@@ -42,9 +39,6 @@ class Avoidance : SteeringComponent
     {
         get { return Math.ToRadians(this.ConeAngle); }
     }
-    
-    // The impulse we apply to the steering when we update
-    var Impulse : Real3;
     
     [Override]
     function SteeringInitialize(init : CogInitializer)
@@ -80,14 +74,18 @@ class Avoidance : SteeringComponent
             }
             
             // Get the angle between the -normal and the forward
-            var normAngle = Math.AngleBetween(this.Orientation.WorldForward, -norm);
+            var normAngle = Math.SignedAngle(
+                this.Orientation.WorldForward, -norm, this.Orientation.WorldUp
+            );
             
             if (normAngle > 0)
             {
+                Console.WriteLine("HERE");
                 angle = this.ConeAngleRad - normAngle;
             }
             else
             {
+                Console.WriteLine("NO HERE");
                 angle = -this.ConeAngleRad - normAngle;
             }
             

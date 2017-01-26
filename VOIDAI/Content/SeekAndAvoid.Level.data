@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-2.9831996, 136.668381, 94.9402771}
+			var Translation = Vec3{-24.7817898, 17.0044518, -15.605422}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.463238627, -0.0139178429, -0.0072760405, 0.886094451}
+			var Rotation = Quat{-0.309564829, -0.655679226, -0.338420987, 0.59977138}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 166.435577
-			var VerticalAngle = 0.963421106
-			var HorizontalAngle = 12.5977821
-			var LookTarget = Vec3{0, 0, 0}
+			var LookDistance = 22.5246429
+			var VerticalAngle = 0.952948928
+			var HorizontalAngle = 14.2261724
+			var LookTarget = Vec3{-11.7853231, -1.35599804, -14.4456005}
 			var MoveSensitivity = 1
 		}
 	}
@@ -175,7 +175,7 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{2.164258, 3.81469727e-06, -6.40106964}
+			var Translation = Vec3{1.3611412, 3.81469727e-06, -14.0384665}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -292,7 +292,7 @@ Level
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{-16.3187065, 0, -6.51319504}
+			var Translation = Vec3{-14.4673996, -9.53674316e-07, -22.3893967}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -491,8 +491,8 @@ Level
 		var LinkId = 13
 		Transform 
 		{
-			var Translation = Vec3{-5.80897713, -1.90734863e-06, -6.54101181}
-			var Scale = Vec3{2.99185848, 1, 4.62845612}
+			var Translation = Vec3{-5.80897713, -1.90734863e-06, -13.6300564}
+			var Scale = Vec3{2.99185848, 1, 20.9452991}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
 		Model 
