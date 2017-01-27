@@ -88,14 +88,18 @@ class Pursue : SteeringComponent
             if (this.NoPursueRange || predictedDis > this.GoalDistance)
             {
                 // Apply a force to move the object towards the target object's position
-                this.AddImpulse(predictedDir);
+                this.AddLookDirection(predictedDir);
+                this.AddLocalMovement(this.Orientation.LocalForward);
             }
             else
             {
                 // Bring the object to a smooth stop, based on it's linear distance from the target
                 var ratio = predictedDis / this.GoalDistance;
                 
-                this.SteeringAccumulator.AddImpulse(predictedDir, this.Weight * ratio);
+                this.AddLookDirection(predictedDir);
+                this.SteeringAccumulator.AddLocalMovement(
+                    this.Orientation.LocalForward, this.MovementWeight * ratio
+                );
             }
         }
         

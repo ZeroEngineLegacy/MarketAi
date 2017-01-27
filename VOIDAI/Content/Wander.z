@@ -16,18 +16,26 @@ class Wander : SteeringComponent
     var Transform : Transform = null;
     
     [Dependency]
-    var RigidBody : RigidBody = null;
-    
-    [Dependency]
     var Orientation : Orientation = null;
     
-    // The radius of the circle which the target point is constrained to
+    // Should we wander in 2D or 3D
     [Property]
-    var CircleRadius : Real = 5;
+    var Mode : Mode2DStates = Mode2DStates.Mode2D;
     
-    // The maximum angle of displacement on the circle
+    // The radius of the circle/sphere which the target point is constrained to
+    [Property]
+    var Radius : Real = 5;
+    
+    // The maximum angle of displacement on the circle/sphere
     [Property]
     var WanderAngle : Real = 45.0;
+    
+    // The offset distance the circle/sphere is from the object
+    [Property]
+    var WanderOffset : Real = 1.0;
+    
+    [Property]
+    var Movement : Boolean = true;
     
     [Property]
     var SparseUpdate : Boolean = true;
@@ -40,6 +48,11 @@ class Wander : SteeringComponent
     var RandomGenerator : Random = new Random();
     
     var Result : Real3 = Real3.Zero;
+    
+    var WanderAngleRad : Real
+    {
+        get { return Math.ToRadians(this.WanderAngle); }
+    }
     
     [Override]
     function SteeringInitialize(init : CogInitializer)
@@ -62,45 +75,48 @@ class Wander : SteeringComponent
             return;
         }
         
+        // If we're currently timed out, just apply the same direction
         if (this.UpdateTimeout > 0)
         {
             --this.UpdateTimeout;
-            this.AddImpulse(this.Result);
+            this.AddLookDirection(this.Result);
+            
+            if (this.Movement)
+            {
+                this.AddLocalMovement(this.Orientation.LocalForward);
+            }
+            
             return;
         }
         
-        // Get the rigidbody's current velocity
-        var velocity = this.RigidBody.Velocity;
+        // Determine whether we're using a circle or a sphere for our wander direction
+        var mode2D = true;
         
-        if (velocity == Real3.Zero)
+        if (this.Mode == Mode2DStates.Mode3D)
         {
-            velocity = this.Orientation.WorldForward;
+            mode2D = false;
+        }
+        else if (this.Mode == Mode2DStates.InheritFromSpace)
+        {
+            mode2D = this.Space.PhysicsSpace.Mode2D;
         }
         
-        // Normalize, and rotate that vector by a random angle
-        var angle = this.RandomGenerator.Range(-this.WanderAngle, this.WanderAngle);
-        
-        // Get the axis we're going to rotate around
-        var axis = Real3.Zero;
-        
-        if (velocity == this.Orientation.WorldRight)
+        if (mode2D)
         {
-            axis = Math.Cross(velocity, this.Orientation.WorldForward);
+            this.WanderCircle();
         }
         else
         {
-            axis = Math.Cross(this.Orientation.WorldRight, velocity);
+            this.WanderSphere();
         }
         
-        var displacement = Math.Normalize(velocity) * this.CircleRadius;
+        // Apply the calculated resulting direction
+        this.AddLookDirection(this.Result);
         
-        displacement = Math.RotateVector(displacement, axis, Math.ToRadians(angle));
-        
-        // Add the velocity, and the rotated vector
-        this.Result = Math.Normalize(velocity + displacement);
-        
-        // Add the normalized addition of those two vectors
-        this.AddImpulse(this.Result);
+        if (this.Movement)
+        {
+            this.AddLocalMovement(this.Orientation.LocalForward);
+        }
         
         if (this.SparseUpdate)
         {
@@ -108,5 +124,36 @@ class Wander : SteeringComponent
                 0, this.SparseUpdateMaxTimeout
             );
         }
+    }
+    
+    function WanderCircle()
+    {
+        // Calculate the rotation angle
+        var angle = this.RandomGenerator.Range(-this.WanderAngleRad, this.WanderAngleRad);
+        
+        // Calculate the rotated vector
+        var rotation = Math.AxisAngle(this.Orientation.WorldUp, angle);
+        var direction = Math.Transform(this.Orientation.WorldForward, rotation);
+        
+        // Calculate the normalized new direction vector
+        this.Result = this.Orientation.WorldForward * this.WanderOffset + 
+                      direction * this.Radius;
+        this.Result = Math.Normalize(this.Result);
+    }
+    
+    function WanderSphere()
+    {
+        // Calculate the rotation angle
+        var angle = this.RandomGenerator.Range(-this.WanderAngleRad, this.WanderAngleRad);
+        
+        // Generate a random point on the sphere within a cone
+        var point = this.RandomGenerator.UnitReal3() * Math.Sin(angle);
+        point = Real3(point.X, point.Y, Math.Cos(angle));
+        
+        var direction = Math.Transform(point, this.Orientation.WorldRotation);
+        
+        this.Result = this.Orientation.WorldForward * this.WanderOffset +
+                      direction * this.Radius;
+        this.Result = Math.Normalize(this.Result);
     }
 }

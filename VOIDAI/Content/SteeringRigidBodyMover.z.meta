@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "SteeringRigidBodyMover"
+		var ResourceId = 0x58e8efbc4b8768fc
+	}
+}

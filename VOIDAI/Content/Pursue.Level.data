@@ -194,7 +194,7 @@ Level
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
-			var RotationLocked = false
+			var RotationLocked = true
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		BoxCollider 
@@ -210,22 +210,12 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
-			var MinImpulse = 2
-			var MaxImpulse = 3.5
-			var MaxVelocity = 8
 			var DebugDrawEnabled = true
 		}
 		Pursue 
@@ -246,10 +236,19 @@ Level
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var PursueRange = 0
-			var PredictionRange = 5
-			var GoalDistance = 1
-			var Weight = 1
+			var PredictionRange = 2
+			var GoalDistance = 2
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 360
+			var DebugDrawEnabled = true
 		}
 	}
 	Cog 

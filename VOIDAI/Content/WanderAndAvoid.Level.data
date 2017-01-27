@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{23.4572964, 4.39074612, -0.979465485}
+			var Translation = Vec3{-13.5978699, 21.9837189, -37.553154}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.19284986, 0.436501205, 0.0963709503, 0.873492122}
+			var Rotation = Quat{-0.140870705, -0.798206091, -0.20494546, 0.548652709}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 9.15785122
-			var VerticalAngle = 0.434589058
-			var HorizontalAngle = 30.4890804
-			var LookTarget = Vec3{16.8142815, 0.534945726, -5.96638918}
+			var LookDistance = 37.1368599
+			var VerticalAngle = 0.502657175
+			var HorizontalAngle = 33.353138
+			var LookTarget = Vec3{16.7850723, 4.09282207, -25.8938618}
 			var MoveSensitivity = 1
 		}
 	}
@@ -750,32 +750,8 @@ Level
 			var MaxVelocity = 5
 			var DebugDrawEnabled = true
 		}
-		Wander 
-		{
-			var CircleRadius = 8
-			var WanderAngle = 45
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 30
-			var Weight = 2
-			var Active = true
-		}
 		Avoidance 
 		{
-			var QueryCollider = CogPath
-			{
-				var Path = "./QueryShape"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 24
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
 			var DebugDrawContacts = true
 			var Weight = 3
 			var Active = true
@@ -799,9 +775,93 @@ Level
 					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 					var CollisionGroup = "4e740859314e5515:DefaultGroup"
 					var Offset = Vec3{0, 0, 2.5}
-					var HalfSize = Vec3{0.550000012, 0.5, 2}
+					var HalfSize = Vec3{2.5, 0.5, 2}
 				}
 			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 25
+		Transform 
+		{
+			var Translation = Vec3{21.6559181, 1.19766998, -41.3167534}
+			var Scale = Vec3{1, 5.08756399, 16.508049}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 26
+		Transform 
+		{
+			var Translation = Vec3{27.0223656, 1.19766998, -41.3167534}
+			var Scale = Vec3{1, 5.08756399, 16.508049}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 27
+		Transform 
+		{
+			var Translation = Vec3{30.6419945, 1.19766998, -41.3167534}
+			var Scale = Vec3{1, 5.08756399, 16.508049}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
 		}
 	}
 }

@@ -210,22 +210,12 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
-			var MinImpulse = 2
-			var MaxImpulse = 3.5
-			var MaxVelocity = 5
 			var DebugDrawEnabled = true
 		}
 		Pursue 
@@ -248,8 +238,17 @@ Level
 			var PursueRange = 0
 			var PredictionRange = 2
 			var GoalDistance = 0
-			var Weight = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 360
+			var DebugDrawEnabled = true
 		}
 	}
 	Cog 
@@ -295,22 +294,12 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
-			var MinImpulse = 2
-			var MaxImpulse = 3.5
-			var MaxVelocity = 6
 			var DebugDrawEnabled = true
 		}
 		Evade 
@@ -332,14 +321,30 @@ Level
 			}
 			var EvadeRange = 5
 			var PredictionRange = 3
-			var Weight = 2
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 		Wander 
 		{
-			var CircleRadius = 5
-			var Weight = 1
+			var Mode = Mode2DStates.Mode2D
+			var Radius = 5
+			var WanderAngle = 45
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+			var DebugDrawEnabled = true
 		}
 	}
 	Cog 

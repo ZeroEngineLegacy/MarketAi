@@ -68,7 +68,8 @@ class Evade : SteeringComponent
             predictedDir /= Math.Sqrt(predictedDis);
             
             // Apply a force to move the object towards the target object's position
-            this.AddImpulse(-predictedDir);
+            this.AddLookDirection(-predictedDir);
+            this.AddLocalMovement(this.Orientation.LocalForward);
         }
         
         // Store this for next update

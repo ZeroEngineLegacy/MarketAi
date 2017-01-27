@@ -13,6 +13,9 @@ class Seek : SteeringComponent
     [Dependency]
     var Transform : Transform = null;
     
+    [Dependency]
+    var Orientation : Orientation = null;
+    
     // Target object to be seek towards
     [Property]
     var Target : CogPath = null;
@@ -47,6 +50,7 @@ class Seek : SteeringComponent
         // Normalize the vector to the target object so it does not affect movement speed
         targDir /= targDis;
         
+        // early out if we have a seek range, and we're out of range
         if (!this.NoSeekRange && targDis > this.SeekRange)
         {
             return;
@@ -55,15 +59,19 @@ class Seek : SteeringComponent
         // Check if the target object is with in the range to seek it
         if (this.NoSeekRange || targDis > this.GoalDistance)
         {
-            // Apply a linear impulse to move the object towards the target object's position
-            this.AddImpulse(targDir);
+            // Look towards the object, and move forward
+            this.AddLookDirection(targDir);
+            this.AddLocalMovement(this.Orientation.LocalForward);
         }
         else
         {
             // Bring the object to a smooth stop, based on it's linear distance from the target
             var ratio = targDis / this.GoalDistance;
             
-            this.SteeringAccumulator.AddImpulse(targDir, this.Weight * ratio);
+            this.AddLookDirection(targDir);
+            this.SteeringAccumulator.AddLocalMovement(
+                this.Orientation.LocalForward, this.MovementWeight * ratio
+            );
         }
     }
 }

@@ -291,7 +291,7 @@ class Sensor : ZilchComponent
         }
         
         // If there is no target defined dispatch the event on this.Owner
-        if(this.SensorEventTarget.Cog != null)
+        if(this.SensorEventTarget != null && this.SensorEventTarget.Cog != null)
         {
             this.SensorEventTarget.Cog.DispatchEvent(Events.SensorEvent, event);
         }
@@ -308,6 +308,7 @@ class Sensor : ZilchComponent
         sphere.Position = position;
         sphere.Radius = radius;
         sphere.Color = color;
+        sphere.OnTop = true;
         
         DebugDraw.Add(sphere);
     }
@@ -320,6 +321,7 @@ class Sensor : ZilchComponent
         line.End = end;
         line.HeadSize = size;
         line.Color = color;
+        line.OnTop = true;
         
         DebugDraw.Add(line);
     }

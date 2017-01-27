@@ -4,7 +4,7 @@
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Jordan Ellis                                                                            */
 /* Class: SteeringComponent                                                                                 */
-/* Brief: This is the base class for all AI steering behaviours (seek, wander, pursue, patrol, etc)         */
+/* Brief: This is the base class for all AI steering behaviours (seek, wander, pursue, avoidance, etc)      */
 /************************************************************************************************************/
 
 class SteeringComponent : ZilchComponent
@@ -13,7 +13,10 @@ class SteeringComponent : ZilchComponent
     var SteeringAccumulator : SteeringAccumulator = null;
     
     [Property]
-    var Weight : Real = 1.0;
+    var MovementWeight : Real = 1.0;
+    
+    [Property]
+    var LookDirectionWeight : Real = 1.0;
     
     [Property]
     var Active : Boolean = true;
@@ -29,8 +32,10 @@ class SteeringComponent : ZilchComponent
     {
         // Implementation logic for steering
         
-        // Give resulting impulse to this function
-        this.AddImpulse(Real3.Zero);
+        // Give resulting movement and rotation to these functions
+        // this.AddLocalMovement(Real3.Zero);
+        // this.AddWorldMovement(Real3.Zero);
+        // this.AddLookDirection(Quaternion.Identity);
     }
     
     function Initialize(init : CogInitializer)
@@ -49,8 +54,18 @@ class SteeringComponent : ZilchComponent
         }
     }
     
-    function AddImpulse(impulse : Real3)
+    function AddLocalMovement(movement : Real3)
     {
-        this.SteeringAccumulator.AddImpulse(impulse, this.Weight);
+        this.SteeringAccumulator.AddLocalMovement(movement, this.MovementWeight);
+    }
+    
+    function AddWorldMovement(movement : Real3)
+    {
+        this.SteeringAccumulator.AddWorldMovement(movement, this.MovementWeight);
+    }
+    
+    function AddLookDirection(direction : Real3)
+    {
+        this.SteeringAccumulator.AddLookDirection(direction, this.LookDirectionWeight);
     }
 }

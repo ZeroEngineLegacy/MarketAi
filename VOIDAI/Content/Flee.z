@@ -12,6 +12,9 @@ class Flee : SteeringComponent
     [Dependency]
     var Transform : Transform = null;
     
+    [Dependency]
+    var Orientation : Orientation = null;
+    
     // Target object to be flee towards
     [Property]
     var Target : CogPath = null;
@@ -45,7 +48,8 @@ class Flee : SteeringComponent
         if (this.NoFleeRange || targDis < this.FleeRange)
         {
             // Apply a linear impulse to move the object towards the target object's position
-            this.AddImpulse(-targDir);
+            this.AddLookDirection(-targDir);
+            this.AddLocalMovement(this.Orientation.LocalForward);
         }
     }
 }

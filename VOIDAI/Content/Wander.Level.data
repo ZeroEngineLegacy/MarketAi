@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{12.8997164, 157.085983, -93.6362915}
+			var Translation = Vec3{20.627121, 20.5171604, -34.6430092}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0457685478, 0.869894385, 0.484177023, 0.0822298899}
+			var Rotation = Quat{-0.0635631606, 0.934778452, 0.274234235, 0.216666713}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 146.134109
-			var VerticalAngle = 1.01578164
-			var HorizontalAngle = 15.8964605
-			var LookTarget = Vec3{-1.52993846, 32.8876686, -17.994091}
+			var LookDistance = 40.1593246
+			var VerticalAngle = 0.570722997
+			var HorizontalAngle = 22.4466724
+			var LookTarget = Vec3{5.75981236, -1.1785382, -4.29451466}
 			var MoveSensitivity = 1
 		}
 	}
@@ -171,75 +171,6 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Wanderer"
-		var LinkId = 5
-		Transform 
-		{
-			var Translation = Vec3{9.26237297, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = false
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
-		}
-		OrientationHelper 
-		{
-		}
-		OrientTowardsVelocity 
-		{
-			var RotationSpeed = 360
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MinImpulse = 3
-			var MaxImpulse = 8
-			var MaxVelocity = 8
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var CircleRadius = 3
-			var WanderAngle = 20
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var Weight = 4
-			var Active = true
-		}
-	}
-	Cog 
-	{
 		var Name = "Renderer"
 		var LinkId = 3
 		DeferredRenderer 
@@ -259,7 +190,7 @@ Level
 	Cog 
 	{
 		var Name = "Orbit"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Vec3{0, 0, 0}
@@ -270,10 +201,38 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Vec3{0, -1.04824448, 0}
+			var Scale = Vec3{100, 1, 100}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Floor"
+		var LinkId = 7
+		Transform 
+		{
+			var Translation = Vec3{0, 59.784008, 0}
 			var Scale = Vec3{100, 1, 100}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -405,6 +364,1710 @@ Level
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Vec3{0, 0, 0}
 			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Vec3{-5.59948921, 1.90734863e-06, -9.97677994}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 13
+		Transform 
+		{
+			var Translation = Vec3{13.6139889, 0, 19.8908939}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 14
+		Transform 
+		{
+			var Translation = Vec3{9.26237297, 0, 0}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 15
+		Transform 
+		{
+			var Translation = Vec3{12.9472027, 1.90734863e-06, -18.3539295}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 16
+		Transform 
+		{
+			var Translation = Vec3{21.5449352, 1.90734863e-06, -3.0252285}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 17
+		Transform 
+		{
+			var Translation = Vec3{20.8428974, 0, 14.7358799}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 18
+		Transform 
+		{
+			var Translation = Vec3{-5.38603783, 3.81469727e-06, -1.47567463}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 19
+		Transform 
+		{
+			var Translation = Vec3{13.8274403, 1.90734863e-06, 28.3919983}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 20
+		Transform 
+		{
+			var Translation = Vec3{9.47582436, 1.90734863e-06, 8.50110531}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 21
+		Transform 
+		{
+			var Translation = Vec3{13.1606541, 3.81469727e-06, -9.85282421}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 22
+		Transform 
+		{
+			var Translation = Vec3{21.7583866, 3.81469727e-06, 5.47587681}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 23
+		Transform 
+		{
+			var Translation = Vec3{21.0563488, 1.90734863e-06, 23.2369843}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 24
+		Transform 
+		{
+			var Translation = Vec3{17.6233673, 1.90734863e-06, -11.8900499}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 25
+		Transform 
+		{
+			var Translation = Vec3{21.9749832, 1.90734863e-06, 8.00084305}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 26
+		Transform 
+		{
+			var Translation = Vec3{21.308197, 3.81469727e-06, -30.2439804}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 27
+		Transform 
+		{
+			var Translation = Vec3{29.2038918, 1.90734863e-06, 2.84582901}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 28
+		Transform 
+		{
+			var Translation = Vec3{2.76150417, 3.81469727e-06, -21.8668289}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 29
+		Transform 
+		{
+			var Translation = Vec3{29.9059296, 3.81469727e-06, -14.9152784}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 30
+		Transform 
+		{
+			var Translation = Vec3{-11.4055262, 0, -13.1595869}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 31
+		Transform 
+		{
+			var Translation = Vec3{7.80795288, -1.90734863e-06, 16.7080841}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 32
+		Transform 
+		{
+			var Translation = Vec3{15.0368614, -1.90734863e-06, 11.553071}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 33
+		Transform 
+		{
+			var Translation = Vec3{3.45633698, -1.90734863e-06, -3.18280792}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 34
+		Transform 
+		{
+			var Translation = Vec3{7.14116669, 0, -21.5367393}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 35
+		Transform 
+		{
+			var Translation = Vec3{15.7388992, 0, -6.20803642}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var Mode = Mode2DStates.Mode3D
+			var Radius = 5
+			var WanderAngle = 60
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+			var DebugDrawEnabled = true
 		}
 	}
 }

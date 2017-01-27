@@ -1,0 +1,119 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: SteeringRigidBodyMover                                                                            */
+/* Brief: SteeringAccumulator handles updating all SteeringComponents, and accumulating their movement and  */
+/*        rotations for a final output. This final output is sent as an event, and can be used to move a    */
+/*        character controller or RigidBody.                                                                */
+/************************************************************************************************************/
+
+class SteeringRigidBodyMover : ZilchComponent
+{
+    [Dependency]
+    var SteeringAccumulator : SteeringAccumulator = null;
+    
+    [Dependency]
+    var Transform : Transform = null;
+    
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    // Max / Min impulses allowed
+    [Property]
+    var MinImpulse : Real = 0.0;
+    
+    [Property]
+    var MaxImpulse : Real = 3.0;
+    
+    // Max velocity allowed
+    [Property]
+    var MaxVelocity : Real = 5.0;
+    
+    // Max rotation in degrees / second
+    [Property]
+    var MaxRotation : Real = 360.0;
+    
+    [Property]
+    var DebugDrawEnabled : Boolean = true;
+    
+    var MaxRotationRad : Real
+    {
+        get { return Math.ToRadians(this.MaxRotation); }
+    }
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Owner, Events.SteeringResultsEvent, this.OnSteeringResults);
+    }
+
+    function OnSteeringResults(event : SteeringResultsEvent)
+    {
+        // Calculate our rotation for this frame
+        var look = Math.RotateTowards(
+            this.Orientation.WorldForward, event.LookDirection, this.MaxRotationRad * event.Dt
+        );
+        
+        // Rotate the object
+        this.Orientation.LookAtDirection(look);
+        
+        // Add together the world and local movements
+        var localToWorld = this.Orientation.LocalToWorldRotation;
+        var impulse = event.WorldMovement + Math.Transform(event.LocalMovement, localToWorld);
+        
+        impulse *= 0.5;
+        
+        // Enforce the maximum impulse
+        var impulseLength = Math.LengthSq(impulse);
+        
+        if (impulseLength > this.MaxImpulse * this.MaxImpulse)
+        {
+            // Normalize and scale
+            impulse /= Math.Sqrt(impulseLength);
+            impulse *= this.MaxImpulse;
+        }
+        else if (impulseLength < this.MinImpulse * this.MinImpulse)
+        {
+            // Normalize and scale
+            impulse /= Math.Sqrt(impulseLength);
+            impulse *= this.MinImpulse;
+        }
+        
+        // Apply the impulse
+        this.RigidBody.ApplyLinearImpulse(impulse);
+        
+        // Enforce the maximum velocity
+        var velocityLength = Math.LengthSq(this.RigidBody.Velocity);
+        
+        if (velocityLength > this.MaxVelocity * this.MaxVelocity)
+        {
+            // Normalize and scale
+            this.RigidBody.Velocity /= Math.Sqrt(velocityLength);
+            this.RigidBody.Velocity *= this.MaxVelocity;
+        }
+        
+        this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
+        this.DebugDrawVector(this.RigidBody.Velocity, Real4(0, 0, 1, 1));
+    }
+    
+    function DebugDrawVector(vector : Real3, color : Real4)
+    {
+        if (!this.DebugDrawEnabled)
+        {
+            return;
+        }
+        
+        var line = new DebugLine();
+        
+        line.Start = this.Transform.Translation;
+        line.End = line.Start + vector;
+        line.HeadSize = 0.5;
+        line.Color = color;
+        
+        DebugDraw.Add(line);
+    }
+}

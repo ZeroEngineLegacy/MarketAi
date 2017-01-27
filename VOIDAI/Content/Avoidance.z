@@ -16,65 +16,39 @@ class Avoidance : SteeringComponent
     var Orientation : Orientation = null;
     
     [Property]
-    var QueryCollider : CogPath;
-    
-    [Property]
     var DebugDrawContacts : Boolean = true;
     
     // The impulse we apply to the steering when we update
     var Impulse : Real3 = Real3.Zero;
     
     [Override]
-    function SteeringInitialize(init : CogInitializer)
-    {
-        var cog = this.QueryCollider.Cog;
-        
-        if (cog != null)
-        {
-            Console.WriteLine("HERE");
-            
-            Zero.Connect(
-                cog, Events.CollisionPersisted, this.OnCollisionPersisted
-            );
-        }
-    }
-    
-    [Override]
     function SteeringUpdate(event : UpdateEvent)
     {
         this.Impulse = Math.Normalize(this.Impulse);
         
-        this.AddImpulse(this.Impulse);
+        //this.AddImpulse(this.Impulse);
         
         this.Impulse = Real3.Zero;
     }
     
-    function OnCollisionPersisted(event : CollisionEvent)
-    {
-        if (event.OtherObject.Collider.Ghost)
-        {
-            return;
-        }
-        
-        foreach (var contact in event.ContactPoints)
-        {
-            contact.WorldPoint;
-            
-            if (this.DebugDrawContacts)
-            {
-                this.DebugDrawContact(contact);
-            }
-        }
-    }
+    // Callback for sensor results
+    // // Store the results
     
-    function DebugDrawContact(contact : ContactPoint)
-    {
-        var sphere = new DebugSphere();
-        
-        sphere.Position = contact.WorldPoint;
-        sphere.Radius = 0.25;
-        sphere.Color = Real4(1, 1, 0, 1);
-        
-        DebugDraw.Add(sphere);
-    }
+    // Update for each frame
+    // Solve for Yaw (based on flag)
+    // // Iterate over all contacts, find closest and most extreme after projecting them onto our axis (ignore perp normals)
+    // // Calculate rotation to move point out of our view cone (preferablly in the direction of the last rotation)
+    // // Save the direction of the last rotation
+    // Solve for Pitch (based on flag)
+    // // ...
+    // Determine if we need to move back
+    
+    // TODO: Add more options to the sensor
+    
+    // TODO: Change up steering to have:
+    // x AddLocalMovement (takes into account rotation)
+    // x AddWorldMovement (ignores rotation)
+    // x AddLookDirection
+    // x Support for rigidbody
+    // - Support for swept controller
 }
