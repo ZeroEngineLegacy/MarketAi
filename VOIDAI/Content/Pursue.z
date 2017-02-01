@@ -96,7 +96,7 @@ class Pursue : SteeringComponent
                 // Bring the object to a smooth stop, based on it's linear distance from the target
                 var ratio = predictedDis / this.GoalDistance;
                 
-                this.AddLookDirection(predictedDir);
+                this.AddLookDirection(this.TargetTranslation);
                 this.SteeringAccumulator.AddLocalMovement(
                     this.Orientation.LocalForward, this.MovementWeight * ratio
                 );

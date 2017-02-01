@@ -172,9 +172,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{13.6160297, 8.71757889, -0.113055944}
+			var Translation = Vec3{15.3053474, 11.3148689, 0.0539746545}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.161510646, 0.736517966, 0.18910557, 0.629042745}
+			var Rotation = Quat{-0.277160019, 0.647718608, 0.274273336, 0.65453583}
 		}
 		CameraViewport 
 		{
@@ -231,10 +231,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 16.4872055
-			var VerticalAngle = 0.502654552
-			var HorizontalAngle = -1.72788072
-			var LookTarget = Vec3{-0.653933465, 0.774810553, 2.14715385}
+			var LookDistance = 7.40817928
+			var VerticalAngle = 0.801105917
+			var HorizontalAngle = -1.5603267
+			var LookTarget = Vec3{10.1501818, 5.99486208, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -244,9 +244,9 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{0, 5.99486208, 10}
+			var Translation = Vec3{10.1501818, 5.99486208, 0}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.203878403, 0, 0, 0.978996217}
+			var Rotation = Quat{-0.143996477, 0.69228971, 0.143996477, 0.69228971}
 		}
 		CameraViewport 
 		{
@@ -339,7 +339,7 @@ Level
 		var LinkId = 7
 		Transform 
 		{
-			var Translation = Vec3{0, 1, 0}
+			var Translation = Vec3{0, 1, 0.723953247}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -402,6 +402,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
 		}
 	}
 	Cog 
@@ -410,7 +412,7 @@ Level
 		var LinkId = 8
 		Transform 
 		{
-			var Translation = Vec3{1.45610523, 1, 0}
+			var Translation = Vec3{1.45610523, 1, 0.723953247}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -473,6 +475,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
 		}
 	}
 	Cog 
@@ -481,7 +485,7 @@ Level
 		var LinkId = 9
 		Transform 
 		{
-			var Translation = Vec3{-1.87942886, 1, 0}
+			var Translation = Vec3{-1.87942886, 1, 0.723953247}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -544,6 +548,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
 		}
 	}
 	Cog 
@@ -552,7 +558,7 @@ Level
 		var LinkId = 10
 		Transform 
 		{
-			var Translation = Vec3{-2.80583811, 1.08723378, 2.14715385}
+			var Translation = Vec3{-2.80583811, 1.08723378, 2.8711071}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -590,7 +596,7 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Vec3{-0.0417068005, 1.08723378, 2.14715385}
+			var Translation = Vec3{-0.0417068005, 1.08723378, 2.8711071}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -628,9 +634,342 @@ Level
 		var LinkId = 12
 		Transform 
 		{
-			var Translation = Vec3{2.11130142, 1.08723378, 2.14715385}
+			var Translation = Vec3{2.11130142, 1.08723378, 2.8711071}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 13
+		Transform 
+		{
+			var Translation = Vec3{-2.57078218, 1.08723378, -2.65802813}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 14
+		Transform 
+		{
+			var Translation = Vec3{2.33294344, 1.08723378, -3.0209837}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog 
+	{
+		var Name = "Sphere"
+		var LinkId = 15
+		Transform 
+		{
+			var Translation = Vec3{1.56755209, 1, -0.811304808}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		SphereCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radius = 0.5
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		Sensor 
+		{
+			var Active = true
+			var EnableDebugDraw = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.SideSensors
+			var SideSensorAngle = 45
+			var SideSensorDistance = 4
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
+		}
+	}
+	Cog 
+	{
+		var Name = "Sphere"
+		var LinkId = 16
+		Transform 
+		{
+			var Translation = Vec3{-1.75888276, 1, -0.565094471}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		SphereCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radius = 0.5
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		Sensor 
+		{
+			var Active = true
+			var EnableDebugDraw = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.RandomPrimarySensor
+			var SideSensorAngle = 45
+			var SideSensorDistance = 2
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
+		}
+	}
+	Cog 
+	{
+		var Name = "Sphere"
+		var LinkId = 17
+		Transform 
+		{
+			var Translation = Vec3{-0.306749791, 1, -0.672575951}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		SphereCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radius = 0.5
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
+		}
+		Sensor 
+		{
+			var Active = true
+			var EnableDebugDraw = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SideSensorAngle = 45
+			var SideSensorDistance = 2
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
+		}
+	}
+	Cog 
+	{
+		var Name = "Cube"
+		var LinkId = 18
+		Transform 
+		{
+			var Translation = Vec3{-0.423647523, 1.08723378, -2.81695104}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
 		}
 		Model 
 		{

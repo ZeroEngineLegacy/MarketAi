@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Flee"
-		var ResourceId = 0x58da4aeeab780488
+		var Name = "Wander3D"
+		var ResourceId = 0x5878c5d5f261e6dc
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,8 +13,8 @@ DataContent
 	{
 		var Tags = Array
 		{
+			"Wander"
 			"Steering"
-			"Flee"
 		}
 	}
 }
