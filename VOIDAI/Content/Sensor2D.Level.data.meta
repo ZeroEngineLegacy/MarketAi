@@ -3,7 +3,7 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Sensor"
+		var Name = "Sensor2D"
 		var ResourceId = 0x58e5bdcba2f91165
 		var LoaderType = "Level"
 		var Version = 0

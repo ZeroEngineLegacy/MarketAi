@@ -62,6 +62,10 @@ class Sensor : ZilchComponent
     [Property]
     var SensorMode : SensorMode = SensorMode.PrimaryAndSideSensors;
     
+    // Should we sense in 2D or 3D
+    [Property]
+    var SensorSpaceMode : Mode2DStates = Mode2DStates.Mode2D;
+    
     // The angle of the side sensors
     [Property]
     var SideSensorAngle : Real = 45.0;
@@ -100,6 +104,25 @@ class Sensor : ZilchComponent
     var PrimarySensorMaxAngleRad : Real
     {
         get { return Math.ToRadians(this.PrimarySensorMaxAngle); }
+    }
+    
+    var Mode2D : Boolean
+    {
+        get
+        {
+            if (this.SensorSpaceMode == Mode2DStates.Mode2D)
+            {
+                return true;
+            }
+            if (this.SensorSpaceMode == Mode2DStates.Mode3D)
+            {
+                return false;
+            }
+            else
+            {
+                return this.Space.PhysicsSpace.Mode2D;
+            }
+        }
     }
     
     function Initialize(init : CogInitializer)
@@ -143,27 +166,30 @@ class Sensor : ZilchComponent
         if (this.SensorMode == SensorMode.PrimaryAndSideSensors ||
             this.SensorMode == SensorMode.SideSensors)
         {
-            // Set the direction and distance of the left sensor
-            var leftSensor = new SensorRay();
-            
-            leftSensor.Distance = this.SideSensorDistance;
-            leftSensor.Direction = Math.RotateVector(
-                this.Orientation.WorldForward, this.Orientation.WorldUp,
-                this.SideSensorAngleRad * 0.5
+            // Add the right and left side sensors
+            this.AddSideSensor(
+                sensors, this.Orientation.WorldForward, 
+                this.Orientation.WorldUp, this.SideSensorAngleRad * 0.5
             );
             
-            sensors.Add(leftSensor);
-            
-            // Set the direction and distance of the right sensor
-            var rightSensor = new SensorRay();
-            
-            rightSensor.Distance = this.SideSensorDistance;
-            rightSensor.Direction = Math.RotateVector(
-                this.Orientation.WorldForward, this.Orientation.WorldUp,
-                -this.SideSensorAngleRad * 0.5
+            this.AddSideSensor(
+                sensors, this.Orientation.WorldForward, 
+                this.Orientation.WorldUp, -this.SideSensorAngleRad * 0.5
             );
             
-            sensors.Add(rightSensor);
+            if (!this.Mode2D)
+            {
+                // Set the direction and distance of the up and down sensors
+                this.AddSideSensor(
+                    sensors, this.Orientation.WorldForward,
+                    this.Orientation.WorldRight, this.SideSensorAngleRad * 0.5
+                );
+                
+                this.AddSideSensor(
+                    sensors, this.Orientation.WorldForward,
+                    -this.Orientation.WorldRight, this.SideSensorAngleRad * 0.5
+                );
+            }
         }
         
         // Create the primary sensor...
@@ -182,6 +208,14 @@ class Sensor : ZilchComponent
             // Get the primary angle from a random function
             var primaryAngle = this.Random.Range(-this.PrimarySensorMaxAngleRad * 0.5, this.PrimarySensorMaxAngleRad * 0.5);
             var primaryRotation = Math.ToQuaternion(this.Orientation.WorldUp, primaryAngle);
+            
+            if (!this.Mode2D)
+            {
+                var primaryAngle3D = this.Random.Range(-this.PrimarySensorMaxAngleRad * 0.5, this.PrimarySensorMaxAngleRad * 0.5);
+                primaryRotation = Math.Multiply(
+                    Math.ToQuaternion(this.Orientation.WorldRight, primaryAngle3D), primaryRotation
+                );
+            }
             
             var primarySensor = new SensorRay();
             
@@ -299,6 +333,18 @@ class Sensor : ZilchComponent
         {
             this.Owner.DispatchEvent(Events.SensorEvent, event);
         }
+    }
+    
+    function AddSideSensor(sensors : Array[SensorRay], rotateVector : Real3, axisVector : Real3, angle : Real)
+    {
+        var sensor = new SensorRay();
+            
+        sensor.Distance = this.SideSensorDistance;
+        sensor.Direction = Math.RotateVector(
+            rotateVector, axisVector, angle
+        );
+        
+        sensors.Add(sensor);
     }
     
     function DebugDrawSphere(radius : Real, position : Real3, color : Real4)
