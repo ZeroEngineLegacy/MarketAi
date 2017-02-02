@@ -23,7 +23,7 @@ class SensorRay
 
 class SensorResult
 {
-    // The object, and it's contacts sensed
+    // The object, and its contacts sensed
     var Object : Cog;
     var Contacts : Array[Real3] = new Array[Real3]();
     var Normals : Array[Real3] = new Array[Real3]();
