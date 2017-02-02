@@ -206,7 +206,7 @@ Level
 			}
 			var SensorMode = SensorMode.PrimaryAndSideSensors
 			var SensorSpaceMode = Mode2DStates.Mode2D
-			var SideSensorAngle = 45
+			var SideSensorAngle = 60
 			var SideSensorDistance = 8
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
@@ -224,7 +224,7 @@ Level
 			var YawRotation = true
 			var PitchRotation = true
 			var ConeDistance = 11.0045671
-			var ConeAngle = 25
+			var ConeAngle = 35
 			var DebugDrawEnabled = true
 			var MovementWeight = 1
 			var LookDirectionWeight = 20
