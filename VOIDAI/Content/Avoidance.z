@@ -31,17 +31,25 @@ class Avoidance : SteeringComponent
     [Property]
     var ConeAngle : Real = 45.0;
     
-    [Property]
-    var DebugDrawEnabled : Boolean = true;
-    
     // Our cached sensor results
     var SensorResults : Array[SensorResult] = null;
+    
+    // Keep track of our last rotation
+    var LastYawRotation : Real = 0.0;
     
     var ConeAngleRad : Real
     {
         get
         {
             return Math.ToRadians(this.ConeAngle);
+        }
+    }
+    
+    var DebugDrawEnabled : Boolean
+    {
+        get
+        {
+            return this.SteeringAccumulator.DebugDrawEnabled;
         }
     }
     
@@ -64,6 +72,7 @@ class Avoidance : SteeringComponent
             this.DebugDrawCone(worldForward);
             
             // Draw the contacts
+            this.DebugDrawContacts();
         }
         
         // Solve for Yaw
@@ -130,9 +139,6 @@ class Avoidance : SteeringComponent
                         // Save the new closest distance, and new angle of correction
                         posClosestDistance = forwardDistance;
                         posAngleChange = this.ConeAngleRad - contactAngle;
-                        
-                        // TODO: use both?
-                        yawAngleChange = posAngleChange;
                     }
                     else
                     {
@@ -145,23 +151,27 @@ class Avoidance : SteeringComponent
                         // Save the new closest distance, and new angle of correction
                         negClosestDistance = forwardDistance;
                         negAngleChange = -this.ConeAngleRad - contactAngle;
-                        
-                        // TODO: use both?
-                        yawAngleChange = negAngleChange;
                     }
                 }
             }
             
-            // TODO: Incorporate the last rotated direction?
+            if (this.LastYawRotation > 0.0)
+            {
+                yawAngleChange = posAngleChange;
+            }
+            else
+            {
+                yawAngleChange = negAngleChange;
+            }
             
             if (yawAngleChange != 0.0)
             {
-                Console.WriteLine("`yawAngleChange`");
-                
                 // Apply our yaw rotation to the world forward
                 worldForward = Math.RotateVector(worldForward, worldUp, yawAngleChange);
                 rotated = true;
             }
+            
+            this.LastYawRotation = yawAngleChange;
         }
         
         // Solve for Pitch
@@ -172,9 +182,7 @@ class Avoidance : SteeringComponent
         
         // TODO: Determine if we need to move back
         
-        // TODO: Determine if we need to flush contacts
-        
-        // TODO: Determine if we need to reset our rotation direction?
+        // TODO: Determine if we need to flush contacts (Alow for sparse sensing)
         
         if (rotated)
         {
@@ -201,5 +209,27 @@ class Avoidance : SteeringComponent
         cone.Radius = Math.Tan(this.ConeAngleRad) * this.ConeDistance;
         
         DebugDraw.Add(cone);
+    }
+    
+    function DebugDrawContacts()
+    {
+        if (this.SensorResults == null)
+        {
+            return;
+        }
+        
+        foreach (var result in this.SensorResults)
+        {
+            foreach (var contact in result.Contacts)
+            {
+                var cube = new DebugObb();
+                
+                cube.Position = contact;
+                cube.Extents = Real3(0.5);
+                cube.Color = Real4(1.0, 0.0, 0.0, 1.0);
+                
+                DebugDraw.Add(cube);
+            }
+        }
     }
 }

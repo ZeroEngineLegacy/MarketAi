@@ -107,7 +107,7 @@ class SteeringRigidBodyMover : ZilchComponent
     function Rotate2D(event : SteeringResultsEvent)
     {
         var angle = Math.SignedAngle(
-            event.LookDirection, this.Orientation.WorldForward, this.Orientation.WorldUp
+            this.Orientation.WorldForward, event.LookDirection, this.Orientation.WorldUp
         );
         
         var rotationSpeed = this.MaxRotationRad * event.Dt;

@@ -216,6 +216,8 @@ Level
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Seek 
@@ -247,7 +249,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 360
-			var DebugDrawEnabled = true
 		}
 	}
 	Cog 

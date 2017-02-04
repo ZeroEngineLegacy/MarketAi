@@ -165,14 +165,7 @@ class SteeringAccumulator : ZilchComponent
         }
         else if (constraint == SteeringConstraints.XZPlane)
         {
-            var result = Math.ProjectOnPlane(vector, Real3(0, 1, 0));
-            
-            if (!Math.ApproximatelyEqual(result.Y, 0.0, 0.000001))
-            {
-                Console.WriteLine("FUCK: `result`");
-            }
-            
-            return result;
+            return Math.ProjectOnPlane(vector, Real3(0, 1, 0));
         }
         // SteeringConstraints.ZYPlane
         else
