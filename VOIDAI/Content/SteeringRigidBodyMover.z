@@ -38,12 +38,14 @@ class SteeringRigidBodyMover : ZilchComponent
     [Property]
     var MaxRotation : Real = 360.0;
     
-    [Property]
-    var DebugDrawEnabled : Boolean = true;
-    
     var MaxRotationRad : Real
     {
         get { return Math.ToRadians(this.MaxRotation); }
+    }
+    
+    var DebugDrawEnabled : Boolean
+    {
+        get { return this.SteeringAccumulator.DebugDrawEnabled; }
     }
     
     function Initialize(init : CogInitializer)
@@ -54,12 +56,14 @@ class SteeringRigidBodyMover : ZilchComponent
     function OnSteeringResults(event : SteeringResultsEvent)
     {
         // Calculate our rotation for this frame
-        var look = Math.RotateTowards(
-            this.Orientation.WorldForward, event.LookDirection, this.MaxRotationRad * event.Dt
-        );
-        
-        // Rotate the object
-        this.Orientation.LookAtDirection(look);
+        if (this.SteeringAccumulator.LookDirectionConstraint == SteeringConstraints.None)
+        {
+            this.Rotate3D(event);
+        }
+        else
+        {
+            this.Rotate2D(event);
+        }
         
         // Add together the world and local movements
         var localToWorld = this.Orientation.LocalToWorldRotation;
@@ -100,6 +104,57 @@ class SteeringRigidBodyMover : ZilchComponent
         this.DebugDrawVector(this.RigidBody.Velocity, Real4(0, 0, 1, 1));
     }
     
+    function Rotate2D(event : SteeringResultsEvent)
+    {
+        var angle = Math.SignedAngle(
+            event.LookDirection, this.Orientation.WorldForward, this.Orientation.WorldUp
+        );
+        
+        var rotationSpeed = this.MaxRotationRad * event.Dt;
+        
+        if (Math.Abs(angle) > rotationSpeed)
+        {
+            // Clamp
+            if (angle < 0.0)
+            {
+                angle = -rotationSpeed;
+            }
+            else
+            {
+                angle = rotationSpeed;
+            }
+        }
+        
+        var lookConstraint = this.SteeringAccumulator.LookDirectionConstraint;
+        var eulerAngles = Real3.Zero;
+        
+        if (lookConstraint == SteeringConstraints.XYPlane)
+        {
+            eulerAngles = Real3(0.0, 0.0, angle);
+        }
+        else if (lookConstraint == SteeringConstraints.XZPlane)
+        {
+            eulerAngles = Real3(0.0, angle, 0.0);
+        }
+        else
+        {
+          eulerAngles = Real3(angle, 0.0, 0.0);
+        }
+        
+        this.Transform.Rotation = Math.Multiply(
+            this.Transform.Rotation, Math.ToQuaternion(eulerAngles)
+        );
+    }
+    
+    function Rotate3D(event : SteeringResultsEvent)
+    {
+        var look = Math.RotateTowards(
+            this.Orientation.WorldForward, event.LookDirection, this.MaxRotationRad * event.Dt
+        );
+        
+        this.Orientation.LookAtDirection(look);
+    }
+    
     function DebugDrawVector(vector : Real3, color : Real4)
     {
         if (!this.DebugDrawEnabled)
@@ -109,7 +164,7 @@ class SteeringRigidBodyMover : ZilchComponent
         
         var line = new DebugLine();
         
-        line.Start = this.Transform.Translation;
+        line.Start = this.Transform.WorldTranslation;
         line.End = line.Start + vector;
         line.HeadSize = 0.5;
         line.Color = color;

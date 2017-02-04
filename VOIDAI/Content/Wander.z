@@ -10,6 +10,12 @@
 /*        direction is constrained to lie on a circle.                                                      */
 /************************************************************************************************************/
 
+enum WanderShapes
+{
+    Circle,
+    Sphere
+}
+
 class Wander : SteeringComponent
 {
     [Dependency]
@@ -20,7 +26,7 @@ class Wander : SteeringComponent
     
     // Should we wander in 2D or 3D
     [Property]
-    var Mode : Mode2DStates = Mode2DStates.Mode2D;
+    var WanderShape : WanderShapes = WanderShapes.Circle;
     
     // The radius of the circle/sphere which the target point is constrained to
     [Property]
@@ -54,12 +60,17 @@ class Wander : SteeringComponent
         get { return Math.ToRadians(this.WanderAngle); }
     }
     
+    var DebugDrawEnabled : Boolean
+    {
+        get { return this.SteeringAccumulator.DebugDrawEnabled; }
+    }
+    
     [Override]
     function SteeringInitialize(init : CogInitializer)
     {
-        var seed = this.Transform.Translation.X +
-                   this.Transform.Translation.Y +
-                   this.Transform.Translation.Z +
+        var seed = this.Transform.WorldTranslation.X +
+                   this.Transform.WorldTranslation.Y +
+                   this.Transform.WorldTranslation.Z +
                    this.Space.TimeSpace.RealTimePassed;
         
         // Seed the random number generator
@@ -90,18 +101,7 @@ class Wander : SteeringComponent
         }
         
         // Determine whether we're using a circle or a sphere for our wander direction
-        var mode2D = true;
-        
-        if (this.Mode == Mode2DStates.Mode3D)
-        {
-            mode2D = false;
-        }
-        else if (this.Mode == Mode2DStates.InheritFromSpace)
-        {
-            mode2D = this.Space.PhysicsSpace.Mode2D;
-        }
-        
-        if (mode2D)
+        if (this.WanderShape == WanderShapes.Circle)
         {
             this.WanderCircle();
         }
@@ -139,6 +139,28 @@ class Wander : SteeringComponent
         this.Result = this.Orientation.WorldForward * this.WanderOffset + 
                       direction * this.Radius;
         this.Result = Math.Normalize(this.Result);
+        
+        if (this.DebugDrawEnabled)
+        {
+            var circle = new DebugCircle();
+            
+            circle.Position = this.Transform.WorldTranslation + 
+                              this.Orientation.WorldForward * this.WanderOffset;
+            circle.Radius = this.Radius;
+            circle.Axis = this.Orientation.WorldUp;
+            circle.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(circle);
+            
+            var offset = new DebugLine();
+            
+            offset.Start = circle.Position;
+            offset.End = offset.Start + direction * this.Radius;
+            offset.HeadSize = 0.5;
+            offset.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(offset);
+        }
     }
     
     function WanderSphere()
@@ -150,10 +172,31 @@ class Wander : SteeringComponent
         var point = this.RandomGenerator.UnitReal3() * Math.Sin(angle);
         point = Real3(point.X, point.Y, Math.Cos(angle));
         
-        var direction = Math.Transform(point, this.Orientation.WorldRotation);
+        var direction = -Math.Multiply(this.Orientation.LocalToWorldRotation, point);
         
         this.Result = this.Orientation.WorldForward * this.WanderOffset +
                       direction * this.Radius;
         this.Result = Math.Normalize(this.Result);
+        
+        if (this.DebugDrawEnabled)
+        {
+            var sphere = new DebugSphere();
+            
+            sphere.Position = this.Transform.WorldTranslation +
+                              this.Orientation.WorldForward * this.WanderOffset;
+            sphere.Radius = this.Radius;
+            sphere.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(sphere);
+            
+            var offset = new DebugLine();
+            
+            offset.Start = sphere.Position;
+            offset.End = offset.Start + direction * this.Radius;
+            offset.HeadSize = 0.5;
+            offset.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(offset);
+        }
     }
 }

@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-2.15665579, 28.9703178, -48.3705597}
+			var Translation = Vec3{23.8871613, 25.2896919, -39.1699562}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0160589051, 0.958701491, 0.27852875, 0.0552749299}
+			var Rotation = Quat{-0.0840315968, 0.909639001, 0.225955814, 0.338289112}
 		}
 		CameraViewport 
 		{
@@ -95,9 +95,9 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 54.2094917
-			var VerticalAngle = 0.565487087
-			var HorizontalAngle = 22.1063328
+			var LookDistance = 54.2095451
+			var VerticalAngle = 0.486947507
+			var HorizontalAngle = 22.7032375
 			var LookTarget = Vec3{-7.41705322, -0.0766004026, -2.90327859}
 			var MoveSensitivity = 1
 		}
@@ -398,20 +398,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -425,7 +427,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -471,20 +472,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -498,7 +501,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -544,20 +546,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -571,7 +575,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -617,20 +620,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -644,7 +649,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -690,20 +694,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -717,7 +723,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -763,20 +768,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -790,7 +797,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -836,20 +842,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -863,7 +871,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -909,20 +916,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -936,7 +945,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -982,20 +990,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1009,7 +1019,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1055,20 +1064,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1082,7 +1093,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1128,20 +1138,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1155,7 +1167,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1201,20 +1212,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1228,7 +1241,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1274,20 +1286,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1301,7 +1315,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1347,20 +1360,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1374,7 +1389,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1420,20 +1434,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1447,7 +1463,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1493,20 +1508,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1520,7 +1537,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1566,20 +1582,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1593,7 +1611,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1639,20 +1656,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1666,7 +1685,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1712,20 +1730,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1739,7 +1759,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1785,20 +1804,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1812,7 +1833,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1858,20 +1878,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1885,7 +1907,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -1931,20 +1952,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -1958,7 +1981,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -2004,20 +2026,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -2031,7 +2055,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{
@@ -2077,20 +2100,22 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardZUpY
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
+			var WanderShape = WanderShapes.Circle
+			var Radius = 3
 			var WanderAngle = 60
-			var WanderOffset = 1
+			var WanderOffset = 4
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
@@ -2104,7 +2129,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 180
-			var DebugDrawEnabled = true
 		}
 		CylinderCollider 
 		{

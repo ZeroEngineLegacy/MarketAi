@@ -98,7 +98,7 @@ class Avoidance : SteeringComponent
                     contact = Math.ProjectOnPlane(contact, this.Orientation.WorldUp);
                     
                     // Only process contacts inside of our cone
-                    var contactDir = contact - this.Transform.Translation;
+                    var contactDir = contact - this.Transform.WorldTranslation;
                     var forwardDistance = Math.Dot(contactDir, worldForward);
                     
                     // If (contact is behind cone OR out of the cone's distance)
@@ -195,7 +195,7 @@ class Avoidance : SteeringComponent
     {
         var cone = new DebugCone();
         
-        cone.Position = this.Transform.Translation;
+        cone.Position = this.Transform.WorldTranslation;
         cone.Direction = direction;
         cone.Length = this.ConeDistance;
         cone.Radius = Math.Tan(this.ConeAngleRad) * this.ConeDistance;

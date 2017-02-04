@@ -42,7 +42,7 @@ class Pursue : SteeringComponent
     
     var TargetTranslation : Real3
     {
-        get { return this.Target.Cog.Transform.Translation; }
+        get { return this.Target.Cog.Transform.WorldTranslation; }
     }
     
     var TargetPrevTranslation : Real3;
@@ -63,7 +63,7 @@ class Pursue : SteeringComponent
         }
         
         // Get the target's distance from our position, and determine how much we're predicting by
-        var targDir = this.TargetTranslation - this.Transform.Translation;
+        var targDir = this.TargetTranslation - this.Transform.WorldTranslation;
         var targDis = Math.LengthSq(targDir);
         var prediction = Math.Max(this.PredictionRange, event.Dt);
         
@@ -77,7 +77,7 @@ class Pursue : SteeringComponent
         // Estimate the target object's predicted future position
         var targVel = Math.Normalize(this.TargetTranslation - this.TargetPrevTranslation);
         var predictedPos = this.TargetTranslation + (targVel * prediction);
-        var predictedDir = predictedPos - this.Transform.Translation;
+        var predictedDir = predictedPos - this.Transform.WorldTranslation;
         var predictedDis = Math.Length(predictedDir);
         
         predictedDir /= predictedDis;

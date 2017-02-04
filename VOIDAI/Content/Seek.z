@@ -44,7 +44,7 @@ class Seek : SteeringComponent
         }
         
         // Calculate a vector to the target object
-        var targDir = this.Target.Cog.Transform.Translation - this.Transform.Translation;
+        var targDir = this.Target.Cog.Transform.WorldTranslation - this.Transform.WorldTranslation;
         var targDis = Math.Length(targDir);
         
         // Normalize the vector to the target object so it does not affect movement speed

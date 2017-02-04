@@ -27,9 +27,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{4.60446548, 11.1471386, 14.1713896}
+			var Translation = Vec3{46.9035568, 5.7092514, -8.34210968}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.306032717, 0.148732781, 0.0484698154, 0.939081013}
+			var Rotation = Quat{-0.0538212582, 0.710536361, 0.0546731092, 0.699465752}
 		}
 		CameraViewport 
 		{
@@ -86,10 +86,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 18.4416428
-			var VerticalAngle = 0.630064845
-			var HorizontalAngle = 5.96903229
-			var LookTarget = Vec3{0, 0.281375408, 0}
+			var LookDistance = 33.6028442
+			var VerticalAngle = 0.153589875
+			var HorizontalAngle = 10.9798717
+			var LookTarget = Vec3{13.7003717, 0.568462193, -7.82069302}
 			var MoveSensitivity = 1
 		}
 	}
@@ -166,7 +166,7 @@ Level
 		var LinkId = 5
 		Transform 
 		{
-			var Translation = Vec3{0, 0.281375408, 0}
+			var Translation = Vec3{0, 0.5, 0}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -207,8 +207,8 @@ Level
 			var SensorMode = SensorMode.PrimaryAndSideSensors
 			var SensorSpaceMode = Mode2DStates.Mode2D
 			var SideSensorAngle = 60
-			var SideSensorDistance = 8
-			var PrimarySensorDistance = 6
+			var SideSensorDistance = 4
+			var PrimarySensorDistance = 3
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
 			var SparseUpdate = false
@@ -217,13 +217,15 @@ Level
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Avoidance 
 		{
 			var YawRotation = true
 			var PitchRotation = true
-			var ConeDistance = 11.0045671
+			var ConeDistance = 3
 			var ConeAngle = 35
 			var DebugDrawEnabled = true
 			var MovementWeight = 1
@@ -585,7 +587,7 @@ Level
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{0, 0.281375408, 14.4365635}
+			var Translation = Vec3{0, 0.5, 14.4365635}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}

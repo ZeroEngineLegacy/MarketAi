@@ -17,6 +17,14 @@ class SteeringResultsEvent : ZilchEvent
     var LookDirection : Real3 = Real3.Zero;
 }
 
+enum SteeringConstraints
+{
+    None,
+    XZPlane,
+    XYPlane,
+    ZYPlane
+}
+
 class SteeringAccumulator : ZilchComponent
 {
     // All SteeringComponents listen to this update
@@ -34,6 +42,14 @@ class SteeringAccumulator : ZilchComponent
     // Determines if the component is active
     [Property]
     var Active : Boolean = true;
+    
+    // Constrain the movements accumulated
+    [Property]
+    var MovementConstraint : SteeringConstraints = SteeringConstraints.None;
+    
+    // Constrain the look directions accumulated
+    [Property]
+    var LookDirectionConstraint : SteeringConstraints = SteeringConstraints.None;
     
     [Property]
     var DebugDrawEnabled : Boolean = true;
@@ -79,6 +95,11 @@ class SteeringAccumulator : ZilchComponent
         {
             this.LookDirectionAccum /= this.LookDirectionWeightAccum;
         }
+        
+        this.LocalMoveAccum = this.ConstrainVector(this.LocalMoveAccum, this.MovementConstraint);
+        this.WorldMoveAccum = this.ConstrainVector(this.WorldMoveAccum, this.MovementConstraint);
+        this.LookDirectionAccum = this.ConstrainVector(this.LookDirectionAccum, this.LookDirectionConstraint);
+        
         // Dispatch the results
         var results = new SteeringResultsEvent();
         
@@ -132,6 +153,34 @@ class SteeringAccumulator : ZilchComponent
         this.LookDirectionWeightAccum += weight;
     }
     
+    function ConstrainVector(vector : Real3, constraint : SteeringConstraints) : Real3
+    {
+        if (constraint == SteeringConstraints.None)
+        {
+            return vector;
+        }
+        else if (constraint == SteeringConstraints.XYPlane)
+        {
+            return Math.ProjectOnPlane(vector, Real3(0, 0, 1));
+        }
+        else if (constraint == SteeringConstraints.XZPlane)
+        {
+            var result = Math.ProjectOnPlane(vector, Real3(0, 1, 0));
+            
+            if (!Math.ApproximatelyEqual(result.Y, 0.0, 0.000001))
+            {
+                Console.WriteLine("FUCK: `result`");
+            }
+            
+            return result;
+        }
+        // SteeringConstraints.ZYPlane
+        else
+        {
+            return Math.ProjectOnPlane(vector, Real3(1, 0, 0));
+        }
+    }
+    
     function DebugDrawVector(vector : Real3, color : Real4)
     {
         if (!this.DebugDrawEnabled)
@@ -141,7 +190,7 @@ class SteeringAccumulator : ZilchComponent
         
         var line = new DebugLine();
         
-        line.Start = this.Transform.Translation;
+        line.Start = this.Transform.WorldTranslation;
         line.End = line.Start + vector;
         line.HeadSize = 0.5;
         line.Color = color;
