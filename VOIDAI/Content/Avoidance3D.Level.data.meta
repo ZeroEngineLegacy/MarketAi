@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Avoidance"
-		var ResourceId = 0x5838038b1bb869bd
+		var Name = "Avoidance3D"
+		var ResourceId = 0x58956d82120d69d6
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,8 +13,8 @@ DataContent
 	{
 		var Tags = Array
 		{
+			"Wander"
 			"Steering"
-			"Avoid"
 		}
 	}
 }

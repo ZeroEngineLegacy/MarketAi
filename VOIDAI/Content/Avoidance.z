@@ -31,11 +31,16 @@ class Avoidance : SteeringComponent
     [Property]
     var ConeAngle : Real = 45.0;
     
+    [Property]
+    var MoveBackDistance : Real = 1.0;
+    
     // Our cached sensor results
     var SensorResults : Array[SensorResult] = null;
     
     // Keep track of our last rotation
     var LastYawRotation : Real = 0.0;
+    
+    var LastPitchRotation : Real = 0.0;
     
     var ConeAngleRad : Real
     {
@@ -64,6 +69,8 @@ class Avoidance : SteeringComponent
     function SteeringUpdate(event : UpdateEvent)
     {
         var worldForward = this.Orientation.WorldForward;
+        var worldRight = this.Orientation.WorldRight;
+        var worldUp = this.Orientation.WorldUp;
         var rotated = false;
         
         if (this.DebugDrawEnabled)
@@ -78,109 +85,64 @@ class Avoidance : SteeringComponent
         // Solve for Yaw
         if (this.YawRotation && this.SensorResults != null)
         {
-            var worldRight = this.Orientation.WorldRight;
-            var worldUp = this.Orientation.WorldUp;
-            var posAngleChange = 0.0;
-            var negAngleChange = 0.0;
-            var posClosestDistance = this.ConeDistance;
-            var negClosestDistance = this.ConeDistance;
-            var yawAngleChange = 0.0;
+            var angleChange = this.SolveForRotation(
+                worldForward, worldUp, this.LastYawRotation
+            );
             
-            // Iterate over all contacts
-            foreach (var result in this.SensorResults)
+            if (angleChange != 0.0)
             {
-                for (var i = 0; i < result.Contacts.Count; ++i)
-                {
-                    var normal = result.Normals[i];
-                    
-                    // Only process contacts with normals not perpendicular to our forward vector
-                    var normDotForw = Math.Dot(normal, worldForward);
-                    
-                    if (Math.ApproximatelyEqual(normDotForw, 0.0, 0.0001))
-                    {
-                        continue;
-                    }
-                    
-                    var contact = result.Contacts[i];
-                    
-                    // Project the contact onto the plane{ right, forward }
-                    contact = Math.ProjectOnPlane(contact, this.Orientation.WorldUp);
-                    
-                    // Only process contacts inside of our cone
-                    var contactDir = contact - this.Transform.WorldTranslation;
-                    var forwardDistance = Math.Dot(contactDir, worldForward);
-                    
-                    // If (contact is behind cone OR out of the cone's distance)
-                    if (forwardDistance < 0.0 || forwardDistance > this.ConeDistance)
-                    {
-                        continue;
-                    }
-                    
-                    var contactNorm = Math.Normalize(contactDir);
-                    var contactAngle = Math.SignedAngle(contactNorm, worldForward, worldUp);
-                    
-                    // If (contact is outside of our cone angle)
-                    if (Math.Abs(contactAngle) > this.ConeAngleRad)
-                    {
-                        continue;
-                    }
-                    
-                    // Determine what side of the vector this projected point is on
-                    var positiveDir = contactAngle > 0.0;
-                    
-                    if (positiveDir)
-                    {
-                        // If (we've already processed a contact closer than this one)
-                        if (forwardDistance > posClosestDistance)
-                        {
-                            continue;
-                        }
-                        
-                        // Save the new closest distance, and new angle of correction
-                        posClosestDistance = forwardDistance;
-                        posAngleChange = this.ConeAngleRad - contactAngle;
-                    }
-                    else
-                    {
-                        // If (we've already processed a contact closer than this one)
-                        if (forwardDistance > negClosestDistance)
-                        {
-                            continue;
-                        }
-                        
-                        // Save the new closest distance, and new angle of correction
-                        negClosestDistance = forwardDistance;
-                        negAngleChange = -this.ConeAngleRad - contactAngle;
-                    }
-                }
-            }
-            
-            if (this.LastYawRotation > 0.0)
-            {
-                yawAngleChange = posAngleChange;
-            }
-            else
-            {
-                yawAngleChange = negAngleChange;
-            }
-            
-            if (yawAngleChange != 0.0)
-            {
+                Console.WriteLine("YAW: `angleChange`");
+                
                 // Apply our yaw rotation to the world forward
-                worldForward = Math.RotateVector(worldForward, worldUp, yawAngleChange);
+                worldForward = Math.RotateVector(worldForward, worldUp, angleChange);
                 rotated = true;
             }
             
-            this.LastYawRotation = yawAngleChange;
+            this.LastYawRotation = angleChange;
         }
         
         // Solve for Pitch
         if (this.PitchRotation && this.SensorResults != null)
         {
+            var angleChange = this.SolveForRotation(
+                worldForward, worldRight, this.LastPitchRotation
+            );
             
+            if (angleChange != 0.0)
+            {
+                Console.WriteLine("PITCH: `angleChange`");
+                
+                // Apply our pitch rotation to the world forward
+                worldForward = Math.RotateVector(worldForward, worldRight, angleChange);
+                rotated = true;
+            }
+            
+            this.LastPitchRotation = angleChange;
         }
         
-        // TODO: Determine if we need to move back
+        // Determine if we need to move back from a contact
+        if (this.SensorResults != null && this.MoveBackDistance != 0.0)
+        {
+            var worldPos = this.Transform.WorldTranslation;
+            
+            // Iterate over all contacts
+            foreach (var result in this.SensorResults)
+            {
+                foreach (var contact in result.Contacts)
+                {
+                    var distSq = Math.DistanceSq(worldPos, contact);
+                    
+                    // If this contact is too close
+                    if (distSq <= this.MoveBackDistance * this.MoveBackDistance)
+                    {
+                        // Move away from this contact
+                        var dir = Math.Normalize(worldPos - contact);
+                        
+                        this.AddWorldMovement(dir);
+                    }
+                }
+            }
+        }
         
         // TODO: Determine if we need to flush contacts (Alow for sparse sensing)
         
@@ -189,6 +151,7 @@ class Avoidance : SteeringComponent
             this.AddLookDirection(worldForward);
         }
         
+        // TODO: Flush them some other way
         this.SensorResults = null;
     }
     
@@ -197,6 +160,95 @@ class Avoidance : SteeringComponent
     {
         // Store the results
         this.SensorResults = event.Results;
+    }
+    
+    function SolveForRotation(worldForward : Real3, rotAxis : Real3, lastRot : Real) : Real
+    {
+        var posAngleChange = 0.0;
+        var negAngleChange = 0.0;
+        var posClosestDistance = this.ConeDistance;
+        var negClosestDistance = this.ConeDistance;
+        var angleChange = 0.0;
+        
+        // Iterate over all contacts
+        foreach (var result in this.SensorResults)
+        {
+            for (var i = 0; i < result.Contacts.Count; ++i)
+            {
+                var normal = result.Normals[i];
+                
+                // Only process contacts with normals not perpendicular to our forward vector
+                var normDotForw = Math.Dot(normal, worldForward);
+                
+                if (Math.ApproximatelyEqual(normDotForw, 0.0, 0.0001))
+                {
+                    continue;
+                }
+                
+                var contact = result.Contacts[i];
+                
+                // Project the contact onto the plane{ right, forward }
+                contact = Math.ProjectOnPlane(contact, rotAxis);
+                
+                // Only process contacts inside of our cone
+                var contactDir = contact - this.Transform.WorldTranslation;
+                var forwardDistance = Math.Dot(contactDir, worldForward);
+                
+                // If (contact is behind cone OR out of the cone's distance)
+                if (forwardDistance < 0.0 || forwardDistance > this.ConeDistance)
+                {
+                    continue;
+                }
+                
+                var contactNorm = Math.Normalize(contactDir);
+                var contactAngle = Math.SignedAngle(contactNorm, worldForward, rotAxis);
+                
+                // If (contact is outside of our cone angle)
+                if (Math.Abs(contactAngle) > this.ConeAngleRad)
+                {
+                    continue;
+                }
+                
+                // Determine what side of the vector this projected point is on
+                var positiveDir = contactAngle > 0.0;
+                
+                if (positiveDir)
+                {
+                    // If (we've already processed a contact closer than this one)
+                    if (forwardDistance > posClosestDistance)
+                    {
+                        continue;
+                    }
+                    
+                    // Save the new closest distance, and new angle of correction
+                    posClosestDistance = forwardDistance;
+                    posAngleChange = this.ConeAngleRad - contactAngle;
+                }
+                else
+                {
+                    // If (we've already processed a contact closer than this one)
+                    if (forwardDistance > negClosestDistance)
+                    {
+                        continue;
+                    }
+                    
+                    // Save the new closest distance, and new angle of correction
+                    negClosestDistance = forwardDistance;
+                    negAngleChange = -this.ConeAngleRad - contactAngle;
+                }
+            }
+        }
+        
+        if (lastRot > 0.0)
+        {
+            angleChange = posAngleChange;
+        }
+        else
+        {
+            angleChange = negAngleChange;
+        }
+        
+        return angleChange;
     }
     
     function DebugDrawCone(direction : Real3)
