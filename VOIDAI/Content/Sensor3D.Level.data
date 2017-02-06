@@ -172,9 +172,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{4.75947475, 10.5864191, -10.715354}
+			var Translation = Vec3{21.2915459, 5.83473969, 0.205269188}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0455290936, 0.931329727, 0.338975787, 0.125090301}
+			var Rotation = Quat{-0.085337311, 0.703747153, 0.0857855082, 0.700070262}
 		}
 		CameraViewport 
 		{
@@ -231,9 +231,9 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 14.9182415
-			var VerticalAngle = 0.698130786
-			var HorizontalAngle = 3.40862179
+			var LookDistance = 20.1375141
+			var VerticalAngle = 0.242599517
+			var HorizontalAngle = 4.70715046
 			var LookTarget = Vec3{1.7439903, 0.997168601, 0.307670414}
 			var MoveSensitivity = 1
 		}
@@ -398,7 +398,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -462,7 +462,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -526,7 +526,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -626,7 +626,7 @@ Level
 			var GeometryMode = SpriteGeometryMode.ZPlane
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "PerFrame Update"
+			var Text = "Every Frame Update"
 			var Align = TextAlign.Center
 			var PixelsPerUnit = 128
 		}
@@ -696,7 +696,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -760,7 +760,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -880,7 +880,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""

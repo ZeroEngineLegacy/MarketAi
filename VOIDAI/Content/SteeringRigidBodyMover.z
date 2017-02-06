@@ -101,7 +101,7 @@ class SteeringRigidBodyMover : ZilchComponent
         }
         
         this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
-        this.DebugDrawVector(this.RigidBody.Velocity, Real4(0, 0, 1, 1));
+        this.DebugDrawVector(this.RigidBody.Velocity * event.Dt, Real4(0, 0, 1, 1));
     }
     
     function Rotate2D(event : SteeringResultsEvent)

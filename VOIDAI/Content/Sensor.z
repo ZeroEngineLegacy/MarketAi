@@ -52,7 +52,7 @@ class Sensor : ZilchComponent
     
     // Do we draw the debug information?
     [Property]
-    var EnableDebugDraw : Boolean = false;
+    var DebugDrawEnabled : Boolean = false;
     
     // Do we want to send events containing sensor data to this object
     [Property]
@@ -228,7 +228,7 @@ class Sensor : ZilchComponent
         }
         
         // If debug draw is enabled...
-        if (this.EnableDebugDraw)
+        if (this.DebugDrawEnabled)
         {
             // Loop through all the sensors
             foreach (var sensor in sensors)
@@ -298,7 +298,7 @@ class Sensor : ZilchComponent
                     result.Normals.Add(castResult.Normal);
                     
                     // If debug draw is on, draw the intersection point and the normal
-                    if (this.EnableDebugDraw)
+                    if (this.DebugDrawEnabled)
                     {
                         this.DebugDrawSphere(
                             0.5, castResult.WorldPosition, Real4(0.0, 1.0, 0.0, 1.0)

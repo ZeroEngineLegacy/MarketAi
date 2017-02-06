@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-36.0275803, 45.8598289, 2.84961987}
+			var Translation = Vec3{15.5663929, 15.2971897, -28.1953011}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.303456396, -0.622413337, -0.284963071, 0.662806153}
+			var Rotation = Quat{-0.0264607854, 0.964642763, 0.239617899, 0.106524475}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 64.367569
-			var VerticalAngle = 0.858701944
-			var HorizontalAngle = 14.0743303
-			var LookTarget = Vec3{5.94851351, -2.86610198, 0.208507836}
+			var LookDistance = 32.6912766
+			var VerticalAngle = 0.486945719
+			var HorizontalAngle = 22.2111149
+			var LookTarget = Vec3{9.26237297, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -194,7 +194,7 @@ Level
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
-			var RotationLocked = true
+			var RotationLocked = false
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		BoxCollider 
@@ -224,7 +224,7 @@ Level
 		{
 			var Target = CogPath
 			{
-				var Path = ":/Target"
+				var Path = ":/Evader"
 				var ErrorOnResolveToNull = false
 				var ErrorOnPathCantCompute = false
 				var ErrorOnDirectLinkFail = false
@@ -239,7 +239,7 @@ Level
 			}
 			var PursueRange = 0
 			var PredictionRange = 2
-			var GoalDistance = 2
+			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
 			var Active = true
@@ -254,11 +254,11 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Target"
+		var Name = "Evader"
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{-6.94537163, 0, 0}
+			var Translation = Vec3{-6.94537163, 0, 3.06077218}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
@@ -281,8 +281,72 @@ Level
 			var Height = 1
 			var Direction = AxisDirection.Y
 		}
-		DebugTargetSpawner 
+		RigidBody 
 		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = false
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		Evade 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Pursuer"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 5
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var EvadeRange = 5
+			var PredictionRange = 3
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Wander 
+		{
+			var WanderShape = WanderShapes.Circle
+			var Radius = 5
+			var WanderAngle = 45
+			var WanderOffset = 1
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
 		}
 	}
 	Cog 

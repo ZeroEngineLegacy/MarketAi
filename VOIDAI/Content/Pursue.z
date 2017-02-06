@@ -98,7 +98,7 @@ class Pursue : SteeringComponent
                 
                 this.AddLookDirection(this.TargetTranslation);
                 this.SteeringAccumulator.AddLocalMovement(
-                    this.Orientation.LocalForward, this.MovementWeight * ratio
+                    this.Orientation.LocalForward, this.MovementWeight * ratio * ratio
                 );
             }
         }

@@ -27,9 +27,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-25.0252895, 24.7512016, 87.598938}
+			var Translation = Vec3{-32.8728752, 2.41562486, 38.0120659}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.188312307, -0.271045685, -0.0541600958, 0.942411482}
+			var Rotation = Quat{-0.00259425864, -0.669022262, -0.00233521848, 0.743234158}
 		}
 		CameraViewport 
 		{
@@ -86,10 +86,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 63.1057053
-			var VerticalAngle = 0.394444048
-			var HorizontalAngle = 69.6751404
-			var LookTarget = Vec3{5.92656708, 0.499996364, 38.2411423}
+			var LookDistance = 25.6568737
+			var VerticalAngle = 0.00698096119
+			var HorizontalAngle = 76.8640213
+			var LookTarget = Vec3{-7.35792351, 2.23651671, 35.3231392}
 			var MoveSensitivity = 1
 		}
 	}
@@ -1063,7 +1063,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1072,21 +1072,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1109,8 +1098,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1133,6 +1122,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1185,7 +1185,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1194,21 +1194,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1231,8 +1220,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1255,6 +1244,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1307,7 +1307,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1316,21 +1316,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1353,8 +1342,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1377,6 +1366,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1429,7 +1429,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1438,21 +1438,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1475,8 +1464,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1499,6 +1488,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1551,7 +1551,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1560,21 +1560,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1597,8 +1586,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1621,6 +1610,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1673,7 +1673,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1682,21 +1682,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1719,8 +1708,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1743,6 +1732,17 @@ Level
 			var GoalDistance = 0
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1795,7 +1795,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1804,21 +1804,10 @@ Level
 			var MaxVelocity = 6
 			var MaxRotation = 360
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = false
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1841,8 +1830,8 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
 		}
 		Seek 
 		{
@@ -1867,6 +1856,17 @@ Level
 			var LookDirectionWeight = 1
 			var Active = true
 		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
 	}
 	Cog 
 	{
@@ -1877,14 +1877,6 @@ Level
 			var Translation = Vec3{-9.75811577, 0.499996185, 38.2411423}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b3572e:Cylinder"
 		}
 		RigidBody 
 		{
@@ -1925,7 +1917,7 @@ Level
 		{
 			var MinImpulse = 2
 			var MaxImpulse = 4
-			var MaxVelocity = 7
+			var MaxVelocity = 8
 			var MaxRotation = 360
 		}
 		Wander 
@@ -1941,21 +1933,10 @@ Level
 			var LookDirectionWeight = 1
 			var Active = true
 		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = false
-			var ConeDistance = 5
-			var ConeAngle = 45
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-		}
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1979,7 +1960,2846 @@ Level
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
 			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
+			var SparseUpdateMaxTimeout = 15
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Hierarchy 
+		{
+			Cog 
+			{
+				var Name = "Cylinder"
+				var LinkId = 43
+				Transform 
+				{
+					var Translation = Vec3{0, 1, 0}
+					var Scale = Vec3{1, 3, 1}
+					var Rotation = Quat{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b3572e:Cylinder"
+				}
+			}
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 44
+		Transform 
+		{
+			var Translation = Vec3{40.7304688, 0.499996185, -29.8376083}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 44
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 45
+		Transform 
+		{
+			var Translation = Vec3{-5.93278694, 0.499996185, -26.3044815}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 45
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 46
+		Transform 
+		{
+			var Translation = Vec3{-32.607132, 0.499996185, -1.26111603}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 46
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 47
+		Transform 
+		{
+			var Translation = Vec3{13.901762, 0.499996185, -8.56536102}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 47
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 48
+		Transform 
+		{
+			var Translation = Vec3{-23.8803959, 0.5, -21.9152756}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 48
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 49
+		Transform 
+		{
+			var Translation = Vec3{14.5773449, 0.500003815, -27.9033966}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 49
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 50
+		Transform 
+		{
+			var Translation = Vec3{-21.5264225, 0.500007629, 5.25654602}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 50
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 51
+		Transform 
+		{
+			var Translation = Vec3{27.9587936, 0.499996185, -16.0798264}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 51
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 52
+		Transform 
+		{
+			var Translation = Vec3{-9.82336426, 0.5, -29.4297409}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 52
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 53
+		Transform 
+		{
+			var Translation = Vec3{28.6343765, 0.500003815, -35.4178619}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 53
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 54
+		Transform 
+		{
+			var Translation = Vec3{-7.46939087, 0.500007629, -2.25791931}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 54
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 55
+		Transform 
+		{
+			var Translation = Vec3{27.3694305, 0.500011444, -27.2802353}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 55
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 56
+		Transform 
+		{
+			var Translation = Vec3{-11.0883102, 0.500007629, -21.2921143}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 56
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 57
+		Transform 
+		{
+			var Translation = Vec3{26.6938477, 0.500003815, -7.94219971}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 57
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 58
+		Transform 
+		{
+			var Translation = Vec3{-8.73433685, 0.500015259, 5.87970734}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 58
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 59
+		Transform 
+		{
+			var Translation = Vec3{2.28217697, 0.500007629, -25.1088562}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 59
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 60
+		Transform 
+		{
+			var Translation = Vec3{-36.1755638, 0.500003815, -19.1207352}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 60
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 61
+		Transform 
+		{
+			var Translation = Vec3{-33.8215904, 0.500011444, 8.05108643}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 61
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 62
+		Transform 
+		{
+			var Translation = Vec3{1.60659409, 0.5, -5.77082062}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 62
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 63
+		Transform 
+		{
+			var Translation = Vec3{-3.88924217, 0.499996185, -21.6286011}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 63
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 64
+		Transform 
+		{
+			var Translation = Vec3{-41.671402, 0.5, -34.9785156}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 64
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 65
+		Transform 
+		{
+			var Translation = Vec3{-39.3174286, 0.500007629, -7.80669403}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 65
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Player"
+		var LinkId = 66
+		Transform 
+		{
+			var Translation = Vec3{-3.21365929, 0.500003815, -40.9666367}
+			var Scale = Vec3{1, 1, 1}
+			var Rotation = Quat{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var HalfSize = Vec3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 66
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
 		}
 	}
 }

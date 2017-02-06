@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Seek"
-		var ResourceId = 0x5838018bb019f599
+		var Name = "Flee2D"
+		var ResourceId = 0x58982d8752ce503d
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -14,7 +14,7 @@ DataContent
 		var Tags = Array
 		{
 			"Steering"
-			"Seek"
+			"Flee"
 		}
 	}
 }

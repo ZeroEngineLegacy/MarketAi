@@ -15,6 +15,9 @@ class Avoidance : SteeringComponent
     [Dependency]
     var Orientation : Orientation = null;
     
+    [Dependency]
+    var Sensor : Sensor = null;
+    
     // Allow yaw rotation (about the orientation's up vector)
     [Property]
     var YawRotation : Boolean = true;
@@ -41,6 +44,11 @@ class Avoidance : SteeringComponent
     var LastYawRotation : Real = 0.0;
     
     var LastPitchRotation : Real = 0.0;
+    
+    // Keep our last computed "world forward" for reuse
+    // (if sparse update is turned on)
+    var WorldForward : Real3 = Real3.Zero;
+    var ReuseWorldForward : Boolean = false;
     
     var ConeAngleRad : Real
     {
@@ -73,6 +81,7 @@ class Avoidance : SteeringComponent
         var worldUp = this.Orientation.WorldUp;
         var rotated = false;
         
+        // Debug draw
         if (this.DebugDrawEnabled)
         {
             // Draw the avoidance cone
@@ -80,6 +89,45 @@ class Avoidance : SteeringComponent
             
             // Draw the contacts
             this.DebugDrawContacts();
+        }
+        
+        // Determine if we need to move back from a contact
+        if (this.SensorResults != null && this.MoveBackDistance != 0.0)
+        {
+            var worldPos = this.Transform.WorldTranslation;
+            
+            // Iterate over all contacts
+            foreach (var result in this.SensorResults)
+            {
+                foreach (var contact in result.Contacts)
+                {
+                    var distSq = Math.DistanceSq(worldPos, contact);
+                    
+                    // If this contact is too close
+                    if (distSq <= this.MoveBackDistance * this.MoveBackDistance)
+                    {
+                        // Move away from this contact
+                        var dir = Math.Normalize(worldPos - contact);
+                        
+                        this.AddWorldMovement(dir);
+                    }
+                }
+            }
+        }
+        
+        // See if we need to reuse the world forward last calculated
+        // (if the sensor's sparse update is turned on)
+        if (this.ReuseWorldForward)
+        {
+            // If the sensor's sparse update counter is zero, flush our results
+            if (this.Sensor.UpdateTimeout <= 0)
+            {
+                this.SensorResults = null;
+                this.ReuseWorldForward = false;
+            }
+            
+            this.AddLookDirection(this.WorldForward);
+            return;
         }
         
         // Solve for Yaw
@@ -117,39 +165,26 @@ class Avoidance : SteeringComponent
             this.LastPitchRotation = angleChange;
         }
         
-        // Determine if we need to move back from a contact
-        if (this.SensorResults != null && this.MoveBackDistance != 0.0)
-        {
-            var worldPos = this.Transform.WorldTranslation;
-            
-            // Iterate over all contacts
-            foreach (var result in this.SensorResults)
-            {
-                foreach (var contact in result.Contacts)
-                {
-                    var distSq = Math.DistanceSq(worldPos, contact);
-                    
-                    // If this contact is too close
-                    if (distSq <= this.MoveBackDistance * this.MoveBackDistance)
-                    {
-                        // Move away from this contact
-                        var dir = Math.Normalize(worldPos - contact);
-                        
-                        this.AddWorldMovement(dir);
-                    }
-                }
-            }
-        }
-        
-        // TODO: Determine if we need to flush contacts (Alow for sparse sensing)
-        
         if (rotated)
         {
             this.AddLookDirection(worldForward);
         }
         
-        // TODO: Flush them some other way
-        this.SensorResults = null;
+        // If the sensor's using Sparse Update
+        if (this.Sensor.SparseUpdate)
+        {
+            if (rotated)
+            {
+                // If we've computed a new world forward, save it and reuse it
+                this.WorldForward = worldForward;
+                this.ReuseWorldForward = true;
+            }
+        }
+        else
+        {
+            // Flush the contacts
+            this.SensorResults = null;
+        }
     }
     
     // Callback for sensor results
@@ -157,6 +192,7 @@ class Avoidance : SteeringComponent
     {
         // Store the results
         this.SensorResults = event.Results;
+        this.ReuseWorldForward = false;
     }
     
     function SolveForRotation(worldForward : Real3, rotAxis : Real3, lastRot : Real) : Real
@@ -269,6 +305,7 @@ class Avoidance : SteeringComponent
         cone.Direction = direction;
         cone.Length = this.ConeDistance;
         cone.Radius = Math.Tan(this.ConeAngleRad) * this.ConeDistance;
+        cone.Color = Real4(1, 1, 1, 0.15);
         
         DebugDraw.Add(cone);
     }

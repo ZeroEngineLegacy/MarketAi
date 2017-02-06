@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Sensor3D"
-		var ResourceId = 0x58927bd42a43cb55
+		var Name = "AvoidanceAndSeek3D"
+		var ResourceId = 0x58982b1cb16098e6
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,7 +13,9 @@ DataContent
 	{
 		var Tags = Array
 		{
-			"Sensing"
+			"Wander"
+			"Steering"
+			"Avoidance"
 		}
 	}
 }

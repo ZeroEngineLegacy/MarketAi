@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{13.0859556, 9.27821827, -17.1013222}
+			var Translation = Vec3{-194.326065, 151.032333, 20.6878033}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0264607854, 0.964642763, 0.239617899, 0.106524475}
+			var Rotation = Quat{-0.246811911, -0.629493773, -0.221062437, 0.702817917}
 		}
 		CameraViewport 
 		{
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 19.82827
-			var VerticalAngle = 0.486945719
-			var HorizontalAngle = 22.2111149
-			var LookTarget = Vec3{9.26237297, 0, 0}
+			var LookDistance = 241.558014
+			var VerticalAngle = 0.675442219
+			var HorizontalAngle = 20.3103924
+			var LookTarget = Vec3{-6.94537163, 1.78813934e-07, 1.1920929e-07}
 			var MoveSensitivity = 1
 		}
 	}
@@ -194,7 +194,7 @@ Level
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
-			var RotationLocked = false
+			var RotationLocked = true
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		BoxCollider 
@@ -216,6 +216,8 @@ Level
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Pursue 
@@ -248,12 +250,11 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 5
 			var MaxRotation = 360
-			var DebugDrawEnabled = true
 		}
 	}
 	Cog 
 	{
-		var Name = "Evader"
+		var Name = "Flee"
 		var LinkId = 6
 		Transform 
 		{
@@ -287,7 +288,7 @@ Level
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
-			var RotationLocked = false
+			var RotationLocked = true
 			var Mode2D = Mode2DStates.InheritFromSpace
 		}
 		Orientation 
@@ -300,9 +301,11 @@ Level
 		SteeringAccumulator 
 		{
 			var Active = true
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
-		Evade 
+		Flee 
 		{
 			var Target = CogPath
 			{
@@ -319,21 +322,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var EvadeRange = 5
-			var PredictionRange = 3
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
-		Wander 
-		{
-			var Mode = Mode2DStates.Mode2D
-			var Radius = 5
-			var WanderAngle = 45
-			var WanderOffset = 1
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
+			var FleeRange = 5
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
 			var Active = true
@@ -344,7 +333,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-			var DebugDrawEnabled = true
 		}
 	}
 	Cog 

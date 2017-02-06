@@ -148,7 +148,7 @@ class Wander : SteeringComponent
                               this.Orientation.WorldForward * this.WanderOffset;
             circle.Radius = this.Radius;
             circle.Axis = this.Orientation.WorldUp;
-            circle.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            circle.Color = Real4(0.96, 0.26, 0.8, 0.2);
             
             DebugDraw.Add(circle);
             
@@ -185,7 +185,7 @@ class Wander : SteeringComponent
             sphere.Position = this.Transform.WorldTranslation +
                               this.Orientation.WorldForward * this.WanderOffset;
             sphere.Radius = this.Radius;
-            sphere.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            sphere.Color = Real4(0.96, 0.26, 0.8, 0.2);
             
             DebugDraw.Add(sphere);
             

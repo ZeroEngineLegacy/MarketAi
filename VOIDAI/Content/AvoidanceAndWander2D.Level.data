@@ -209,7 +209,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -217,17 +217,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -255,7 +244,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -269,6 +258,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -321,7 +321,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -329,17 +329,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -367,7 +356,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -381,6 +370,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -433,7 +433,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -441,17 +441,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -479,7 +468,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -493,6 +482,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -545,7 +545,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -553,17 +553,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -591,7 +580,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -605,6 +594,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -657,7 +657,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -665,17 +665,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -703,7 +692,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -717,6 +706,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -769,7 +769,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -777,17 +777,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -815,7 +804,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -829,6 +818,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -881,7 +881,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -889,17 +889,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -927,7 +916,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -941,6 +930,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -993,7 +993,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1001,17 +1001,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -1039,7 +1028,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -1053,6 +1042,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -1959,7 +1959,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1967,17 +1967,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2005,7 +1994,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2019,6 +2008,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2071,7 +2071,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2079,17 +2079,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2117,7 +2106,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2131,6 +2120,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2183,7 +2183,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2191,17 +2191,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2229,7 +2218,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2243,6 +2232,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2295,7 +2295,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2303,17 +2303,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2341,7 +2330,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2355,6 +2344,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2407,7 +2407,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2415,17 +2415,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2453,7 +2442,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2467,6 +2456,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2519,7 +2519,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2527,17 +2527,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2565,7 +2554,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2579,6 +2568,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2631,7 +2631,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2639,17 +2639,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2677,7 +2666,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2691,6 +2680,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}
@@ -2743,7 +2743,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = false
+			var DebugDrawEnabled = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2751,17 +2751,6 @@ Level
 			var MaxImpulse = 3
 			var MaxVelocity = 6
 			var MaxRotation = 360
-		}
-		Avoidance 
-		{
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 60
-			var MoveBackDistance = 1
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
 		}
 		Sensor 
 		{
@@ -2789,7 +2778,7 @@ Level
 			var PrimarySensorDistance = 6
 			var PrimarySensorMaxAngle = 30
 			var LocalOffset = Vec3{0, 0, 0}
-			var SparseUpdate = false
+			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
 		}
 		Wander 
@@ -2803,6 +2792,17 @@ Level
 			var SparseUpdateMaxTimeout = 30
 			var MovementWeight = 1
 			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 1
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
 			var Active = true
 		}
 	}

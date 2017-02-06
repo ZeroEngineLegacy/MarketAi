@@ -172,9 +172,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{9.92973518, 4.08225107, -3.54112625}
+			var Translation = Vec3{9.91619682, 4.31003332, 0.145100728}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0112224687, 0.699578285, 0.0109898923, 0.714383304}
+			var Rotation = Quat{-0.0622702911, 0.697002113, 0.0609797835, 0.711752713}
 		}
 		CameraViewport 
 		{
@@ -232,9 +232,9 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var LookDistance = 9.99999332
-			var VerticalAngle = 0.0314160362
+			var VerticalAngle = 0.17453292
 			var HorizontalAngle = -1.54985583
-			var LookTarget = Vec3{-0.0631322861, 3.7681427, -3.75041246}
+			var LookTarget = Vec3{0.0702850074, 2.57355285, -0.0611077212}
 			var MoveSensitivity = 1
 		}
 	}
@@ -380,7 +380,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -454,7 +454,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -528,7 +528,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -792,7 +792,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -866,7 +866,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -940,7 +940,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = true
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""

@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "Sensor3D"
-		var ResourceId = 0x58927bd42a43cb55
+		var Name = "WanderAndSeek2D"
+		var ResourceId = 0x58760dd7657435ad
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,7 +13,9 @@ DataContent
 	{
 		var Tags = Array
 		{
-			"Sensing"
+			"Wander"
+			"Steering"
+			"Seek"
 		}
 	}
 }

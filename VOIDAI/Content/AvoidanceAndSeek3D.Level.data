@@ -36,9 +36,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{15.0653906, 12.9137888, 26.9299221}
+			var Translation = Vec3{60.8912735, 18.1798916, 2.36539721}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.155949995, 0.128925741, 0.0205351356, 0.979099631}
+			var Rotation = Quat{-0.0976691544, 0.678394496, 0.0917224437, 0.722377121}
 		}
 		CameraViewport 
 		{
@@ -95,9 +95,9 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 30.4050941
-			var VerticalAngle = 0.315904319
-			var HorizontalAngle = 62.5700035
+			var LookDistance = 55.4016724
+			var VerticalAngle = 0.26878047
+			var HorizontalAngle = 61.3238335
 			var LookTarget = Vec3{7.58398438, 3.46765137, -0.985462666}
 			var MoveSensitivity = 1
 		}
@@ -236,7 +236,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -248,7 +248,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -274,19 +274,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -298,11 +285,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 6
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Vec3{-14.8316269, 3.63909459, -12.4560623}
@@ -348,7 +358,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -360,7 +370,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -386,19 +396,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -410,11 +407,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 7
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Vec3{-14.3086357, 3.63909459, -26.2404022}
@@ -460,7 +480,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -472,7 +492,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -498,19 +518,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -522,11 +529,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 8
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Vec3{-2.36187744, 3.63909459, -25.8889313}
@@ -572,7 +602,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -584,7 +614,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -610,19 +640,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -634,11 +651,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 9
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Vec3{-7.53111649, 3.63909459, -18.9985809}
@@ -684,7 +724,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -696,7 +736,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -722,19 +762,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -746,11 +773,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 10
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Vec3{-18.1853256, 3.63909459, -4.2881546}
@@ -796,7 +846,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -808,7 +858,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -834,19 +884,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -858,11 +895,34 @@ Level
 			var LookDirectionWeight = 100
 			var Active = true
 		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
 	}
 	Cog 
 	{
 		var Name = "LevelGeom"
-		var LinkId = 11
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Vec3{0, 0, 0}
@@ -874,7 +934,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 12
+				var LinkId = 13
 				Transform 
 				{
 					var Translation = Vec3{60.8674698, 30.7982426, 48.8586693}
@@ -902,7 +962,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 13
+				var LinkId = 14
 				Transform 
 				{
 					var Translation = Vec3{15.3402977, -8.82030487, -63.8380852}
@@ -932,7 +992,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 14
+				var LinkId = 15
 				Transform 
 				{
 					var Translation = Vec3{-13.5255165, -1.84823179, 11.3544197}
@@ -960,7 +1020,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 15
+				var LinkId = 16
 				Transform 
 				{
 					var Translation = Vec3{-2.7113924, 17.8085194, -2.26908875}
@@ -988,7 +1048,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 16
+				var LinkId = 17
 				Transform 
 				{
 					var Translation = Vec3{-13.5255165, 32.6406212, 23.5006065}
@@ -1016,39 +1076,11 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 17
+				var LinkId = 18
 				Transform 
 				{
 					var Translation = Vec3{-13.5255165, -19.3882446, -14.5768566}
 					var Scale = Vec3{20.6405506, 20.6405506, 20.6405506}
-					var Rotation = Quat{0, 0, 0, 1}
-				}
-				Model 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
-					var Material = "583afb5e7bf75e18:ZeroMaterial"
-					var Mesh = "4de0354322b376ae:Sphere"
-				}
-				SphereCollider 
-				{
-					var Ghost = false
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Vec3{0, 0, 0}
-					var Radius = 0.5
-				}
-			}
-			Cog 
-			{
-				var Name = "Sphere"
-				var LinkId = 18
-				Transform 
-				{
-					var Translation = Vec3{7.58398438, 3.46765137, -0.985462666}
-					var Scale = Vec3{6.32808781, 6.32808781, 6.32808781}
 					var Rotation = Quat{0, 0, 0, 1}
 				}
 				Model 
@@ -1522,7 +1554,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1534,7 +1566,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -1560,19 +1592,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -1582,6 +1601,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -1634,7 +1676,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1646,7 +1688,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -1672,19 +1714,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -1694,6 +1723,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -1746,7 +1798,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1758,7 +1810,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -1784,19 +1836,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -1806,6 +1845,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -1858,7 +1920,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1870,7 +1932,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -1896,19 +1958,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -1918,6 +1967,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -1970,7 +2042,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1982,7 +2054,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2008,19 +2080,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2030,6 +2089,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2082,7 +2164,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2094,7 +2176,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2120,19 +2202,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2142,6 +2211,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2194,7 +2286,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2206,7 +2298,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2232,19 +2324,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2254,6 +2333,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2306,7 +2408,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2318,7 +2420,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2344,19 +2446,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2366,6 +2455,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2418,7 +2530,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2430,7 +2542,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2456,19 +2568,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2478,6 +2577,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2530,7 +2652,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2542,7 +2664,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2568,19 +2690,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2590,6 +2699,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2642,7 +2774,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2654,7 +2786,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2680,19 +2812,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2702,6 +2821,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2754,7 +2896,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2766,7 +2908,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2792,19 +2934,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2814,6 +2943,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2866,7 +3018,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2878,7 +3030,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -2904,19 +3056,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -2926,6 +3065,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -2978,7 +3140,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2990,7 +3152,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3016,19 +3178,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3038,6 +3187,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3090,7 +3262,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3102,7 +3274,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3128,19 +3300,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3150,6 +3309,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3202,7 +3384,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3214,7 +3396,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3240,19 +3422,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3262,6 +3431,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3314,7 +3506,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3326,7 +3518,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3352,19 +3544,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3374,6 +3553,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3426,7 +3628,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3438,7 +3640,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3464,19 +3666,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3486,6 +3675,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3538,7 +3750,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3550,7 +3762,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3576,19 +3788,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3598,6 +3797,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3650,7 +3872,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3662,7 +3884,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3688,19 +3910,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3710,6 +3919,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3762,7 +3994,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3774,7 +4006,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3800,19 +4032,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3822,6 +4041,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3874,7 +4116,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3886,7 +4128,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -3912,19 +4154,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -3934,6 +4163,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -3986,7 +4238,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3998,7 +4250,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4024,19 +4276,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4046,6 +4285,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4098,7 +4360,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4110,7 +4372,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4136,19 +4398,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4158,6 +4407,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4210,7 +4482,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4222,7 +4494,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4248,19 +4520,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4270,6 +4529,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4322,7 +4604,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4334,7 +4616,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4360,19 +4642,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4382,6 +4651,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4434,7 +4726,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4446,7 +4738,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4472,19 +4764,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4494,6 +4773,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4546,7 +4848,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4558,7 +4860,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4584,19 +4886,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4606,6 +4895,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4658,7 +4970,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4670,7 +4982,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4696,19 +5008,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4718,6 +5017,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4770,7 +5092,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4782,7 +5104,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4808,19 +5130,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4830,6 +5139,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4882,7 +5214,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -4894,7 +5226,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -4920,19 +5252,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -4942,6 +5261,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -4994,7 +5336,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5006,7 +5348,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5032,19 +5374,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5054,6 +5383,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5106,7 +5458,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5118,7 +5470,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5144,19 +5496,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5166,6 +5505,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5218,7 +5580,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5230,7 +5592,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5256,19 +5618,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5278,6 +5627,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5330,7 +5702,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5342,7 +5714,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5368,19 +5740,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5390,6 +5749,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5442,7 +5824,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5454,7 +5836,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5480,19 +5862,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5502,6 +5871,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5554,7 +5946,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5566,7 +5958,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5592,19 +5984,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5614,6 +5993,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5666,7 +6068,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5678,7 +6080,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5704,19 +6106,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5726,6 +6115,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5778,7 +6190,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5790,7 +6202,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5816,19 +6228,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5838,6 +6237,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -5890,7 +6312,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -5902,7 +6324,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -5928,19 +6350,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -5950,6 +6359,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6002,7 +6434,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6014,7 +6446,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6040,19 +6472,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6062,6 +6481,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6114,7 +6556,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6126,7 +6568,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6152,19 +6594,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6174,6 +6603,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6226,7 +6678,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6238,7 +6690,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6264,19 +6716,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6286,6 +6725,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6338,7 +6800,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6350,7 +6812,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6376,19 +6838,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6398,6 +6847,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6450,7 +6922,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6462,7 +6934,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6488,19 +6960,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6510,6 +6969,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6562,7 +7044,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6574,7 +7056,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6600,19 +7082,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6622,6 +7091,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6674,7 +7166,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6686,7 +7178,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6712,19 +7204,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6734,6 +7213,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6786,7 +7288,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6798,7 +7300,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6824,19 +7326,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6846,6 +7335,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -6898,7 +7410,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -6910,7 +7422,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -6936,19 +7448,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -6958,6 +7457,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7010,7 +7532,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7022,7 +7544,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7048,19 +7570,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7070,6 +7579,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7122,7 +7654,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7134,7 +7666,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7160,19 +7692,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7182,6 +7701,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7234,7 +7776,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7246,7 +7788,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7272,19 +7814,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7294,6 +7823,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7346,7 +7898,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7358,7 +7910,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7384,19 +7936,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7406,6 +7945,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7458,7 +8020,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7470,7 +8032,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7496,19 +8058,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7518,6 +8067,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7570,7 +8142,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7582,7 +8154,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7608,19 +8180,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7630,6 +8189,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7682,7 +8264,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7694,7 +8276,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7720,19 +8302,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7742,6 +8311,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7794,7 +8386,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7806,7 +8398,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7832,19 +8424,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7854,6 +8433,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -7906,7 +8508,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -7918,7 +8520,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -7944,19 +8546,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -7966,6 +8555,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8018,7 +8630,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8030,7 +8642,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8056,19 +8668,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8078,6 +8677,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8130,7 +8752,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8142,7 +8764,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8168,19 +8790,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8190,6 +8799,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8242,7 +8874,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8254,7 +8886,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8280,19 +8912,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8302,6 +8921,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8354,7 +8996,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8366,7 +9008,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8392,19 +9034,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8414,6 +9043,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8466,7 +9118,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8478,7 +9130,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8504,19 +9156,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8526,6 +9165,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8578,7 +9240,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8590,7 +9252,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8616,19 +9278,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8638,6 +9287,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8690,7 +9362,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8702,7 +9374,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8728,19 +9400,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8750,6 +9409,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8802,7 +9484,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8814,7 +9496,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8840,19 +9522,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8862,6 +9531,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -8914,7 +9606,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -8926,7 +9618,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -8952,19 +9644,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -8974,6 +9653,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9026,7 +9728,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9038,7 +9740,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9064,19 +9766,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9086,6 +9775,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9138,7 +9850,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9150,7 +9862,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9176,19 +9888,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9198,6 +9897,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9250,7 +9972,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9262,7 +9984,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9288,19 +10010,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9310,6 +10019,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9362,7 +10094,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9374,7 +10106,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9400,19 +10132,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9422,6 +10141,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9474,7 +10216,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9486,7 +10228,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9512,19 +10254,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9534,6 +10263,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9586,7 +10338,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9598,7 +10350,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9624,19 +10376,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9646,6 +10385,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9698,7 +10460,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9710,7 +10472,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9736,19 +10498,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9758,6 +10507,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9810,7 +10582,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9822,7 +10594,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9848,19 +10620,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9870,6 +10629,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -9922,7 +10704,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -9934,7 +10716,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -9960,19 +10742,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -9982,6 +10751,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10034,7 +10826,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10046,7 +10838,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10072,19 +10864,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10094,6 +10873,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10146,7 +10948,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10158,7 +10960,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10184,19 +10986,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10206,6 +10995,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10258,7 +11070,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10270,7 +11082,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10296,19 +11108,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10318,6 +11117,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10370,7 +11192,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10382,7 +11204,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10408,19 +11230,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10430,6 +11239,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10482,7 +11314,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10494,7 +11326,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10520,19 +11352,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10542,6 +11361,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10594,7 +11436,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10606,7 +11448,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10632,19 +11474,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10654,6 +11483,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10706,7 +11558,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10718,7 +11570,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10744,19 +11596,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10766,6 +11605,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10818,7 +11680,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10830,7 +11692,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10856,19 +11718,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10878,6 +11727,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -10930,7 +11802,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -10942,7 +11814,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -10968,19 +11840,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -10990,6 +11849,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11042,7 +11924,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11054,7 +11936,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11080,19 +11962,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11102,6 +11971,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11154,7 +12046,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11166,7 +12058,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11192,19 +12084,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11214,6 +12093,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11266,7 +12168,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11278,7 +12180,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11304,19 +12206,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11326,6 +12215,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11378,7 +12290,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11390,7 +12302,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11416,19 +12328,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11438,6 +12337,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11490,7 +12412,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11502,7 +12424,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11528,19 +12450,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11550,6 +12459,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11602,7 +12534,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11614,7 +12546,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11640,19 +12572,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11662,6 +12581,29 @@ Level
 			var MoveBackDistance = 3
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
 			var Active = true
 		}
 	}
@@ -11714,7 +12656,7 @@ Level
 			var Active = true
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -11726,7 +12668,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = ""
@@ -11752,19 +12694,6 @@ Level
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 60
 		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 45
-			var WanderOffset = 1.5
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
 		Avoidance 
 		{
 			var YawRotation = true
@@ -11772,6 +12701,141 @@ Level
 			var ConeDistance = 5
 			var ConeAngle = 45
 			var MoveBackDistance = 3
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+		}
+		Seek 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+	}
+	Cog 
+	{
+		var Name = "Target"
+		var LinkId = 6
+		Transform 
+		{
+			var Translation = Vec3{7.58398438, 3.46765137, -0.985462666}
+			var Scale = Vec3{2.66154909, 2.66154909, 7.83937454}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		Orientation 
+		{
+			var GlobalUp = Vec3{0, 1, 0}
+			var UpVector = Vec3{0, 1, 0}
+			var ForwardVector = Vec3{-0, -0, -1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Vec3{0, 0, 0}
+			var AngularVelocity = Vec3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		EllipsoidCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Vec3{0, 0, 0}
+			var Radii = Vec3{0.5, 0.5, 0.5}
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var MovementConstraint = SteeringConstraints.None
+			var LookDirectionConstraint = SteeringConstraints.None
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 5
+			var MaxImpulse = 7
+			var MaxVelocity = 8
+			var MaxRotation = 180
+		}
+		Wander 
+		{
+			var WanderShape = WanderShapes.Sphere
+			var Radius = 2
+			var WanderAngle = 30
+			var WanderOffset = 4
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 5
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 6
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode3D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 12
+			var PrimarySensorDistance = 12
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Vec3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Avoidance 
+		{
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 10
+			var ConeAngle = 45
+			var MoveBackDistance = 5
 			var MovementWeight = 1
 			var LookDirectionWeight = 100
 			var Active = true
