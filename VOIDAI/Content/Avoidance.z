@@ -91,8 +91,6 @@ class Avoidance : SteeringComponent
             
             if (angleChange != 0.0)
             {
-                Console.WriteLine("YAW: `angleChange`");
-                
                 // Apply our yaw rotation to the world forward
                 worldForward = Math.RotateVector(worldForward, worldUp, angleChange);
                 rotated = true;
@@ -110,10 +108,9 @@ class Avoidance : SteeringComponent
             
             if (angleChange != 0.0)
             {
-                Console.WriteLine("PITCH: `angleChange`");
-                
                 // Apply our pitch rotation to the world forward
                 worldForward = Math.RotateVector(worldForward, worldRight, angleChange);
+                
                 rotated = true;
             }
             
@@ -186,12 +183,12 @@ class Avoidance : SteeringComponent
                 }
                 
                 var contact = result.Contacts[i];
+                var contactDir = contact - this.Transform.WorldTranslation;
                 
-                // Project the contact onto the plane{ right, forward }
-                contact = Math.ProjectOnPlane(contact, rotAxis);
+                // Project the contact direction onto the plane we're rotating on
+                contactDir = Math.ProjectOnPlane(contactDir, rotAxis);
                 
                 // Only process contacts inside of our cone
-                var contactDir = contact - this.Transform.WorldTranslation;
                 var forwardDistance = Math.Dot(contactDir, worldForward);
                 
                 // If (contact is behind cone OR out of the cone's distance)
@@ -210,7 +207,7 @@ class Avoidance : SteeringComponent
                 }
                 
                 // Determine what side of the vector this projected point is on
-                var positiveDir = contactAngle > 0.0;
+                var positiveDir = contactAngle >= 0.0;
                 
                 if (positiveDir)
                 {
@@ -239,7 +236,20 @@ class Avoidance : SteeringComponent
             }
         }
         
-        if (lastRot > 0.0)
+        // Move in the direction of the last rotation
+        // This avoids jittering back and forth (pos -> neg -> pos)
+        if (lastRot == 0.0)
+        {
+            if (posAngleChange != 0.0)
+            {
+                angleChange = posAngleChange;
+            }
+            else
+            {
+                angleChange = negAngleChange;
+            }
+        }
+        else if (lastRot > 0.0)
         {
             angleChange = posAngleChange;
         }

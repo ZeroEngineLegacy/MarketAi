@@ -30,7 +30,7 @@ class Wander : SteeringComponent
     
     // The radius of the circle/sphere which the target point is constrained to
     [Property]
-    var Radius : Real = 5;
+    var Radius : Real = 2.0;
     
     // The maximum angle of displacement on the circle/sphere
     [Property]
@@ -38,7 +38,7 @@ class Wander : SteeringComponent
     
     // The offset distance the circle/sphere is from the object
     [Property]
-    var WanderOffset : Real = 1.0;
+    var WanderOffset : Real = 3.0;
     
     [Property]
     var Movement : Boolean = true;
