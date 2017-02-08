@@ -46,7 +46,7 @@ Level
 		{
 			var Translation = Vec3{28.7151451, 15.650198, 8.60960388}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.16769734, 0.564844847, 0.118516602, 0.799238265}
+			var Rotation = Quat{-0.16769734, 0.564844847, 0.118516594, 0.799238205}
 		}
 		Camera 
 		{
@@ -187,11 +187,11 @@ Level
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{0, 0, 0, 1}
 		}
-		SimpleHierarchySpline 
+		ScriptHierarchySpline 
 		{
 			var Closed = true
 			var SplineType = SplineType.CatmulRom
-			var Error = 0.0500000007
+			var Error = 0.00999999978
 			var DebugDrawSpline = true
 			var SplineColor = Vec4{0, 0, 0, 1}
 		}
@@ -360,7 +360,7 @@ Level
 		SimpleSplineFollower 
 		{
 			var Active = true
-			var SimpleHiearchySplineCogPath = CogPath
+			var SplineCogPath = CogPath
 			{
 				var Path = ":/SplineObj"
 				var ErrorOnResolveToNull = false
