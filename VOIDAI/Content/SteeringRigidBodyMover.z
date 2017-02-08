@@ -55,6 +55,11 @@ class SteeringRigidBodyMover : ZilchComponent
 
     function OnSteeringResults(event : SteeringResultsEvent)
     {
+        if (!this.SteeringAccumulator.Active)
+        {
+            return;
+        }
+        
         // Calculate our rotation for this frame
         if (this.SteeringAccumulator.LookDirectionConstraint == SteeringConstraints.None)
         {

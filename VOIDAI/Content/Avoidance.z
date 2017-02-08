@@ -4,7 +4,10 @@
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Jordan Ellis                                                                            */
 /* Class: Avoidance                                                                                         */
-/* Brief: TODODODODODODODOD                                                                                 */
+/* Brief: The Avoidance steering behaviour uses a front facing cone and sensor results, to determine what   */
+/*        direction it should face in order to avoid the contact points. It can rotate in the yaw direction */
+/*        (around the up axis) and in the pitch direction (around the right axis). It also moves away from  */
+/*        contacts that are too close (within the move back distance).                                      */
 /************************************************************************************************************/
 
 class Avoidance : SteeringComponent
