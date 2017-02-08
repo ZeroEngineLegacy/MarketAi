@@ -10,7 +10,7 @@
 class InterpolatedOrbit : ZilchComponent
 {
     //This component requires the Orientation component
-    [Dependency]
+    [Dependency]  
     var Orientation : Orientation;
     
     //This component requires the OrientationHelper component

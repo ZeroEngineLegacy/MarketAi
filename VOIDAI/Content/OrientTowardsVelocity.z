@@ -1,0 +1,46 @@
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: OrientTowardsVelocity                                                                             */
+/* Brief: This component orients the owner towards it's rigidbody's velocity.                               */
+/************************************************************************************************************/
+
+class OrientTowardsVelocity : ZilchComponent
+{
+    [Dependency]
+    var Transform : Transform = null;
+    
+    [Dependency]
+    var RigidBody : RigidBody = null;
+    
+    [Dependency]
+    var Orientation : Orientation = null;
+    
+    // (degrees per second) The rate at which the object will rotate to match the velocity direction
+    [Property]
+    var RotationSpeed : Real = 360.0;
+    
+    function Initialize(init : CogInitializer)
+    {
+        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    }
+
+    function OnLogicUpdate(event : UpdateEvent)
+    {
+        if (this.RigidBody.Velocity == Real3.Zero)
+        {
+            return;
+        }
+        
+        var orientation = this.Orientation.GetLookAtDirectionRotation(
+            Math.Normalize(this.RigidBody.Velocity)
+        );
+        
+        this.Transform.Rotation = Math.RotateTowards(
+            this.Transform.Rotation, orientation,
+            Math.ToRadians(this.RotationSpeed)
+        );
+    }
+}

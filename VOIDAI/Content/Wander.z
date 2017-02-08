@@ -1,146 +1,202 @@
-// Component: Wander
-// Brief: This steering behavior maintains state, the "wander direction" which is
-// calculated by finding a vector from the object to a point on a circle offset from 
-// the object in the direction of its velocity. At each time step a random offset is 
-// added to the wander direction. The modified wander direction is constrained to lie 
-// on the circle. The circle has unit radius and its center is located sqrt(2) units 
-// along the object's forward axis.
+/************************************************************************************************************/
+/* Copyright 2016 DigiPen, All Rights Reserved                                                              */
+/* Last Update: 1/3/2016                                                                                    */
+/* Author: Zero Engine Team                                                                                 */
+/* Last updated by: Jordan Ellis                                                                            */
+/* Class: Wander                                                                                            */
+/* Brief: This steering behavior maintains the "wandering direction" which is calculated by finding a       */
+/*        vector from the object to a point on a circle offset from the object in the direction of its      */
+/*        velocity. At each time step a random offset is added to the wander direction. The modified wander */
+/*        direction is constrained to lie on a circle.                                                      */
+/************************************************************************************************************/
 
-class Wander : ZilchComponent
+enum WanderShapes
+{
+    Circle,
+    Sphere
+}
+
+class Wander : SteeringComponent
 {
     [Dependency]
-    var Transform : Transform;
+    var Transform : Transform = null;
     
-    // This component requires a rigidBody component
-    [Dependency]
-    var RigidBody : RigidBody = null;
-    
-    // This component requires an Orientation component
     [Dependency]
     var Orientation : Orientation = null;
     
-    // Determines if the component is active or not
-    // Vision checks can still be called manually
+    // Should we wander in 2D or 3D
     [Property]
-    var Active : Boolean = true;
+    var WanderShape : WanderShapes = WanderShapes.Circle;
     
-    // Determines if wander data is used to move the object or dispatched on the object in events to be used in other components
+    // The radius of the circle/sphere which the target point is constrained to
     [Property]
-    var QueryOnly : Boolean = false;
+    var Radius : Real = 2.0;
     
-    // Speed at which the object will move in the wander direction
+    // The maximum angle of displacement on the circle/sphere
     [Property]
-    var Speed : Real = 5.0;
+    var WanderAngle : Real = 45.0;
     
-    // Strength of the sub vector that offset the target point on the primary circle
-    // Constraned to the range [0.0,1.0]
+    // The offset distance the circle/sphere is from the object
     [Property]
-    var WanderStrength : Real = 0.4;
+    var WanderOffset : Real = 3.0;
     
     [Property]
-    var OrientSpeed : Real = 5.0;
+    var Movement : Boolean = true;
     
-    // The radius of the circle which the target point is constrained to
     [Property]
-    var CircleRadius : Real = 5;
+    var SparseUpdate : Boolean = true;
     
-    // Strength ranging from 0 (no turning) to 1.
-    var Strength : Real
+    [Property]
+    var SparseUpdateMaxTimeout : Integer = 5;
+    
+    var UpdateTimeout : Integer = 0;
+    
+    var RandomGenerator : Random = new Random();
+    
+    var Result : Real3 = Real3.Zero;
+    
+    var WanderAngleRad : Real
     {
-        get { return Math.Clamp(this.WanderStrength,0.0,1.0);}
-        set { this.WanderStrength = Math.Clamp(value, 0.0, 1.0);}
+        get { return Math.ToRadians(this.WanderAngle); }
     }
     
-    
-    // Store for continuos use so that it isn't cacluated each frame
-    var SqrtTwo : Real = Math.Sqrt(2.0);
-    
-    // Stored wander direction on the primary direction
-    var WanderDir : Real2 = local Real2(0.0,0.0);
-    
-    // Components random object
-    var RandomGen : Random = new Random();
-    
-    function Initialize(init : CogInitializer)
+    var DebugDrawEnabled : Boolean
     {
-        this.RandomGen = new Random();
-        var seed = this.Transform.Translation.X + this.Transform.Translation.Y + this.Transform.Translation.Z + this.Space.TimeSpace.RealTimePassed;
+        get { return this.SteeringAccumulator.DebugDrawEnabled; }
+    }
+    
+    [Override]
+    function SteeringInitialize(init : CogInitializer)
+    {
+        var seed = this.Transform.WorldTranslation.X +
+                   this.Transform.WorldTranslation.Y +
+                   this.Transform.WorldTranslation.Z +
+                   this.Space.TimeSpace.RealTimePassed;
+        
         // Seed the random number generator
-        // Should probably be changed this guarentees unique starting seeds for each object unless they are created at the same position on the same frame
-        this.RandomGen.Seed = seed as Integer;
-        
-        
-        // Generate a random initial direction
-        this.WanderDir = this.RandomGen.Real2(1.0,1.0);
-        // Look in starting direction
-        this.Orientation.LookAtDirectionWithUp((this.WanderDir.X * this.Orientation.WorldForward) + (this.WanderDir.Y * this.Orientation.WorldRight), this.Orientation.WorldUp);
-        
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        this.RandomGenerator.Seed = seed as Integer;
     }
 
-    function OnLogicUpdate(event : UpdateEvent)
+    [Override]
+    function SteeringUpdate(event : UpdateEvent)
     {
-        // If the component is not active, do nothing
-        if(!this.Active)
+        // If the component is not active do nothing
+        if(!this.Active || !this.SteeringAccumulator.Active)
         {
             return;
         }
         
-        // Calculate to offset of the origin of the wander primary circle
-        var wanderOrigin = this.Transform.Translation + (this.Orientation.WorldForward * this.SqrtTwo);
-        
-        // Calculate the vector offset to be added to the wander direction from the last frame
-        var wanderOffsetVec : Real2 = this.RandomGen.Real2(0.0,1.0);
-        wanderOffsetVec = Math.Normalize(wanderOffsetVec);
-        
-        // Adjust the size of the normailzed primary circle
-        var wanderdir = this.WanderDir * this.CircleRadius;
-        //Add the new offset to the current wanderdir
-        wanderdir += wanderOffsetVec * this.Strength;
-        // Normalize to get a direction
-        this.WanderDir = Math.Normalize(wanderdir);
-        
-        // Used the generated wander dir to offset from the wander origin
-        var targPos : Real3 = wanderOrigin + this.OrientVector(this.WanderDir);
-        
-        // If the component isn't queryonly
-        if(!this.QueryOnly)
+        // If we're currently timed out, just apply the same direction
+        if (this.UpdateTimeout > 0)
         {
-            // Orient the object
-            var rot = this.Owner.Orientation.GetLookAtPointWithUpRotation(targPos, this.Orientation.WorldUp);
-            this.Owner.Transform.Rotation = Math.Slerp(this.Owner.Transform.Rotation, rot, this.OrientSpeed * event.Dt);
+            --this.UpdateTimeout;
+            this.AddLookDirection(this.Result);
             
-            if(this.Speed > 0.0)
+            if (this.Movement)
             {
-                // Move the Object
-                this.Owner.RigidBody.ApplyForce(this.Orientation.WorldForward * this.Speed);
+                this.AddLocalMovement(this.Orientation.LocalForward);
             }
+            
+            return;
         }
-        // If the component is query only send an event with the data instead
+        
+        // Determine whether we're using a circle or a sphere for our wander direction
+        if (this.WanderShape == WanderShapes.Circle)
+        {
+            this.WanderCircle();
+        }
         else
         {
-            var wanderevent : WanderEvent = new WanderEvent();
-            wanderevent.Direction = Math.Normalize(targPos - this.Owner.Transform.Translation);
-            wanderevent.Rotation = this.Owner.Orientation.GetLookAtPointRotation(targPos);
-            this.Owner.DispatchEvent("WanderEvent", wanderevent);
+            this.WanderSphere();
+        }
+        
+        // Apply the calculated resulting direction
+        this.AddLookDirection(this.Result);
+        
+        if (this.Movement)
+        {
+            this.AddLocalMovement(this.Orientation.LocalForward);
+        }
+        
+        if (this.SparseUpdate)
+        {
+            this.UpdateTimeout += this.RandomGenerator.RangeInclusiveMax(
+                0, this.SparseUpdateMaxTimeout
+            );
         }
     }
     
-    
-    //Converts the Real2 wander direction into an oriented Real3 on the ForwardRight plane
-    function OrientVector(dir : Real2) : Real3
+    function WanderCircle()
     {
-        // Orient the forward axis value of the wander direction
-        return (this.Owner.Orientation.LocalForward * dir.X) + (this.Owner.Orientation.LocalRight * dir.Y);
+        // Calculate the rotation angle
+        var angle = this.RandomGenerator.Range(-this.WanderAngleRad, this.WanderAngleRad);
+        
+        // Calculate the rotated vector
+        var rotation = Math.AxisAngle(this.Orientation.WorldUp, angle);
+        var direction = Math.Transform(this.Orientation.WorldForward, rotation);
+        
+        // Calculate the normalized new direction vector
+        this.Result = this.Orientation.WorldForward * this.WanderOffset + 
+                      direction * this.Radius;
+        this.Result = Math.Normalize(this.Result);
+        
+        if (this.DebugDrawEnabled)
+        {
+            var circle = new DebugCircle();
+            
+            circle.Position = this.Transform.WorldTranslation + 
+                              this.Orientation.WorldForward * this.WanderOffset;
+            circle.Radius = this.Radius;
+            circle.Axis = this.Orientation.WorldUp;
+            circle.Color = Real4(0.96, 0.26, 0.8, 0.2);
+            
+            DebugDraw.Add(circle);
+            
+            var offset = new DebugLine();
+            
+            offset.Start = circle.Position;
+            offset.End = offset.Start + direction * this.Radius;
+            offset.HeadSize = 0.5;
+            offset.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(offset);
+        }
     }
-}
-
-// The event that is dispatched whenever a new wander direction is defined
-class WanderEvent : ZilchEvent
-{
-    var Direction : Real3 = local Real3();
-    var Rotation : Quaternion = local Quaternion();
-    constructor() : base()
+    
+    function WanderSphere()
     {
+        // Calculate the rotation angle
+        var angle = this.RandomGenerator.Range(-this.WanderAngleRad, this.WanderAngleRad);
+        
+        // Generate a random point on the sphere within a cone
+        var point = this.RandomGenerator.UnitReal3() * Math.Sin(angle);
+        point = Real3(point.X, point.Y, Math.Cos(angle));
+        
+        var direction = -Math.Multiply(this.Orientation.LocalToWorldRotation, point);
+        
+        this.Result = this.Orientation.WorldForward * this.WanderOffset +
+                      direction * this.Radius;
+        this.Result = Math.Normalize(this.Result);
+        
+        if (this.DebugDrawEnabled)
+        {
+            var sphere = new DebugSphere();
+            
+            sphere.Position = this.Transform.WorldTranslation +
+                              this.Orientation.WorldForward * this.WanderOffset;
+            sphere.Radius = this.Radius;
+            sphere.Color = Real4(0.96, 0.26, 0.8, 0.2);
+            
+            DebugDraw.Add(sphere);
+            
+            var offset = new DebugLine();
+            
+            offset.Start = sphere.Position;
+            offset.End = offset.Start + direction * this.Radius;
+            offset.HeadSize = 0.5;
+            offset.Color = Real4(0.96, 0.26, 0.8, 1.0);
+            
+            DebugDraw.Add(offset);
+        }
     }
 }

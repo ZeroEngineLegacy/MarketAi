@@ -2,28 +2,20 @@
 /* Copyright 2016 DigiPen, All Rights Reserved                                                              */
 /* Last Update: 1/3/2016                                                                                    */
 /* Author: Zero Engine Team                                                                                 */
-/* Last updated by: Arend Danielek                                                                          */
+/* Last updated by: Jordan Ellis                                                                            */
 /* Class: Pursue                                                                                            */
 /* Brief: This component will cause the object to pursue a target object by                                 */
 /* using the target obect's velocity to attampt to estimate a future position                               */
 /************************************************************************************************************/
 
-class Pursue : ZilchComponent
+class Pursue : SteeringComponent
 {
-    // this component requires a rigidBody component
     [Dependency]
-    var RigidBody : RigidBody = null;
+    var Transform : Transform = null;
     
-    // Seek requires an Orientation & OrientationHelper component
+    // Pursue requires an Orientation & OrientationHelper component
     [Dependency]
     var Orientation : Orientation = null;
-    
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
-    // Determines if the component is active or not
-    [Property]
-    var Active : Boolean = true;
     
     // Target object to be pursue towards
     [Property]
@@ -32,17 +24,7 @@ class Pursue : ZilchComponent
     // Range from the object in which it is valid to pursue the target object
     // If the range is 0 the target object will always be pursued
     [Property]
-    var PursueRange : Real
-    {
-        get { return this.PursueRangeDistance; }
-        set
-        {
-            if (Math.ApproximatelyEqual(value, 0.0, 0.001))
-                this.NoPursueRange = true;
-            
-            this.PursueRangeDistance = value;
-        }
-    }
+    var PursueRange : Real = 0.0;
     
     // Magnitude of the velocity vector to be used when prediction target motion
     // If the range is 0.0 Dt will be used to estimate the position of the object in the next frame
@@ -53,101 +35,75 @@ class Pursue : ZilchComponent
     [Property]
     var GoalDistance : Real = 0.0;
     
-    // Magnitude of the linear impulse to be applied each frame for pursuing movement
-    [Property]
-    var Speed : Real = 10.0;
-    
-    // the rate at which the object will rotate to match it velocity direction in degrees per second
-    [Property]
-    var RotationSpeed : Real = 0.0;
-    
-    [Property]
-    var DebugDrawEnabled : Boolean = false;
-    
-    var PursueRangeDistance : Real = 0.0;
-    var NoPursueRange : Boolean = true;
-    
-    // Used to track if the object is pursuing
-    var Pursuing : Boolean = false;
-    
-    function Initialize(init : CogInitializer)
+    var NoPursueRange : Boolean
     {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+        get { return Math.ApproximatelyEqual(this.PursueRange, 0.0, 0.001); }
     }
     
-    function OnLogicUpdate(event : UpdateEvent)
+    var TargetTranslation : Real3
+    {
+        get { return this.Target.Cog.Transform.WorldTranslation; }
+    }
+    
+    var TargetPrevTranslation : Real3;
+    
+    [Override]
+    function SteeringInitialize(init : CogInitializer)
+    {
+        this.TargetPrevTranslation = this.TargetTranslation;
+    }
+    
+    [Override]
+    function SteeringUpdate(event : UpdateEvent)
     {
         // If this component is not active do nothing
-        if(!this.Active)
+        if (!this.Active || !this.SteeringAccumulator.Active)
         {
             return;
         }
         
-        // Get the target object's normalized velocity for the prediction estimation
-        var targVelDir = this.Target.Cog.RigidBody.Velocity;
+        // Get the target's distance from our position, and determine how much we're predicting by
+        var targDir = this.TargetTranslation - this.Transform.WorldTranslation;
+        var targDis = Math.LengthSq(targDir);
+        var prediction = Math.Max(this.PredictionRange, event.Dt);
         
-        // If PredictionRange is 0.0 then use Dt to predict target object motion
-        var predictionMagnitude = this.PredictionRange;
-        if(this.PredictionRange == 0.0)
+        // If we're nearing in on the obect (less than prediction length)
+        // reduce what we're predicting by, closing in on 0 prediction (at target)
+        if (targDis < prediction * prediction)
         {
-            predictionMagnitude = event.Dt;
-        }
-        else
-        {
-            targVelDir = Math.Normalize(targVelDir);
+            prediction -= (prediction - Math.Sqrt(targDis));
         }
         
         // Estimate the target object's predicted future position
-        var targPos = this.Target.Cog.Transform.Translation + (targVelDir * predictionMagnitude);
+        var targVel = Math.Normalize(this.TargetTranslation - this.TargetPrevTranslation);
+        var predictedPos = this.TargetTranslation + (targVel * prediction);
+        var predictedDir = predictedPos - this.Transform.WorldTranslation;
+        var predictedDis = Math.Length(predictedDir);
         
-        // Calculate a vector to the target object's predicted position
-        var targDir = targPos - this.Owner.Transform.Translation;
-        var targDis = Math.Length(targDir);
+        predictedDir /= predictedDis;
         
-        // Normalize the vector to the target object so it does not affect movement speed
-        targDir /= targDis;
-        
-        // Check if the target object is with in the range to seek it
-        if((this.NoPursueRange || targDis < this.PursueRange) && targDis > this.GoalDistance)
+        if (this.NoPursueRange || predictedDis <= this.PursueRange)
         {
-            // Record that the object is pursuing the target object
-            this.Pursuing = true;
-            
-            // Apply a force to move the object towards the target object's position
-            this.RigidBody.Velocity = targDir * this.Speed;
-        }
-        else
-        {
-            // If the target object is out of pursue range record that the targ object is no longer being pursued out
-            this.Pursuing = false;
-            
-            // Bring the object to a smooth stop, based on it's linear distance from the target
-            var ratio = targDis / this.GoalDistance;
-            
-            this.RigidBody.Velocity = targDir * this.Speed * ratio;
+            // Check if the target object is with in the range to seek it
+            if (this.NoPursueRange || predictedDis > this.GoalDistance)
+            {
+                // Apply a force to move the object towards the target object's position
+                this.AddLookDirection(predictedDir);
+                this.AddLocalMovement(this.Orientation.LocalForward);
+            }
+            else
+            {
+                // Bring the object to a smooth stop, based on it's linear distance from the target
+                var ratio = predictedDis / this.GoalDistance;
+                
+                this.AddLookDirection(this.TargetTranslation);
+                this.SteeringAccumulator.AddLocalMovement(
+                    this.Orientation.LocalForward, this.MovementWeight * ratio * ratio
+                );
+            }
         }
         
-        // Align the object at the given rotation rate to the direction of its velocity
-        var newRot = this.Orientation.GetLookAtDirectionRotation(Math.Normalize(this.Owner.RigidBody.Velocity));
-        
-        this.Owner.Transform.Rotation = Math.Slerp(
-            this.Owner.Transform.Rotation, newRot,
-            Math.ToRadians(this.RotationSpeed) * event.Dt
-        );
-        
-        if(this.DebugDrawEnabled)
-        {
-            this.DrawDebug(event.Dt);
-        }
-    }
-    
-    function DrawDebug(dt : Real)
-    {
-        var line = new DebugLine();
-        line.Start = this.Owner.Transform.Translation;
-        line.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
-        line.HeadSize = 0.5;
-        line.Color = Real4(0.0,1.0,0.0,1.0);
-        DebugDraw.Add(line);
+        // Store this for next update
+        this.TargetPrevTranslation = this.TargetTranslation;
     }
 }

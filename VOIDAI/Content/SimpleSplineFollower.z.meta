@@ -1,6 +1,11 @@
 [Version:1]
 TextContent 
 {
+	ZilchScriptBuilder 
+	{
+		var Name = "SimpleSplineFollower"
+		var ResourceId = 0x5610de8648c116a5
+	}
 	ContentTags 
 	{
 		var Tags = Array
@@ -8,10 +13,5 @@ TextContent
 			"SensingAndSteeringBehaviors"
 			"SimplePathFollower"
 		}
-	}
-	ZilchScriptBuilder 
-	{
-		var Name = "SimpleSplineFollower"
-		var ResourceId = 0x5610de8648c116a5
 	}
 }

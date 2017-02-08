@@ -1,11 +1,19 @@
-DataContent = 
+[Version:1]
+DataContent 
 {
-	DataBuilder = 
+	DataBuilder 
 	{
-		string Name = "InterpolatedOrbit",
-		uint64 ResourceId = 58383be7b9a83fe6,
-		string LoaderType = "Level",
-		uint Version = 0,
-		bool ShowInEditor = true,
-	},
-},
+		var Name = "InterpolatedOrbit"
+		var ResourceId = 0x58383be7b9a83fe6
+		var LoaderType = "Level"
+		var Version = 0
+		var ShowInEditor = true
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Orbit"
+		}
+	}
+}
