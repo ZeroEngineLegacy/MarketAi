@@ -47,7 +47,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{32.4722061, 10.9262371, 14.8074322}
+			var Translation = Vec3{33.9364471, 17.4568443, 9.41568375}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.108311303, 0.478080004, 0.0595479347, 0.869575918}
 		}
@@ -109,7 +109,7 @@ Level
 			var LookDistance = 30.4050941
 			var VerticalAngle = 0.247836441
 			var HorizontalAngle = 61.8264961
-			var LookTarget = Vec3{7.58398438, 3.46765137, -0.985462666}
+			var LookTarget = Vec3{9.04822159, 9.99825859, -6.37721109}
 			var MoveSensitivity = 1
 		}
 	}

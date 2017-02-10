@@ -86,6 +86,8 @@ class Sensor : ZilchComponent
     [Property]
     var LocalOffset : Real3 = Real3(0.0, 0.0, 0.0);
     
+    // Sparse update is for performance improvements, changing the frequency
+    // of the Sensor's update from every frame, to Rand.Range(0, SparseUpdateMaxTimeOut)
     [Property]
     var SparseUpdate : Boolean = true;
     
