@@ -1141,9 +1141,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1263,9 +1263,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1385,9 +1385,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1507,9 +1507,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1629,9 +1629,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1751,9 +1751,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -1873,9 +1873,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2123,9 +2123,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2245,9 +2245,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2367,9 +2367,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2489,9 +2489,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2611,9 +2611,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2733,9 +2733,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2855,9 +2855,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -2977,9 +2977,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3099,9 +3099,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3221,9 +3221,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3343,9 +3343,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3465,9 +3465,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3587,9 +3587,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3709,9 +3709,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3831,9 +3831,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -3953,9 +3953,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4075,9 +4075,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4197,9 +4197,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4319,9 +4319,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4441,9 +4441,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4563,9 +4563,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4685,9 +4685,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}
@@ -4807,9 +4807,9 @@ Level
 			var PitchRotation = true
 			var ConeDistance = 5
 			var ConeAngle = 45
-			var MoveBackDistance = 1
+			var MoveBackDistance = 2
 			var MovementWeight = 1
-			var LookDirectionWeight = 100
+			var LookDirectionWeight = 50
 			var Active = true
 		}
 	}

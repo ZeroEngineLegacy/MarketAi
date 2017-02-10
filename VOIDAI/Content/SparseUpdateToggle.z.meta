@@ -6,4 +6,11 @@ TextContent
 		var Name = "SparseUpdateToggle"
 		var ResourceId = 0x58ff655db0fe94d0
 	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Debugging"
+		}
+	}
 }

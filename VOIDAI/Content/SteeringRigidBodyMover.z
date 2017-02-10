@@ -11,169 +11,171 @@
 
 class SteeringRigidBodyMover : ZilchComponent
 {
-    [Dependency]
-    var SteeringAccumulator : SteeringAccumulator = null;
-    
-    [Dependency]
-    var Transform : Transform = null;
-    
-    [Dependency]
-    var RigidBody : RigidBody = null;
-    
-    [Dependency]
-    var Orientation : Orientation = null;
-    
-    // Max / Min impulses allowed
-    [Property]
-    var MinImpulse : Real = 0.0;
-    
-    [Property]
-    var MaxImpulse : Real = 3.0;
-    
-    // Max velocity allowed
-    [Property]
-    var MaxVelocity : Real = 5.0;
-    
-    // Max rotation in degrees / second
-    [Property]
-    var MaxRotation : Real = 360.0;
-    
-    var MaxRotationRad : Real
-    {
-        get { return Math.ToRadians(this.MaxRotation); }
-    }
-    
-    var DebugDrawEnabled : Boolean
-    {
-        get { return this.SteeringAccumulator.DebugDrawEnabled; }
-    }
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Owner, Events.SteeringResultsEvent, this.OnSteeringResults);
-    }
+  [Dependency]
+  var SteeringAccumulator : SteeringAccumulator = null;
+  
+  [Dependency]
+  var Transform : Transform = null;
+  
+  [Dependency]
+  var RigidBody : RigidBody = null;
+  
+  [Dependency]
+  var Orientation : Orientation = null;
+  
+  // Max / Min impulses allowed
+  [Property]
+  var MinImpulse : Real = 0.0;
+  
+  [Property]
+  var MaxImpulse : Real = 3.0;
+  
+  // Max velocity allowed
+  [Property]
+  var MaxVelocity : Real = 5.0;
+  
+  // Max rotation in degrees / second
+  [Property]
+  var MaxRotation : Real = 360.0;
+  
+  var MaxRotationRad : Real
+  {
+    get { return Math.ToRadians(this.MaxRotation); }
+  }
+  
+  var DebugDrawEnabled : Boolean
+  {
+    get { return this.SteeringAccumulator.DebugDrawEnabled; }
+  }
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.SteeringResultsEvent, this.OnSteeringResults);
+  }
 
-    function OnSteeringResults(event : SteeringResultsEvent)
+  function OnSteeringResults(event : SteeringResultsEvent)
+  {
+    if (!this.SteeringAccumulator.Active)
     {
-        if (!this.SteeringAccumulator.Active)
-        {
-            return;
-        }
-        
-        // Calculate our rotation for this frame
-        if (this.SteeringAccumulator.LookDirectionConstraint == SteeringConstraints.None)
-        {
-            this.Rotate3D(event);
-        }
-        else
-        {
-            this.Rotate2D(event);
-        }
-        
-        // Add together the world and local movements
-        var impulse = event.WorldMovement + Math.Multiply(this.Transform.WorldRotation, event.LocalMovement);
-        
-        impulse *= 0.5;
-        
-        // Enforce the maximum impulse
-        var impulseLength = Math.LengthSq(impulse);
-        
-        if (impulseLength > this.MaxImpulse * this.MaxImpulse)
-        {
-            // Normalize and scale
-            impulse /= Math.Sqrt(impulseLength);
-            impulse *= this.MaxImpulse;
-        }
-        else if (impulseLength < this.MinImpulse * this.MinImpulse)
-        {
-            // Normalize and scale
-            impulse /= Math.Sqrt(impulseLength);
-            impulse *= this.MinImpulse;
-        }
-        
-        // Apply the impulse
-        this.RigidBody.ApplyLinearImpulse(impulse);
-        
-        // Enforce the maximum velocity
-        var velocityLength = Math.LengthSq(this.RigidBody.Velocity);
-        
-        if (velocityLength > this.MaxVelocity * this.MaxVelocity)
-        {
-            // Normalize and scale
-            this.RigidBody.Velocity /= Math.Sqrt(velocityLength);
-            this.RigidBody.Velocity *= this.MaxVelocity;
-        }
-        
-        this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
-        this.DebugDrawVector(this.RigidBody.Velocity * event.Dt, Real4(0, 0, 1, 1));
+      return;
     }
     
-    function Rotate2D(event : SteeringResultsEvent)
+    // Calculate our rotation for this frame
+    if (this.SteeringAccumulator.LookDirectionConstraint == SteeringConstraints.None)
     {
-        var angle = Math.SignedAngle(
-            this.Orientation.WorldForward, event.LookDirection, this.Orientation.WorldUp
-        );
-        
-        var rotationSpeed = this.MaxRotationRad * event.Dt;
-        
-        if (Math.Abs(angle) > rotationSpeed)
-        {
-            // Clamp
-            if (angle < 0.0)
-            {
-                angle = -rotationSpeed;
-            }
-            else
-            {
-                angle = rotationSpeed;
-            }
-        }
-        
-        var lookConstraint = this.SteeringAccumulator.LookDirectionConstraint;
-        var eulerAngles = Real3.Zero;
-        
-        if (lookConstraint == SteeringConstraints.XYPlane)
-        {
-            eulerAngles = Real3(0.0, 0.0, angle);
-        }
-        else if (lookConstraint == SteeringConstraints.XZPlane)
-        {
-            eulerAngles = Real3(0.0, angle, 0.0);
-        }
-        else
-        {
-          eulerAngles = Real3(angle, 0.0, 0.0);
-        }
-        
-        this.Transform.Rotation = Math.Multiply(
-            this.Transform.Rotation, Math.ToQuaternion(eulerAngles)
-        );
+      this.Rotate3D(event);
+    }
+    else
+    {
+      this.Rotate2D(event);
     }
     
-    function Rotate3D(event : SteeringResultsEvent)
+    // Add together the world and local movements
+    var impulse = event.WorldMovement + Math.Multiply(this.Transform.WorldRotation, event.LocalMovement);
+    
+    impulse *= 0.5;
+    
+    // Enforce the maximum impulse
+    var impulseLength = Math.LengthSq(impulse);
+    
+    if (impulseLength > this.MaxImpulse * this.MaxImpulse)
     {
-        var look = Math.RotateTowards(
-            this.Orientation.WorldForward, event.LookDirection, this.MaxRotationRad * event.Dt
-        );
-        
-        this.Orientation.LookAtDirection(look);
+      // Normalize and scale
+      impulse /= Math.Sqrt(impulseLength);
+      impulse *= this.MaxImpulse;
+    }
+    else if (impulseLength < this.MinImpulse * this.MinImpulse)
+    {
+      // Normalize and scale
+      impulse /= Math.Sqrt(impulseLength);
+      impulse *= this.MinImpulse;
     }
     
-    function DebugDrawVector(vector : Real3, color : Real4)
+    // Apply the impulse
+    this.RigidBody.ApplyLinearImpulse(impulse);
+    
+    // Enforce the maximum velocity
+    var velocityLength = Math.LengthSq(this.RigidBody.Velocity);
+    
+    if (velocityLength > this.MaxVelocity * this.MaxVelocity)
     {
-        if (!this.DebugDrawEnabled)
-        {
-            return;
-        }
-        
-        var line = new DebugLine();
-        
-        line.Start = this.Transform.WorldTranslation;
-        line.End = line.Start + vector;
-        line.HeadSize = 0.5;
-        line.Color = color;
-        line.OnTop = true;
-        
-        DebugDraw.Add(line);
+      // Normalize and scale
+      this.RigidBody.Velocity /= Math.Sqrt(velocityLength);
+      this.RigidBody.Velocity *= this.MaxVelocity;
     }
+    
+    this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
+    this.DebugDrawVector(this.RigidBody.Velocity * event.Dt, Real4(0, 0, 1, 1));
+  }
+  
+  function Rotate2D(event : SteeringResultsEvent)
+  {
+    var angle = Math.SignedAngle(
+      this.Orientation.WorldForward, event.LookDirection,
+      this.Orientation.WorldUp
+    );
+    
+    var rotationSpeed = this.MaxRotationRad * event.Dt;
+    
+    if (Math.Abs(angle) > rotationSpeed)
+    {
+      // Clamp
+      if (angle < 0.0)
+      {
+        angle = -rotationSpeed;
+      }
+      else
+      {
+        angle = rotationSpeed;
+      }
+    }
+    
+    var lookConstraint = this.SteeringAccumulator.LookDirectionConstraint;
+    var eulerAngles = Real3.Zero;
+    
+    if (lookConstraint == SteeringConstraints.XYPlane)
+    {
+      eulerAngles = Real3(0.0, 0.0, angle);
+    }
+    else if (lookConstraint == SteeringConstraints.XZPlane)
+    {
+      eulerAngles = Real3(0.0, angle, 0.0);
+    }
+    else
+    {
+      eulerAngles = Real3(angle, 0.0, 0.0);
+    }
+    
+    this.Transform.Rotation = Math.Multiply(
+      this.Transform.Rotation, Math.ToQuaternion(eulerAngles)
+    );
+  }
+  
+  function Rotate3D(event : SteeringResultsEvent)
+  {
+    var look = Math.RotateTowards(
+      this.Orientation.WorldForward, event.LookDirection,
+      this.MaxRotationRad * event.Dt
+    );
+    
+    this.Orientation.LookAtDirection(look);
+  }
+  
+  function DebugDrawVector(vector : Real3, color : Real4)
+  {
+    if (!this.DebugDrawEnabled)
+    {
+      return;
+    }
+    
+    var line = new DebugLine();
+    
+    line.Start = this.Transform.WorldTranslation;
+    line.End = line.Start + vector;
+    line.HeadSize = 0.5;
+    line.Color = color;
+    line.OnTop = true;
+    
+    DebugDraw.Add(line);
+  }
 }

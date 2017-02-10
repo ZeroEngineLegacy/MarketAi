@@ -10,7 +10,6 @@ TextContent
 	{
 		var Tags = Array
 		{
-			"SensingAndSteeringBehaviors"
 			"SimplePathFollower"
 		}
 	}

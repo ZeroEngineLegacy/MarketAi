@@ -6,4 +6,11 @@ TextContent
 		var Name = "DebugTargetSpawner"
 		var ResourceId = 0x58da945af203e560
 	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Debugging"
+		}
+	}
 }

@@ -9,38 +9,38 @@
 
 class OrientTowardsVelocity : ZilchComponent
 {
-    [Dependency]
-    var Transform : Transform = null;
-    
-    [Dependency]
-    var RigidBody : RigidBody = null;
-    
-    [Dependency]
-    var Orientation : Orientation = null;
-    
-    // (degrees per second) The rate at which the object will rotate to match the velocity direction
-    [Property]
-    var RotationSpeed : Real = 360.0;
-    
-    function Initialize(init : CogInitializer)
-    {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
-    }
+  [Dependency]
+  var Transform : Transform = null;
+  
+  [Dependency]
+  var RigidBody : RigidBody = null;
+  
+  [Dependency]
+  var Orientation : Orientation = null;
+  
+  // (degrees per second) The rate at which the object will rotate to match the velocity direction
+  [Property]
+  var RotationSpeed : Real = 360.0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
 
-    function OnLogicUpdate(event : UpdateEvent)
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    if (this.RigidBody.Velocity == Real3.Zero)
     {
-        if (this.RigidBody.Velocity == Real3.Zero)
-        {
-            return;
-        }
-        
-        var orientation = this.Orientation.GetLookAtDirectionRotation(
-            Math.Normalize(this.RigidBody.Velocity)
-        );
-        
-        this.Transform.Rotation = Math.RotateTowards(
-            this.Transform.Rotation, orientation,
-            Math.ToRadians(this.RotationSpeed)
-        );
+      return;
     }
+    
+    var orientation = this.Orientation.GetLookAtDirectionRotation(
+      Math.Normalize(this.RigidBody.Velocity)
+    );
+    
+    this.Transform.Rotation = Math.RotateTowards(
+      this.Transform.Rotation, orientation,
+      Math.ToRadians(this.RotationSpeed)
+    );
+  }
 }

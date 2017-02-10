@@ -1,9 +1,0 @@
-[Version:1]
-TextContent 
-{
-	ZilchScriptBuilder 
-	{
-		var Name = "ToggleSteeringDebugging"
-		var ResourceId = 0x5897c587fdcfe332
-	}
-}

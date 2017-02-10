@@ -9,47 +9,47 @@
 
 class Flee : SteeringComponent
 {
-    [Dependency]
-    var Transform : Transform = null;
-    
-    [Dependency]
-    var Orientation : Orientation = null;
-    
-    // Target object to be flee towards
-    [Property]
-    var Target : CogPath = null;
-    
-    // Range from the object in which it is valid to flee the target object
-    // If the range is 0 the target object will always be fled
-    [Property]
-    var FleeRange : Real = 0.0;
-    
-    var NoFleeRange : Boolean
+  [Dependency]
+  var Transform : Transform = null;
+  
+  [Dependency]
+  var Orientation : Orientation = null;
+  
+  // Target object to be flee towards
+  [Property]
+  var Target : CogPath = null;
+  
+  // Range from the object in which it is valid to flee the target object
+  // If the range is 0 the target object will always be fled
+  [Property]
+  var FleeRange : Real = 0.0;
+  
+  var NoFleeRange : Boolean
+  {
+    get { return Math.ApproximatelyEqual(this.FleeRange, 0.0, 0.001); }
+  }
+  
+  [Override]
+  function SteeringUpdate(event : UpdateEvent)
+  {
+    // If this component is not active do nothing
+    if (!this.Active || !this.SteeringAccumulator.Active)
     {
-        get { return Math.ApproximatelyEqual(this.FleeRange, 0.0, 0.001); }
+      return;
     }
     
-    [Override]
-    function SteeringUpdate(event : UpdateEvent)
+    // Calculate a vector to the target object
+    var targDir = this.Target.Cog.Transform.WorldTranslation - this.Transform.WorldTranslation;
+    var targDis = Math.Length(targDir);
+    
+    // Normalize the vector to the target object so it does not affect movement speed
+    targDir /= targDis;
+    
+    if (this.NoFleeRange || targDis < this.FleeRange)
     {
-        // If this component is not active do nothing
-        if (!this.Active || !this.SteeringAccumulator.Active)
-        {
-            return;
-        }
-        
-        // Calculate a vector to the target object
-        var targDir = this.Target.Cog.Transform.WorldTranslation - this.Transform.WorldTranslation;
-        var targDis = Math.Length(targDir);
-        
-        // Normalize the vector to the target object so it does not affect movement speed
-        targDir /= targDis;
-        
-        if (this.NoFleeRange || targDis < this.FleeRange)
-        {
-            // Apply a linear impulse to move the object towards the target object's position
-            this.AddLookDirection(-targDir);
-            this.AddLocalMovement(this.Orientation.LocalForward);
-        }
+      // Apply a linear impulse to move the object towards the target object's position
+      this.AddLookDirection(-targDir);
+      this.AddLocalMovement(this.Orientation.LocalForward);
     }
+  }
 }

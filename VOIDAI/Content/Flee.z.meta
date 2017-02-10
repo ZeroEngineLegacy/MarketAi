@@ -1,15 +1,16 @@
-TextContent = 
+[Version:1]
+TextContent 
 {
-	ZilchScriptBuilder = 
+	ZilchScriptBuilder 
 	{
-		string Name = "Flee",
-		uint64 ResourceId = 5610de8648c74cb0,
-	},
-	ContentTags = 
+		var Name = "Flee"
+		var ResourceId = 0x5610de8648c74cb0
+	}
+	ContentTags 
 	{
-		Array Tags = 
-		[
-			"SensingAndSteeringBehaviors",
-		],
-	},
-},
+		var Tags = Array
+		{
+			"Steering"
+		}
+	}
+}

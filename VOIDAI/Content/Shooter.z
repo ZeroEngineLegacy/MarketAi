@@ -9,113 +9,113 @@
 
 class Shooter : ZilchComponent
 {
-    [Dependency]
-    var Orientation : Orientation = null;
-    
-    [Dependency]
-    var OrientationHelper : OrientationHelper = null;
-    
-    // Determines if the component should be active
-    [Property]
-    var Active : Boolean = true;
-    
-    // The target object to shoot at
-    [Property]
-    var Target : CogPath = null;
-    
-    // The archetype of the object to be shot
-    [Property]
-    var BulletArchetype : Archetype = null;
-    
-    // Determines if bullets should be aimed directly at the target object
-    // or where the target object will be
-    [Property]
-    var PredictiveAiming : Boolean = false;
-    
-    // Only use if Predictive Aiming is selected
-    // Determines the length of the vetor used to predict the target object's future position
-    [Property]
-    var PredictionStrength : Real = 1.0;
-    
-    // The rate at which the object will shoot the given bullet archetype
-    [Property]
-    var FireRate : Real = 1.0;
-    
-    // The initial magnitude of the velocity given to bullets
-    [Property]
-    var FireSpeed : Real = 100.0;
-    
-    [Property]
-    var FireCount : Integer = 1;
-    
-    [Property]
-    var SpreadAngle : Real = 10.0;
-    
-    function Initialize(init : CogInitializer)
+  [Dependency]
+  var Orientation : Orientation = null;
+  
+  [Dependency]
+  var OrientationHelper : OrientationHelper = null;
+  
+  // Determines if the component should be active
+  [Property]
+  var Active : Boolean = true;
+  
+  // The target object to shoot at
+  [Property]
+  var Target : CogPath = null;
+  
+  // The archetype of the object to be shot
+  [Property]
+  var BulletArchetype : Archetype = null;
+  
+  // Determines if bullets should be aimed directly at the target object
+  // or where the target object will be
+  [Property]
+  var PredictiveAiming : Boolean = false;
+  
+  // Only use if Predictive Aiming is selected
+  // Determines the length of the vetor used to predict the target object's future position
+  [Property]
+  var PredictionStrength : Real = 1.0;
+  
+  // The rate at which the object will shoot the given bullet archetype
+  [Property]
+  var FireRate : Real = 1.0;
+  
+  // The initial magnitude of the velocity given to bullets
+  [Property]
+  var FireSpeed : Real = 100.0;
+  
+  [Property]
+  var FireCount : Integer = 1;
+  
+  [Property]
+  var SpreadAngle : Real = 10.0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+  
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // If the component is not active cancel any planned shots and do nothing
+    if(this.Active)
     {
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+      // If previous shot sequence is complete, start a new shot sequence
+      if(this.Owner.Actions.Completed)
+      {
+        // Confirm the object's action set is clear
+        this.Owner.Actions.Cancel();
+        
+        // Create an action sequence for the next shot
+        var seq = Action.Sequence(this.Owner.Actions as ActionSet);
+        Action.Call(seq, this.Shoot);
+        Action.Delay(seq, this.FireRate);
+      }
+    }
+    else
+    {
+      // If the component is set to not active while a shot sequence is running, cancel the sequence
+      if(this.Owner.Actions.Active)
+      {
+        this.Owner.Actions.Cancel();
+      }
+    }
+  }
+  
+  // Performs the actual shooting functionality
+  function Shoot()
+  {
+    // Set the target position of the shot to the default target object's position
+    var targPos : Real3 = this.Target.Cog.Transform.Translation;
+    
+    // If predictive aiming is selected then use the velocity to predict the future 
+    // position of the target object
+    if(this.PredictiveAiming)
+    {
+      var vel = Math.Normalize(this.Target.Cog.RigidBody.Velocity);
+      targPos += vel * this.PredictionStrength;
     }
     
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-        // If the component is not active cancel any planned shots and do nothing
-        if(this.Active)
-        {
-            // If previous shot sequence is complete, start a new shot sequence
-            if(this.Owner.Actions.Completed)
-            {
-                // Confirm the object's action set is clear
-                this.Owner.Actions.Cancel();
-                
-                // Create an action sequence for the next shot
-                var seq = Action.Sequence(this.Owner.Actions as ActionSet);
-                Action.Call(seq, this.Shoot);
-                Action.Delay(seq, this.FireRate);
-            }
-        }
-        else
-        {
-            // If the component is set to not active while a shot sequence is running, cancel the sequence
-            if(this.Owner.Actions.Active)
-            {
-                this.Owner.Actions.Cancel();
-            }
-        }
-    }
+    // Calculate the direction the bullet should be shot in
+    var targDir : Real3 = Math.Normalize(targPos - this.Owner.Transform.Translation);
     
-    // Performs the actual shooting functionality
-    function Shoot()
+    for(var i = 0; i < this.FireCount; i += 1)
     {
-        // Set the target position of the shot to the default target object's position
-        var targPos : Real3 = this.Target.Cog.Transform.Translation;
-        
-        // If predictive aiming is selected then use the velocity to predict the future 
-        // position of the target object
-        if(this.PredictiveAiming)
-        {
-            var vel = Math.Normalize(this.Target.Cog.RigidBody.Velocity);
-            targPos += vel * this.PredictionStrength;
-        }
-        
-        // Calculate the direction the bullet should be shot in
-        var targDir : Real3 = Math.Normalize(targPos - this.Owner.Transform.Translation);
-        
-        for(var i = 0; i < this.FireCount; i += 1)
-        {
-            //Create the bullet to be shot
-            var bullet : Cog = this.Space.CreateAtPosition(this.BulletArchetype, this.Owner.Transform.Translation);
-            
-            var targAngle = Math.ATan2(targDir.Y, targDir.X);
-            if(this.FireCount > 1)
-            {
-                targAngle -= Math.ToRadians(this.SpreadAngle) * (this.FireCount as Real) * 0.5;
-                targAngle += Math.ToRadians(this.SpreadAngle) * (i as Real);
-            }
-            
-            var spreadDir = this.OrientationHelper.AxisAngleToVector(AxisType.Up, targAngle);
-            
-            // Set the bullet's velocity to move toward the target position
-            bullet.RigidBody.ApplyLinearVelocity(spreadDir * this.FireSpeed);
-        }
+      //Create the bullet to be shot
+      var bullet : Cog = this.Space.CreateAtPosition(this.BulletArchetype, this.Owner.Transform.Translation);
+      
+      var targAngle = Math.ATan2(targDir.Y, targDir.X);
+      if(this.FireCount > 1)
+      {
+        targAngle -= Math.ToRadians(this.SpreadAngle) * (this.FireCount as Real) * 0.5;
+        targAngle += Math.ToRadians(this.SpreadAngle) * (i as Real);
+      }
+      
+      var spreadDir = this.OrientationHelper.AxisAngleToVector(AxisType.Up, targAngle);
+      
+      // Set the bullet's velocity to move toward the target position
+      bullet.RigidBody.ApplyLinearVelocity(spreadDir * this.FireSpeed);
     }
+  }
 }

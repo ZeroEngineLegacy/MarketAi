@@ -6,4 +6,11 @@ TextContent
 		var Name = "UISpaceCreator"
 		var ResourceId = 0x58ff6cf7ccd3a15a
 	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"UI"
+		}
+	}
 }

@@ -6,4 +6,11 @@ TextContent
 		var Name = "SteeringAccumulator"
 		var ResourceId = 0x5871faa9735f9993
 	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Steering"
+		}
+	}
 }

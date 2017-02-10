@@ -9,96 +9,96 @@
 
 class OrbitEffect : ZilchComponent
 {
-    // this component requires a RigidBody Component
-    [Dependency]
-    var RigidBody : RigidBody = null;
+  // this component requires a RigidBody Component
+  [Dependency]
+  var RigidBody : RigidBody = null;
+  
+  // This component reuires an Orientation Component
+  [Dependency]
+  var Orientation : Orientation = null;
+  
+  // Intial velocity given to the object tangent to it's current position in orbit
+  [Property]
+  var TangentVelocity : Real = 5.0;
+  
+  // Should the object orbit in a clockwise fashion
+  [Property]
+  var Clockwise : Boolean = false;
+  
+  // The Object to be orbited
+  [Property]
+  var OrbitTarget : CogPath = null;
+  
+  // Should the object debug draw
+  [Property]
+  var DebugDrawEnabled : Boolean = false;
+  
+  function Initialize(init : CogInitializer)
+  {
+    // Get the difference vector between the object and the orbit target
+    var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
+    // Get the tangent vector
+    var tangentDir = Math.Cross(Math.Normalize(radVector), this.Orientation.WorldUp);
     
-    // This component reuires an Orientation Component
-    [Dependency]
-    var Orientation : Orientation = null;
-    
-    // Intial velocity given to the object tangent to it's current position in orbit
-    [Property]
-    var TangentVelocity : Real = 5.0;
-    
-    // Should the object orbit in a clockwise fashion
-    [Property]
-    var Clockwise : Boolean = false;
-    
-    // The Object to be orbited
-    [Property]
-    var OrbitTarget : CogPath = null;
-    
-    // Should the object debug draw
-    [Property]
-    var DebugDrawEnabled : Boolean = false;
-    
-    function Initialize(init : CogInitializer)
+    // Determine if the object should move clockwise or not
+    if(this.Clockwise)
     {
-        // Get the difference vector between the object and the orbit target
-        var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
-        // Get the tangent vector
-        var tangentDir = Math.Cross(Math.Normalize(radVector), this.Orientation.WorldUp);
-        
-        // Determine if the object should move clockwise or not
-        if(this.Clockwise)
-        {
-            tangentDir = Math.Cross(-Math.Normalize(radVector), this.Orientation.WorldUp);
-        }
-        
-        // Apply the initial tangent velocity
-        this.RigidBody.Velocity = tangentDir * this.TangentVelocity;
-        
-        Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+      tangentDir = Math.Cross(-Math.Normalize(radVector), this.Orientation.WorldUp);
     }
+    
+    // Apply the initial tangent velocity
+    this.RigidBody.Velocity = tangentDir * this.TangentVelocity;
+    
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
 
-    function OnLogicUpdate(event : UpdateEvent)
-    {
-        // Get the difference vector between the object and the orbit target
-        var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
-        // Get the current magnitude of the velocity
-        var speed = Math.Length(this.RigidBody.Velocity);
-        // Calculate the current gravitational force to offset the tangental velocity
-        var gForce : Real = (this.RigidBody.Mass * (speed * speed) ) / Math.Length(radVector);
-        
-        // Apply the gravitational force to keep the object in orbit
-        this.RigidBody.ApplyForce(Math.Normalize(radVector) * gForce);
-        
-        // Should the component debug draw?
-        if(this.DebugDrawEnabled)
-        {
-            this.DrawDebug();
-        }
-    }
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // Get the difference vector between the object and the orbit target
+    var radVector = this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation;
+    // Get the current magnitude of the velocity
+    var speed = Math.Length(this.RigidBody.Velocity);
+    // Calculate the current gravitational force to offset the tangental velocity
+    var gForce : Real = (this.RigidBody.Mass * (speed * speed) ) / Math.Length(radVector);
     
-    // Draws the object's current velocity, radial offset, and radial orbit
-    // Prints current Radius, Velocity, and Speed
-    function DrawDebug()
+    // Apply the gravitational force to keep the object in orbit
+    this.RigidBody.ApplyForce(Math.Normalize(radVector) * gForce);
+    
+    // Should the component debug draw?
+    if(this.DebugDrawEnabled)
     {
-        var line1 = new DebugLine();
-        line1.Start = this.Owner.Transform.Translation;
-        line1.End = this.OrbitTarget.Cog.Transform.Translation;
-        line1.HeadSize = 0.5;
-        line1.Color = Real4(1.0,0.0,0.0,1.0);
-        DebugDraw.Add(line1);
-        
-        
-        var line2 = new DebugLine();
-        line2.Start = this.Owner.Transform.Translation;
-        line2.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
-        line2.HeadSize = 0.5;
-        line2.Color = Real4(0.0,1.0,0.0,1.0);
-        DebugDraw.Add(line2);
-        
-        
-        var sphere = new DebugSphere();
-        sphere.Position = this.OrbitTarget.Cog.Transform.Translation;
-        sphere.Radius = Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation);
-        sphere.Color = Real4(1.0,1.0,1.0,0.1);
-        DebugDraw.Add(sphere);
-        
-        Console.WriteLine("Radius: `Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation)`");
-        Console.WriteLine("Velocity: `this.Owner.RigidBody.Velocity`");
-        Console.WriteLine("Speed: `Math.Length(this.Owner.RigidBody.Velocity)`");
+      this.DrawDebug();
     }
+  }
+  
+  // Draws the object's current velocity, radial offset, and radial orbit
+  // Prints current Radius, Velocity, and Speed
+  function DrawDebug()
+  {
+    var line1 = new DebugLine();
+    line1.Start = this.Owner.Transform.Translation;
+    line1.End = this.OrbitTarget.Cog.Transform.Translation;
+    line1.HeadSize = 0.5;
+    line1.Color = Real4(1.0,0.0,0.0,1.0);
+    DebugDraw.Add(line1);
+    
+    
+    var line2 = new DebugLine();
+    line2.Start = this.Owner.Transform.Translation;
+    line2.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+    line2.HeadSize = 0.5;
+    line2.Color = Real4(0.0,1.0,0.0,1.0);
+    DebugDraw.Add(line2);
+    
+    
+    var sphere = new DebugSphere();
+    sphere.Position = this.OrbitTarget.Cog.Transform.Translation;
+    sphere.Radius = Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation);
+    sphere.Color = Real4(1.0,1.0,1.0,0.1);
+    DebugDraw.Add(sphere);
+    
+    Console.WriteLine("Radius: `Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation)`");
+    Console.WriteLine("Velocity: `this.Owner.RigidBody.Velocity`");
+    Console.WriteLine("Speed: `Math.Length(this.Owner.RigidBody.Velocity)`");
+  }
 }
