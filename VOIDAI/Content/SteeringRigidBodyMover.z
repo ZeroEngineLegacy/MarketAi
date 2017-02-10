@@ -71,8 +71,7 @@ class SteeringRigidBodyMover : ZilchComponent
         }
         
         // Add together the world and local movements
-        var localToWorld = this.Orientation.LocalToWorldRotation;
-        var impulse = event.WorldMovement + Math.Transform(event.LocalMovement, localToWorld);
+        var impulse = event.WorldMovement + Math.Multiply(this.Transform.WorldRotation, event.LocalMovement);
         
         impulse *= 0.5;
         
@@ -173,6 +172,7 @@ class SteeringRigidBodyMover : ZilchComponent
         line.End = line.Start + vector;
         line.HeadSize = 0.5;
         line.Color = color;
+        line.OnTop = true;
         
         DebugDraw.Add(line);
     }

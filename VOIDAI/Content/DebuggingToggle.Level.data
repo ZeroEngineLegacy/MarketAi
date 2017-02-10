@@ -42,37 +42,10 @@ Level
 	{
 		var Name = "Renderer"
 		var LinkId = 2
-		DeferredRenderer 
+		DefaultRenderer 
 		{
+			var ClearColor = Vec4{0, 0, 0, 0}
 			var DrawDebug = true
-			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
-			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var DrawSkybox = true
-			var DirectLighting = true
-			var IndirectLighting = true
-			var IndirectIntensity = 1
-			var ToneMap = true
-		}
-		Ssao 
-		{
-			var Enabled = true
-			var Radius = 1
-			var Intensity = 2.20000005
-			var BlurDepthThreshold = 0.0500000007
-			var DebugBuffer = false
-		}
-		Bloom 
-		{
-			var Enabled = true
-			var Intensity = 0.100000001
-			var Threshold = 1
-			var Bloom1 = true
-			var Bloom2 = true
-			var Bloom3 = true
-			var Bloom4 = true
-			var Bloom5 = true
 		}
 	}
 	Cog 
@@ -81,9 +54,9 @@ Level
 		var LinkId = 3
 		Transform 
 		{
-			var Translation = Vec3{-0.342707932, 5.59403992, 32.7246933}
+			var Translation = Vec3{-8.07058525, 10.0451622, 6.55415821}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0845462456, -0.00521727232, -0.000442692544, 0.99640578}
+			var Rotation = Quat{-0.0477652214, -0.0939999446, -0.00451514265, 0.994415522}
 		}
 		CameraViewport 
 		{
@@ -140,10 +113,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 33.201149
-			var VerticalAngle = 0.169296905
-			var HorizontalAngle = 0.0104720751
-			var LookTarget = Vec3{0, 0, 0}
+			var LookDistance = 6.70320415
+			var VerticalAngle = 0.0959931463
+			var HorizontalAngle = 0.188495576
+			var LookTarget = Vec3{-6.8203125, 9.40268803, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -162,7 +135,7 @@ Level
 			var RenderInEditor = false
 			var RenderInGame = true
 			var RenderToViewport = true
-			var ForwardViewportEvents = false
+			var ForwardViewportEvents = true
 			var RenderOrder = 0
 			var NormalizedSize = Vec2{1, 1}
 			var NormalizedOffset = Vec2{0, 0}
@@ -198,7 +171,7 @@ Level
 			}
 			var Resolution = Vec2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Letterbox
-			var MarginColor = Vec4{0, 0, 0, 1}
+			var MarginColor = Vec4{0, 0, 0, 0}
 		}
 		Camera 
 		{
@@ -235,6 +208,31 @@ Level
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
 			var Text = "[Space] Toggle Debugging"
+			var Align = TextAlign.Left
+			var PixelsPerUnit = 128
+		}
+	}
+	Cog 
+	{
+		var Name = "SpriteText"
+		var LinkId = 6
+		Transform 
+		{
+			var Translation = Vec3{-10, 9.40268803, 0}
+			var Scale = Vec3{2, 2, 2}
+			var Rotation = Quat{0, 0, 0, 1}
+		}
+		SpriteText 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Vec4{1, 1, 1, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Font = "57343753bb4eaaec:NotoSans-Regular"
+			var FontSize = 32
+			var Text = "[Tab] Toggle Sparse Update"
 			var Align = TextAlign.Left
 			var PixelsPerUnit = 128
 		}

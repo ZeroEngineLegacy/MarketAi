@@ -6,7 +6,7 @@
 /* Class: SteeringAccumulator                                                                               */
 /* Brief: SteeringAccumulator handles updating all SteeringComponents, and accumulating their movement and  */
 /*        rotations for a final output. This final output is sent as an event, and can be used to move a    */
-/*        character controller or RigidBody.                                                                */
+/*        character controller or RigidBody or anything else.                                               */
 /************************************************************************************************************/
 
 class SteeringResultsEvent : ZilchEvent
@@ -127,9 +127,7 @@ class SteeringAccumulator : ZilchComponent
         
         if (this.DebugDrawEnabled)
         {
-            var worldMovement = Math.Transform(
-                movement, this.Orientation.LocalToWorldRotation
-            );
+            var worldMovement = Math.Multiply(this.Transform.WorldRotation, movement);
             
             this.DebugDrawVector(worldMovement, Real4(1, 0, 1, 1));
         }
@@ -187,6 +185,7 @@ class SteeringAccumulator : ZilchComponent
         line.End = line.Start + vector;
         line.HeadSize = 0.5;
         line.Color = color;
+        line.OnTop = true;
         
         DebugDraw.Add(line);
     }

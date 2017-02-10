@@ -3,8 +3,8 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "AvoidanceAndSeek2D"
-		var ResourceId = 0x5897992e8313e39e
+		var Name = "AvoidanceSeekAndWander3D"
+		var ResourceId = 0x58fe88224f6a8073
 		var LoaderType = "Level"
 		var Version = 0
 		var ShowInEditor = true
@@ -13,6 +13,7 @@ DataContent
 	{
 		var Tags = Array
 		{
+			"Wander"
 			"Steering"
 			"Avoidance"
 			"Seek"

@@ -29,6 +29,14 @@ Level
 			var HilightInterval = 10
 			var FollowEditorCamera = false
 		}
+		UISpaceCreator 
+		{
+			var UILevel = "5897c515e332d996:DebuggingToggle"
+			var UISpace = "576f215c0825de61:Space"
+		}
+		DebugDrawToggle 
+		{
+		}
 	}
 	Cog 
 	{

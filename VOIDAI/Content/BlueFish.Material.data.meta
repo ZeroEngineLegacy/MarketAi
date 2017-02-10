@@ -1,0 +1,12 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "BlueFish"
+		var ResourceId = 0x58fe8e9d8783ff72
+		var LoaderType = "Material"
+		var Version = 0
+		var ShowInEditor = true
+	}
+}

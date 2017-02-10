@@ -13,9 +13,9 @@ DataContent
 	{
 		var Tags = Array
 		{
-			"Wander"
 			"Steering"
 			"Avoidance"
+			"Seek"
 		}
 	}
 }

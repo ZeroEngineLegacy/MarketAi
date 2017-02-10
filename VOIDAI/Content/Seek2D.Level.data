@@ -29,6 +29,14 @@ Level
 			var HilightInterval = 10
 			var FollowEditorCamera = false
 		}
+		DebugDrawToggle 
+		{
+		}
+		UISpaceCreator 
+		{
+			var UILevel = "5897c515e332d996:DebuggingToggle"
+			var UISpace = "576f215c0825de61:Space"
+		}
 	}
 	Cog 
 	{
@@ -36,7 +44,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{9.06421471, 8.23354149, 7.56854582}
+			var Translation = Vec3{8.45880222, 33.3886223, 30.6919346}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.401913047, -0.0119836964, -0.00526044518, 0.915584326}
 		}
@@ -95,7 +103,7 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 11.1854086
+			var LookDistance = 45.3590202
 			var VerticalAngle = 0.827285409
 			var HorizontalAngle = 12.5925465
 			var LookTarget = Vec3{9.26237297, 0, 0}
@@ -210,8 +218,8 @@ Level
 		{
 			var GlobalUp = Vec3{0, 1, 0}
 			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+			var ForwardVector = Vec3{0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		SteeringAccumulator 
 		{

@@ -20,6 +20,17 @@ Level
 			var HilightInterval = 10
 			var FollowEditorCamera = false
 		}
+		DebugDrawToggle 
+		{
+		}
+		UISpaceCreator 
+		{
+			var UILevel = "5897c515e332d996:DebuggingToggle"
+			var UISpace = "576f215c0825de61:Space"
+		}
+		SparseUpdateToggle 
+		{
+		}
 	}
 	Cog 
 	{
@@ -27,9 +38,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-32.8728752, 2.41562486, 38.0120659}
+			var Translation = Vec3{-32.4858589, 6.69178581, 37.9712791}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.00259425864, -0.669022262, -0.00233521848, 0.743234158}
+			var Rotation = Quat{-0.0647776127, -0.666480541, -0.058309488, 0.740410507}
 		}
 		CameraViewport 
 		{
@@ -87,7 +98,7 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var LookDistance = 25.6568737
-			var VerticalAngle = 0.00698096119
+			var VerticalAngle = 0.17453292
 			var HorizontalAngle = 76.8640213
 			var LookTarget = Vec3{-7.35792351, 2.23651671, 35.3231392}
 			var MoveSensitivity = 1
@@ -1016,7 +1027,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 35
 		Transform 
 		{
@@ -1138,7 +1149,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 37
 		Transform 
 		{
@@ -1260,7 +1271,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 38
 		Transform 
 		{
@@ -1382,7 +1393,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 39
 		Transform 
 		{
@@ -1504,7 +1515,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 40
 		Transform 
 		{
@@ -1626,7 +1637,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 41
 		Transform 
 		{
@@ -1748,7 +1759,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 42
 		Transform 
 		{
@@ -1998,7 +2009,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 44
 		Transform 
 		{
@@ -2120,7 +2131,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 45
 		Transform 
 		{
@@ -2242,7 +2253,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 46
 		Transform 
 		{
@@ -2364,7 +2375,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 47
 		Transform 
 		{
@@ -2486,7 +2497,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 48
 		Transform 
 		{
@@ -2608,7 +2619,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 49
 		Transform 
 		{
@@ -2730,7 +2741,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 50
 		Transform 
 		{
@@ -2852,7 +2863,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 51
 		Transform 
 		{
@@ -2974,7 +2985,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 52
 		Transform 
 		{
@@ -3096,7 +3107,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 53
 		Transform 
 		{
@@ -3218,7 +3229,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 54
 		Transform 
 		{
@@ -3340,7 +3351,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 55
 		Transform 
 		{
@@ -3462,7 +3473,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 56
 		Transform 
 		{
@@ -3584,7 +3595,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 57
 		Transform 
 		{
@@ -3706,7 +3717,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 58
 		Transform 
 		{
@@ -3828,7 +3839,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 59
 		Transform 
 		{
@@ -3950,7 +3961,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 60
 		Transform 
 		{
@@ -4072,7 +4083,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 61
 		Transform 
 		{
@@ -4194,7 +4205,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 62
 		Transform 
 		{
@@ -4316,7 +4327,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 63
 		Transform 
 		{
@@ -4438,7 +4449,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 64
 		Transform 
 		{
@@ -4560,7 +4571,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 65
 		Transform 
 		{
@@ -4682,7 +4693,7 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Player"
+		var Name = "Seeker"
 		var LinkId = 66
 		Transform 
 		{

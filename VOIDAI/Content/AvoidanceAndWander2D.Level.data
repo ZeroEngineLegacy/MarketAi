@@ -20,6 +20,17 @@ Level
 			var HilightInterval = 10
 			var FollowEditorCamera = false
 		}
+		UISpaceCreator 
+		{
+			var UILevel = "5897c515e332d996:DebuggingToggle"
+			var UISpace = "576f215c0825de61:Space"
+		}
+		DebugDrawToggle 
+		{
+		}
+		SparseUpdateToggle 
+		{
+		}
 	}
 	Cog 
 	{
@@ -221,7 +232,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -333,7 +344,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -445,7 +456,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -557,7 +568,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -669,7 +680,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -781,7 +792,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -893,7 +904,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1005,7 +1016,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -1971,7 +1982,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2083,7 +2094,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2195,7 +2206,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2307,7 +2318,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2419,7 +2430,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2531,7 +2542,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2643,7 +2654,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2755,7 +2766,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var EnableDebugDraw = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."

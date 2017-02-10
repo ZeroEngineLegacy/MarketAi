@@ -172,7 +172,7 @@ class Wander : SteeringComponent
         var point = this.RandomGenerator.UnitReal3() * Math.Sin(angle);
         point = Real3(point.X, point.Y, Math.Cos(angle));
         
-        var direction = -Math.Multiply(this.Orientation.LocalToWorldRotation, point);
+        var direction = -Math.Multiply(this.Transform.WorldRotation, point);
         
         this.Result = this.Orientation.WorldForward * this.WanderOffset +
                       direction * this.Radius;
