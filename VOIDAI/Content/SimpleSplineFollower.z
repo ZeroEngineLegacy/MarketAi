@@ -106,7 +106,7 @@ class SimpleSplineFollower : ZilchComponent
     var forward = firstPoint.WorldTangent;
     if(this.LocalFollow == true)
     {
-      forward = Math.Transform(forward, this.InvSplineRotation);
+      forward = Math.Multiply(this.InvSplineRotation, forward);
     }
     this.OldForward = forward;
     // Also cache the first point so we can properly update with delta movements
@@ -155,8 +155,8 @@ class SimpleSplineFollower : ZilchComponent
       // move to the new position we calculated. Instead, take the
       // delta movement and the forward vector and rotate them back
       // into the "local" space for following.
-      delta = Math.Transform(delta, this.InvSplineRotation);
-      forward = Math.Transform(forward, this.InvSplineRotation);
+      delta = Math.Multiply(this.InvSplineRotation, delta);
+      forward = Math.Multiply(this.InvSplineRotation, forward);
       pos = delta + this.Owner.Transform.WorldTranslation;
     }
     

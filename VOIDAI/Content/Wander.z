@@ -134,7 +134,7 @@ class Wander : SteeringComponent
     
     // Calculate the rotated vector
     var rotation = Math.AxisAngle(this.Orientation.WorldUp, angle);
-    var direction = Math.Transform(this.Orientation.WorldForward, rotation);
+    var direction = Math.Multiply(rotation, this.Orientation.WorldForward);
     
     // Calculate the normalized new direction vector
     this.Result = this.Orientation.WorldForward * this.WanderOffset + 
