@@ -33,8 +33,8 @@ Level
 			var AlwaysDrawInEditor = true
 			var DrawInGame = false
 			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridHighlight = Vec4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 	}
@@ -88,8 +88,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var LocalOrientationBasis = Quat{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		CameraViewport 
@@ -146,13 +145,14 @@ Level
 		}
 		ShadowRenderer 
 		{
+			var ResolutionValue = ShadowResolution.High
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = false
 			var VisibilityEvents = true
-			var Material = "580267aabbf7843e:DirectionalLightShadows"
+			var Material = ""
 			var Mesh = ""
 		}
 		DirectionalLight 
@@ -172,9 +172,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{21.2915459, 5.83473969, 0.205269188}
+			var Translation = Vec3{12.543417, 6.99882078, 0.446700871}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.085337311, 0.703747153, 0.0857855082, 0.700070262}
+			var Rotation = Quat{-0.199436367, 0.689580977, 0.206883818, 0.664757371}
 		}
 		CameraViewport 
 		{
@@ -231,10 +231,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 20.1375141
-			var VerticalAngle = 0.242599517
-			var HorizontalAngle = 4.70715046
-			var LookTarget = Vec3{1.7439903, 0.997168601, 0.307670414}
+			var LookDistance = 12.2140255
+			var VerticalAngle = 0.58293879
+			var HorizontalAngle = 4.675735
+			var LookTarget = Vec3{2.35340548, 0.27524668, 0.82037276}
 			var MoveSensitivity = 1
 		}
 	}
@@ -391,8 +391,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 
@@ -455,8 +454,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 
@@ -519,8 +517,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 
@@ -689,8 +686,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 
@@ -753,8 +749,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 
@@ -873,8 +868,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 1, 0, -0}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		Sensor 

@@ -25,8 +25,8 @@ Level
 			var AlwaysDrawInEditor = true
 			var DrawInGame = true
 			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridHighlight = Vec4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 	}
@@ -36,7 +36,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{0, 12.9409523, 48.2962914}
+			var Translation = Vec3{-6.94537163, 3.89774084, 14.546567}
 			var Scale = Vec3{1, 1, 1}
 			var Rotation = Quat{-0.130526185, -1.10221432e-08, -2.85274093e-09, 0.991444945}
 		}
@@ -95,10 +95,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 50
+			var LookDistance = 15.0597143
 			var VerticalAngle = 0.261799395
 			var HorizontalAngle = 0
-			var LookTarget = Vec3{0, 0, 0}
+			var LookTarget = Vec3{-6.94537163, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -209,8 +209,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{-0, 5.96046448e-08, 0.99999994}
-			var ForwardVector = Vec3{-0, 0.99999994, -5.96046448e-08}
+			var LocalOrientationBasis = Quat{0.707106769, -0, 0, 0.707106769}
 			var DefaultBases = OrientationBases.Custom
 		}
 		OrientationHelper 

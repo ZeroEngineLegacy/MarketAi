@@ -141,7 +141,7 @@ class Sensor : ZilchComponent
     }
     
     var sensors = new Array[SensorRay]();
-    var event : SensorEvent = new SensorEvent();
+    var event = new SensorEvent();
     var position = this.Transform.TransformPoint(this.LocalOffset);
     
     // Construct the array of sensors
