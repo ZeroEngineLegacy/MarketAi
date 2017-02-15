@@ -33,8 +33,8 @@ Level
 			var AlwaysDrawInEditor = true
 			var DrawInGame = false
 			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridHighlight = Vec4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 	}
@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{28.7151451, 15.650198, 8.60960388}
+			var Translation = Vec3{0.5768736, 2.89970589, 20.7753944}
 			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.16769734, 0.564844847, 0.118516594, 0.799238205}
+			var Rotation = Quat{0.0523362495, -6.16606712e-07, 3.23386828e-08, 0.99862951}
 		}
 		Camera 
 		{
@@ -104,9 +104,9 @@ Level
 		{
 			var ControlMode = ControlMode.Orbit
 			var LookDistance = 18.4416294
-			var VerticalAngle = 0.413642406
-			var HorizontalAngle = -1.23045576
-			var LookTarget = Vec3{12.7974129, 8.23763657, 2.97281408}
+			var VerticalAngle = -0.104720347
+			var HorizontalAngle = 1.23400241e-06
+			var LookTarget = Vec3{0.57689625, 4.8273921, 2.43479061}
 			var MoveSensitivity = 1
 		}
 	}
@@ -222,7 +222,7 @@ Level
 				var LinkId = 7
 				Transform 
 				{
-					var Translation = Vec3{0, 4.48811913, 0}
+					var Translation = Vec3{-2.79513741, 4.48811913, 0}
 					var Scale = Vec3{0.100000001, 0.100000001, 0.100000001}
 					var Rotation = Quat{0, 0, 0, 1}
 				}
@@ -241,7 +241,7 @@ Level
 				var LinkId = 8
 				Transform 
 				{
-					var Translation = Vec3{0, 4.48811913, 3.84854507}
+					var Translation = Vec3{-2.79513741, 4.48811913, 3.84854507}
 					var Scale = Vec3{0.100000001, 0.100000001, 0.100000001}
 					var Rotation = Quat{0, 0, 0, 1}
 				}
@@ -353,8 +353,7 @@ Level
 		Orientation 
 		{
 			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{0, 0, 1}
+			var LocalOrientationBasis = Quat{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardZUpY
 		}
 		SimpleSplineFollower 
