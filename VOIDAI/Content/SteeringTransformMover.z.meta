@@ -3,14 +3,14 @@ TextContent
 {
 	ZilchScriptBuilder 
 	{
-		var Name = "SteeringAccumulator"
-		var ResourceId = 0x5871faa9735f9993
+		var Name = "SteeringTransformMover"
+		var ResourceId = 0x58c76ff33dc629c9
 	}
 	ContentTags 
 	{
 		var Tags = Array
 		{
-			"Steering_Core"
+			"Steering_Example"
 			"Steering"
 		}
 	}

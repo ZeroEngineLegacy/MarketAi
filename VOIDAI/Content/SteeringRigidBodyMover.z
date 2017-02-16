@@ -4,16 +4,12 @@
 /* Author: Zero Engine Team                                                                                 */
 /* Last updated by: Jordan Ellis                                                                            */
 /* Class: SteeringRigidBodyMover                                                                            */
-/* Brief: SteeringAccumulator handles updating all SteeringComponents, and accumulating their movement and  */
-/*        rotations for a final output. This final output is sent as an event, and can be used to move a    */
-/*        character controller or RigidBody.                                                                */
+/* Brief: This component listens to the SteeringAccumulator's SteeringResultsEvent, and moves the rigidbody */
+/*        accordingly.                                                                                      */
 /************************************************************************************************************/
 
 class SteeringRigidBodyMover : ZilchComponent
 {
-  [Dependency]
-  var SteeringAccumulator : SteeringAccumulator = null;
-  
   [Dependency]
   var Transform : Transform = null;
   
@@ -43,11 +39,6 @@ class SteeringRigidBodyMover : ZilchComponent
     get { return Math.ToRadians(this.MaxRotation); }
   }
   
-  var DebugDrawEnabled : Boolean
-  {
-    get { return this.SteeringAccumulator.DebugDrawEnabled; }
-  }
-  
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Owner, Events.SteeringResultsEvent, this.OnSteeringResults);
@@ -55,13 +46,8 @@ class SteeringRigidBodyMover : ZilchComponent
 
   function OnSteeringResults(event : SteeringResultsEvent)
   {
-    if (!this.SteeringAccumulator.Active)
-    {
-      return;
-    }
-    
     // Calculate our rotation for this frame
-    if (this.SteeringAccumulator.LookDirectionConstraint == SteeringConstraints.None)
+    if (event.Owner.LookDirectionConstraint == SteeringConstraints.None)
     {
       this.Rotate3D(event);
     }
@@ -104,8 +90,11 @@ class SteeringRigidBodyMover : ZilchComponent
       this.RigidBody.Velocity *= this.MaxVelocity;
     }
     
-    this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
-    this.DebugDrawVector(this.RigidBody.Velocity * event.Dt, Real4(0, 0, 1, 1));
+    if (event.Owner.DebugDrawEnabled)
+    {
+      this.DebugDrawVector(impulse, Real4(0, 1, 0, 1));
+      this.DebugDrawVector(this.RigidBody.Velocity * event.Dt, Real4(0, 0, 1, 1));
+    }
   }
   
   function Rotate2D(event : SteeringResultsEvent)
@@ -130,7 +119,7 @@ class SteeringRigidBodyMover : ZilchComponent
       }
     }
     
-    var lookConstraint = this.SteeringAccumulator.LookDirectionConstraint;
+    var lookConstraint = event.Owner.LookDirectionConstraint;
     var eulerAngles = Real3.Zero;
     
     if (lookConstraint == SteeringConstraints.XYPlane)
@@ -163,11 +152,6 @@ class SteeringRigidBodyMover : ZilchComponent
   
   function DebugDrawVector(vector : Real3, color : Real4)
   {
-    if (!this.DebugDrawEnabled)
-    {
-      return;
-    }
-    
     var line = new DebugLine();
     
     line.Start = this.Transform.WorldTranslation;
