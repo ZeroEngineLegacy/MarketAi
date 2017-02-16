@@ -10,7 +10,7 @@ TextContent
 	{
 		var Tags = Array
 		{
-			"SimplePathFollower"
+			"SplineFollower"
 		}
 	}
 }
