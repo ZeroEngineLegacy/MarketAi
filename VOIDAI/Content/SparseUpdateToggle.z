@@ -9,7 +9,7 @@ class SparseUpdateToggle : ZilchComponent
   {
     if (Zero.Keyboard.KeyIsReleased(Keys.Tab))
     {
-      foreach (var cog in this.Space.AllObjects())
+      foreach (var cog in this.Space.AllObjects)
       {
         var sensing = cog.Sensor;
         

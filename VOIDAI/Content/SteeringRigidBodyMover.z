@@ -152,10 +152,10 @@ class SteeringRigidBodyMover : ZilchComponent
   
   function DebugDrawVector(vector : Real3, color : Real4)
   {
-    var line = new DebugLine();
+    var start = this.Transform.WorldTranslation;
+    var end = start + vector;
+    var line = DebugLine(start, end);
     
-    line.Start = this.Transform.WorldTranslation;
-    line.End = line.Start + vector;
     line.HeadSize = 0.5;
     line.Color = color;
     line.OnTop = true;

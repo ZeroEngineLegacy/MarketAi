@@ -75,25 +75,23 @@ class OrbitEffect : ZilchComponent
   // Prints current Radius, Velocity, and Speed
   function DrawDebug()
   {
-    var line1 = new DebugLine();
-    line1.Start = this.Owner.Transform.Translation;
-    line1.End = this.OrbitTarget.Cog.Transform.Translation;
+    var start1 = this.Owner.Transform.Translation;
+    var end1 = this.OrbitTarget.Cog.Transform.Translation;
+    var line1 = DebugLine(start1, end1);
     line1.HeadSize = 0.5;
     line1.Color = Real4(1.0,0.0,0.0,1.0);
     DebugDraw.Add(line1);
     
-    
-    var line2 = new DebugLine();
-    line2.Start = this.Owner.Transform.Translation;
-    line2.End = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+    var start2 = this.Owner.Transform.Translation;
+    var end2 = this.Owner.Transform.Translation + this.Owner.RigidBody.Velocity;
+    var line2 = DebugLine(start2, end2);
     line2.HeadSize = 0.5;
     line2.Color = Real4(0.0,1.0,0.0,1.0);
     DebugDraw.Add(line2);
     
-    
-    var sphere = new DebugSphere();
-    sphere.Position = this.OrbitTarget.Cog.Transform.Translation;
-    sphere.Radius = Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation);
+    var position = this.OrbitTarget.Cog.Transform.Translation;
+    var radius = Math.Length(this.OrbitTarget.Cog.Transform.Translation - this.Owner.Transform.Translation);
+    var sphere = DebugSphere(position, radius);
     sphere.Color = Real4(1.0,1.0,1.0,0.1);
     DebugDraw.Add(sphere);
     

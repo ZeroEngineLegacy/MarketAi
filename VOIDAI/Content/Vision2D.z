@@ -93,7 +93,7 @@ class Vision2D : ZilchComponent
     this.ConeAngleDotLimit = this.CalcAngleDot(this.ConeAngle/2.0);
     
     // Create the vision filter to be used in the intial sphere cast
-    this.VisionFilter = this.Space.PhysicsSpace.CreateDefaultCastFilter();
+    this.VisionFilter = new CastFilter();
     this.VisionFilter.IgnoreChildren = this.IgnoreChildren;
     this.VisionFilter.IgnoreStatic = this.IgnoreStatic;
     this.VisionFilter.IgnoreGhost = this.IgnoreGhost;
@@ -195,7 +195,11 @@ class Vision2D : ZilchComponent
     this.DetectedObjs.Clear();
     
     // Cast a sphere to get all objects with in range of being in vision
-    var results = this.Space.PhysicsSpace.CastSphereResults(this.Owner.Transform.Translation, this.Range, this.MaxDetectionCount, this.VisionFilter);
+    var sphere = Sphere();
+    sphere.Center = this.Owner.Transform.Translation;
+    sphere.Radius = this.Range;
+    
+    var results = this.Space.PhysicsSpace.CastSphere(sphere, this.MaxDetectionCount, this.VisionFilter);
     foreach(var obj in results.All)
     {
       // Calculate the dot product of the direction to the obj and the world forward
@@ -228,34 +232,38 @@ class Vision2D : ZilchComponent
   function DrawDebug()
   {
     // Draw the sphere that indicates the vision range
-    var sphere = DebugSphere();
-    sphere.Position = this.Owner.Transform.Translation;
-    sphere.Radius = this.Range;
+    var position = this.Owner.Transform.Translation;
+    var radius = this.Range;
+    var sphere = DebugSphere(position, radius);
+    
     sphere.Color = Real4(1.0,1.0,1.0,0.1);
     DebugDraw.Add(sphere);
     
     // Draw the line that indicates the left edge of the viewing cone
     var leftAngle = this.Owner.Orientation.AbsoluteAngle + (this.ConeAngle/2.0);
     var leftDir = (this.Owner.Orientation.LocalForward * Math.Cos(leftAngle)) - (this.Owner.Orientation.LocalRight * Math.Sin(leftAngle));
-    var line1 = DebugLine();
-    line1.Start = this.Owner.Transform.Translation;
-    line1.End = this.Owner.Transform.Translation + (leftDir * this.Range);
+    var start1 = this.Owner.Transform.Translation;
+    var end1 = this.Owner.Transform.Translation + (leftDir * this.Range);
+    var line1 = DebugLine(start1, end1);
+    
     line1.Color = Real4(1.0,0.0,0.0,1.0);
     DebugDraw.Add(line1);
     
     // Draw the line that indicates the right edge of the viewing cone
     var rightAngle = this.Owner.Orientation.AbsoluteAngle - (this.ConeAngle/2.0);
     var rightDir = (this.Owner.Orientation.LocalForward * Math.Cos(rightAngle)) - (this.Owner.Orientation.LocalRight * Math.Sin(rightAngle));
-    var line2 = DebugLine();
-    line2.Start = this.Owner.Transform.Translation;
-    line2.End = this.Owner.Transform.Translation + (rightDir * this.Range);
+    var start2 = this.Owner.Transform.Translation;
+    var end2 = this.Owner.Transform.Translation + (rightDir * this.Range);
+    var line2 = DebugLine(start2, end2);
+    
     line2.Color = Real4(1.0,0.0,0.0,1.0);
     DebugDraw.Add(line2);
     
     // Draw the line that indicates the world forward
-    var line3 = DebugLine();
-    line3.Start = this.Owner.Transform.Translation;
-    line3.End = this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.Range * 0.5);
+    var start3 = this.Owner.Transform.Translation;
+    var end3 = this.Owner.Transform.Translation + (this.Owner.Orientation.WorldForward * this.Range * 0.5);
+    var line3 = DebugLine(start3, end3);
+    
     line3.HeadSize = 0.5;
     line3.Color = Real4(0.0,0.0,1.0,1.0);
     DebugDraw.Add(line3);
@@ -263,9 +271,10 @@ class Vision2D : ZilchComponent
     // Draw arrows to the detected objects within the viewing cone
     foreach(var obj in this.DetectedObjs)
     {
-      var arrow = DebugLine();
-      arrow.Start = this.Owner.Transform.Translation;
-      arrow.End = obj.Transform.Translation;
+      var start = this.Owner.Transform.Translation;
+      var end = obj.Transform.Translation;
+      var arrow = DebugLine(start, end);
+      
       arrow.HeadSize = 0.5;
       arrow.Color = Real4(0.0,1.0,0.0,1.0);
       DebugDraw.Add(arrow);

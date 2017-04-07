@@ -278,7 +278,7 @@ class Sensor : ZilchComponent
       ray.Start = position;
       ray.Direction = sensor.Direction;
       
-      var castResults = physics.CastRayResults(ray, castResultsMax);
+      var castResults = physics.CastRay(ray, castResultsMax);
       
       // Loop through all the results
       foreach (var castResult in castResults)
@@ -365,10 +365,8 @@ class Sensor : ZilchComponent
   
   function DebugDrawSphere(radius : Real, position : Real3, color : Real4)
   {
-    var sphere = new DebugSphere();
+    var sphere = DebugSphere(position, radius);
     
-    sphere.Position = position;
-    sphere.Radius = radius;
     sphere.Color = color;
     sphere.OnTop = true;
     
@@ -377,10 +375,8 @@ class Sensor : ZilchComponent
   
   function DebugDrawLine(start : Real3, end : Real3, size : Real, color : Real4)
   {
-    var line = new DebugLine();
+    var line = DebugLine(start, end);
     
-    line.Start = start;
-    line.End = end;
     line.HeadSize = size;
     line.Color = color;
     line.OnTop = true;

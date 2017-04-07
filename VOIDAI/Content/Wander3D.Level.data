@@ -24,9 +24,9 @@ Level
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
 			var DrawInGame = true
-			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridColor = Real4{0.5, 0.5, 0.5, 0.400000006}
+			var GridHighlight = Real4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 		UISpaceCreator 
@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{-2.15665579, 28.9703178, -48.3705597}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0160589051, 0.958701491, 0.27852875, 0.0552749299}
+			var Translation = Real3{-2.15665579, 28.9703178, -48.3705597}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{-0.0160589051, 0.958701491, 0.27852875, 0.0552749299}
 		}
 		CameraViewport 
 		{
@@ -55,8 +55,8 @@ Level
 			var RenderToViewport = true
 			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Vec2{1, 1}
-			var NormalizedOffset = Vec2{0, 0}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var Camera = CogPath
 			{
 				var Path = "."
@@ -87,13 +87,12 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Vec2{1920, 1080}
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Fill
-			var MarginColor = Vec4{0, 0, 0, 1}
+			var MarginColor = Real4{0, 0, 0, 1}
 		}
 		Camera 
 		{
-			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -106,7 +105,7 @@ Level
 			var LookDistance = 54.2094917
 			var VerticalAngle = 0.565487087
 			var HorizontalAngle = 22.1063328
-			var LookTarget = Vec3{-7.41705322, -0.0766004026, -2.90327859}
+			var LookTarget = Real3{-7.41705322, -0.0766004026, -2.90327859}
 			var MoveSensitivity = 1
 		}
 	}
@@ -116,9 +115,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 31.775568, 47.4478531}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.27572307, 0, 0, 0.961237133}
+			var Translation = Real3{0, 31.775568, 47.4478531}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{-0.27572307, 0, 0, 0.961237133}
 		}
 		CameraViewport 
 		{
@@ -127,8 +126,8 @@ Level
 			var RenderToViewport = true
 			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Vec2{1, 1}
-			var NormalizedOffset = Vec2{0, 0}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var Camera = CogPath
 			{
 				var Path = "."
@@ -154,18 +153,17 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Vec2{1920, 1080}
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Letterbox
-			var MarginColor = Vec4{0, 0, 0, 1}
+			var MarginColor = Real4{0, 0, 0, 1}
 		}
 		Camera 
 		{
-			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -179,59 +177,13 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Renderer"
-		var LinkId = 3
-		DeferredRenderer 
-		{
-			var DrawDebug = true
-			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
-			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var DrawSkybox = true
-			var DirectLighting = true
-			var IndirectLighting = true
-			var IndirectIntensity = 1
-			var ToneMap = true
-		}
-	}
-	Cog 
-	{
 		var Name = "Orbit"
-		var LinkId = 5
-		Transform 
-		{
-			var Translation = Vec3{0, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-	}
-	Cog 
-	{
-		var Name = "Floor"
 		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{0, -1.04824448, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 	}
 	Cog 
@@ -240,9 +192,9 @@ Level
 		var LinkId = 7
 		Transform 
 		{
-			var Translation = Vec3{0, 59.784008, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{0, -1.04824448, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -258,19 +210,19 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
 	{
-		var Name = "Wall"
+		var Name = "Floor"
 		var LinkId = 8
 		Transform 
 		{
-			var Translation = Vec3{50, 10, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+			var Translation = Real3{0, 59.784008, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -286,8 +238,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -296,9 +248,9 @@ Level
 		var LinkId = 9
 		Transform 
 		{
-			var Translation = Vec3{-50, 10, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+			var Translation = Real3{50, 10, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0.707106829, 0.707106829}
 		}
 		Model 
 		{
@@ -314,8 +266,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -324,9 +276,9 @@ Level
 		var LinkId = 10
 		Transform 
 		{
-			var Translation = Vec3{0, 10, 50}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0.707106829, 0, 0, 0.707106829}
+			var Translation = Real3{-50, 10, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0.707106829, 0.707106829}
 		}
 		Model 
 		{
@@ -342,8 +294,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -352,9 +304,9 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Vec3{0, 10, -50}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0.707106829, 0, 0, 0.707106829}
+			var Translation = Real3{0, 10, 50}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0.707106829, 0, 0, 0.707106829}
 		}
 		Model 
 		{
@@ -370,19 +322,19 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
 	{
-		var Name = "Wanderer"
+		var Name = "Wall"
 		var LinkId = 12
 		Transform 
 		{
-			var Translation = Vec3{-5.59948921, 1.90734863e-06, -9.97677994}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{0, 10, -50}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0.707106829, 0, 0, 0.707106829}
 		}
 		Model 
 		{
@@ -392,58 +344,14 @@ Level
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
-		RigidBody 
-		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
 		BoxCollider 
 		{
 			var Ghost = false
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var MovementConstraint = SteeringConstraints.None
-			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
-		}
-		Wander 
-		{
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 2
-			var WanderAngle = 60
-			var WanderOffset = 3
-			var Movement = true
-			var SparseUpdate = false
-			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-		}
-		SteeringRigidBodyMover 
-		{
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var MaxRotation = 180
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -452,9 +360,9 @@ Level
 		var LinkId = 13
 		Transform 
 		{
-			var Translation = Vec3{13.6139889, 0, 19.8908939}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-5.59948921, 1.90734863e-06, -9.97677994}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -466,8 +374,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -480,25 +388,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -506,9 +431,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -524,9 +446,9 @@ Level
 		var LinkId = 14
 		Transform 
 		{
-			var Translation = Vec3{9.26237297, 0, 0}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{13.6139889, 0, 19.8908939}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -538,8 +460,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -552,25 +474,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -578,9 +517,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -596,9 +532,9 @@ Level
 		var LinkId = 15
 		Transform 
 		{
-			var Translation = Vec3{12.9472027, 1.90734863e-06, -18.3539295}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{9.26237297, 0, 0}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -610,8 +546,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -624,25 +560,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -650,9 +603,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -668,9 +618,9 @@ Level
 		var LinkId = 16
 		Transform 
 		{
-			var Translation = Vec3{21.5449352, 1.90734863e-06, -3.0252285}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{12.9472027, 1.90734863e-06, -18.3539295}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -682,8 +632,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -696,25 +646,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -722,9 +689,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -740,9 +704,9 @@ Level
 		var LinkId = 17
 		Transform 
 		{
-			var Translation = Vec3{20.8428974, 0, 14.7358799}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{21.5449352, 1.90734863e-06, -3.0252285}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -754,8 +718,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -768,25 +732,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -794,9 +775,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -812,9 +790,9 @@ Level
 		var LinkId = 18
 		Transform 
 		{
-			var Translation = Vec3{-5.38603783, 3.81469727e-06, -1.47567463}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{20.8428974, 0, 14.7358799}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -826,8 +804,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -840,25 +818,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -866,9 +861,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -884,9 +876,9 @@ Level
 		var LinkId = 19
 		Transform 
 		{
-			var Translation = Vec3{13.8274403, 1.90734863e-06, 28.3919983}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-5.38603783, 3.81469727e-06, -1.47567463}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -898,8 +890,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -912,25 +904,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -938,9 +947,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -956,9 +962,9 @@ Level
 		var LinkId = 20
 		Transform 
 		{
-			var Translation = Vec3{9.47582436, 1.90734863e-06, 8.50110531}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{13.8274403, 1.90734863e-06, 28.3919983}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -970,8 +976,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -984,25 +990,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1010,9 +1033,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1028,9 +1048,9 @@ Level
 		var LinkId = 21
 		Transform 
 		{
-			var Translation = Vec3{13.1606541, 3.81469727e-06, -9.85282421}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{9.47582436, 1.90734863e-06, 8.50110531}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1042,8 +1062,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1056,25 +1076,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1082,9 +1119,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1100,9 +1134,9 @@ Level
 		var LinkId = 22
 		Transform 
 		{
-			var Translation = Vec3{21.7583866, 3.81469727e-06, 5.47587681}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{13.1606541, 3.81469727e-06, -9.85282421}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1114,8 +1148,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1128,25 +1162,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1154,9 +1205,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1172,9 +1220,9 @@ Level
 		var LinkId = 23
 		Transform 
 		{
-			var Translation = Vec3{21.0563488, 1.90734863e-06, 23.2369843}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{21.7583866, 3.81469727e-06, 5.47587681}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1186,8 +1234,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1200,25 +1248,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1226,9 +1291,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1244,9 +1306,9 @@ Level
 		var LinkId = 24
 		Transform 
 		{
-			var Translation = Vec3{17.6233673, 1.90734863e-06, -11.8900499}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{21.0563488, 1.90734863e-06, 23.2369843}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1258,8 +1320,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1272,25 +1334,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1298,9 +1377,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1316,9 +1392,9 @@ Level
 		var LinkId = 25
 		Transform 
 		{
-			var Translation = Vec3{21.9749832, 1.90734863e-06, 8.00084305}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{17.6233673, 1.90734863e-06, -11.8900499}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1330,8 +1406,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1344,25 +1420,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1370,9 +1463,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1388,9 +1478,9 @@ Level
 		var LinkId = 26
 		Transform 
 		{
-			var Translation = Vec3{21.308197, 3.81469727e-06, -30.2439804}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{21.9749832, 1.90734863e-06, 8.00084305}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1402,8 +1492,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1416,25 +1506,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1442,9 +1549,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1460,9 +1564,9 @@ Level
 		var LinkId = 27
 		Transform 
 		{
-			var Translation = Vec3{29.2038918, 1.90734863e-06, 2.84582901}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{21.308197, 3.81469727e-06, -30.2439804}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1474,8 +1578,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1488,25 +1592,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1514,9 +1635,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1532,9 +1650,9 @@ Level
 		var LinkId = 28
 		Transform 
 		{
-			var Translation = Vec3{2.76150417, 3.81469727e-06, -21.8668289}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{29.2038918, 1.90734863e-06, 2.84582901}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1546,8 +1664,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1560,25 +1678,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1586,9 +1721,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1604,9 +1736,9 @@ Level
 		var LinkId = 29
 		Transform 
 		{
-			var Translation = Vec3{29.9059296, 3.81469727e-06, -14.9152784}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{2.76150417, 3.81469727e-06, -21.8668289}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1618,8 +1750,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1632,25 +1764,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1658,9 +1807,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1676,9 +1822,9 @@ Level
 		var LinkId = 30
 		Transform 
 		{
-			var Translation = Vec3{-11.4055262, 0, -13.1595869}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{29.9059296, 3.81469727e-06, -14.9152784}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1690,8 +1836,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1704,25 +1850,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1730,9 +1893,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1748,9 +1908,9 @@ Level
 		var LinkId = 31
 		Transform 
 		{
-			var Translation = Vec3{7.80795288, -1.90734863e-06, 16.7080841}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-11.4055262, 0, -13.1595869}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1762,8 +1922,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1776,25 +1936,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1802,9 +1979,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1820,9 +1994,9 @@ Level
 		var LinkId = 32
 		Transform 
 		{
-			var Translation = Vec3{15.0368614, -1.90734863e-06, 11.553071}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{7.80795288, -1.90734863e-06, 16.7080841}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1834,8 +2008,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1848,25 +2022,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1874,9 +2065,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1892,9 +2080,9 @@ Level
 		var LinkId = 33
 		Transform 
 		{
-			var Translation = Vec3{3.45633698, -1.90734863e-06, -3.18280792}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{15.0368614, -1.90734863e-06, 11.553071}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1906,8 +2094,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1920,25 +2108,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -1946,9 +2151,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1964,9 +2166,9 @@ Level
 		var LinkId = 34
 		Transform 
 		{
-			var Translation = Vec3{7.14116669, 0, -21.5367393}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{3.45633698, -1.90734863e-06, -3.18280792}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -1978,8 +2180,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -1992,25 +2194,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2018,9 +2237,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2036,9 +2252,9 @@ Level
 		var LinkId = 35
 		Transform 
 		{
-			var Translation = Vec3{15.7388992, 0, -6.20803642}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{7.14116669, 0, -21.5367393}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2050,8 +2266,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2064,25 +2280,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2090,9 +2323,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2108,9 +2338,9 @@ Level
 		var LinkId = 36
 		Transform 
 		{
-			var Translation = Vec3{-13.1644688, 0, 5.67062569}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{15.7388992, 0, -6.20803642}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2122,8 +2352,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2136,25 +2366,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2162,9 +2409,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2180,9 +2424,9 @@ Level
 		var LinkId = 37
 		Transform 
 		{
-			var Translation = Vec3{-15.9561653, 1.90734863e-06, -6.47526741}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-13.1644688, 0, 5.67062569}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2194,8 +2438,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2208,25 +2452,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2234,9 +2495,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2252,9 +2510,9 @@ Level
 		var LinkId = 38
 		Transform 
 		{
-			var Translation = Vec3{-19.640995, 0, 11.8786621}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-15.9561653, 1.90734863e-06, -6.47526741}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2266,8 +2524,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2280,25 +2538,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2306,9 +2581,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2324,9 +2596,9 @@ Level
 		var LinkId = 39
 		Transform 
 		{
-			var Translation = Vec3{-19.4275436, 1.90734863e-06, 20.3797684}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-19.640995, 0, 11.8786621}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2338,8 +2610,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2352,25 +2624,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2378,9 +2667,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2396,9 +2682,9 @@ Level
 		var LinkId = 40
 		Transform 
 		{
-			var Translation = Vec3{-7.59517097, 3.81469727e-06, -18.3653183}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-19.4275436, 1.90734863e-06, 20.3797684}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2410,8 +2696,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2424,25 +2710,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2450,9 +2753,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2468,9 +2768,9 @@ Level
 		var LinkId = 41
 		Transform 
 		{
-			var Translation = Vec3{-7.8470192, 1.90734863e-06, 35.1156464}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-7.59517097, 3.81469727e-06, -18.3653183}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2482,8 +2782,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2496,25 +2796,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2522,9 +2839,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2540,9 +2854,9 @@ Level
 		var LinkId = 42
 		Transform 
 		{
-			var Translation = Vec3{-15.7427139, 3.81469727e-06, 2.0258379}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-7.8470192, 1.90734863e-06, 35.1156464}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2554,8 +2868,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2568,25 +2882,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2594,9 +2925,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2612,9 +2940,9 @@ Level
 		var LinkId = 43
 		Transform 
 		{
-			var Translation = Vec3{-25.447031, -1.90734863e-06, 8.69585419}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-15.7427139, 3.81469727e-06, 2.0258379}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2626,8 +2954,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2640,25 +2968,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2666,9 +3011,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2684,9 +3026,9 @@ Level
 		var LinkId = 44
 		Transform 
 		{
-			var Translation = Vec3{-7.14498138, 3.81469727e-06, 17.354538}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-25.447031, -1.90734863e-06, 8.69585419}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2698,8 +3040,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2712,25 +3054,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2738,9 +3097,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2756,9 +3112,9 @@ Level
 		var LinkId = 45
 		Transform 
 		{
-			var Translation = Vec3{-13.8665066, -1.90734863e-06, 23.4317322}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-7.14498138, 3.81469727e-06, 17.354538}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2770,8 +3126,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2784,25 +3140,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2810,9 +3183,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2828,9 +3198,9 @@ Level
 		var LinkId = 46
 		Transform 
 		{
-			var Translation = Vec3{-15.2893791, 0, 31.769556}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-13.8665066, -1.90734863e-06, 23.4317322}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2842,8 +3212,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2856,25 +3226,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2882,9 +3269,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2900,9 +3284,9 @@ Level
 		var LinkId = 47
 		Transform 
 		{
-			var Translation = Vec3{-21.0954151, -1.90734863e-06, 28.5867462}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-15.2893791, 0, 31.769556}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2914,8 +3298,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -2928,25 +3312,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -2954,9 +3355,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2972,9 +3370,9 @@ Level
 		var LinkId = 48
 		Transform 
 		{
-			var Translation = Vec3{-21.7622013, 0, -9.65807724}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-21.0954151, -1.90734863e-06, 28.5867462}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -2986,8 +3384,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3000,25 +3398,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3026,9 +3441,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3044,9 +3456,9 @@ Level
 		var LinkId = 49
 		Transform 
 		{
-			var Translation = Vec3{-34.2894058, 3.81469727e-06, 10.4029875}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-21.7622013, 0, -9.65807724}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3058,8 +3470,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3072,25 +3484,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3098,9 +3527,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3116,9 +3542,9 @@ Level
 		var LinkId = 50
 		Transform 
 		{
-			var Translation = Vec3{-40.3088951, 0, -1.2809248}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-34.2894058, 3.81469727e-06, 10.4029875}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3130,8 +3556,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3144,25 +3570,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3170,9 +3613,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3188,9 +3628,9 @@ Level
 		var LinkId = 51
 		Transform 
 		{
-			var Translation = Vec3{1.00256157, 3.81469727e-06, -3.03661633}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-40.3088951, 0, -1.2809248}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3202,8 +3642,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3216,25 +3656,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3242,9 +3699,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3260,9 +3714,9 @@ Level
 		var LinkId = 52
 		Transform 
 		{
-			var Translation = Vec3{-7.35843277, 1.90734863e-06, 8.85343361}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{1.00256157, 3.81469727e-06, -3.03661633}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3274,8 +3728,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3288,25 +3742,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3314,9 +3785,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3332,9 +3800,9 @@ Level
 		var LinkId = 53
 		Transform 
 		{
-			var Translation = Vec3{-8.06047058, 0, 26.614542}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-7.35843277, 1.90734863e-06, 8.85343361}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3346,8 +3814,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3360,25 +3828,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3386,9 +3871,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3404,9 +3886,9 @@ Level
 		var LinkId = 54
 		Transform 
 		{
-			var Translation = Vec3{0.300523758, 1.90734863e-06, 14.7244911}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-8.06047058, 0, 26.614542}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3418,8 +3900,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3432,25 +3914,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3458,9 +3957,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3476,9 +3972,9 @@ Level
 		var LinkId = 55
 		Transform 
 		{
-			var Translation = Vec3{-15.0759277, 1.90734863e-06, 40.2706604}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{0.300523758, 1.90734863e-06, 14.7244911}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3490,8 +3986,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3504,25 +4000,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3530,9 +4043,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3548,9 +4058,9 @@ Level
 		var LinkId = 56
 		Transform 
 		{
-			var Translation = Vec3{-34.5028572, 1.90734863e-06, 1.90188217}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-15.0759277, 1.90734863e-06, 40.2706604}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3562,8 +4072,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3576,25 +4086,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3602,9 +4129,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3620,9 +4144,9 @@ Level
 		var LinkId = 57
 		Transform 
 		{
-			var Translation = Vec3{-26.1418648, 3.81469727e-06, -9.98816681}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-34.5028572, 1.90734863e-06, 1.90188217}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3634,8 +4158,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3648,25 +4172,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3674,9 +4215,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3692,9 +4230,9 @@ Level
 		var LinkId = 58
 		Transform 
 		{
-			var Translation = Vec3{-6.92838478, 1.90734863e-06, 19.8795052}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-26.1418648, 3.81469727e-06, -9.98816681}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3706,8 +4244,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3720,25 +4258,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3746,9 +4301,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3764,9 +4316,9 @@ Level
 		var LinkId = 59
 		Transform 
 		{
-			var Translation = Vec3{-11.2800007, 1.90734863e-06, -0.011387825}
-			var Scale = Vec3{1, 1, 2}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-6.92838478, 1.90734863e-06, 19.8795052}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -3778,8 +4330,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -3792,25 +4344,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
 			var DebugDrawEnabled = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Sphere
 			var Radius = 2
 			var WanderAngle = 60
@@ -3818,9 +4387,6 @@ Level
 			var Movement = true
 			var SparseUpdate = false
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -3829,5 +4395,94 @@ Level
 			var MaxVelocity = 5
 			var MaxRotation = 180
 		}
+	}
+	Cog 
+	{
+		var Name = "Wanderer"
+		var LinkId = 60
+		Transform 
+		{
+			var Translation = Real3{-11.2800007, 1.90734863e-06, -0.011387825}
+			var Scale = Real3{1, 1, 2}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var MovementConstraint = SteeringConstraints.None
+			var LookDirectionConstraint = SteeringConstraints.None
+			var DebugDrawEnabled = true
+		}
+		Wander 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+			var WanderShape = WanderShapes.Sphere
+			var Radius = 2
+			var WanderAngle = 60
+			var WanderOffset = 3
+			var Movement = true
+			var SparseUpdate = false
+			var SparseUpdateMaxTimeout = 5
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 180
+		}
+	}
+	Cog [InheritId:"5884d0919ab60664:Renderer"]
+	{
 	}
 }

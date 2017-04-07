@@ -190,7 +190,7 @@ class AttractorZ : ZilchComponent
     this.Attractors.Clear();
     
     //Set up the cast filter for attractive object collection using property data
-    var checkFilter : CastFilter = this.Space.PhysicsSpace.CreateDefaultCastFilter();
+    var checkFilter = new CastFilter();
     checkFilter.CollisionGroup = this.AttractiveCollisionGroup;
     checkFilter.IgnoreChildren = this.IgnoreChildren;
     checkFilter.IgnoreGhost = this.IgnoreGhost;
@@ -198,8 +198,13 @@ class AttractorZ : ZilchComponent
     checkFilter.IgnoreDynamic = this.IgnoreDynamic;
     checkFilter.IgnoreStatic = this.IgnoreStatic;
     
+    var sphere = Sphere();
+    
+    sphere.Center = this.Owner.Transform.Translation;
+    sphere.Radius = this.CheckRadius;
+    
     //Cast to get filter possible attractive objects
-    var results : CastResultsRange = this.Space.PhysicsSpace.CastSphereResults(this.Owner.Transform.Translation, this.CheckRadius, this.MaxCheckObjects, checkFilter);
+    var results : CastResultsRange = this.Space.PhysicsSpace.CastSphere(sphere, this.MaxCheckObjects, checkFilter);
     
     foreach(var result in results)
     {

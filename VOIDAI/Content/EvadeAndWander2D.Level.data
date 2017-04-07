@@ -24,9 +24,9 @@ Level
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
 			var DrawInGame = true
-			var GridColor = Vec4{0.5, 0.5, 0.5, 0.400000006}
-			var GridHiLight = Vec4{0, 0, 0, 0.400000006}
-			var HilightInterval = 10
+			var GridColor = Real4{0.5, 0.5, 0.5, 0.400000006}
+			var GridHighlight = Real4{0, 0, 0, 0.400000006}
+			var HighlightInterval = 10
 			var FollowEditorCamera = false
 		}
 		UISpaceCreator 
@@ -44,9 +44,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Vec3{15.5663929, 15.2971897, -28.1953011}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.0264607854, 0.964642763, 0.239617899, 0.106524475}
+			var Translation = Real3{15.5663929, 15.2971897, -28.1953011}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{-0.0264607854, 0.964642763, 0.239617899, 0.106524475}
 		}
 		CameraViewport 
 		{
@@ -55,8 +55,8 @@ Level
 			var RenderToViewport = true
 			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Vec2{1, 1}
-			var NormalizedOffset = Vec2{0, 0}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var Camera = CogPath
 			{
 				var Path = "."
@@ -87,13 +87,12 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Vec2{1920, 1080}
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Fill
-			var MarginColor = Vec4{0, 0, 0, 1}
+			var MarginColor = Real4{0, 0, 0, 1}
 		}
 		Camera 
 		{
-			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -106,7 +105,7 @@ Level
 			var LookDistance = 32.6912766
 			var VerticalAngle = 0.486945719
 			var HorizontalAngle = 22.2111149
-			var LookTarget = Vec3{9.26237297, 0, 0}
+			var LookTarget = Real3{9.26237297, 0, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -116,9 +115,9 @@ Level
 		var LinkId = 4
 		Transform 
 		{
-			var Translation = Vec3{0, 29.0974293, 47.9646912}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{-0.27572307, 0, 0, 0.961237133}
+			var Translation = Real3{0, 29.0974293, 47.9646912}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{-0.27572307, 0, 0, 0.961237133}
 		}
 		CameraViewport 
 		{
@@ -127,8 +126,8 @@ Level
 			var RenderToViewport = true
 			var ForwardViewportEvents = false
 			var RenderOrder = 0
-			var NormalizedSize = Vec2{1, 1}
-			var NormalizedOffset = Vec2{0, 0}
+			var NormalizedSize = Real2{1, 1}
+			var NormalizedOffset = Real2{0, 0}
 			var Camera = CogPath
 			{
 				var Path = "."
@@ -154,18 +153,17 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Resolution = Vec2{1920, 1080}
+			var Resolution = Real2{1920, 1080}
 			var ViewportScaling = ViewportScaling.Letterbox
-			var MarginColor = Vec4{0, 0, 0, 1}
+			var MarginColor = Real4{0, 0, 0, 1}
 		}
 		Camera 
 		{
-			var Facing = Facing.NegativeZ
 			var NearPlane = 0.5
 			var FarPlane = 100
 			var PerspectiveMode = PerspectiveMode.Perspective
@@ -180,12 +178,12 @@ Level
 	Cog 
 	{
 		var Name = "Pursuer"
-		var LinkId = 5
+		var LinkId = 6
 		Transform 
 		{
-			var Translation = Vec3{9.26237297, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{9.26237297, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -197,8 +195,8 @@ Level
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -211,25 +209,42 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Pursue 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var Target = CogPath
 			{
 				var Path = ":/Evader"
@@ -240,7 +255,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -248,9 +263,6 @@ Level
 			var PursueRange = 0
 			var PredictionRange = 2
 			var GoalDistance = 0
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -263,12 +275,12 @@ Level
 	Cog 
 	{
 		var Name = "Evader"
-		var LinkId = 6
+		var LinkId = 7
 		Transform 
 		{
-			var Translation = Vec3{-6.94537163, 0, 3.06077218}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{-6.94537163, 0, 3.06077218}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -284,15 +296,15 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
+			var Offset = Real3{0, 0, 0}
 			var Radius = 0.5
 			var Height = 1
 			var Direction = AxisDirection.Y
 		}
 		RigidBody 
 		{
-			var Velocity = Vec3{0, 0, 0}
-			var AngularVelocity = Vec3{0, 0, 0}
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = true
 			var Asleep = false
@@ -301,20 +313,37 @@ Level
 		}
 		Orientation 
 		{
-			var GlobalUp = Vec3{0, 1, 0}
-			var UpVector = Vec3{0, 1, 0}
-			var ForwardVector = Vec3{-0, -0, -1}
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
 			var DefaultBases = OrientationBases.ForwardNegativeZUpY
 		}
 		SteeringAccumulator 
 		{
 			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
 			var DebugDrawEnabled = true
 		}
 		Evade 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var Target = CogPath
 			{
 				var Path = ":/Pursuer"
@@ -325,19 +354,19 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
 			var EvadeRange = 5
 			var PredictionRange = 3
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		Wander 
 		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
 			var WanderShape = WanderShapes.Circle
 			var Radius = 5
 			var WanderAngle = 45
@@ -345,9 +374,6 @@ Level
 			var Movement = true
 			var SparseUpdate = true
 			var SparseUpdateMaxTimeout = 5
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
 		}
 		SteeringRigidBodyMover 
 		{
@@ -359,70 +385,24 @@ Level
 	}
 	Cog 
 	{
-		var Name = "Renderer"
-		var LinkId = 3
-		DeferredRenderer 
-		{
-			var DrawDebug = true
-			var GeometryDebug = GeometryValue.None
-			var ShowDiffuse = true
-			var ShowSpecular = true
-			var Skybox = "5822dec85e380cf1:SimpleSkybox"
-			var DrawSkybox = true
-			var DirectLighting = true
-			var IndirectLighting = true
-			var IndirectIntensity = 1
-			var ToneMap = true
-		}
-	}
-	Cog 
-	{
 		var Name = "Orbit"
-		var LinkId = 7
+		var LinkId = 8
 		Transform 
 		{
-			var Translation = Vec3{0, 0, 0}
-			var Scale = Vec3{1, 1, 1}
-			var Rotation = Quat{0, 0, 0, 1}
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 	}
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 8
-		Transform 
-		{
-			var Translation = Vec3{0, -1.04824448, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
-		}
-	}
-	Cog 
-	{
-		var Name = "Wall"
 		var LinkId = 9
 		Transform 
 		{
-			var Translation = Vec3{0, 10, 50}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+			var Translation = Real3{0, -1.04824448, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
@@ -438,8 +418,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -448,9 +428,9 @@ Level
 		var LinkId = 10
 		Transform 
 		{
-			var Translation = Vec3{0, 10, -50}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{-0.707106829, 0, 0, 0.707106829}
+			var Translation = Real3{0, 10, 50}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{-0.707106829, 0, 0, 0.707106829}
 		}
 		Model 
 		{
@@ -466,8 +446,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -476,9 +456,9 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Vec3{50, 10, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+			var Translation = Real3{0, 10, -50}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{-0.707106829, 0, 0, 0.707106829}
 		}
 		Model 
 		{
@@ -494,8 +474,8 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 	}
 	Cog 
@@ -504,9 +484,9 @@ Level
 		var LinkId = 12
 		Transform 
 		{
-			var Translation = Vec3{-50, 10, 0}
-			var Scale = Vec3{100, 1, 100}
-			var Rotation = Quat{0, 0, 0.707106829, 0.707106829}
+			var Translation = Real3{50, 10, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0.707106829, 0.707106829}
 		}
 		Model 
 		{
@@ -522,8 +502,39 @@ Level
 			var SendsEvents = true
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Vec3{0, 0, 0}
-			var HalfSize = Vec3{0.5, 0.5, 0.5}
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
+	}
+	Cog 
+	{
+		var Name = "Wall"
+		var LinkId = 13
+		Transform 
+		{
+			var Translation = Real3{-50, 10, 0}
+			var Scale = Real3{100, 1, 100}
+			var Rotation = Quaternion{0, 0, 0.707106829, 0.707106829}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+	}
+	Cog [InheritId:"5884d0919ab60664:Renderer"]
+	{
 	}
 }

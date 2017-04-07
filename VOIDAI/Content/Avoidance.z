@@ -302,12 +302,11 @@ class Avoidance : SteeringComponent
   
   function DebugDrawCone(direction : Real3)
   {
-    var cone = new DebugCone();
+    var position = this.Transform.WorldTranslation;
+    var length = this.ConeDistance;
+    var radius = Math.Tan(this.ConeAngleRad) * this.ConeDistance;
+    var cone = DebugCone(position, direction, length, radius);
     
-    cone.Position = this.Transform.WorldTranslation;
-    cone.Direction = direction;
-    cone.Length = this.ConeDistance;
-    cone.Radius = Math.Tan(this.ConeAngleRad) * this.ConeDistance;
     cone.Color = Real4(1, 1, 1, 0.15);
     
     DebugDraw.Add(cone);
@@ -324,10 +323,10 @@ class Avoidance : SteeringComponent
     {
       foreach (var contact in result.Contacts)
       {
-        var cube = new DebugObb();
+        var position = contact;
+        var extents = Real3(0.5);
+        var cube = DebugObb(position, extents);
         
-        cube.Position = contact;
-        cube.Extents = Real3(0.5);
         cube.Color = Real4(1.0, 0.0, 0.0, 1.0);
         
         DebugDraw.Add(cube);

@@ -170,12 +170,12 @@ class Wander : SteeringComponent
   
   function DebugDrawWanderCircle(wanderDirection : Real3)
   {
-    var circle = new DebugCircle();
+    var position = this.Transform.WorldTranslation + 
+                   this.Orientation.WorldForward * this.WanderOffset;
+    var axis = this.Orientation.WorldUp;
+    var radius = this.Radius;
+    var circle = DebugCircle(position, axis, radius);
     
-    circle.Position = this.Transform.WorldTranslation + 
-                      this.Orientation.WorldForward * this.WanderOffset;
-    circle.Radius = this.Radius;
-    circle.Axis = this.Orientation.WorldUp;
     circle.Color = Real4(0.96, 0.26, 0.8, 0.2);
     
     DebugDraw.Add(circle);
@@ -185,11 +185,11 @@ class Wander : SteeringComponent
   
   function DebugDrawWanderSphere(wanderDirection : Real3)
   {
-    var sphere = new DebugSphere();
+    var position = this.Transform.WorldTranslation +
+                   this.Orientation.WorldForward * this.WanderOffset;
+    var radius = this.Radius;
+    var sphere = DebugSphere(position, radius);
     
-    sphere.Position = this.Transform.WorldTranslation +
-                      this.Orientation.WorldForward * this.WanderOffset;
-    sphere.Radius = this.Radius;
     sphere.Color = Real4(0.96, 0.26, 0.8, 0.2);
     
     DebugDraw.Add(sphere);
@@ -199,10 +199,9 @@ class Wander : SteeringComponent
   
   function DebugDrawRay(start : Real3, direction : Real3)
   {
-    var ray = new DebugLine();
+    var end = start + direction * this.Radius;
+    var ray = DebugLine(start, end);
     
-    ray.Start = start;
-    ray.End = ray.Start + direction * this.Radius;
     ray.HeadSize = 0.5;
     ray.Color = Real4(0.96, 0.26, 0.8, 1.0);
     
