@@ -19,7 +19,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -47,7 +47,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{-39.4634132, -15.7277546, 8.49445724}
+			var Translation = Real3{-114.02169, 20.7745399, -49.5217438}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0.0675563887, 0.874480903, 0.127572954, -0.46308136}
 		}
@@ -105,10 +105,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 22.5246639
+			var LookDistance = 123.298714
 			var VerticalAngle = 0.289724886
 			var HorizontalAngle = 77.5658035
-			var LookTarget = Real3{-21.608696, -22.1627941, 20.6254025}
+			var LookTarget = Real3{-16.2859974, -14.4504929, 16.8823547}
 			var MoveSensitivity = 1
 		}
 	}
@@ -156,7 +156,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -181,7 +181,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{-5.15992737, 3.63909459, -8.33868408}
@@ -305,7 +305,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -317,7 +317,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{-14.8316269, 3.63909459, -12.4560623}
@@ -441,7 +441,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -453,7 +453,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 9
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{-14.3086357, 3.63909459, -26.2404022}
@@ -577,7 +577,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -589,7 +589,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 10
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{-2.36187744, 3.63909459, -25.8889313}
@@ -713,7 +713,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -725,7 +725,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 11
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{-7.53111649, 3.63909459, -18.9985809}
@@ -849,7 +849,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -861,10 +861,10 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 12
+		var LinkId = 11
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, 3.63909459, -4.2881546}
+			var Translation = Real3{-18.1853256, 3.63909459, -3.77994919}
 			var Scale = Real3{0.5, 0.5, 0.5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -985,7 +985,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -997,7 +997,7 @@ Level
 	Cog 
 	{
 		var Name = "LevelGeom"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -1009,7 +1009,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 14
+				var LinkId = 13
 				Transform 
 				{
 					var Translation = Real3{60.8674698, 30.7982426, 48.8586693}
@@ -1037,7 +1037,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 15
+				var LinkId = 14
 				Transform 
 				{
 					var Translation = Real3{15.3402977, -8.82030487, -63.8380852}
@@ -1067,7 +1067,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 16
+				var LinkId = 15
 				Transform 
 				{
 					var Translation = Real3{-13.5255165, -1.84823179, 11.3544197}
@@ -1095,7 +1095,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 17
+				var LinkId = 16
 				Transform 
 				{
 					var Translation = Real3{-2.7113924, 17.8085194, -2.26908875}
@@ -1123,7 +1123,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 18
+				var LinkId = 17
 				Transform 
 				{
 					var Translation = Real3{-13.5255165, 32.6406212, 23.5006065}
@@ -1151,7 +1151,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 19
+				var LinkId = 18
 				Transform 
 				{
 					var Translation = Real3{-13.5255165, -19.3882446, -14.5768566}
@@ -1179,7 +1179,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 20
+				var LinkId = 19
 				Transform 
 				{
 					var Translation = Real3{-59.4139709, 39.4312325, 19.3770714}
@@ -1209,7 +1209,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 21
+				var LinkId = 20
 				Transform 
 				{
 					var Translation = Real3{73.812149, 30.7982426, -54.4220314}
@@ -1237,7 +1237,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 22
+				var LinkId = 21
 				Transform 
 				{
 					var Translation = Real3{-59.2627373, 4.26807213, -54.4220314}
@@ -1265,7 +1265,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 23
+				var LinkId = 22
 				Transform 
 				{
 					var Translation = Real3{15.6351662, 7.40642357, -50.6261101}
@@ -1293,7 +1293,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 24
+				var LinkId = 23
 				Transform 
 				{
 					var Translation = Real3{65.924881, -8.82030487, -28.3157082}
@@ -1323,7 +1323,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 25
+				var LinkId = 24
 				Transform 
 				{
 					var Translation = Real3{-42.9179993, -30.9753132, -37.6660461}
@@ -1353,7 +1353,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 26
+				var LinkId = 25
 				Transform 
 				{
 					var Translation = Real3{25.6018295, -30.9753132, -37.6660461}
@@ -1383,7 +1383,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 27
+				var LinkId = 26
 				Transform 
 				{
 					var Translation = Real3{-52.5134506, -23.5490341, 47.2183495}
@@ -1413,7 +1413,7 @@ Level
 			Cog 
 			{
 				var Name = "Floor"
-				var LinkId = 28
+				var LinkId = 27
 				Transform 
 				{
 					var Translation = Real3{0, -36.372963, 0}
@@ -1441,7 +1441,7 @@ Level
 			Cog 
 			{
 				var Name = "Wall"
-				var LinkId = 29
+				var LinkId = 28
 				Transform 
 				{
 					var Translation = Real3{-187.889175, -24.1692505, 0}
@@ -1469,7 +1469,7 @@ Level
 			Cog 
 			{
 				var Name = "Floor"
-				var LinkId = 30
+				var LinkId = 29
 				Transform 
 				{
 					var Translation = Real3{0, 61.3958893, 0}
@@ -1497,7 +1497,7 @@ Level
 			Cog 
 			{
 				var Name = "Wall"
-				var LinkId = 31
+				var LinkId = 30
 				Transform 
 				{
 					var Translation = Real3{111.083527, -24.1692505, 0}
@@ -1525,7 +1525,7 @@ Level
 			Cog 
 			{
 				var Name = "Wall"
-				var LinkId = 32
+				var LinkId = 31
 				Transform 
 				{
 					var Translation = Real3{0, -24.1692505, 98.0032959}
@@ -1553,7 +1553,7 @@ Level
 			Cog 
 			{
 				var Name = "Wall"
-				var LinkId = 33
+				var LinkId = 32
 				Transform 
 				{
 					var Translation = Real3{0, -24.1692505, -105.653}
@@ -1583,7 +1583,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 34
+		var LinkId = 33
 		Transform 
 		{
 			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
@@ -1707,7 +1707,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1719,7 +1719,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 35
+		var LinkId = 34
 		Transform 
 		{
 			var Translation = Real3{-14.8316269, 13.6596546, -12.4560623}
@@ -1843,7 +1843,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1855,7 +1855,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 36
+		var LinkId = 35
 		Transform 
 		{
 			var Translation = Real3{-18.1853256, 13.6596546, -4.2881546}
@@ -1979,7 +1979,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1991,7 +1991,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 37
+		var LinkId = 36
 		Transform 
 		{
 			var Translation = Real3{-7.53111649, 13.6596546, -18.9985809}
@@ -2115,7 +2115,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2127,7 +2127,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 38
+		var LinkId = 37
 		Transform 
 		{
 			var Translation = Real3{-2.36187744, 13.6596546, -25.8889313}
@@ -2251,7 +2251,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2263,7 +2263,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 39
+		var LinkId = 38
 		Transform 
 		{
 			var Translation = Real3{8.15070343, 13.6596546, -34.7758026}
@@ -2387,7 +2387,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2399,7 +2399,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 40
+		var LinkId = 39
 		Transform 
 		{
 			var Translation = Real3{14.9282227, 13.6596546, -27.5339813}
@@ -2523,7 +2523,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2535,7 +2535,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 41
+		var LinkId = 40
 		Transform 
 		{
 			var Translation = Real3{20.0974617, 13.6596546, -34.4243317}
@@ -2659,7 +2659,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2671,7 +2671,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 42
+		var LinkId = 41
 		Transform 
 		{
 			var Translation = Real3{17.2994118, 13.6596546, -16.8740845}
@@ -2795,7 +2795,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2807,7 +2807,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 43
+		var LinkId = 42
 		Transform 
 		{
 			var Translation = Real3{7.62771225, 13.6596546, -20.9914627}
@@ -2931,7 +2931,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2943,7 +2943,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 44
+		var LinkId = 43
 		Transform 
 		{
 			var Translation = Real3{17.2994118, 0.674217224, -16.8740845}
@@ -3067,7 +3067,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3079,7 +3079,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 45
+		var LinkId = 44
 		Transform 
 		{
 			var Translation = Real3{20.0974617, 0.674217224, -34.4243317}
@@ -3203,7 +3203,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3215,7 +3215,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 46
+		var LinkId = 45
 		Transform 
 		{
 			var Translation = Real3{7.62771225, 0.674217224, -20.9914627}
@@ -3339,7 +3339,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3351,7 +3351,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 47
+		var LinkId = 46
 		Transform 
 		{
 			var Translation = Real3{0.495191574, 3.4980545, -12.823555}
@@ -3475,7 +3475,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3487,7 +3487,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 48
+		var LinkId = 47
 		Transform 
 		{
 			var Translation = Real3{8.15070343, 3.4980545, -34.7758026}
@@ -3611,7 +3611,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3623,7 +3623,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 49
+		var LinkId = 48
 		Transform 
 		{
 			var Translation = Real3{14.9282227, 3.4980545, -27.5339813}
@@ -3747,7 +3747,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3759,7 +3759,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 50
+		var LinkId = 49
 		Transform 
 		{
 			var Translation = Real3{-14.0398712, 3.4980545, -40.5717506}
@@ -3883,7 +3883,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3895,7 +3895,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 51
+		var LinkId = 50
 		Transform 
 		{
 			var Translation = Real3{-21.608696, 3.4980545, -32.4038429}
@@ -4019,7 +4019,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4031,7 +4031,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 52
+		var LinkId = 51
 		Transform 
 		{
 			var Translation = Real3{-12.6551399, 3.4980545, -54.3560905}
@@ -4155,7 +4155,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4167,7 +4167,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 53
+		var LinkId = 52
 		Transform 
 		{
 			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
@@ -4291,7 +4291,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4303,7 +4303,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 54
+		var LinkId = 53
 		Transform 
 		{
 			var Translation = Real3{-5.7852478, 3.4980545, -54.0046196}
@@ -4427,7 +4427,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4439,7 +4439,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 55
+		var LinkId = 54
 		Transform 
 		{
 			var Translation = Real3{-5.8776207, 3.4980545, -47.1142693}
@@ -4563,7 +4563,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4575,7 +4575,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 56
+		var LinkId = 55
 		Transform 
 		{
 			var Translation = Real3{7.62771225, -22.2610931, 31.9138069}
@@ -4699,7 +4699,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4711,7 +4711,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 57
+		var LinkId = 56
 		Transform 
 		{
 			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
@@ -4835,7 +4835,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4847,7 +4847,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 58
+		var LinkId = 57
 		Transform 
 		{
 			var Translation = Real3{-18.2549973, -22.2610931, 12.333519}
@@ -4971,7 +4971,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4983,7 +4983,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 59
+		var LinkId = 58
 		Transform 
 		{
 			var Translation = Real3{18.1317158, -9.27565575, 18.480938}
@@ -5107,7 +5107,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5119,7 +5119,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 60
+		var LinkId = 59
 		Transform 
 		{
 			var Translation = Real3{16.1466255, -22.2610931, 36.0311852}
@@ -5243,7 +5243,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5255,7 +5255,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 61
+		var LinkId = 60
 		Transform 
 		{
 			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
@@ -5379,7 +5379,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5391,7 +5391,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 62
+		var LinkId = 61
 		Transform 
 		{
 			var Translation = Real3{4.27401352, -9.27565575, 40.0817146}
@@ -5515,7 +5515,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5527,7 +5527,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 63
+		var LinkId = 62
 		Transform 
 		{
 			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
@@ -5651,7 +5651,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5663,7 +5663,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 64
+		var LinkId = 63
 		Transform 
 		{
 			var Translation = Real3{14.9282227, -9.27565575, 25.3712883}
@@ -5787,7 +5787,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5799,7 +5799,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 65
+		var LinkId = 64
 		Transform 
 		{
 			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
@@ -5923,7 +5923,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5935,10 +5935,10 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 66
+		var LinkId = 65
 		Transform 
 		{
-			var Translation = Real3{-21.608696, -22.2610931, 20.5014267}
+			var Translation = Real3{-21.608696, -22.2610931, 21.0229034}
 			var Scale = Real3{0.5, 0.5, 0.5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -6059,7 +6059,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6071,7 +6071,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 67
+		var LinkId = 66
 		Transform 
 		{
 			var Translation = Real3{4.27401352, -22.2610931, 40.0817146}
@@ -6195,7 +6195,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6207,7 +6207,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 68
+		var LinkId = 67
 		Transform 
 		{
 			var Translation = Real3{-10.9544868, -22.2610931, 5.79100037}
@@ -6331,7 +6331,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6343,7 +6343,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 69
+		var LinkId = 68
 		Transform 
 		{
 			var Translation = Real3{-2.36187744, -9.27565575, 27.0163383}
@@ -6467,7 +6467,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6479,7 +6479,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 70
+		var LinkId = 69
 		Transform 
 		{
 			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
@@ -6603,7 +6603,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6615,7 +6615,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 71
+		var LinkId = 70
 		Transform 
 		{
 			var Translation = Real3{11.8377113, -22.2610931, 18.129467}
@@ -6739,7 +6739,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6751,7 +6751,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 72
+		var LinkId = 71
 		Transform 
 		{
 			var Translation = Real3{-1.30324554, -22.2610931, -1.09934998}
@@ -6875,7 +6875,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6887,7 +6887,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 73
+		var LinkId = 72
 		Transform 
 		{
 			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
@@ -7011,7 +7011,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7023,7 +7023,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 74
+		var LinkId = 73
 		Transform 
 		{
 			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
@@ -7147,7 +7147,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7159,7 +7159,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 75
+		var LinkId = 74
 		Transform 
 		{
 			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
@@ -7283,7 +7283,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7295,7 +7295,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 76
+		var LinkId = 75
 		Transform 
 		{
 			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
@@ -7419,7 +7419,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7431,7 +7431,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 77
+		var LinkId = 76
 		Transform 
 		{
 			var Translation = Real3{-8.58329773, -22.2610931, 16.4508972}
@@ -7555,7 +7555,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7567,7 +7567,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 78
+		var LinkId = 77
 		Transform 
 		{
 			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
@@ -7691,7 +7691,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7703,7 +7703,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 79
+		var LinkId = 78
 		Transform 
 		{
 			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
@@ -7827,7 +7827,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7839,7 +7839,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 80
+		var LinkId = 79
 		Transform 
 		{
 			var Translation = Real3{2.45982838, -9.27565575, 40.0817146}
@@ -7963,7 +7963,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7975,7 +7975,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 81
+		var LinkId = 80
 		Transform 
 		{
 			var Translation = Real3{4.27401352, 3.4980545, -12.823555}
@@ -8099,7 +8099,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8111,7 +8111,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 82
+		var LinkId = 81
 		Transform 
 		{
 			var Translation = Real3{17.2994118, 3.4980545, -16.8740845}
@@ -8235,7 +8235,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8247,7 +8247,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 83
+		var LinkId = 82
 		Transform 
 		{
 			var Translation = Real3{17.2994118, -22.2610931, 36.0311852}
@@ -8371,7 +8371,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8383,7 +8383,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 84
+		var LinkId = 83
 		Transform 
 		{
 			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
@@ -8507,7 +8507,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8519,7 +8519,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 85
+		var LinkId = 84
 		Transform 
 		{
 			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
@@ -8643,7 +8643,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8655,7 +8655,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 86
+		var LinkId = 85
 		Transform 
 		{
 			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
@@ -8779,7 +8779,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8791,7 +8791,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 87
+		var LinkId = 86
 		Transform 
 		{
 			var Translation = Real3{20.0974617, -9.27565575, 18.480938}
@@ -8915,7 +8915,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8927,7 +8927,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 88
+		var LinkId = 87
 		Transform 
 		{
 			var Translation = Real3{-18.1521473, 3.4980545, -32.4038429}
@@ -9051,7 +9051,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9063,7 +9063,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 89
+		var LinkId = 88
 		Transform 
 		{
 			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
@@ -9187,7 +9187,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9199,7 +9199,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 90
+		var LinkId = 89
 		Transform 
 		{
 			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
@@ -9323,7 +9323,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9335,7 +9335,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 91
+		var LinkId = 90
 		Transform 
 		{
 			var Translation = Real3{20.0974617, 16.4834919, -34.4243317}
@@ -9459,7 +9459,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9471,7 +9471,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 92
+		var LinkId = 91
 		Transform 
 		{
 			var Translation = Real3{20.0974617, 3.4980545, -34.4243317}
@@ -9595,7 +9595,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9607,7 +9607,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 93
+		var LinkId = 92
 		Transform 
 		{
 			var Translation = Real3{-0.708381653, 3.4980545, -54.0046196}
@@ -9731,7 +9731,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9743,7 +9743,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 94
+		var LinkId = 93
 		Transform 
 		{
 			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
@@ -9867,7 +9867,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9879,7 +9879,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 95
+		var LinkId = 94
 		Transform 
 		{
 			var Translation = Real3{-14.8316269, 16.4834919, -12.4560623}
@@ -10003,7 +10003,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10015,7 +10015,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 96
+		var LinkId = 95
 		Transform 
 		{
 			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
@@ -10139,7 +10139,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10151,7 +10151,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 97
+		var LinkId = 96
 		Transform 
 		{
 			var Translation = Real3{7.62771225, 3.4980545, -20.9914627}
@@ -10275,7 +10275,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10287,7 +10287,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 98
+		var LinkId = 97
 		Transform 
 		{
 			var Translation = Real3{-18.1853256, 16.4834919, -4.2881546}
@@ -10411,7 +10411,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10423,7 +10423,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 99
+		var LinkId = 98
 		Transform 
 		{
 			var Translation = Real3{6.47492599, -22.2610931, 31.9138069}
@@ -10547,7 +10547,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10559,7 +10559,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 100
+		var LinkId = 99
 		Transform 
 		{
 			var Translation = Real3{-4.89628983, -22.2610931, 16.4508972}
@@ -10683,7 +10683,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10695,7 +10695,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 101
+		var LinkId = 100
 		Transform 
 		{
 			var Translation = Real3{-7.53111649, 16.4834919, -18.9985809}
@@ -10819,7 +10819,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10831,7 +10831,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 102
+		var LinkId = 101
 		Transform 
 		{
 			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
@@ -10955,7 +10955,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10967,7 +10967,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 103
+		var LinkId = 102
 		Transform 
 		{
 			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
@@ -11091,7 +11091,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11103,7 +11103,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 104
+		var LinkId = 103
 		Transform 
 		{
 			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
@@ -11227,7 +11227,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11239,7 +11239,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 105
+		var LinkId = 104
 		Transform 
 		{
 			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
@@ -11363,7 +11363,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11375,7 +11375,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 106
+		var LinkId = 105
 		Transform 
 		{
 			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
@@ -11499,7 +11499,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11511,7 +11511,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 107
+		var LinkId = 106
 		Transform 
 		{
 			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
@@ -11635,7 +11635,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11647,7 +11647,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 108
+		var LinkId = 107
 		Transform 
 		{
 			var Translation = Real3{-10.9544868, 3.4980545, -47.1142693}
@@ -11771,7 +11771,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11783,7 +11783,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 109
+		var LinkId = 108
 		Transform 
 		{
 			var Translation = Real3{-2.36187744, -9.27565575, 27.0163383}
@@ -11907,7 +11907,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11919,7 +11919,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 110
+		var LinkId = 109
 		Transform 
 		{
 			var Translation = Real3{-6.47248459, -22.2610931, 5.79100037}
@@ -12043,7 +12043,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12055,7 +12055,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 111
+		var LinkId = 110
 		Transform 
 		{
 			var Translation = Real3{12.8298035, -9.27565575, 25.3712883}
@@ -12179,7 +12179,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12191,7 +12191,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 112
+		var LinkId = 111
 		Transform 
 		{
 			var Translation = Real3{0.363592148, -22.2610931, 40.0817146}
@@ -12315,7 +12315,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12327,7 +12327,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 113
+		var LinkId = 112
 		Transform 
 		{
 			var Translation = Real3{-5.7852478, -22.2610931, -1.09934998}
@@ -12451,7 +12451,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12463,7 +12463,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 114
+		var LinkId = 113
 		Transform 
 		{
 			var Translation = Real3{17.2994118, 16.4834919, -16.8740845}
@@ -12587,7 +12587,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12599,7 +12599,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 115
+		var LinkId = 114
 		Transform 
 		{
 			var Translation = Real3{-13.772995, -22.2610931, 12.333519}
@@ -12723,7 +12723,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12735,7 +12735,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 116
+		var LinkId = 115
 		Transform 
 		{
 			var Translation = Real3{11.5018005, 3.4980545, -34.7758026}
@@ -12859,7 +12859,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12871,7 +12871,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 117
+		var LinkId = 116
 		Transform 
 		{
 			var Translation = Real3{12.397234, 3.4980545, -27.5339813}
@@ -12995,7 +12995,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13007,7 +13007,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 118
+		var LinkId = 117
 		Transform 
 		{
 			var Translation = Real3{7.62771225, 16.4834919, -20.9914627}
@@ -13131,7 +13131,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13143,7 +13143,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 119
+		var LinkId = 118
 		Transform 
 		{
 			var Translation = Real3{-2.36187744, 16.4834919, -25.8889313}
@@ -13267,7 +13267,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13279,7 +13279,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 120
+		var LinkId = 119
 		Transform 
 		{
 			var Translation = Real3{8.15070343, 16.4834919, -34.7758026}
@@ -13403,7 +13403,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13415,7 +13415,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 121
+		var LinkId = 120
 		Transform 
 		{
 			var Translation = Real3{-17.1266937, -22.2610931, 20.5014267}
@@ -13539,7 +13539,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13551,7 +13551,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 122
+		var LinkId = 121
 		Transform 
 		{
 			var Translation = Real3{8.15070343, -22.2610931, 18.129467}
@@ -13675,7 +13675,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13687,7 +13687,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 123
+		var LinkId = 122
 		Transform 
 		{
 			var Translation = Real3{-17.7320061, 3.4980545, -54.3560905}
@@ -13811,7 +13811,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13823,7 +13823,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 124
+		var LinkId = 123
 		Transform 
 		{
 			var Translation = Real3{-18.2549973, 3.4980545, -40.5717506}
@@ -13947,7 +13947,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13959,7 +13959,7 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 125
+		var LinkId = 124
 		Transform 
 		{
 			var Translation = Real3{14.9282227, 16.4834919, -27.5339813}
@@ -14083,7 +14083,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14095,7 +14095,7 @@ Level
 	Cog 
 	{
 		var Name = "Target"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{7.58398438, 3.46765137, -0.985462666}
@@ -14191,7 +14191,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute

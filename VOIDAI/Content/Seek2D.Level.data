@@ -19,7 +19,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -44,7 +44,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{-0.596017003, 22.6026287, 20.0883751}
+			var Translation = Real3{4.0611496, 13.8799381, 12.0188494}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-0.401913047, -0.0119836964, -0.00526044518, 0.915584326}
 		}
@@ -102,10 +102,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 30.4050579
+			var LookDistance = 18.4416084
 			var VerticalAngle = 0.827285409
 			var HorizontalAngle = 12.5925465
-			var LookTarget = Real3{-0.0573672988, 0.221569613, -0.485042363}
+			var LookTarget = Real3{4.38785744, 0.305133253, -0.45956552}
 			var MoveSensitivity = 1
 		}
 	}
@@ -153,7 +153,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -178,10 +178,10 @@ Level
 	Cog 
 	{
 		var Name = "Seeker"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{9.26237297, 0, 0}
+			var Translation = Real3{9.1224823, 0, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -255,7 +255,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -274,7 +274,7 @@ Level
 	Cog 
 	{
 		var Name = "Target"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{-6.94537163, 0, 0}
@@ -307,7 +307,7 @@ Level
 	Cog 
 	{
 		var Name = "Orbit"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -318,7 +318,7 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 9
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{0, -1.04824448, 0}
@@ -346,7 +346,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 10
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{0, 10, 50}
@@ -374,7 +374,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 11
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{0, 10, -50}
@@ -402,7 +402,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 12
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{50, 10, 0}
@@ -430,7 +430,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{-50, 10, 0}

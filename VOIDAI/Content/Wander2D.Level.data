@@ -19,7 +19,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -153,7 +153,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -178,7 +178,7 @@ Level
 	Cog 
 	{
 		var Name = "Orbit"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -189,7 +189,7 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{0, -1.04824448, 0}
@@ -217,7 +217,7 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{0, 59.784008, 0}
@@ -245,7 +245,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 9
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{50, 10, 0}
@@ -273,7 +273,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 10
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{-50, 10, 0}
@@ -301,7 +301,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 11
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{0, 10, 50}
@@ -329,7 +329,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 12
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{0, 10, -50}
@@ -357,7 +357,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{-9.58399391, 0.143102646, -9.85282421}
@@ -445,7 +445,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 14
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{-1.68829918, 0.143100739, 23.2369843}
@@ -533,7 +533,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 15
+		var LinkId = 14
 		Transform 
 		{
 			var Translation = Real3{-0.769664764, 0.143100739, 8.00084305}
@@ -621,7 +621,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 16
+		var LinkId = 15
 		Transform 
 		{
 			var Translation = Real3{6.45924377, 0.143100739, 2.84582901}
@@ -709,7 +709,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 17
+		var LinkId = 16
 		Transform 
 		{
 			var Translation = Real3{-28.1306858, 0.143102646, -1.47567463}
@@ -797,7 +797,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 18
+		var LinkId = 17
 		Transform 
 		{
 			var Translation = Real3{-8.91720772, 0.143100739, 28.3919983}
@@ -885,7 +885,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 19
+		var LinkId = 18
 		Transform 
 		{
 			var Translation = Real3{-5.12128067, 0.143100739, -11.8900499}
@@ -973,7 +973,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 20
+		var LinkId = 19
 		Transform 
 		{
 			var Translation = Real3{-7.00574875, 0.143098831, -6.20803642}
@@ -1061,7 +1061,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 21
+		var LinkId = 20
 		Transform 
 		{
 			var Translation = Real3{-34.1501732, 0.143098831, -13.1595869}
@@ -1149,7 +1149,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 22
+		var LinkId = 21
 		Transform 
 		{
 			var Translation = Real3{7.16128159, 0.143102646, -14.9152784}
@@ -1237,7 +1237,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 23
+		var LinkId = 22
 		Transform 
 		{
 			var Translation = Real3{-19.288311, 0.143096924, -3.18280792}
@@ -1325,7 +1325,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 24
+		var LinkId = 23
 		Transform 
 		{
 			var Translation = Real3{-9.1306591, 0.143098831, 19.8908939}
@@ -1413,7 +1413,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 25
+		var LinkId = 24
 		Transform 
 		{
 			var Translation = Real3{-28.3441372, 0.143100739, -9.97677994}
@@ -1501,7 +1501,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 26
+		var LinkId = 25
 		Transform 
 		{
 			var Translation = Real3{-1.90175056, 0.143098831, 14.7358799}
@@ -1589,7 +1589,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 27
+		var LinkId = 26
 		Transform 
 		{
 			var Translation = Real3{-13.482275, 0.143098831, 0}
@@ -1677,10 +1677,10 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 28
+		var LinkId = 27
 		Transform 
 		{
-			var Translation = Real3{-1.19971275, 0.143100739, -3.0252285}
+			var Translation = Real3{-0.619180679, 0.143100739, -3.0252285}
 			var Scale = Real3{1.25, 1.25, 1.25}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -1765,7 +1765,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 29
+		var LinkId = 28
 		Transform 
 		{
 			var Translation = Real3{-13.2688236, 0.143100739, 8.50110531}
@@ -1853,7 +1853,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 30
+		var LinkId = 29
 		Transform 
 		{
 			var Translation = Real3{-19.9831429, 0.143102646, -21.8668289}
@@ -1941,7 +1941,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 31
+		var LinkId = 30
 		Transform 
 		{
 			var Translation = Real3{-9.7974453, 0.143100739, -18.3539295}
@@ -2029,7 +2029,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 32
+		var LinkId = 31
 		Transform 
 		{
 			var Translation = Real3{-14.9366951, 0.143096924, 16.7080841}
@@ -2117,7 +2117,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 33
+		var LinkId = 32
 		Transform 
 		{
 			var Translation = Real3{-1.43645096, 0.143102646, -30.2439804}
@@ -2205,7 +2205,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 34
+		var LinkId = 33
 		Transform 
 		{
 			var Translation = Real3{-0.986261368, 0.143102646, 5.47587681}
@@ -2293,7 +2293,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 35
+		var LinkId = 34
 		Transform 
 		{
 			var Translation = Real3{-7.70778656, 0.143096924, 11.553071}
@@ -2381,7 +2381,7 @@ Level
 	Cog 
 	{
 		var Name = "Wanderer"
-		var LinkId = 36
+		var LinkId = 35
 		Transform 
 		{
 			var Translation = Real3{-15.6034813, 0.143098831, -21.5367393}

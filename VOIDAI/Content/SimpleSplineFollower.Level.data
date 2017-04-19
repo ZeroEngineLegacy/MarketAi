@@ -27,7 +27,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -46,7 +46,7 @@ Level
 		{
 			var Translation = Real3{0.576873839, 8.02974701, 20.5962486}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0871557519, -6.15105535e-07, -5.38537286e-08, 0.99619478}
+			var Rotation = Quaternion{-0.0871557519, -6.15105535e-07, -5.38537321e-08, 0.99619478}
 		}
 		Camera 
 		{
@@ -161,7 +161,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -178,7 +178,7 @@ Level
 	Cog 
 	{
 		var Name = "SplineObj"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -198,7 +198,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 7
+				var LinkId = 6
 				Transform 
 				{
 					var Translation = Real3{0, 2.42455292, 0}
@@ -217,7 +217,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 8
+				var LinkId = 7
 				Transform 
 				{
 					var Translation = Real3{-2.79513741, 4.48811913, 0}
@@ -236,7 +236,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 9
+				var LinkId = 8
 				Transform 
 				{
 					var Translation = Real3{-2.79513741, 4.48811913, 3.84854507}
@@ -255,7 +255,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 10
+				var LinkId = 9
 				Transform 
 				{
 					var Translation = Real3{0, 2.42157555, 3.84854507}
@@ -274,7 +274,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 11
+				var LinkId = 10
 				Transform 
 				{
 					var Translation = Real3{4.24651241, 2.42157555, 3.84854507}
@@ -293,7 +293,7 @@ Level
 			Cog 
 			{
 				var Name = "ControlPoint"
-				var LinkId = 12
+				var LinkId = 11
 				Transform 
 				{
 					var Translation = Real3{4.24651241, 2.42157555, 0.2665627}
@@ -314,10 +314,10 @@ Level
 	Cog 
 	{
 		var Name = "Follower"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
-			var Translation = Real3{0, 1, 0}
+			var Translation = Real3{0, 1.03657007, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -367,7 +367,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute

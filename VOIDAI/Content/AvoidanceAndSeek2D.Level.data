@@ -10,7 +10,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -147,7 +147,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -172,7 +172,7 @@ Level
 	Cog 
 	{
 		var Name = "LevelGeometry"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{0, 0.5, 0}
@@ -184,7 +184,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 7
+				var LinkId = 6
 				Transform 
 				{
 					var Translation = Real3{-27.8750191, -0.0178346634, 34.173233}
@@ -212,7 +212,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 8
+				var LinkId = 7
 				Transform 
 				{
 					var Translation = Real3{0, -0.0178346634, 4.52088165}
@@ -240,7 +240,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 9
+				var LinkId = 8
 				Transform 
 				{
 					var Translation = Real3{10.8982658, -0.0178308487, -28.8068695}
@@ -268,7 +268,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 10
+				var LinkId = 9
 				Transform 
 				{
 					var Translation = Real3{10.9679546, -0.0178346634, -2.68974495}
@@ -296,7 +296,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 11
+				var LinkId = 10
 				Transform 
 				{
 					var Translation = Real3{-0.0950059891, -0.0178346634, -43.7939644}
@@ -324,7 +324,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 12
+				var LinkId = 11
 				Transform 
 				{
 					var Translation = Real3{-5.35730743, -0.0178346634, -16.2350597}
@@ -352,7 +352,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 13
+				var LinkId = 12
 				Transform 
 				{
 					var Translation = Real3{-23.5405598, 0, -28.0077648}
@@ -380,7 +380,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 14
+				var LinkId = 13
 				Transform 
 				{
 					var Translation = Real3{-11.5498085, -0.0178346634, 21.073761}
@@ -408,7 +408,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 15
+				var LinkId = 14
 				Transform 
 				{
 					var Translation = Real3{30.8030224, -0.0178346634, -21.2261143}
@@ -436,7 +436,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 16
+				var LinkId = 15
 				Transform 
 				{
 					var Translation = Real3{13.2377748, -0.0178346634, 10.4450684}
@@ -464,7 +464,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 17
+				var LinkId = 16
 				Transform 
 				{
 					var Translation = Real3{36.8607063, -0.0178346634, 2.05252075}
@@ -492,7 +492,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 18
+				var LinkId = 17
 				Transform 
 				{
 					var Translation = Real3{-0.0950059891, -0.0178346634, 43.1637955}
@@ -520,7 +520,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 19
+				var LinkId = 18
 				Transform 
 				{
 					var Translation = Real3{-33.599411, 0.5, -36.2797661}
@@ -550,7 +550,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 20
+				var LinkId = 19
 				Transform 
 				{
 					var Translation = Real3{-33.3999825, -0.0178346634, -5.81632614}
@@ -578,7 +578,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 21
+				var LinkId = 20
 				Transform 
 				{
 					var Translation = Real3{37.7558632, -0.5, 36.4860764}
@@ -606,7 +606,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 22
+				var LinkId = 21
 				Transform 
 				{
 					var Translation = Real3{-12.2758799, -0.0178346634, 8.91705322}
@@ -634,7 +634,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 23
+				var LinkId = 22
 				Transform 
 				{
 					var Translation = Real3{-46.5885429, -0.499996185, 39.7629318}
@@ -662,10 +662,10 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 24
+				var LinkId = 23
 				Transform 
 				{
-					var Translation = Real3{0.257297516, -0.0178346634, 32.0793762}
+					var Translation = Real3{0.257297516, 0, 32.0793762}
 					var Scale = Real3{4.88077641, 1, 4.81901741}
 					var Rotation = Quaternion{0, 0, 0, 1}
 				}
@@ -690,7 +690,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 25
+				var LinkId = 24
 				Transform 
 				{
 					var Translation = Real3{43.0319901, -0.0178346634, 0.00631332397}
@@ -718,7 +718,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 26
+				var LinkId = 25
 				Transform 
 				{
 					var Translation = Real3{22.952549, -0.0178346634, -21.2261143}
@@ -746,7 +746,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 27
+				var LinkId = 26
 				Transform 
 				{
 					var Translation = Real3{-36.8830872, -0.0232944489, 0.732343674}
@@ -776,7 +776,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 28
+				var LinkId = 27
 				Transform 
 				{
 					var Translation = Real3{0.678405762, -0.0232944489, -37.3955231}
@@ -806,7 +806,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 29
+				var LinkId = 28
 				Transform 
 				{
 					var Translation = Real3{23.4226856, 0.499996185, -2.59931564}
@@ -836,7 +836,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 30
+				var LinkId = 29
 				Transform 
 				{
 					var Translation = Real3{-43.6025543, -0.0178346634, 0.00631332397}
@@ -864,7 +864,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 31
+				var LinkId = 30
 				Transform 
 				{
 					var Translation = Real3{24.9220238, -0.0178346634, 9.13510132}
@@ -892,7 +892,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 32
+				var LinkId = 31
 				Transform 
 				{
 					var Translation = Real3{13.9834862, 0.5, 33.1449699}
@@ -922,7 +922,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 33
+				var LinkId = 32
 				Transform 
 				{
 					var Translation = Real3{-17.0429802, -0.0178308487, -7.14005852}
@@ -950,7 +950,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 34
+				var LinkId = 33
 				Transform 
 				{
 					var Translation = Real3{-31.5932274, -0.0178346634, 15.3004398}
@@ -978,7 +978,7 @@ Level
 			Cog 
 			{
 				var Name = "wall"
-				var LinkId = 35
+				var LinkId = 34
 				Transform 
 				{
 					var Translation = Real3{-19.0797787, 0, -21.2563839}
@@ -1008,7 +1008,7 @@ Level
 	Cog 
 	{
 		var Name = "Seeker"
-		var LinkId = 36
+		var LinkId = 35
 		Transform 
 		{
 			var Translation = Real3{37.2089653, 0.499996185, -38.2320175}
@@ -1091,7 +1091,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 36
+				var ResolvedCog = 35
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1121,7 +1121,143 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+		}
+		Avoidance 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 50
+			var Active = true
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 2
+		}
+	}
+	Cog 
+	{
+		var Name = "Seeker"
+		var LinkId = 37
+		Transform 
+		{
+			var Translation = Real3{10.3802605, 0.499996185, -16.9597702}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
 				var ResolvedCog = 37
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Real3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1147,7 +1283,7 @@ Level
 		var LinkId = 38
 		Transform 
 		{
-			var Translation = Real3{10.3802605, 0.499996185, -16.9597702}
+			var Translation = Real3{11.0558434, 0.500003815, -36.2978058}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -1257,7 +1393,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1283,7 +1419,7 @@ Level
 		var LinkId = 39
 		Transform 
 		{
-			var Translation = Real3{11.0558434, 0.500003815, -36.2978058}
+			var Translation = Real3{-27.4018974, 0.5, -30.3096848}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -1393,7 +1529,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1419,7 +1555,7 @@ Level
 		var LinkId = 40
 		Transform 
 		{
-			var Translation = Real3{-27.4018974, 0.5, -30.3096848}
+			var Translation = Real3{-25.047924, 0.500007629, -3.13786316}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -1529,7 +1665,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1555,7 +1691,7 @@ Level
 		var LinkId = 41
 		Transform 
 		{
-			var Translation = Real3{-25.047924, 0.500007629, -3.13786316}
+			var Translation = Real3{-9.45428848, 0.499996185, -34.6988907}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -1665,7 +1801,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1691,7 +1827,7 @@ Level
 		var LinkId = 42
 		Transform 
 		{
-			var Translation = Real3{-9.45428848, 0.499996185, -34.6988907}
+			var Translation = Real3{-36.1286354, 0.499996185, -9.65552521}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -1801,143 +1937,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SeekRange = 0
-			var GoalDistance = 0
-		}
-		Avoidance 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 50
-			var Active = true
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 45
-			var MoveBackDistance = 2
-		}
-	}
-	Cog 
-	{
-		var Name = "Seeker"
-		var LinkId = 43
-		Transform 
-		{
-			var Translation = Real3{-36.1286354, 0.499996185, -9.65552521}
-			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Real3{0, 1, 0}
-			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var EventHandler = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var MovementConstraint = SteeringConstraints.XZPlane
-			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
-		}
-		SteeringRigidBodyMover 
-		{
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 6
-			var MaxRotation = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var DebugDrawEnabled = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 43
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SensorSpaceMode = Mode2DStates.Mode2D
-			var SideSensorAngle = 60
-			var SideSensorDistance = 6
-			var PrimarySensorDistance = 6
-			var PrimarySensorMaxAngle = 30
-			var LocalOffset = Real3{0, 0, 0}
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 15
-		}
-		Seek 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-			var Target = CogPath
-			{
-				var Path = ":/Target"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1960,7 +1960,7 @@ Level
 	Cog 
 	{
 		var Name = "Target"
-		var LinkId = 37
+		var LinkId = 36
 		Transform 
 		{
 			var Translation = Real3{-9.75811577, 0.499996185, 38.2411423}
@@ -2050,7 +2050,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2081,7 +2081,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 44
+				var LinkId = 43
 				Transform 
 				{
 					var Translation = Real3{0, 1, 0}
@@ -2102,10 +2102,146 @@ Level
 	Cog 
 	{
 		var Name = "Seeker"
-		var LinkId = 45
+		var LinkId = 44
 		Transform 
 		{
 			var Translation = Real3{40.7304688, 0.499996185, -29.8376083}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Mesh = "4de0354322b345ae:Cube"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var MovementConstraint = SteeringConstraints.XZPlane
+			var LookDirectionConstraint = SteeringConstraints.XZPlane
+			var DebugDrawEnabled = true
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 6
+			var MaxRotation = 360
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = true
+			var SensorEventTarget = CogPath
+			{
+				var Path = "."
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 44
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode2D
+			var SideSensorAngle = 60
+			var SideSensorDistance = 6
+			var PrimarySensorDistance = 6
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Real3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 15
+		}
+		Seek 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 36
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+		}
+		Avoidance 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 50
+			var Active = true
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 2
+		}
+	}
+	Cog 
+	{
+		var Name = "Seeker"
+		var LinkId = 45
+		Transform 
+		{
+			var Translation = Real3{-5.93278694, 0.499996185, -26.3044815}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2215,7 +2351,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2241,7 +2377,7 @@ Level
 		var LinkId = 46
 		Transform 
 		{
-			var Translation = Real3{-5.93278694, 0.499996185, -26.3044815}
+			var Translation = Real3{-32.607132, 0.499996185, -1.26111603}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2351,7 +2487,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2377,7 +2513,7 @@ Level
 		var LinkId = 47
 		Transform 
 		{
-			var Translation = Real3{-32.607132, 0.499996185, -1.26111603}
+			var Translation = Real3{13.901762, 0.499996185, -8.56536102}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2487,7 +2623,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2513,7 +2649,7 @@ Level
 		var LinkId = 48
 		Transform 
 		{
-			var Translation = Real3{13.901762, 0.499996185, -8.56536102}
+			var Translation = Real3{-23.8803959, 0.5, -21.9152756}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2623,7 +2759,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2649,7 +2785,7 @@ Level
 		var LinkId = 49
 		Transform 
 		{
-			var Translation = Real3{-23.8803959, 0.5, -21.9152756}
+			var Translation = Real3{14.5773449, 0.500003815, -27.9033966}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2759,7 +2895,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2785,7 +2921,7 @@ Level
 		var LinkId = 50
 		Transform 
 		{
-			var Translation = Real3{14.5773449, 0.500003815, -27.9033966}
+			var Translation = Real3{-21.5264225, 0.500007629, 5.25654602}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -2895,7 +3031,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2921,7 +3057,7 @@ Level
 		var LinkId = 51
 		Transform 
 		{
-			var Translation = Real3{-21.5264225, 0.500007629, 5.25654602}
+			var Translation = Real3{27.9587936, 0.499996185, -16.0798264}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3031,7 +3167,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3057,7 +3193,7 @@ Level
 		var LinkId = 52
 		Transform 
 		{
-			var Translation = Real3{27.9587936, 0.499996185, -16.0798264}
+			var Translation = Real3{-9.82336426, 0.5, -29.4297409}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3167,7 +3303,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3193,7 +3329,7 @@ Level
 		var LinkId = 53
 		Transform 
 		{
-			var Translation = Real3{-9.82336426, 0.5, -29.4297409}
+			var Translation = Real3{28.6343765, 0.500003815, -35.4178619}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3303,7 +3439,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3329,7 +3465,7 @@ Level
 		var LinkId = 54
 		Transform 
 		{
-			var Translation = Real3{28.6343765, 0.500003815, -35.4178619}
+			var Translation = Real3{-7.46939087, 0.500007629, -2.25791931}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3439,7 +3575,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3465,7 +3601,7 @@ Level
 		var LinkId = 55
 		Transform 
 		{
-			var Translation = Real3{-7.46939087, 0.500007629, -2.25791931}
+			var Translation = Real3{27.3694305, 0.500011444, -27.2802353}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3575,7 +3711,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3601,7 +3737,7 @@ Level
 		var LinkId = 56
 		Transform 
 		{
-			var Translation = Real3{27.3694305, 0.500011444, -27.2802353}
+			var Translation = Real3{-11.0883102, 0.500007629, -21.2921143}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3711,7 +3847,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3737,7 +3873,7 @@ Level
 		var LinkId = 57
 		Transform 
 		{
-			var Translation = Real3{-11.0883102, 0.500007629, -21.2921143}
+			var Translation = Real3{26.6938477, 0.500003815, -7.94219971}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3847,7 +3983,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3873,7 +4009,7 @@ Level
 		var LinkId = 58
 		Transform 
 		{
-			var Translation = Real3{26.6938477, 0.500003815, -7.94219971}
+			var Translation = Real3{-8.73433685, 0.500015259, 5.87970734}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -3983,7 +4119,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4009,7 +4145,7 @@ Level
 		var LinkId = 59
 		Transform 
 		{
-			var Translation = Real3{-8.73433685, 0.500015259, 5.87970734}
+			var Translation = Real3{2.28217697, 0.500007629, -25.1088562}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4119,7 +4255,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4145,7 +4281,7 @@ Level
 		var LinkId = 60
 		Transform 
 		{
-			var Translation = Real3{2.28217697, 0.500007629, -25.1088562}
+			var Translation = Real3{-36.1755638, 0.500003815, -19.1207352}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4255,7 +4391,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4281,7 +4417,7 @@ Level
 		var LinkId = 61
 		Transform 
 		{
-			var Translation = Real3{-36.1755638, 0.500003815, -19.1207352}
+			var Translation = Real3{-33.8215904, 0.500011444, 8.05108643}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4391,7 +4527,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4417,7 +4553,7 @@ Level
 		var LinkId = 62
 		Transform 
 		{
-			var Translation = Real3{-33.8215904, 0.500011444, 8.05108643}
+			var Translation = Real3{1.60659409, 0.5, -5.77082062}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4527,7 +4663,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4553,7 +4689,7 @@ Level
 		var LinkId = 63
 		Transform 
 		{
-			var Translation = Real3{1.60659409, 0.5, -5.77082062}
+			var Translation = Real3{-3.88924217, 0.499996185, -21.6286011}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4663,7 +4799,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4689,7 +4825,7 @@ Level
 		var LinkId = 64
 		Transform 
 		{
-			var Translation = Real3{-3.88924217, 0.499996185, -21.6286011}
+			var Translation = Real3{-41.671402, 0.5, -34.9785156}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4799,7 +4935,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4825,7 +4961,7 @@ Level
 		var LinkId = 65
 		Transform 
 		{
-			var Translation = Real3{-41.671402, 0.5, -34.9785156}
+			var Translation = Real3{-39.3174286, 0.500007629, -7.80669403}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -4935,7 +5071,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4961,7 +5097,7 @@ Level
 		var LinkId = 66
 		Transform 
 		{
-			var Translation = Real3{-39.3174286, 0.500007629, -7.80669403}
+			var Translation = Real3{-3.21365929, 0.500003815, -40.9666367}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
 		}
@@ -5071,143 +5207,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SeekRange = 0
-			var GoalDistance = 0
-		}
-		Avoidance 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 50
-			var Active = true
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 45
-			var MoveBackDistance = 2
-		}
-	}
-	Cog 
-	{
-		var Name = "Seeker"
-		var LinkId = 67
-		Transform 
-		{
-			var Translation = Real3{-3.21365929, 0.500003815, -40.9666367}
-			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, 0.997180104, 0, -0.0750459358}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
-			var Mesh = "4de0354322b345ae:Cube"
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 0.5, 0.5}
-		}
-		Orientation 
-		{
-			var GlobalUp = Real3{0, 1, 0}
-			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var EventHandler = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var MovementConstraint = SteeringConstraints.XZPlane
-			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
-		}
-		SteeringRigidBodyMover 
-		{
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 6
-			var MaxRotation = 360
-		}
-		Sensor 
-		{
-			var Active = true
-			var DebugDrawEnabled = true
-			var SensorEventTarget = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 67
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SensorSpaceMode = Mode2DStates.Mode2D
-			var SideSensorAngle = 60
-			var SideSensorDistance = 6
-			var PrimarySensorDistance = 6
-			var PrimarySensorMaxAngle = 30
-			var LocalOffset = Real3{0, 0, 0}
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 15
-		}
-		Seek 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-			var Target = CogPath
-			{
-				var Path = ":/Target"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 37
+				var ResolvedCog = 36
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute

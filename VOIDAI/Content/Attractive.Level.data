@@ -19,7 +19,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -36,7 +36,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{-54.3654709, 22.3058376, 4.05758667}
+			var Translation = Real3{-40.6001205, 12.656889, -16.9162254}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0.063686192, 0.896607518, 0.137200236, -0.416191161}
 		}
@@ -97,7 +97,7 @@ Level
 			var LookDistance = 74.5912857
 			var VerticalAngle = 0.303687304
 			var HorizontalAngle = 2.27241898
-			var LookTarget = Real3{0, 0, 50}
+			var LookTarget = Real3{13.7653494, -9.64894867, 29.0261879}
 			var MoveSensitivity = 1
 		}
 	}
@@ -145,7 +145,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -170,7 +170,7 @@ Level
 	Cog 
 	{
 		var Name = "AttractedObj"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
 			var Translation = Real3{0.198731184, 0, 0}
@@ -252,7 +252,7 @@ Level
 	Cog 
 	{
 		var Name = "Target"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{-6.94537163, 0, 0}
@@ -308,7 +308,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 8
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -324,7 +324,7 @@ Level
 	Cog 
 	{
 		var Name = "Transform"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}

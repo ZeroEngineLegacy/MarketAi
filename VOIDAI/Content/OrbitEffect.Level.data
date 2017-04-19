@@ -10,7 +10,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.ZAxis
+			var Axis = AxisDirection.Z
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -29,7 +29,7 @@ Level
 		{
 			var Translation = Real3{1.80272388, 2.13676167, 4.26158905}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.119062476, -0.454513639, -0.0614526607, 0.880604923}
+			var Rotation = Quaternion{-0.119062476, -0.454513639, -0.0614526644, 0.880604982}
 		}
 		CameraViewport 
 		{
@@ -136,7 +136,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -161,10 +161,10 @@ Level
 	Cog 
 	{
 		var Name = "Orbiter"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{9.13894463, 0, 0}
+			var Translation = Real3{9.13894463, 0.0213121176, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -218,7 +218,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -229,7 +229,7 @@ Level
 	Cog 
 	{
 		var Name = "OrbitTarget"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}

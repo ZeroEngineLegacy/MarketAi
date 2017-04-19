@@ -19,7 +19,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -44,7 +44,7 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{-194.326065, 151.032333, 20.6878033}
+			var Translation = Real3{-27.707777, 16.7348862, 2.29227781}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-0.246811911, -0.629493773, -0.221062437, 0.702817917}
 		}
@@ -102,7 +102,7 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 241.558014
+			var LookDistance = 26.7654343
 			var VerticalAngle = 0.675442219
 			var HorizontalAngle = 20.3103924
 			var LookTarget = Real3{-6.94537163, 1.78813934e-07, 1.1920929e-07}
@@ -153,7 +153,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 5
+				var ResolvedCog = 3
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -178,10 +178,10 @@ Level
 	Cog 
 	{
 		var Name = "Pursuer"
-		var LinkId = 6
+		var LinkId = 5
 		Transform 
 		{
-			var Translation = Real3{9.26237297, 0, 0}
+			var Translation = Real3{9.26237297, 0, 0.263440609}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -255,7 +255,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 7
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -275,7 +275,7 @@ Level
 	Cog 
 	{
 		var Name = "Flee"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{-6.94537163, 0, 3.06077218}
@@ -354,7 +354,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -372,7 +372,7 @@ Level
 	Cog 
 	{
 		var Name = "Orbit"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -383,7 +383,7 @@ Level
 	Cog 
 	{
 		var Name = "Floor"
-		var LinkId = 9
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{0, -1.04824448, 0}
@@ -411,7 +411,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 10
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{0, 10, 50}
@@ -439,7 +439,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 11
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{0, 10, -50}
@@ -467,7 +467,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 12
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{50, 10, 0}
@@ -495,7 +495,7 @@ Level
 	Cog 
 	{
 		var Name = "Wall"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{-50, 10, 0}

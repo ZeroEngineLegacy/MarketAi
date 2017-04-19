@@ -27,7 +27,7 @@ Level
 			var Active = true
 			var HalfCellOffset = false
 			var CellSize = 1
-			var Axis = GridAxis.YAxis
+			var Axis = AxisDirection.Y
 			var Lines = 100
 			var DrawAxisOrigins = true
 			var AlwaysDrawInEditor = true
@@ -136,7 +136,7 @@ Level
 		{
 			var Translation = Real3{12.543417, 6.99882078, 0.446700871}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.199436381, 0.689581037, 0.206883833, 0.664757371}
+			var Rotation = Quaternion{-0.199436367, 0.689580977, 0.206883818, 0.664757371}
 		}
 		CameraViewport 
 		{
@@ -243,7 +243,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 4
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -268,7 +268,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 7
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{-4, 1, -6}
@@ -296,7 +296,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 8
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{4, 1.08723378, -6}
@@ -324,7 +324,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 9
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{4, 1, -2.5}
@@ -387,7 +387,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 10
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{-4, 1, -2.5}
@@ -450,7 +450,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 11
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{0, 1, -2.5}
@@ -513,7 +513,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 12
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{0, 1.08723378, -6}
@@ -541,7 +541,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 13
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{-0.0631322861, 3.76814246, 4.33529425}
@@ -566,7 +566,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 14
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{-0.0631322861, 3.76814246, -4.05229568}
@@ -591,7 +591,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 15
+		var LinkId = 14
 		Transform 
 		{
 			var Translation = Real3{-3.81009245, 0.99999994, 6.07142782}
@@ -619,7 +619,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 16
+		var LinkId = 15
 		Transform 
 		{
 			var Translation = Real3{3.74612188, 0.99999994, 2.687181}
@@ -682,7 +682,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 17
+		var LinkId = 16
 		Transform 
 		{
 			var Translation = Real3{-0.0409705453, 0.99999994, 2.62948656}
@@ -745,7 +745,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 18
+		var LinkId = 17
 		Transform 
 		{
 			var Translation = Real3{3.79660487, 1.08723378, 6.18681765}
@@ -773,10 +773,10 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 19
+		var LinkId = 18
 		Transform 
 		{
-			var Translation = Real3{0.00951231271, 1.08723378, 6.12912226}
+			var Translation = Real3{0.00951231271, 1.08000004, 6.12912226}
 			var Scale = Real3{3, 3, 1}
 			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
 		}
@@ -801,7 +801,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 20
+		var LinkId = 19
 		Transform 
 		{
 			var Translation = Real3{-3.86057615, 0.99999994, 2.57179165}
