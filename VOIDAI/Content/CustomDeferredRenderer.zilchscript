@@ -35,10 +35,10 @@ class CustomDeferredRenderer : ZilchComponent
     geometryPassSettings.DepthTarget = depthStencil;
     
     geometryPassSettings.DepthSettings.DepthMode = DepthMode.Write;
-    geometryPassSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    geometryPassSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     // Using stencil buffer to optimally identify which pixels had opaque objects rendered to them
     geometryPassSettings.DepthSettings.StencilMode = StencilMode.Enabled;
-    geometryPassSettings.DepthSettings.StencilTest = StencilTest.Always;
+    geometryPassSettings.DepthSettings.StencilCompareFunc = TextureCompareFunc.Always;
     geometryPassSettings.DepthSettings.StencilFailOp = StencilOp.Keep;
     geometryPassSettings.DepthSettings.DepthFailOp = StencilOp.Keep;
     geometryPassSettings.DepthSettings.DepthPassOp = StencilOp.Replace;
@@ -63,7 +63,7 @@ class CustomDeferredRenderer : ZilchComponent
     
     // Only process background pixels
     lightSettings.DepthSettings.StencilMode = StencilMode.Enabled;
-    lightSettings.DepthSettings.StencilTest = StencilTest.Equal;
+    lightSettings.DepthSettings.StencilCompareFunc = TextureCompareFunc.Equal;
     lightSettings.DepthSettings.StencilFailOp = StencilOp.Keep;
     lightSettings.DepthSettings.DepthFailOp = StencilOp.Keep;
     lightSettings.DepthSettings.DepthPassOp = StencilOp.Keep;
@@ -155,7 +155,7 @@ class CustomDeferredRenderer : ZilchComponent
       lightSettings.BlendSettings.SourceFactor = BlendFactor.One;
       lightSettings.BlendSettings.DestFactor = BlendFactor.One;
       
-      lightSettings.DepthSettings.DepthTest = DepthTest.GreaterEqual;
+      lightSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.GreaterEqual;
       
       var lightPass = LightPass();
       lightPass.DitherTexture = Texture.BlueNoise;
@@ -177,7 +177,7 @@ class CustomDeferredRenderer : ZilchComponent
     alphaSettings.BlendSettings.DestFactor = BlendFactor.One;
     
     alphaSettings.DepthSettings.DepthMode = DepthMode.Read;
-    alphaSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    alphaSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     
     event.AddRenderTaskRenderPass(alphaSettings, RenderGroup.AdditiveBlend, ColorOutput());
 
@@ -233,7 +233,7 @@ class CustomDeferredRenderer : ZilchComponent
     debugSettings.BlendSettings.DestFactor = BlendFactor.InvSourceAlpha;
     
     debugSettings.DepthSettings.DepthMode = DepthMode.Read;
-    debugSettings.DepthSettings.DepthTest = DepthTest.LessEqual;
+    debugSettings.DepthSettings.DepthCompareFunc = TextureCompareFunc.LessEqual;
     
     event.AddRenderTaskRenderPass(debugSettings, RenderGroup.DebugDraw, DefaultRenderPass());
     
