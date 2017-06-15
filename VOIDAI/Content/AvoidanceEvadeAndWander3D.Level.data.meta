@@ -3,7 +3,7 @@ DataContent
 {
 	DataBuilder 
 	{
-		var Name = "EvadeWanderAndAvoidance3D"
+		var Name = "AvoidanceEvadeAndWander3D"
 		var ResourceId = 0x58fe8b1c00ae948c
 		var LoaderType = "Level"
 		var Version = 0

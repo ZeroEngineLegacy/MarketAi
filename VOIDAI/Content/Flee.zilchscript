@@ -15,12 +15,12 @@ class Flee : SteeringComponent
   [Dependency]
   var Orientation : Orientation = null;
   
-  // Target object to be flee towards
+  // Target object to flee from
   [Property]
   var Target : CogPath = null;
   
   // Range from the object in which it is valid to flee the target object
-  // If the range is 0 the target object will always be fled
+  // If the range is 0 the target object will always be fled from
   [Property]
   var FleeRange : Real = 0.0;
   

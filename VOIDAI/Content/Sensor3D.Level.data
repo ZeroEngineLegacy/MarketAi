@@ -9,6 +9,7 @@ Level
 		{
 			var Active = true
 			var WakeUpOnChange = false
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 10
 			var Direction = Real3{0, -1, 0}
@@ -17,6 +18,7 @@ Level
 		{
 			var Active = true
 			var WakeUpOnChange = false
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
@@ -63,7 +65,7 @@ Level
 			var RenderOrder = -1
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -78,7 +80,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -114,6 +116,10 @@ Level
 			var Visible = true
 			var ViewCulling = false
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = ""
 			var Mesh = ""
 		}
@@ -134,9 +140,9 @@ Level
 		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{12.543417, 6.99882078, 0.446700871}
+			var Translation = Real3{1.63564324, 8.46569633, -11.6277313}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.199436367, 0.689580977, 0.206883818, 0.664757371}
+			var Rotation = Quaternion{0.00825028308, 0.957675755, 0.286405534, -0.0275870785}
 		}
 		CameraViewport 
 		{
@@ -147,7 +153,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -162,7 +168,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -192,9 +198,10 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 12.2140255
-			var VerticalAngle = 0.58293879
-			var HorizontalAngle = 4.675735
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 14.9182415
+			var VerticalAngle = 0.581194162
+			var HorizontalAngle = 3.08399606
 			var LookTarget = Real3{2.35340548, 0.27524668, 0.82037276}
 			var MoveSensitivity = 1
 		}
@@ -218,7 +225,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -233,7 +240,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -280,6 +287,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -299,7 +310,7 @@ Level
 		var LinkId = 7
 		Transform 
 		{
-			var Translation = Real3{4, 1.08723378, -6}
+			var Translation = Real3{4, 1, -6}
 			var Scale = Real3{3, 3, 1}
 			var Rotation = Quaternion{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
 		}
@@ -308,6 +319,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -336,6 +351,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
@@ -399,6 +418,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
@@ -462,6 +485,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
@@ -516,7 +543,7 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Real3{0, 1.08723378, -6}
+			var Translation = Real3{0, 1, -6}
 			var Scale = Real3{3, 3, 1}
 			var Rotation = Quaternion{-4.37113883e-08, 1, -4.37113883e-08, 1.91068547e-15}
 		}
@@ -525,6 +552,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -553,14 +584,18 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "Sparse Update"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "Sparse Update"
-			var Align = TextAlign.Center
 			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 	Cog 
@@ -578,14 +613,18 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "Every Frame Update"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "Every Frame Update"
-			var Align = TextAlign.Center
 			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 	Cog 
@@ -594,15 +633,19 @@ Level
 		var LinkId = 14
 		Transform 
 		{
-			var Translation = Real3{-3.81009245, 0.99999994, 6.07142782}
+			var Translation = Real3{-4, 1, 6}
 			var Scale = Real3{3, 3, 1}
-			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -622,7 +665,7 @@ Level
 		var LinkId = 15
 		Transform 
 		{
-			var Translation = Real3{3.74612188, 0.99999994, 2.687181}
+			var Translation = Real3{4, 0.99999994, 2.5}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
 		}
@@ -631,6 +674,10 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
@@ -685,15 +732,19 @@ Level
 		var LinkId = 16
 		Transform 
 		{
-			var Translation = Real3{-0.0409705453, 0.99999994, 2.62948656}
+			var Translation = Real3{0, 0.99999994, 2.5}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
@@ -748,15 +799,19 @@ Level
 		var LinkId = 17
 		Transform 
 		{
-			var Translation = Real3{3.79660487, 1.08723378, 6.18681765}
+			var Translation = Real3{4, 1, 6}
 			var Scale = Real3{3, 3, 1}
-			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -776,15 +831,19 @@ Level
 		var LinkId = 18
 		Transform 
 		{
-			var Translation = Real3{0.00951231271, 1.08000004, 6.12912226}
+			var Translation = Real3{0, 1, 6}
 			var Scale = Real3{3, 3, 1}
-			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
@@ -804,15 +863,19 @@ Level
 		var LinkId = 19
 		Transform 
 		{
-			var Translation = Real3{-3.86057615, 0.99999994, 2.57179165}
+			var Translation = Real3{-4, 0.99999994, 2.5}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-4.33950049e-08, -0.00721202418, 4.40254979e-08, -0.999974012}
+			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
 		{
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "583afb5e7bf75e18:ZeroMaterial"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}

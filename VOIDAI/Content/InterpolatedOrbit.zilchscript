@@ -39,7 +39,7 @@ class InterpolatedOrbit : ZilchComponent
       this.Radius = Math.Length(this.Owner.Transform.Translation - this.OrbitTarget.Cog.Transform.Translation);
     
     // Use the current normalized offset as the initial offset of the orbit
-    var startDir : Real3 = Math.Normalize(this.Owner.Transform.Translation - this.OrbitTarget.Cog.Transform.Translation);
+    var startDir = Math.Normalize(this.Owner.Transform.Translation - this.OrbitTarget.Cog.Transform.Translation);
     this.CurrentAngle = this.OrientationHelper.AxisVectorToAngle(AxisType.Forward, startDir);
     
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);

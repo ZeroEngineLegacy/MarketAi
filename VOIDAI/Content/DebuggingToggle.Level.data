@@ -9,6 +9,7 @@ Level
 		{
 			var Active = true
 			var WakeUpOnChange = false
+			var DebugDrawEffect = true
 			var LocalSpaceDirection = true
 			var Strength = 10
 			var Direction = Real3{0, -1, 0}
@@ -17,6 +18,7 @@ Level
 		{
 			var Active = true
 			var WakeUpOnChange = false
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
@@ -42,10 +44,20 @@ Level
 	{
 		var Name = "Renderer"
 		var LinkId = 2
-		DefaultRenderer 
+		DeferredRenderer 
 		{
-			var ClearColor = Real4{0, 0, 0, 0}
-			var DrawDebug = true
+			var GeometryDebug = GeometryValue.None
+			var EditorDebugDraw = false
+			var GameDebugDraw = false
+			var RenderDiffuse = false
+			var RenderSpecular = false
+			var RenderSkybox = false
+			var Skybox = "5822dec85e380cf1:SimpleSkybox"
+			var ClearColor = Real4{1, 1, 1, 0}
+			var DirectLighting = true
+			var IndirectLighting = true
+			var IndirectIntensity = 1
+			var ToneMap = true
 		}
 	}
 	Cog 
@@ -54,9 +66,9 @@ Level
 		var LinkId = 3
 		Transform 
 		{
-			var Translation = Real3{-2.49095798, 2.34400678, 13.0580578}
+			var Translation = Real3{-10.7057304, 9.38766098, 13.4662256}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.0867689475, -0.0937502012, -0.00820208155, 0.991773605}
+			var Rotation = Quaternion{0.0226796418, -0.0261700619, 0.000593884441, 0.999400079}
 		}
 		CameraViewport 
 		{
@@ -67,7 +79,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -82,7 +94,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -112,10 +124,11 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 13.4985971
-			var VerticalAngle = 0.17453292
-			var HorizontalAngle = 0.188495576
-			var LookTarget = Real3{0, 0, 0}
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 13.498601
+			var VerticalAngle = -0.045378726
+			var HorizontalAngle = 0.0523595326
+			var LookTarget = Real3{-10, 10, 0}
 			var MoveSensitivity = 1
 		}
 	}
@@ -138,7 +151,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -153,7 +166,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -200,14 +213,18 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "[Space] Toggle Debugging"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "[Space] Toggle Debugging"
-			var Align = TextAlign.Left
 			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 	Cog 
@@ -225,14 +242,18 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
 			var Material = "582c575af53d18c9:AlphaSprite"
 			var VertexColor = Real4{1, 1, 1, 1}
 			var GeometryMode = SpriteGeometryMode.ZPlane
+			var Text = "[Tab] Toggle Sparse Update"
 			var Font = "57343753bb4eaaec:NotoSans-Regular"
 			var FontSize = 32
-			var Text = "[Tab] Toggle Sparse Update"
-			var Align = TextAlign.Left
 			var PixelsPerUnit = 128
+			var TextAlign = TextAlign.Center
 		}
 	}
 }
