@@ -250,7 +250,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -275,7 +275,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 6
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -307,7 +307,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 7
+		var LinkId = 8
 		Transform 
 		{
 			var Translation = Real3{0, 1, 2}
@@ -384,7 +384,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 8
+		var LinkId = 9
 		Transform 
 		{
 			var Translation = Real3{2, 1, 2}
@@ -461,7 +461,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 9
+		var LinkId = 10
 		Transform 
 		{
 			var Translation = Real3{-2, 1, 2}
@@ -538,7 +538,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 10
+		var LinkId = 11
 		Transform 
 		{
 			var Translation = Real3{-2.5, 1, 4.5}
@@ -580,7 +580,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 11
+		var LinkId = 12
 		Transform 
 		{
 			var Translation = Real3{0, 1, 4.5}
@@ -622,7 +622,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 12
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{2.5, 1, 4.5}
@@ -664,7 +664,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 13
+		var LinkId = 14
 		Transform 
 		{
 			var Translation = Real3{-2.5, 1, -4.5}
@@ -706,7 +706,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 14
+		var LinkId = 15
 		Transform 
 		{
 			var Translation = Real3{2.5, 1, -4.5}
@@ -748,7 +748,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 15
+		var LinkId = 16
 		Transform 
 		{
 			var Translation = Real3{2, 1, -2}
@@ -825,7 +825,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 16
+		var LinkId = 17
 		Transform 
 		{
 			var Translation = Real3{-2, 1, -2}
@@ -902,7 +902,7 @@ Level
 	Cog 
 	{
 		var Name = "Sphere"
-		var LinkId = 17
+		var LinkId = 18
 		Transform 
 		{
 			var Translation = Real3{0, 1, -2}
@@ -979,7 +979,7 @@ Level
 	Cog 
 	{
 		var Name = "Cube"
-		var LinkId = 18
+		var LinkId = 19
 		Transform 
 		{
 			var Translation = Real3{0, 1, -4.5}
@@ -1021,7 +1021,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 19
+		var LinkId = 20
 		Transform 
 		{
 			var Translation = Real3{-0.0631322861, 3.76814246, 4.33529425}
@@ -1050,7 +1050,7 @@ Level
 	Cog 
 	{
 		var Name = "SpriteText"
-		var LinkId = 20
+		var LinkId = 21
 		Transform 
 		{
 			var Translation = Real3{-0.0631322861, 3.76814246, -4.05229568}

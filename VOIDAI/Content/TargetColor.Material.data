@@ -7,20 +7,21 @@ Material
 		"581cffd64d449122:Opaque"
 		"580269d9a1d6b870:ShadowCasters"
 	}
-	AlbedoMap 
+	AlbedoValue 
 	{
-		var AlbedoMap = "58febb1811584bf8:smallFish_Blue_Diffuse"
+		var AlbedoValue = Real4{0, 0, 1, 1}
+		var GammaCorrect = true
 	}
 	MetallicValue 
 	{
-		var MetallicValue = 0.188854218
+		var MetallicValue = 0
 	}
 	RoughnessValue 
 	{
-		var RoughnessValue = 0.728247285
+		var RoughnessValue = 1
 	}
-	SpecularMap 
+	SpecularValue 
 	{
-		var SpecularMap = "58febb171158a9fd:smallFish_Blue_Specular"
+		var SpecularValue = 0.5
 	}
 }

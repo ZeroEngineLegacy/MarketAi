@@ -38,9 +38,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{130.931885, 52.8513184, 18.5676918}
+			var Translation = Real3{23.0352955, 47.705246, -68.7428436}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.109857097, 0.588598549, 0.0811512694, 0.796804726}
+			var Rotation = Quaternion{-0.0840892345, 0.915103137, 0.298218161, 0.258033514}
 		}
 		CameraViewport 
 		{
@@ -51,7 +51,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -66,7 +66,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -96,10 +96,11 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 155.214706
-			var VerticalAngle = 0.274016529
-			var HorizontalAngle = 61.5593948
-			var LookTarget = Real3{-11.8914261, 10.850174, -25.3527946}
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 63.1056442
+			var VerticalAngle = 0.630063891
+			var HorizontalAngle = 60.239933
+			var LookTarget = Real3{-3.60162115, 10.5236292, -25.2649918}
 			var MoveSensitivity = 1
 		}
 	}
@@ -122,7 +123,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -137,7 +138,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -184,7 +185,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -232,7 +237,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -310,7 +315,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -358,7 +367,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -436,7 +445,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -484,7 +497,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -562,7 +575,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -610,7 +627,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -688,7 +705,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -736,7 +757,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -814,7 +835,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -862,7 +887,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -940,7 +965,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -988,7 +1017,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1066,7 +1095,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -1114,7 +1147,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -1204,6 +1237,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1232,6 +1269,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1260,6 +1301,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1288,6 +1333,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1316,6 +1365,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1344,6 +1397,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1372,6 +1429,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1400,6 +1461,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1428,6 +1493,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1456,6 +1525,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1484,6 +1557,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1512,6 +1589,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1540,6 +1621,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1570,6 +1655,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1598,6 +1687,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1626,6 +1719,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1654,6 +1751,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1682,6 +1783,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1710,6 +1815,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1738,6 +1847,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1766,6 +1879,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1796,6 +1913,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1826,6 +1947,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1856,6 +1981,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1884,6 +2013,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1912,6 +2045,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1942,6 +2079,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1970,6 +2111,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1998,6 +2143,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -2028,7 +2177,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2076,7 +2229,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2088,7 +2241,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2154,7 +2307,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2202,7 +2359,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2214,7 +2371,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2280,7 +2437,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2328,7 +2489,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2340,7 +2501,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2406,7 +2567,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2454,7 +2619,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2466,7 +2631,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2532,7 +2697,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2580,7 +2749,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2592,7 +2761,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2658,7 +2827,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2706,7 +2879,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2718,7 +2891,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2784,7 +2957,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2832,7 +3009,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2844,7 +3021,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -2910,7 +3087,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e2f4e3c51deb:WanderColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -2958,7 +3139,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -2970,7 +3151,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."

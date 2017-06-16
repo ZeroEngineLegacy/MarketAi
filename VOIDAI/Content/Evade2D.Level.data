@@ -196,7 +196,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Material = "5912e79455a63cef:SeekerColor"
 			var Mesh = "4de0354322b345ae:Cube"
 		}
 		RigidBody 
@@ -244,7 +244,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -268,7 +268,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
+				var ResolvedCog = 6
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -296,7 +296,7 @@ Level
 			var LocalAabbCenter = Real3{0, 0, 0}
 			var LocalAabbHalfExtents = Real3{1, 1, 1}
 			var GroupSortValue = 0
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var Material = "5912e7ef4116b2bc:TargetColor"
 			var Mesh = "4de0354322b3572e:Cylinder"
 		}
 		CylinderCollider 
@@ -346,7 +346,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.XZPlane
 			var LookDirectionConstraint = SteeringConstraints.XZPlane
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		Evade 
 		{

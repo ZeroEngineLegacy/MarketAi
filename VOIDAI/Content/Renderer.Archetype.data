@@ -3,19 +3,6 @@ Cog
 {
 	var Name = "Renderer"
 	var LinkId = 1
-	CustomDeferredRenderer 
-	{
-		var DrawDebug = true
-		var GeometryDebug = GeometryValue.None
-		var ShowDiffuse = true
-		var ShowSpecular = true
-		var Skybox = "5822dec85e380cf1:SimpleSkybox"
-		var DrawSkybox = true
-		var DirectLighting = true
-		var IndirectLighting = true
-		var IndirectIntensity = 1
-		var ToneMap = true
-	}
 	Ssao 
 	{
 		var Active = true
@@ -35,5 +22,20 @@ Cog
 		var Bloom4 = true
 		var Bloom5 = true
 		var DebugBuffer = false
+	}
+	DeferredRenderer 
+	{
+		var GeometryDebug = GeometryValue.None
+		var EditorDebugDraw = true
+		var GameDebugDraw = true
+		var RenderDiffuse = true
+		var RenderSpecular = true
+		var RenderSkybox = true
+		var Skybox = "5822dec85e380cf1:SimpleSkybox"
+		var ClearColor = Real4{0, 0, 0, 1}
+		var DirectLighting = true
+		var IndirectLighting = true
+		var IndirectIntensity = 1
+		var ToneMap = true
 	}
 }

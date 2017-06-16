@@ -9,6 +9,7 @@ Level
 		{
 			var Active = true
 			var WakeUpOnChange = false
+			var DebugDrawEffect = true
 			var LinearDamping = 0.200000003
 			var AngularDamping = 0.100000001
 			var LinearDrag = 0
@@ -47,9 +48,9 @@ Level
 		var LinkId = 2
 		Transform 
 		{
-			var Translation = Real3{33.452774, 10.8140888, 81.4700317}
+			var Translation = Real3{67.5133591, 5.46814442, 7.97904539}
 			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{-0.187302485, 0.244008854, 0.0480938442, 0.950297117}
+			var Rotation = Quaternion{-0.0368266553, 0.72075063, 0.0384038985, 0.691149414}
 		}
 		CameraViewport 
 		{
@@ -60,7 +61,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -75,7 +76,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -105,10 +106,11 @@ Level
 		EditorCameraController 
 		{
 			var ControlMode = ControlMode.Orbit
-			var LookDistance = 55.4016724
-			var VerticalAngle = 0.389208913
-			var HorizontalAngle = 62.3291702
-			var LookTarget = Real3{8.75771332, -10.2084427, 36.5528564}
+			var Previous3DMode = ControlMode.Orbit
+			var LookDistance = 61.2283134
+			var VerticalAngle = 0.106465697
+			var HorizontalAngle = 61.2191315
+			var LookTarget = Real3{6.68523073, -1.03826284, 10.530777}
 			var MoveSensitivity = 1
 		}
 	}
@@ -131,7 +133,7 @@ Level
 			var RenderOrder = 0
 			var NormalizedSize = Real2{1, 1}
 			var NormalizedOffset = Real2{0, 0}
-			var Camera = CogPath
+			var CameraPath = CogPath
 			{
 				var Path = "."
 				var ErrorOnResolveToNull = false
@@ -146,7 +148,7 @@ Level
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
 			}
-			var Renderer = CogPath
+			var RendererPath = CogPath
 			{
 				var Path = ":/Renderer"
 				var ErrorOnResolveToNull = false
@@ -156,7 +158,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 3
+				var ResolvedCog = 5
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -181,11 +183,11 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 5
+		var LinkId = 6
 		Transform 
 		{
 			var Translation = Real3{-5.15992737, 3.63909459, -8.33868408}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -193,8 +195,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -213,7 +219,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -305,156 +311,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SeekRange = 0
-			var GoalDistance = 0
-		}
-		Wander 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 5
-			var Active = true
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 5
-			var WanderAngle = 45
-			var WanderOffset = 3
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 30
-		}
-	}
-	Cog 
-	{
-		var Name = "Fish"
-		var LinkId = 7
-		Transform 
-		{
-			var Translation = Real3{-14.8316269, 3.63909459, -12.4560623}
-			var Scale = Real3{0.5, 0.5, 0.5}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
-		}
-		Orientation 
-		{
-			var GlobalUp = Real3{0, 1, 0}
-			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var EventHandler = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var MovementConstraint = SteeringConstraints.None
-			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = false
-		}
-		SteeringRigidBodyMover 
-		{
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var MaxRotation = 60
-		}
-		Sensor 
-		{
-			var Active = true
-			var DebugDrawEnabled = false
-			var SensorEventTarget = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SensorSpaceMode = Mode2DStates.Mode3D
-			var SideSensorAngle = 45
-			var SideSensorDistance = 8
-			var PrimarySensorDistance = 8
-			var PrimarySensorMaxAngle = 30
-			var LocalOffset = Real3{0, 0, 0}
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 60
-		}
-		Avoidance 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 45
-			var MoveBackDistance = 3
-		}
-		Seek 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-			var Target = CogPath
-			{
-				var Path = ":/Target"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -482,8 +339,8 @@ Level
 		var LinkId = 8
 		Transform 
 		{
-			var Translation = Real3{-14.3086357, 3.63909459, -26.2404022}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.8316269, 3.63909459, -12.4560623}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -491,8 +348,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -511,7 +372,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -603,7 +464,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -631,8 +492,8 @@ Level
 		var LinkId = 9
 		Transform 
 		{
-			var Translation = Real3{-2.36187744, 3.63909459, -25.8889313}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.3086357, 3.63909459, -26.2404022}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -640,8 +501,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -660,7 +525,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -752,7 +617,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -780,8 +645,8 @@ Level
 		var LinkId = 10
 		Transform 
 		{
-			var Translation = Real3{-7.53111649, 3.63909459, -18.9985809}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-2.36187744, 3.63909459, -25.8889313}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -789,8 +654,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -809,7 +678,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -901,7 +770,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -929,8 +798,8 @@ Level
 		var LinkId = 11
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, 3.63909459, -4.2881546}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-7.53111649, 3.63909459, -18.9985809}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -938,8 +807,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -958,7 +831,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -1050,7 +923,160 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+		}
+		Wander 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 5
+			var Active = true
+			var WanderShape = WanderShapes.Sphere
+			var Radius = 5
+			var WanderAngle = 45
+			var WanderOffset = 3
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 30
+		}
+	}
+	Cog 
+	{
+		var Name = "Fish"
+		var LinkId = 12
+		Transform 
+		{
+			var Translation = Real3{-18.1853256, 3.63909459, -4.2881546}
+			var Scale = Real3{2, 2, 5}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var MovementConstraint = SteeringConstraints.None
+			var LookDirectionConstraint = SteeringConstraints.None
+			var DebugDrawEnabled = false
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 60
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = false
+			var SensorEventTarget = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode3D
+			var SideSensorAngle = 45
+			var SideSensorDistance = 8
+			var PrimarySensorDistance = 8
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Real3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 60
+		}
+		Avoidance 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 3
+		}
+		Seek 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1075,7 +1101,7 @@ Level
 	Cog 
 	{
 		var Name = "LevelGeom"
-		var LinkId = 12
+		var LinkId = 13
 		Transform 
 		{
 			var Translation = Real3{0, 0, 0}
@@ -1087,7 +1113,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 13
+				var LinkId = 14
 				Transform 
 				{
 					var Translation = Real3{60.8674698, 30.7982426, 48.8586693}
@@ -1099,6 +1125,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1115,7 +1145,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 14
+				var LinkId = 15
 				Transform 
 				{
 					var Translation = Real3{15.3402977, -8.82030487, -63.8380852}
@@ -1127,6 +1157,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1145,7 +1179,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 15
+				var LinkId = 16
 				Transform 
 				{
 					var Translation = Real3{-13.5255165, -1.84823179, 11.3544197}
@@ -1157,34 +1191,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "583afb5e7bf75e18:ZeroMaterial"
-					var Mesh = "4de0354322b376ae:Sphere"
-				}
-				SphereCollider 
-				{
-					var Ghost = false
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
-					var Radius = 0.5
-				}
-			}
-			Cog 
-			{
-				var Name = "Sphere"
-				var LinkId = 16
-				Transform 
-				{
-					var Translation = Real3{-2.7113924, 17.8085194, -2.26908875}
-					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
-					var Rotation = Quaternion{0, 0, 0, 1}
-				}
-				Model 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1204,7 +1214,7 @@ Level
 				var LinkId = 17
 				Transform 
 				{
-					var Translation = Real3{-13.5255165, 32.6406212, 23.5006065}
+					var Translation = Real3{-2.7113924, 17.8085194, -2.26908875}
 					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
 					var Rotation = Quaternion{0, 0, 0, 1}
 				}
@@ -1213,6 +1223,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1232,6 +1246,38 @@ Level
 				var LinkId = 18
 				Transform 
 				{
+					var Translation = Real3{-13.5255165, 32.6406212, 23.5006065}
+					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 19
+				Transform 
+				{
 					var Translation = Real3{-13.5255165, -19.3882446, -14.5768566}
 					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
 					var Rotation = Quaternion{0, 0, 0, 1}
@@ -1241,6 +1287,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1257,7 +1307,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 19
+				var LinkId = 20
 				Transform 
 				{
 					var Translation = Real3{-59.4139709, 39.4312325, 19.3770714}
@@ -1269,6 +1319,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1287,7 +1341,7 @@ Level
 			Cog 
 			{
 				var Name = "Sphere"
-				var LinkId = 20
+				var LinkId = 21
 				Transform 
 				{
 					var Translation = Real3{73.812149, 30.7982426, -54.4220314}
@@ -1299,34 +1353,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "583afb5e7bf75e18:ZeroMaterial"
-					var Mesh = "4de0354322b376ae:Sphere"
-				}
-				SphereCollider 
-				{
-					var Ghost = false
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
-					var Radius = 0.5
-				}
-			}
-			Cog 
-			{
-				var Name = "Sphere"
-				var LinkId = 21
-				Transform 
-				{
-					var Translation = Real3{-59.2627373, 4.26807213, -54.4220314}
-					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
-					var Rotation = Quaternion{0, 0, 0, 1}
-				}
-				Model 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1346,6 +1376,38 @@ Level
 				var LinkId = 22
 				Transform 
 				{
+					var Translation = Real3{-59.2627373, 4.26807213, -54.4220314}
+					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
+					var Rotation = Quaternion{0, 0, 0, 1}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b376ae:Sphere"
+				}
+				SphereCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+				}
+			}
+			Cog 
+			{
+				var Name = "Sphere"
+				var LinkId = 23
+				Transform 
+				{
 					var Translation = Real3{15.6351662, 7.40642357, -50.6261101}
 					var Scale = Real3{20.6405506, 20.6405506, 20.6405506}
 					var Rotation = Quaternion{0, 0, 0, 1}
@@ -1355,6 +1417,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b376ae:Sphere"
 				}
@@ -1371,7 +1437,7 @@ Level
 			Cog 
 			{
 				var Name = "Cylinder"
-				var LinkId = 23
+				var LinkId = 24
 				Transform 
 				{
 					var Translation = Real3{65.924881, -8.82030487, -28.3157082}
@@ -1383,36 +1449,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "583afb5e7bf75e18:ZeroMaterial"
-					var Mesh = "4de0354322b3572e:Cylinder"
-				}
-				CylinderCollider 
-				{
-					var Ghost = false
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
-					var Radius = 0.5
-					var Height = 1
-					var Direction = AxisDirection.Y
-				}
-			}
-			Cog 
-			{
-				var Name = "Cylinder"
-				var LinkId = 24
-				Transform 
-				{
-					var Translation = Real3{-42.9179993, -30.9753132, -37.6660461}
-					var Scale = Real3{16.2949696, 60.2195358, 16.2949677}
-					var Rotation = Quaternion{0, 0, -0.31057021, 0.950550497}
-				}
-				Model 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1434,15 +1474,19 @@ Level
 				var LinkId = 25
 				Transform 
 				{
-					var Translation = Real3{25.6018295, -30.9753132, -37.6660461}
+					var Translation = Real3{-42.9179993, -30.9753132, -37.6660461}
 					var Scale = Real3{16.2949696, 60.2195358, 16.2949677}
-					var Rotation = Quaternion{0.350890636, -0.100521103, 0.256395608, 0.895004272}
+					var Rotation = Quaternion{0, 0, -0.31057021, 0.950550497}
 				}
 				Model 
 				{
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1464,6 +1508,40 @@ Level
 				var LinkId = 26
 				Transform 
 				{
+					var Translation = Real3{25.6018295, -30.9753132, -37.6660461}
+					var Scale = Real3{16.2949696, 60.2195358, 16.2949677}
+					var Rotation = Quaternion{0.350890636, -0.100521103, 0.256395608, 0.895004272}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b3572e:Cylinder"
+				}
+				CylinderCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var Radius = 0.5
+					var Height = 1
+					var Direction = AxisDirection.Y
+				}
+			}
+			Cog 
+			{
+				var Name = "Cylinder"
+				var LinkId = 27
+				Transform 
+				{
 					var Translation = Real3{-52.5134506, -23.5490341, 47.2183495}
 					var Scale = Real3{16.2949677, 16.2949677, 16.2949677}
 					var Rotation = Quaternion{0.54654628, 0.244931161, -0.34023726, 0.724937558}
@@ -1473,6 +1551,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b3572e:Cylinder"
 				}
@@ -1491,7 +1573,7 @@ Level
 			Cog 
 			{
 				var Name = "Floor"
-				var LinkId = 27
+				var LinkId = 28
 				Transform 
 				{
 					var Translation = Real3{0, -36.372963, 0}
@@ -1503,6 +1585,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1519,7 +1605,7 @@ Level
 			Cog 
 			{
 				var Name = "Wall"
-				var LinkId = 28
+				var LinkId = 29
 				Transform 
 				{
 					var Translation = Real3{-187.889175, -24.1692505, 0}
@@ -1531,6 +1617,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1547,7 +1637,7 @@ Level
 			Cog 
 			{
 				var Name = "Floor"
-				var LinkId = 29
+				var LinkId = 30
 				Transform 
 				{
 					var Translation = Real3{0, 61.3958893, 0}
@@ -1559,34 +1649,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
-					var Material = "583afb5e7bf75e18:ZeroMaterial"
-					var Mesh = "4de0354322b345ae:Cube"
-				}
-				BoxCollider 
-				{
-					var Ghost = false
-					var SendsEvents = true
-					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-					var CollisionGroup = "4e740859314e5515:DefaultGroup"
-					var Offset = Real3{0, 0, 0}
-					var HalfSize = Real3{0.5, 0.5, 0.5}
-				}
-			}
-			Cog 
-			{
-				var Name = "Wall"
-				var LinkId = 30
-				Transform 
-				{
-					var Translation = Real3{111.083527, -24.1692505, 0}
-					var Scale = Real3{375.778381, 3.75778389, 375.778351}
-					var Rotation = Quaternion{0, 0, 0.707106829, 0.707106769}
-				}
-				Model 
-				{
-					var Visible = true
-					var ViewCulling = true
-					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1606,15 +1672,19 @@ Level
 				var LinkId = 31
 				Transform 
 				{
-					var Translation = Real3{0, -24.1692505, 98.0032959}
-					var Scale = Real3{375.778351, 3.75778389, 375.778381}
-					var Rotation = Quaternion{0.707106829, 0, 0, 0.707106769}
+					var Translation = Real3{111.083527, -24.1692505, 0}
+					var Scale = Real3{375.778381, 3.75778389, 375.778351}
+					var Rotation = Quaternion{0, 0, 0.707106829, 0.707106769}
 				}
 				Model 
 				{
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1634,6 +1704,38 @@ Level
 				var LinkId = 32
 				Transform 
 				{
+					var Translation = Real3{0, -24.1692505, 98.0032959}
+					var Scale = Real3{375.778351, 3.75778389, 375.778381}
+					var Rotation = Quaternion{0.707106829, 0, 0, 0.707106769}
+				}
+				Model 
+				{
+					var Visible = true
+					var ViewCulling = true
+					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
+					var Material = "583afb5e7bf75e18:ZeroMaterial"
+					var Mesh = "4de0354322b345ae:Cube"
+				}
+				BoxCollider 
+				{
+					var Ghost = false
+					var SendsEvents = true
+					var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+					var CollisionGroup = "4e740859314e5515:DefaultGroup"
+					var Offset = Real3{0, 0, 0}
+					var HalfSize = Real3{0.5, 0.5, 0.5}
+				}
+			}
+			Cog 
+			{
+				var Name = "Wall"
+				var LinkId = 33
+				Transform 
+				{
 					var Translation = Real3{0, -24.1692505, -105.653}
 					var Scale = Real3{375.778351, 3.75778389, 375.778381}
 					var Rotation = Quaternion{0.707106829, 0, 0, 0.707106769}
@@ -1643,6 +1745,10 @@ Level
 					var Visible = true
 					var ViewCulling = true
 					var VisibilityEvents = true
+					var OverrideBoundingBox = false
+					var LocalAabbCenter = Real3{0, 0, 0}
+					var LocalAabbHalfExtents = Real3{1, 1, 1}
+					var GroupSortValue = 0
 					var Material = "583afb5e7bf75e18:ZeroMaterial"
 					var Mesh = "4de0354322b345ae:Cube"
 				}
@@ -1661,160 +1767,11 @@ Level
 	Cog 
 	{
 		var Name = "Fish"
-		var LinkId = 33
-		Transform 
-		{
-			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
-			var Scale = Real3{0.5, 0.5, 0.5}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		Model 
-		{
-			var Visible = true
-			var ViewCulling = true
-			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
-		}
-		RigidBody 
-		{
-			var Velocity = Real3{0, 0, 0}
-			var AngularVelocity = Real3{0, 0, 0}
-			var DynamicState = RigidBodyDynamicState.Dynamic
-			var AllowSleep = true
-			var Asleep = false
-			var RotationLocked = true
-			var Mode2D = Mode2DStates.InheritFromSpace
-		}
-		BoxCollider 
-		{
-			var Ghost = false
-			var SendsEvents = true
-			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
-			var CollisionGroup = "4e740859314e5515:DefaultGroup"
-			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
-		}
-		Orientation 
-		{
-			var GlobalUp = Real3{0, 1, 0}
-			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
-			var DefaultBases = OrientationBases.ForwardNegativeZUpY
-		}
-		SteeringAccumulator 
-		{
-			var Active = true
-			var EventHandler = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var MovementConstraint = SteeringConstraints.None
-			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = false
-		}
-		SteeringRigidBodyMover 
-		{
-			var MinImpulse = 0
-			var MaxImpulse = 3
-			var MaxVelocity = 5
-			var MaxRotation = 60
-		}
-		Sensor 
-		{
-			var Active = true
-			var DebugDrawEnabled = false
-			var SensorEventTarget = CogPath
-			{
-				var Path = ""
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 4294967293
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SensorMode = SensorMode.PrimaryAndSideSensors
-			var SensorSpaceMode = Mode2DStates.Mode3D
-			var SideSensorAngle = 45
-			var SideSensorDistance = 8
-			var PrimarySensorDistance = 8
-			var PrimarySensorMaxAngle = 30
-			var LocalOffset = Real3{0, 0, 0}
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 60
-		}
-		Avoidance 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 100
-			var Active = true
-			var YawRotation = true
-			var PitchRotation = true
-			var ConeDistance = 5
-			var ConeAngle = 45
-			var MoveBackDistance = 3
-		}
-		Seek 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 1
-			var Active = true
-			var Target = CogPath
-			{
-				var Path = ":/Target"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var SeekRange = 0
-			var GoalDistance = 0
-		}
-		Wander 
-		{
-			var MovementWeight = 1
-			var LookDirectionWeight = 5
-			var Active = true
-			var WanderShape = WanderShapes.Sphere
-			var Radius = 5
-			var WanderAngle = 45
-			var WanderOffset = 3
-			var Movement = true
-			var SparseUpdate = true
-			var SparseUpdateMaxTimeout = 30
-		}
-	}
-	Cog 
-	{
-		var Name = "Fish"
 		var LinkId = 34
 		Transform 
 		{
-			var Translation = Real3{-14.8316269, 13.6596546, -12.4560623}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -1822,8 +1779,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -1842,7 +1803,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -1934,7 +1895,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -1962,8 +1923,8 @@ Level
 		var LinkId = 35
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, 13.6596546, -4.2881546}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.8316269, 13.6596546, -12.4560623}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -1971,8 +1932,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -1991,7 +1956,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2083,7 +2048,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2111,8 +2076,8 @@ Level
 		var LinkId = 36
 		Transform 
 		{
-			var Translation = Real3{-7.53111649, 13.6596546, -18.9985809}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.1853256, 13.6596546, -4.2881546}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2120,8 +2085,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2140,7 +2109,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2232,7 +2201,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2260,8 +2229,8 @@ Level
 		var LinkId = 37
 		Transform 
 		{
-			var Translation = Real3{-2.36187744, 13.6596546, -25.8889313}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-7.53111649, 13.6596546, -18.9985809}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2269,8 +2238,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2289,7 +2262,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2381,7 +2354,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2409,8 +2382,8 @@ Level
 		var LinkId = 38
 		Transform 
 		{
-			var Translation = Real3{8.15070343, 13.6596546, -34.7758026}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-2.36187744, 13.6596546, -25.8889313}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2418,8 +2391,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2438,7 +2415,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2530,7 +2507,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2558,8 +2535,8 @@ Level
 		var LinkId = 39
 		Transform 
 		{
-			var Translation = Real3{14.9282227, 13.6596546, -27.5339813}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, 13.6596546, -34.7758026}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2567,8 +2544,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2587,7 +2568,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2679,7 +2660,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2707,8 +2688,8 @@ Level
 		var LinkId = 40
 		Transform 
 		{
-			var Translation = Real3{20.0974617, 13.6596546, -34.4243317}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{14.9282227, 13.6596546, -27.5339813}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2716,8 +2697,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2736,7 +2721,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2828,7 +2813,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -2856,8 +2841,8 @@ Level
 		var LinkId = 41
 		Transform 
 		{
-			var Translation = Real3{17.2994118, 13.6596546, -16.8740845}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, 13.6596546, -34.4243317}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -2865,8 +2850,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -2885,7 +2874,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -2977,7 +2966,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3005,8 +2994,8 @@ Level
 		var LinkId = 42
 		Transform 
 		{
-			var Translation = Real3{7.62771225, 13.6596546, -20.9914627}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, 13.6596546, -16.8740845}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3014,8 +3003,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3034,7 +3027,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3126,7 +3119,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3154,8 +3147,8 @@ Level
 		var LinkId = 43
 		Transform 
 		{
-			var Translation = Real3{17.2994118, 0.674217224, -16.8740845}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, 13.6596546, -20.9914627}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3163,8 +3156,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3183,7 +3180,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3275,7 +3272,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3303,8 +3300,8 @@ Level
 		var LinkId = 44
 		Transform 
 		{
-			var Translation = Real3{20.0974617, 0.674217224, -34.4243317}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, 0.674217224, -16.8740845}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3312,8 +3309,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3332,7 +3333,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3424,7 +3425,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3452,8 +3453,8 @@ Level
 		var LinkId = 45
 		Transform 
 		{
-			var Translation = Real3{7.62771225, 0.674217224, -20.9914627}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, 0.674217224, -34.4243317}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3461,8 +3462,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3481,7 +3486,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3573,7 +3578,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3601,8 +3606,8 @@ Level
 		var LinkId = 46
 		Transform 
 		{
-			var Translation = Real3{0.495191574, 3.4980545, -12.823555}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, 0.674217224, -20.9914627}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3610,8 +3615,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3630,7 +3639,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3722,7 +3731,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3750,8 +3759,8 @@ Level
 		var LinkId = 47
 		Transform 
 		{
-			var Translation = Real3{8.15070343, 3.4980545, -34.7758026}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{0.495191574, 3.4980545, -12.823555}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3759,8 +3768,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3779,7 +3792,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -3871,7 +3884,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -3899,8 +3912,8 @@ Level
 		var LinkId = 48
 		Transform 
 		{
-			var Translation = Real3{14.9282227, 3.4980545, -27.5339813}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, 3.4980545, -34.7758026}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -3908,8 +3921,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -3928,7 +3945,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4020,7 +4037,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4048,8 +4065,8 @@ Level
 		var LinkId = 49
 		Transform 
 		{
-			var Translation = Real3{-14.0398712, 3.4980545, -40.5717506}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{14.9282227, 3.4980545, -27.5339813}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4057,8 +4074,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4077,7 +4098,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4169,7 +4190,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4197,8 +4218,8 @@ Level
 		var LinkId = 50
 		Transform 
 		{
-			var Translation = Real3{-21.608696, 3.4980545, -32.4038429}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.0398712, 3.4980545, -40.5717506}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4206,8 +4227,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4226,7 +4251,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4318,7 +4343,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4346,8 +4371,8 @@ Level
 		var LinkId = 51
 		Transform 
 		{
-			var Translation = Real3{-12.6551399, 3.4980545, -54.3560905}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-21.608696, 3.4980545, -32.4038429}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4355,8 +4380,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4375,7 +4404,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4467,7 +4496,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4495,8 +4524,8 @@ Level
 		var LinkId = 52
 		Transform 
 		{
-			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-12.6551399, 3.4980545, -54.3560905}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4504,8 +4533,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4524,7 +4557,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4616,7 +4649,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4644,8 +4677,8 @@ Level
 		var LinkId = 53
 		Transform 
 		{
-			var Translation = Real3{-5.7852478, 3.4980545, -54.0046196}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4653,8 +4686,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4673,7 +4710,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4765,7 +4802,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4793,8 +4830,8 @@ Level
 		var LinkId = 54
 		Transform 
 		{
-			var Translation = Real3{-5.8776207, 3.4980545, -47.1142693}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-5.7852478, 3.4980545, -54.0046196}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4802,8 +4839,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4822,7 +4863,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -4914,7 +4955,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -4942,8 +4983,8 @@ Level
 		var LinkId = 55
 		Transform 
 		{
-			var Translation = Real3{7.62771225, -22.2610931, 31.9138069}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-5.8776207, 3.4980545, -47.1142693}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -4951,8 +4992,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -4971,7 +5016,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5063,7 +5108,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5091,8 +5136,8 @@ Level
 		var LinkId = 56
 		Transform 
 		{
-			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, -22.2610931, 31.9138069}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5100,8 +5145,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5120,7 +5169,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5212,7 +5261,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5240,8 +5289,8 @@ Level
 		var LinkId = 57
 		Transform 
 		{
-			var Translation = Real3{-18.2549973, -22.2610931, 12.333519}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5249,8 +5298,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5269,7 +5322,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5361,7 +5414,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5389,8 +5442,8 @@ Level
 		var LinkId = 58
 		Transform 
 		{
-			var Translation = Real3{18.1317158, -9.27565575, 18.480938}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.2549973, -22.2610931, 12.333519}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5398,8 +5451,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5418,7 +5475,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5510,7 +5567,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5538,8 +5595,8 @@ Level
 		var LinkId = 59
 		Transform 
 		{
-			var Translation = Real3{16.1466255, -22.2610931, 36.0311852}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{18.1317158, -9.27565575, 18.480938}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5547,8 +5604,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5567,7 +5628,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5659,7 +5720,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5687,8 +5748,8 @@ Level
 		var LinkId = 60
 		Transform 
 		{
-			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{16.1466255, -22.2610931, 36.0311852}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5696,8 +5757,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5716,7 +5781,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5808,7 +5873,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5836,8 +5901,8 @@ Level
 		var LinkId = 61
 		Transform 
 		{
-			var Translation = Real3{4.27401352, -9.27565575, 40.0817146}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5845,8 +5910,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -5865,7 +5934,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -5957,7 +6026,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -5985,8 +6054,8 @@ Level
 		var LinkId = 62
 		Transform 
 		{
-			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{4.27401352, -9.27565575, 40.0817146}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -5994,8 +6063,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6014,7 +6087,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6106,7 +6179,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6134,8 +6207,8 @@ Level
 		var LinkId = 63
 		Transform 
 		{
-			var Translation = Real3{14.9282227, -9.27565575, 25.3712883}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6143,8 +6216,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6163,7 +6240,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6255,7 +6332,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6283,8 +6360,8 @@ Level
 		var LinkId = 64
 		Transform 
 		{
-			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{14.9282227, -9.27565575, 25.3712883}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6292,8 +6369,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6312,7 +6393,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6404,7 +6485,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6432,8 +6513,8 @@ Level
 		var LinkId = 65
 		Transform 
 		{
-			var Translation = Real3{-21.608696, -22.2610931, 20.5014267}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6441,8 +6522,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6461,7 +6546,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6553,7 +6638,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6581,8 +6666,8 @@ Level
 		var LinkId = 66
 		Transform 
 		{
-			var Translation = Real3{4.27401352, -22.2610931, 40.0817146}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-21.608696, -22.2610931, 20.5014267}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6590,8 +6675,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6610,7 +6699,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6702,7 +6791,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6730,8 +6819,8 @@ Level
 		var LinkId = 67
 		Transform 
 		{
-			var Translation = Real3{-10.9544868, -22.2610931, 5.79100037}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{4.27401352, -22.2610931, 40.0817146}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6739,8 +6828,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6759,7 +6852,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -6851,7 +6944,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -6879,8 +6972,8 @@ Level
 		var LinkId = 68
 		Transform 
 		{
-			var Translation = Real3{-2.36187744, -9.27565575, 27.0163383}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-10.9544868, -22.2610931, 5.79100037}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -6888,8 +6981,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -6908,7 +7005,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7000,7 +7097,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7028,8 +7125,8 @@ Level
 		var LinkId = 69
 		Transform 
 		{
-			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-2.36187744, -9.27565575, 27.0163383}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7037,8 +7134,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7057,7 +7158,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7149,7 +7250,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7177,8 +7278,8 @@ Level
 		var LinkId = 70
 		Transform 
 		{
-			var Translation = Real3{8.15070343, -22.2610931, 18.129467}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7186,8 +7287,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7206,7 +7311,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7298,7 +7403,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7326,8 +7431,8 @@ Level
 		var LinkId = 71
 		Transform 
 		{
-			var Translation = Real3{-1.30324554, -22.2610931, -1.09934998}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, -22.2610931, 18.129467}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7335,8 +7440,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7355,7 +7464,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7447,7 +7556,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7475,8 +7584,8 @@ Level
 		var LinkId = 72
 		Transform 
 		{
-			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-1.30324554, -22.2610931, -1.09934998}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7484,8 +7593,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7504,7 +7617,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7596,7 +7709,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7624,8 +7737,8 @@ Level
 		var LinkId = 73
 		Transform 
 		{
-			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7633,8 +7746,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7653,7 +7770,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7745,7 +7862,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7773,8 +7890,8 @@ Level
 		var LinkId = 74
 		Transform 
 		{
-			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7782,8 +7899,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7802,7 +7923,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -7894,7 +8015,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -7922,8 +8043,8 @@ Level
 		var LinkId = 75
 		Transform 
 		{
-			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -7931,8 +8052,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -7951,7 +8076,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8043,7 +8168,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8071,8 +8196,8 @@ Level
 		var LinkId = 76
 		Transform 
 		{
-			var Translation = Real3{-8.58329773, -22.2610931, 16.4508972}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8080,8 +8205,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8100,7 +8229,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8192,7 +8321,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8220,8 +8349,8 @@ Level
 		var LinkId = 77
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-8.58329773, -22.2610931, 16.4508972}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8229,8 +8358,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8249,7 +8382,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8341,7 +8474,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8369,8 +8502,8 @@ Level
 		var LinkId = 78
 		Transform 
 		{
-			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8378,8 +8511,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8398,7 +8535,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8490,7 +8627,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8518,8 +8655,8 @@ Level
 		var LinkId = 79
 		Transform 
 		{
-			var Translation = Real3{2.45982838, -9.27565575, 40.0817146}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8527,8 +8664,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8547,7 +8688,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8639,7 +8780,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8667,8 +8808,8 @@ Level
 		var LinkId = 80
 		Transform 
 		{
-			var Translation = Real3{4.27401352, 3.4980545, -12.823555}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{2.45982838, -9.27565575, 40.0817146}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8676,8 +8817,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8696,7 +8841,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8788,7 +8933,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8816,8 +8961,8 @@ Level
 		var LinkId = 81
 		Transform 
 		{
-			var Translation = Real3{17.2994118, 3.4980545, -16.8740845}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{4.27401352, 3.4980545, -12.823555}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8825,8 +8970,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8845,7 +8994,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -8937,7 +9086,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -8965,8 +9114,8 @@ Level
 		var LinkId = 82
 		Transform 
 		{
-			var Translation = Real3{17.2994118, -22.2610931, 36.0311852}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, 3.4980545, -16.8740845}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -8974,8 +9123,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -8994,7 +9147,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9086,7 +9239,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9114,8 +9267,8 @@ Level
 		var LinkId = 83
 		Transform 
 		{
-			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, -22.2610931, 36.0311852}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9123,8 +9276,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9143,7 +9300,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9235,7 +9392,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9263,8 +9420,8 @@ Level
 		var LinkId = 84
 		Transform 
 		{
-			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, -22.2610931, 18.480938}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9272,8 +9429,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9292,7 +9453,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9384,7 +9545,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9412,8 +9573,8 @@ Level
 		var LinkId = 85
 		Transform 
 		{
-			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{14.9282227, -22.2610931, 25.3712883}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9421,8 +9582,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9441,7 +9606,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9533,7 +9698,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9561,8 +9726,8 @@ Level
 		var LinkId = 86
 		Transform 
 		{
-			var Translation = Real3{20.0974617, -9.27565575, 18.480938}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-7.53111649, -9.27565575, 33.9066887}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9570,8 +9735,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9590,7 +9759,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9682,7 +9851,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9710,8 +9879,8 @@ Level
 		var LinkId = 87
 		Transform 
 		{
-			var Translation = Real3{-18.1521473, 3.4980545, -32.4038429}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, -9.27565575, 18.480938}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9719,8 +9888,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9739,7 +9912,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9831,7 +10004,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -9859,8 +10032,8 @@ Level
 		var LinkId = 88
 		Transform 
 		{
-			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.1521473, 3.4980545, -32.4038429}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -9868,8 +10041,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8e9d8783ff72:BlueFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -9888,7 +10065,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -9980,7 +10157,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10008,8 +10185,8 @@ Level
 		var LinkId = 89
 		Transform 
 		{
-			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.3086357, 16.4834919, -26.2404022}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10017,8 +10194,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10037,7 +10218,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10129,7 +10310,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10157,8 +10338,8 @@ Level
 		var LinkId = 90
 		Transform 
 		{
-			var Translation = Real3{20.0974617, 16.4834919, -34.4243317}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, -9.27565575, 36.0311852}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10166,8 +10347,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10186,7 +10371,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10278,7 +10463,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10306,8 +10491,8 @@ Level
 		var LinkId = 91
 		Transform 
 		{
-			var Translation = Real3{20.0974617, 3.4980545, -34.4243317}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, 16.4834919, -34.4243317}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10315,8 +10500,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10335,7 +10524,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10427,7 +10616,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10455,8 +10644,8 @@ Level
 		var LinkId = 92
 		Transform 
 		{
-			var Translation = Real3{-0.708381653, 3.4980545, -54.0046196}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{20.0974617, 3.4980545, -34.4243317}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10464,8 +10653,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10484,7 +10677,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10576,7 +10769,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10604,8 +10797,8 @@ Level
 		var LinkId = 93
 		Transform 
 		{
-			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-0.708381653, 3.4980545, -54.0046196}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10613,8 +10806,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10633,7 +10830,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10725,7 +10922,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10753,8 +10950,8 @@ Level
 		var LinkId = 94
 		Transform 
 		{
-			var Translation = Real3{-14.8316269, 16.4834919, -12.4560623}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, -9.27565575, 31.9138069}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10762,8 +10959,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10782,7 +10983,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -10874,7 +11075,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -10902,8 +11103,8 @@ Level
 		var LinkId = 95
 		Transform 
 		{
-			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.8316269, 16.4834919, -12.4560623}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -10911,8 +11112,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -10931,7 +11136,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11023,7 +11228,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11051,8 +11256,8 @@ Level
 		var LinkId = 96
 		Transform 
 		{
-			var Translation = Real3{7.62771225, 3.4980545, -20.9914627}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-5.15992737, -9.27565575, 44.5665855}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11060,8 +11265,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11080,7 +11289,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11172,7 +11381,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11200,8 +11409,8 @@ Level
 		var LinkId = 97
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, 16.4834919, -4.2881546}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, 3.4980545, -20.9914627}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11209,8 +11418,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11229,7 +11442,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11321,7 +11534,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11349,8 +11562,8 @@ Level
 		var LinkId = 98
 		Transform 
 		{
-			var Translation = Real3{6.47492599, -22.2610931, 31.9138069}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.1853256, 16.4834919, -4.2881546}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11358,8 +11571,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11378,7 +11595,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11470,7 +11687,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11498,8 +11715,8 @@ Level
 		var LinkId = 99
 		Transform 
 		{
-			var Translation = Real3{-8.58329773, -22.2610931, 16.4508972}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{6.47492599, -22.2610931, 31.9138069}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11507,8 +11724,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11527,7 +11748,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11619,7 +11840,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11647,8 +11868,8 @@ Level
 		var LinkId = 100
 		Transform 
 		{
-			var Translation = Real3{-7.53111649, 16.4834919, -18.9985809}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-8.58329773, -22.2610931, 16.4508972}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11656,8 +11877,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11676,7 +11901,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11768,7 +11993,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11796,8 +12021,8 @@ Level
 		var LinkId = 101
 		Transform 
 		{
-			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-7.53111649, 16.4834919, -18.9985809}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11805,8 +12030,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11825,7 +12054,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -11917,7 +12146,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -11945,8 +12174,8 @@ Level
 		var LinkId = 102
 		Transform 
 		{
-			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-8.58329773, 3.4980545, -36.4543724}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -11954,8 +12183,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -11974,7 +12207,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12066,7 +12299,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12094,8 +12327,8 @@ Level
 		var LinkId = 103
 		Transform 
 		{
-			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.8316269, -9.27565575, 40.4492073}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12103,8 +12336,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12123,7 +12360,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12215,7 +12452,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12243,8 +12480,8 @@ Level
 		var LinkId = 104
 		Transform 
 		{
-			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-14.3086357, -9.27565575, 26.6648674}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12252,8 +12489,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12272,7 +12513,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12364,7 +12605,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12392,8 +12633,8 @@ Level
 		var LinkId = 105
 		Transform 
 		{
-			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-17.7320061, -22.2610931, -1.45082092}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12401,8 +12642,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12421,7 +12666,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12513,7 +12758,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12541,8 +12786,8 @@ Level
 		var LinkId = 106
 		Transform 
 		{
-			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, -9.27565575, 18.129467}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12550,8 +12795,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12570,7 +12819,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12662,7 +12911,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12690,8 +12939,8 @@ Level
 		var LinkId = 107
 		Transform 
 		{
-			var Translation = Real3{-10.9544868, 3.4980545, -47.1142693}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.1853256, -9.27565575, 48.617115}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12699,8 +12948,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12719,7 +12972,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12811,7 +13064,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12839,8 +13092,8 @@ Level
 		var LinkId = 108
 		Transform 
 		{
-			var Translation = Real3{-2.36187744, -9.27565575, 30.1387138}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-10.9544868, 3.4980545, -47.1142693}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12848,8 +13101,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -12868,7 +13125,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -12960,7 +13217,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -12988,8 +13245,8 @@ Level
 		var LinkId = 109
 		Transform 
 		{
-			var Translation = Real3{-6.47248459, -22.2610931, 5.79100037}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-2.36187744, -9.27565575, 30.1387138}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -12997,8 +13254,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13017,7 +13278,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13109,7 +13370,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13137,8 +13398,8 @@ Level
 		var LinkId = 110
 		Transform 
 		{
-			var Translation = Real3{12.8298035, -9.27565575, 25.3712883}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-6.47248459, -22.2610931, 5.79100037}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13146,8 +13407,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13166,7 +13431,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13258,7 +13523,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13286,8 +13551,8 @@ Level
 		var LinkId = 111
 		Transform 
 		{
-			var Translation = Real3{0.363592148, -22.2610931, 40.0817146}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{12.8298035, -9.27565575, 25.3712883}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13295,8 +13560,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13315,7 +13584,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13407,7 +13676,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13435,8 +13704,8 @@ Level
 		var LinkId = 112
 		Transform 
 		{
-			var Translation = Real3{-5.7852478, -22.2610931, -1.09934998}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{0.363592148, -22.2610931, 40.0817146}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13444,8 +13713,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13464,7 +13737,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13556,7 +13829,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13584,8 +13857,8 @@ Level
 		var LinkId = 113
 		Transform 
 		{
-			var Translation = Real3{17.2994118, 16.4834919, -16.8740845}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-5.7852478, -22.2610931, -1.09934998}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13593,8 +13866,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13613,7 +13890,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13705,7 +13982,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13733,8 +14010,8 @@ Level
 		var LinkId = 114
 		Transform 
 		{
-			var Translation = Real3{-13.772995, -22.2610931, 12.333519}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{17.2994118, 16.4834919, -16.8740845}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13742,8 +14019,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13762,7 +14043,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -13854,7 +14135,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -13882,8 +14163,8 @@ Level
 		var LinkId = 115
 		Transform 
 		{
-			var Translation = Real3{11.5018005, 3.4980545, -34.7758026}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-13.772995, -22.2610931, 12.333519}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -13891,8 +14172,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -13911,7 +14196,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14003,7 +14288,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14031,8 +14316,8 @@ Level
 		var LinkId = 116
 		Transform 
 		{
-			var Translation = Real3{12.397234, 3.4980545, -27.5339813}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{11.5018005, 3.4980545, -34.7758026}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14040,8 +14325,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14060,7 +14349,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14152,7 +14441,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14180,8 +14469,8 @@ Level
 		var LinkId = 117
 		Transform 
 		{
-			var Translation = Real3{7.62771225, 16.4834919, -20.9914627}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{12.397234, 3.4980545, -27.5339813}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14189,8 +14478,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14209,7 +14502,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14301,7 +14594,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14329,8 +14622,8 @@ Level
 		var LinkId = 118
 		Transform 
 		{
-			var Translation = Real3{-2.36187744, 16.4834919, -25.8889313}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{7.62771225, 16.4834919, -20.9914627}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14338,8 +14631,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14358,7 +14655,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14450,7 +14747,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14478,8 +14775,8 @@ Level
 		var LinkId = 119
 		Transform 
 		{
-			var Translation = Real3{8.15070343, 16.4834919, -34.7758026}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-2.36187744, 16.4834919, -25.8889313}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14487,8 +14784,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14507,7 +14808,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14599,7 +14900,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14627,8 +14928,8 @@ Level
 		var LinkId = 120
 		Transform 
 		{
-			var Translation = Real3{-17.1266937, -22.2610931, 20.5014267}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, 16.4834919, -34.7758026}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14636,8 +14937,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8930ba955ba6:BlueYellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14656,7 +14961,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14748,7 +15053,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14776,8 +15081,8 @@ Level
 		var LinkId = 121
 		Transform 
 		{
-			var Translation = Real3{8.15070343, -22.2610931, 18.129467}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-17.1266937, -22.2610931, 20.5014267}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14785,8 +15090,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58fe8917be7c03c3:YellowFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14805,7 +15114,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -14897,7 +15206,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -14925,8 +15234,8 @@ Level
 		var LinkId = 122
 		Transform 
 		{
-			var Translation = Real3{-17.7320061, 3.4980545, -54.3560905}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{8.15070343, -22.2610931, 18.129467}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -14934,8 +15243,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -14954,7 +15267,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -15046,7 +15359,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -15074,8 +15387,8 @@ Level
 		var LinkId = 123
 		Transform 
 		{
-			var Translation = Real3{-18.2549973, 3.4980545, -40.5717506}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-17.7320061, 3.4980545, -54.3560905}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -15083,8 +15396,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -15103,7 +15420,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -15195,7 +15512,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -15223,8 +15540,8 @@ Level
 		var LinkId = 124
 		Transform 
 		{
-			var Translation = Real3{14.9282227, 16.4834919, -27.5339813}
-			var Scale = Real3{0.5, 0.5, 0.5}
+			var Translation = Real3{-18.2549973, 3.4980545, -40.5717506}
+			var Scale = Real3{2, 2, 5}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
 		Model 
@@ -15232,8 +15549,12 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "58febbd337c9cef3:RedFish"
-			var Mesh = "58fe8c8d26bb2086:Fish_Red.pPlane14"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
 		{
@@ -15252,7 +15573,7 @@ Level
 			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 			var CollisionGroup = "4e740859314e5515:DefaultGroup"
 			var Offset = Real3{0, 0, 0}
-			var HalfSize = Real3{0.5, 1.5, 3}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
 		}
 		Orientation 
 		{
@@ -15344,7 +15665,160 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SeekRange = 0
+			var GoalDistance = 0
+		}
+		Wander 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 5
+			var Active = true
+			var WanderShape = WanderShapes.Sphere
+			var Radius = 5
+			var WanderAngle = 45
+			var WanderOffset = 3
+			var Movement = true
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 30
+		}
+	}
+	Cog 
+	{
+		var Name = "Fish"
+		var LinkId = 125
+		Transform 
+		{
+			var Translation = Real3{14.9282227, 16.4834919, -27.5339813}
+			var Scale = Real3{2, 2, 5}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Model 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e79455a63cef:SeekerColor"
+			var Mesh = "4de0354322b376ae:Sphere"
+		}
+		RigidBody 
+		{
+			var Velocity = Real3{0, 0, 0}
+			var AngularVelocity = Real3{0, 0, 0}
+			var DynamicState = RigidBodyDynamicState.Dynamic
+			var AllowSleep = true
+			var Asleep = false
+			var RotationLocked = true
+			var Mode2D = Mode2DStates.InheritFromSpace
+		}
+		BoxCollider 
+		{
+			var Ghost = false
+			var SendsEvents = true
+			var Material = "4de020863e872da8:DefaultPhysicsMaterial"
+			var CollisionGroup = "4e740859314e5515:DefaultGroup"
+			var Offset = Real3{0, 0, 0}
+			var HalfSize = Real3{0.5, 0.5, 0.5}
+		}
+		Orientation 
+		{
+			var GlobalUp = Real3{0, 1, 0}
+			var LocalOrientationBasis = Quaternion{0, 0, 0, 1}
+			var DefaultBases = OrientationBases.ForwardNegativeZUpY
+		}
+		SteeringAccumulator 
+		{
+			var Active = true
+			var EventHandler = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var MovementConstraint = SteeringConstraints.None
+			var LookDirectionConstraint = SteeringConstraints.None
+			var DebugDrawEnabled = false
+		}
+		SteeringRigidBodyMover 
+		{
+			var MinImpulse = 0
+			var MaxImpulse = 3
+			var MaxVelocity = 5
+			var MaxRotation = 60
+		}
+		Sensor 
+		{
+			var Active = true
+			var DebugDrawEnabled = false
+			var SensorEventTarget = CogPath
+			{
+				var Path = ""
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 4294967293
+				var PathPreference0 = CogPathPreference.CogRelative
+				var PathPreference1 = CogPathPreference.SpaceRelative
+				var PathPreference2 = CogPathPreference.Absolute
+			}
+			var SensorMode = SensorMode.PrimaryAndSideSensors
+			var SensorSpaceMode = Mode2DStates.Mode3D
+			var SideSensorAngle = 45
+			var SideSensorDistance = 8
+			var PrimarySensorDistance = 8
+			var PrimarySensorMaxAngle = 30
+			var LocalOffset = Real3{0, 0, 0}
+			var SparseUpdate = true
+			var SparseUpdateMaxTimeout = 60
+		}
+		Avoidance 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 100
+			var Active = true
+			var YawRotation = true
+			var PitchRotation = true
+			var ConeDistance = 5
+			var ConeAngle = 45
+			var MoveBackDistance = 3
+		}
+		Seek 
+		{
+			var MovementWeight = 1
+			var LookDirectionWeight = 1
+			var Active = true
+			var Target = CogPath
+			{
+				var Path = ":/Target"
+				var ErrorOnResolveToNull = false
+				var ErrorOnPathCantCompute = false
+				var ErrorOnDirectLinkFail = false
+				var UpdateCogOnPathChange = true
+				var UpdatePathOnCogChange = true
+				var UpdateCogOnInitialize = true
+				var ResolvedNullErrorOccurred = false
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
@@ -15369,7 +15843,7 @@ Level
 	Cog 
 	{
 		var Name = "Target"
-		var LinkId = 6
+		var LinkId = 7
 		Transform 
 		{
 			var Translation = Real3{7.58398438, 3.46765137, -0.985462666}
@@ -15387,7 +15861,11 @@ Level
 			var Visible = true
 			var ViewCulling = true
 			var VisibilityEvents = true
-			var Material = "583afb5e7bf75e18:ZeroMaterial"
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "5912e7ef4116b2bc:TargetColor"
 			var Mesh = "4de0354322b376ae:Sphere"
 		}
 		RigidBody 
@@ -15429,7 +15907,7 @@ Level
 			}
 			var MovementConstraint = SteeringConstraints.None
 			var LookDirectionConstraint = SteeringConstraints.None
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 		}
 		SteeringRigidBodyMover 
 		{
@@ -15454,7 +15932,7 @@ Level
 		Sensor 
 		{
 			var Active = true
-			var DebugDrawEnabled = true
+			var DebugDrawEnabled = false
 			var SensorEventTarget = CogPath
 			{
 				var Path = "."
@@ -15465,7 +15943,7 @@ Level
 				var UpdatePathOnCogChange = true
 				var UpdateCogOnInitialize = true
 				var ResolvedNullErrorOccurred = false
-				var ResolvedCog = 6
+				var ResolvedCog = 7
 				var PathPreference0 = CogPathPreference.CogRelative
 				var PathPreference1 = CogPathPreference.SpaceRelative
 				var PathPreference2 = CogPathPreference.Absolute
