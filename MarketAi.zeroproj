@@ -4,7 +4,7 @@ Cog
 	var Name = ""
 	ProjectSettings 
 	{
-		var ProjectName = "VOIDAI"
+		var ProjectName = "MarketAi"
 		var ProjectOwner = ""
 		var DefaultLevel = "Level"
 		var ProjectSpace = "Space"
